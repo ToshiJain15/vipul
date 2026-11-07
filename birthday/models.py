@@ -97,3 +97,18 @@ class TreeHeart(models.Model):
     def __str__(self):
         return f"Tree Heart: {self.title}"
 
+
+class OpenWhenLetter(models.Model):
+    """'Open When...' romantic envelopes."""
+    trigger_title = models.CharField(max_length=150, help_text="e.g. 'When You Miss Me'")
+    icon = models.CharField(max_length=10, default="💌")
+    content = models.TextField()
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order', 'id']
+
+    def __str__(self):
+        return f"Open {self.trigger_title}"
+
+

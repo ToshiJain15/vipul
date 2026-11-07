@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initPasscodeScreen();
     initCupidBow();
     initTreeOfHearts();
+    initGiftsUnboxing();
+    initOpenWhenLetters();
     initAmbientHearts();
     initCountdown();
     initCakeCandles();
@@ -948,5 +950,201 @@ function initTreePetals() {
     }
     animate();
 }
+
+/* =========================================================
+   14. Virtual Gifts Unboxing & Scratch Card (Inspired by Reel 3)
+   ========================================================= */
+function initGiftsUnboxing() {
+    const giftCards = document.querySelectorAll('.gift-box-card');
+
+    giftCards.forEach(card => {
+        const unwrapBtn = card.querySelector('.unwrap-btn');
+        const wrapped = card.querySelector('.gift-wrapped-state');
+        const unwrapped = card.querySelector('.gift-unwrapped-state');
+        const giftId = card.dataset.gift;
+
+        function unwrap() {
+            if (!unwrapped.classList.contains('hidden')) return;
+
+            playPaperOpenSound();
+            playSuccessChime();
+            triggerGrandConfetti();
+            triggerMiniConfetti(card);
+
+            wrapped.classList.add('hidden');
+            unwrapped.classList.remove('hidden');
+            unwrapBtn.textContent = '✓ Unwrapped with Love';
+            unwrapBtn.classList.add('opacity-50', 'pointer-events-none');
+
+            if (giftId === '2') {
+                setTimeout(initScratchCard, 100);
+            }
+        }
+
+        if (unwrapBtn) unwrapBtn.addEventListener('click', unwrap);
+        card.addEventListener('click', (e) => {
+            if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'CANVAS') {
+                unwrap();
+            }
+        });
+    });
+
+    // Gift 3: Smile Capsule cycling notes
+    const smileNotes = [
+        "Whenever you smile, the whole room glows. Never stop smiling, my handsome boy.",
+        "You are the strongest, most hardworking man I know, and my greatest source of inspiration.",
+        "The way you hold my hand makes all the stress in the universe vanish into thin air.",
+        "I love your sleepy morning voice and your silly little jokes.",
+        "Marrying you is going to be the happiest day of my entire life.",
+        "You make even a boring trip to the grocery store feel like a romantic adventure.",
+        "Thank you for loving me on my best days and loving me even harder on my bad days.",
+        "You have the kindest heart, the warmest eyes, and the gentlest soul.",
+        "Every love song on the radio makes total sense now because of you.",
+        "Happy Birthday to my favorite human in all the worlds and lifetimes."
+    ];
+    let currentSmileIndex = 0;
+    const smileDisplay = document.getElementById('smile-note-display');
+    const nextSmileBtn = document.getElementById('next-smile-btn');
+
+    if (nextSmileBtn && smileDisplay) {
+        nextSmileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentSmileIndex = (currentSmileIndex + 1) % smileNotes.length;
+            playPopSound();
+            triggerMiniConfetti(nextSmileBtn);
+
+            smileDisplay.style.opacity = '0';
+            setTimeout(() => {
+                smileDisplay.textContent = `"${smileNotes[currentSmileIndex]}"`;
+                smileDisplay.style.opacity = '1';
+            }, 180);
+        });
+    }
+}
+
+function initScratchCard() {
+    const canvas = document.getElementById('scratch-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    const width = canvas.width = canvas.parentElement.clientWidth;
+    const height = canvas.height = canvas.parentElement.clientHeight;
+
+    // Draw luxury metallic gold foil
+    const grad = ctx.createLinearGradient(0, 0, width, height);
+    grad.addColorStop(0, '#cca048');
+    grad.addColorStop(0.3, '#fef08a');
+    grad.addColorStop(0.7, '#dfbc78');
+    grad.addColorStop(1, '#b45309');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, width, height);
+
+    // Cute sparkle & text on foil
+    ctx.fillStyle = '#451a03';
+    ctx.font = 'bold 12px "Inter", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('✨ SCRATCH WITH LOVE ✨', width / 2, height / 2 + 4);
+
+    let isScratching = false;
+
+    function scratch(e) {
+        if (!isScratching) return;
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.arc(x, y, 20, 0, Math.PI * 2);
+        ctx.fill();
+
+        playNote(750, 0.04, 'triangle');
+    }
+
+    canvas.addEventListener('mousedown', () => isScratching = true);
+    window.addEventListener('mouseup', () => isScratching = false);
+    canvas.addEventListener('mousemove', scratch);
+
+    canvas.addEventListener('touchstart', (e) => { isScratching = true; scratch(e); });
+    window.addEventListener('touchend', () => isScratching = false);
+    canvas.addEventListener('touchmove', scratch);
+}
+
+/* =========================================================
+   15. "Open When..." Care Envelopes (Inspired by Reel 1 & 3)
+   ========================================================= */
+function initOpenWhenLetters() {
+    const openWhenLetters = {
+        '1': {
+            icon: '🥺💌',
+            title: 'When You Miss Me',
+            tag: 'Open When • Love Capsule',
+            text: `My Dearest Vipul,\n\nClose your eyes right now and take a slow, deep breath. Can you feel that quiet warmth in your chest? That is my heart beating right alongside yours.\n\nDistance, long work hours, or busy days mean nothing when someone means everything to you. Whenever you feel alone or miss my voice, look at our pictures, whisper my name, and remember that I am counting down every second until I am right back in your arms.\n\nNow put down this screen and text or call me: "I miss you." A giant cuddle is already waiting for you!`
+        },
+        '2': {
+            icon: '☕🌧️',
+            title: 'When You Had a Long Day',
+            tag: 'Open When • Comfort Capsule',
+            text: `Hey handsome boy,\n\nKick off your shoes, lie back, and let your shoulders drop. Take a deep breath.\n\nYou work so hard every single day. You pour your passion, energy, and heart into everything you touch, and nobody sees your dedication more clearly than I do. I am so endlessly proud of you.\n\nToday's stress is only temporary, but my love for you is permanent. When we are together tonight, your favorite snacks, soothing back rubs, and zero worries are on the menu. You did wonderful today, my love. Rest now.`
+        },
+        '3': {
+            icon: '🧸🫂',
+            title: 'When You Need a Hug',
+            tag: 'Open When • Snuggle Capsule',
+            text: `Wrap both of your arms tightly around yourself right now. Squeeze tight!\n\nThat is a giant, warm, unyielding hug from your future wife delivered straight into your soul.\n\nImagine my head tucked against your chest, listening to your heartbeat, and my fingers intertwined with yours. You are safe. You are deeply cherished. And no matter what the world throws at us, you will never have to face anything alone again.`
+        },
+        '4': {
+            icon: '🕊️🤍',
+            title: 'When We Disagree',
+            tag: 'Open When • Peace Capsule',
+            text: `Hey... pause for just ten seconds and look at us.\n\nWhatever little silly argument or misunderstanding we are having right now does not compare to how deeply, irrevocably in love I am with you.\n\nIt is never you against me. It is you and me, as a team, against the issue. I forgive you, I ask for your forgiveness, and I cannot wait to kiss that cute pout off your face.\n\nCome here right now and hug me. We are forever, remember? ❤️`
+        },
+        '5': {
+            icon: '🎂🎉',
+            title: 'At Midnight (12:00 AM)',
+            tag: 'Open When • Birthday Midnight',
+            text: `IT IS 12:00 AM! HAPPY OFFICIAL BIRTHDAY, MY HANDSOME FIANCÉ! 🎂🥂🎉\n\nOn this exact day, the most wonderful, loving, kind, and brilliant man was brought into this universe—and I am the luckiest girl alive because I get to call you mine.\n\nMay this new year of your life be filled with roaring success, peaceful mornings, crazy fun adventures, and endless laughter with me. Happy Birthday Vipul! Ready to celebrate YOU all day long! 🥳💖`
+        }
+    };
+
+    const cards = document.querySelectorAll('.open-when-card');
+    const modal = document.getElementById('open-when-modal');
+    const closeBtn = document.getElementById('close-open-when-modal');
+    const iconEl = document.getElementById('open-when-modal-icon');
+    const titleEl = document.getElementById('open-when-modal-title');
+    const tagEl = document.getElementById('open-when-modal-tag');
+    const textEl = document.getElementById('open-when-modal-text');
+
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const id = card.dataset.id;
+            const letter = openWhenLetters[id];
+            if (!letter) return;
+
+            if (iconEl) iconEl.textContent = letter.icon;
+            if (titleEl) titleEl.textContent = letter.title;
+            if (tagEl) tagEl.textContent = letter.tag;
+            if (textEl) textEl.textContent = letter.text;
+
+            playPaperOpenSound();
+            triggerMiniConfetti(card);
+
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        });
+    });
+
+    if (closeBtn && modal) {
+        closeBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        });
+    }
+}
+
 
 
