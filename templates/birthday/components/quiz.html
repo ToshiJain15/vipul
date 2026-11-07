@@ -3,21 +3,24 @@
     <div class="max-w-2xl mx-auto space-y-10 text-center">
         
         <div class="space-y-3">
-            <span class="text-xs uppercase tracking-widest font-cinzel text-rose-400 font-semibold">Fun & Games</span>
-            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">The "Us" Trivia 💖</h2>
-            <p class="text-rose-200/80 text-sm sm:text-base max-w-lg mx-auto">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-rose-100 border border-red-200 text-red-600 text-xs font-semibold backdrop-blur">
+                <span>🎯✨</span>
+                <span class="tracking-widest uppercase font-cinzel">Fun & Games</span>
+                <span>💖</span>
+            </div>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-red-700">The "Us" Trivia 💖</h2>
+            <p class="text-slate-600 text-sm sm:text-base max-w-lg mx-auto">
                 Think you know everything about our relationship? Let us test your knowledge, birthday boy!
             </p>
         </div>
 
         <!-- Dynamic Quiz Card Box -->
-        <div id="quiz-box" class="glass-panel p-6 sm:p-10 rounded-3xl border border-rose-500/30 text-left shadow-2xl relative overflow-hidden">
-            <!-- Will be dynamically populated by main.js initQuiz() -->
-            <div class="text-center py-6 text-rose-300">
+        <div id="quiz-dynamic-container" class="bg-white/95 backdrop-blur-md p-6 sm:p-10 rounded-3xl border-2 border-red-200 text-left shadow-xl shadow-rose-100/60 relative overflow-hidden">
+            <!-- Dynamically populated by main.js initQuiz() -->
+            <div class="text-center py-6 text-red-600 font-medium">
                 Loading romantic trivia questions...
             </div>
         </div>
 
     </div>
 </section>
-

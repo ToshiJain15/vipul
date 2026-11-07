@@ -1,38 +1,38 @@
-<!-- Interactive Midnight Scooty Ride Simulator (Mobile-First & Deeply Connecting) -->
+<!-- Interactive Midnight Scooty Ride Simulator (Red & White Theme) -->
 <section id="scooty-ride-section" class="py-14 sm:py-20 px-3 sm:px-6 relative z-10 overflow-hidden content-lazy-render">
     <div class="max-w-4xl mx-auto space-y-6 text-center relative z-10">
         
         <!-- Header -->
         <div class="space-y-2">
-            <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-rose-500/15 border border-rose-400/30 text-rose-300 text-[11px] font-semibold">
+            <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-red-700 text-xs font-bold">
                 <span>🛵💨</span>
                 <span class="tracking-widest uppercase font-cinzel">Special Romance Route</span>
                 <span>✨</span>
             </div>
-            <h2 class="font-serif text-2xl xs:text-3xl sm:text-4xl font-bold text-white">
+            <h2 class="font-serif text-2xl xs:text-3xl sm:text-4xl font-black text-slate-900">
                 Our Midnight Scooty Ride 🛵🌌
             </h2>
-            <p class="text-rose-200/80 text-xs sm:text-sm max-w-lg mx-auto leading-relaxed">
+            <p class="text-slate-600 text-xs sm:text-sm max-w-lg mx-auto leading-relaxed">
                 No cars, no honking—sirf tum, main, thandi hawa, aur mera haath tumhari kamar pe.
-                <strong class="text-amber-300">Hold the Cruise button</strong> to ride down our memory highway!
+                <strong class="text-red-600">Hold the Cruise button</strong> to ride down our memory highway!
             </p>
         </div>
 
-        <!-- The Scooty Stage Box -->
-        <div class="glass-panel-gold rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-amber-300/30 shadow-2xl relative select-none overflow-hidden">
+        <!-- The Scooty Stage Box (Red & White Container) -->
+        <div class="bg-white/95 rounded-2xl sm:rounded-3xl p-4 sm:p-8 border-2 border-rose-200 shadow-xl relative select-none overflow-hidden">
             
-            <!-- Twinkling Stars & Moon -->
+            <!-- Twinkling Moon -->
             <div class="absolute top-3 right-4 text-3xl sm:text-4xl pointer-events-none filter drop-shadow animate-pulse">
                 🌙
             </div>
 
             <!-- Skyline Silhouette -->
-            <div class="h-10 w-full flex items-end justify-between opacity-20 text-slate-400 text-lg sm:text-xl overflow-hidden pointer-events-none border-b border-rose-500/20 pb-0.5">
+            <div class="h-10 w-full flex items-end justify-between opacity-30 text-rose-300 text-lg sm:text-xl overflow-hidden pointer-events-none border-b border-rose-200 pb-0.5">
                 <span>🏢</span><span>🏬</span><span>🏨</span><span>🏰</span><span>🏢</span><span>🏬</span><span>🏨</span><span>🏢</span><span>🏰</span><span>🏨</span><span>🏬</span><span>🏢</span>
             </div>
 
             <!-- Parallax Road Track -->
-            <div id="scooty-track" class="relative h-36 xs:h-40 sm:h-48 w-full bg-slate-900/95 rounded-xl sm:rounded-2xl overflow-hidden border border-slate-700/60 shadow-inner flex flex-col justify-end">
+            <div id="scooty-track" class="relative h-36 xs:h-40 sm:h-48 w-full bg-slate-900/95 rounded-xl sm:rounded-2xl overflow-hidden border border-slate-700 shadow-inner flex flex-col justify-end">
                 
                 <!-- Streetlights Layer -->
                 <div id="streetlights-layer" class="absolute inset-x-0 top-0 h-full pointer-events-none overflow-hidden">
@@ -42,7 +42,7 @@
                 </div>
 
                 <!-- Road Line -->
-                <div id="road-lines" class="absolute bottom-4 inset-x-0 h-1 border-b-2 border-dashed border-yellow-400/80"></div>
+                <div id="road-lines" class="absolute bottom-4 inset-x-0 h-1 border-b-2 border-dashed border-yellow-400"></div>
 
                 <!-- Scooty Vehicle -->
                 <div id="scooty-vehicle" class="relative z-20 flex items-end justify-center mb-1">
@@ -54,56 +54,56 @@
                         <img src="static/images/couple_scooty_ride.gif" alt="Vipul & Toshi Scooty Ride" class="w-32 xs:w-36 sm:w-44 h-auto rounded-xl object-contain drop-shadow-md">
                         
                         <!-- Mini Name Tag Floating Above Rider -->
-                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap bg-rose-600 text-white text-[9px] font-cinzel font-bold px-2 py-0.5 rounded-full shadow border border-white/60">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap bg-red-600 text-white text-[9px] font-cinzel font-bold px-2 py-0.5 rounded-full shadow border border-white">
                             Vipul & Toshi 🛵
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Compact Dashboard HUD (Mobile-friendly grid) -->
+            <!-- Compact Dashboard HUD (Red & White Tiles) -->
             <div class="mt-4 grid grid-cols-3 gap-2 sm:gap-4 max-w-md mx-auto text-center">
                 <!-- Speed -->
-                <div class="p-2 sm:p-3 rounded-xl bg-black/40 border border-rose-500/25">
-                    <span class="text-[9px] uppercase tracking-wider font-cinzel text-amber-300 font-bold block">Speed</span>
-                    <span id="scooty-speed" class="font-mono text-xl sm:text-2xl font-black text-white">0</span>
-                    <span class="text-[9px] text-rose-300/70 block">km/h</span>
+                <div class="p-2 sm:p-3 rounded-xl bg-rose-50/80 border border-rose-200 shadow-sm">
+                    <span class="text-[9px] uppercase tracking-wider font-cinzel text-red-700 font-bold block">Speed</span>
+                    <span id="scooty-speed" class="font-mono text-xl sm:text-2xl font-black text-slate-900">0</span>
+                    <span class="text-[9px] text-slate-500 block">km/h</span>
                 </div>
 
                 <!-- Distance -->
-                <div class="p-2 sm:p-3 rounded-xl bg-black/40 border border-rose-500/25">
-                    <span class="text-[9px] uppercase tracking-wider font-cinzel text-amber-300 font-bold block">Distance</span>
-                    <span id="scooty-distance" class="font-mono text-xl sm:text-2xl font-black text-amber-200">0</span>
-                    <span class="text-[9px] text-rose-300/70 block">/ 2026m</span>
+                <div class="p-2 sm:p-3 rounded-xl bg-rose-50/80 border border-rose-200 shadow-sm">
+                    <span class="text-[9px] uppercase tracking-wider font-cinzel text-red-700 font-bold block">Distance</span>
+                    <span id="scooty-distance" class="font-mono text-xl sm:text-2xl font-black text-red-600">0</span>
+                    <span class="text-[9px] text-slate-500 block">/ 2026m</span>
                 </div>
 
                 <!-- Snuggle Level -->
-                <div class="p-2 sm:p-3 rounded-xl bg-black/40 border border-rose-500/25">
-                    <span class="text-[9px] uppercase tracking-wider font-cinzel text-amber-300 font-bold block">Snuggle</span>
-                    <span id="scooty-snuggle" class="text-xs sm:text-sm font-bold text-rose-300 block mt-1">Cozy 🧸</span>
-                    <span class="text-[8px] text-rose-300/70 block">Arms locked</span>
+                <div class="p-2 sm:p-3 rounded-xl bg-rose-50/80 border border-rose-200 shadow-sm">
+                    <span class="text-[9px] uppercase tracking-wider font-cinzel text-red-700 font-bold block">Snuggle</span>
+                    <span id="scooty-snuggle" class="text-xs sm:text-sm font-bold text-rose-600 block mt-1">Cozy 🧸</span>
+                    <span class="text-[8px] text-slate-500 block">Arms locked</span>
                 </div>
             </div>
 
             <!-- Distance Progress Bar -->
             <div class="mt-3 max-w-md mx-auto">
-                <div class="w-full h-2 rounded-full bg-slate-800 border border-slate-700 overflow-hidden relative">
-                    <div id="scooty-progress-bar" class="h-full bg-gradient-to-r from-amber-400 via-rose-500 to-rose-400 w-0 transition-all duration-100"></div>
+                <div class="w-full h-2.5 rounded-full bg-slate-200 overflow-hidden relative">
+                    <div id="scooty-progress-bar" class="h-full bg-gradient-to-r from-red-600 via-rose-500 to-amber-500 w-0 transition-all duration-100"></div>
                 </div>
-                <div class="flex justify-between items-center text-[9px] text-rose-300/70 font-mono mt-1 px-1">
+                <div class="flex justify-between items-center text-[9px] text-slate-600 font-semibold mt-1 px-1">
                     <span>☕ Cutting Chai Stop</span>
                     <span>💍 21 Dec 2026 Wedding</span>
                 </div>
             </div>
 
             <!-- Milestone Card Notification -->
-            <div id="scooty-milestone-box" class="mt-4 p-3 sm:p-4 rounded-xl bg-nightLove/90 border border-amber-300/40 max-w-md mx-auto text-left shadow-lg">
+            <div id="scooty-milestone-box" class="mt-4 p-3 sm:p-4 rounded-xl bg-rose-50 border border-rose-200 max-w-md mx-auto text-left shadow-sm">
                 <div class="flex items-start space-x-2.5">
                     <span id="milestone-icon" class="text-2xl mt-0.5">☕</span>
                     <div class="flex-1">
-                        <span id="milestone-tag" class="text-[9px] font-cinzel text-amber-300 font-bold tracking-widest uppercase block">Milestone 1 • 400m</span>
-                        <h4 id="milestone-title" class="font-serif text-sm sm:text-base font-bold text-white">Midnight Cutting Chai & Bun Maska</h4>
-                        <p id="milestone-desc" class="text-[11px] sm:text-xs text-rose-200/90 leading-relaxed mt-0.5">
+                        <span id="milestone-tag" class="text-[9px] font-cinzel text-amber-600 font-bold tracking-widest uppercase block">Milestone 1 • 400m</span>
+                        <h4 id="milestone-title" class="font-serif text-sm sm:text-base font-bold text-slate-900">Midnight Cutting Chai & Bun Maska</h4>
+                        <p id="milestone-desc" class="text-[11px] sm:text-xs text-slate-700 leading-relaxed mt-0.5">
                             Thandi hawa mein garam chai... aur tum hamesha pehla sip mujhe dete ho.
                         </p>
                     </div>
@@ -112,13 +112,13 @@
 
             <!-- Cruise & Horn Controls -->
             <div class="mt-5 flex flex-col xs:flex-row items-center justify-center gap-3">
-                <button type="button" id="scooty-cruise-btn" class="w-full xs:w-auto px-7 py-3 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-rose-600 text-white font-bold text-sm shadow-xl shadow-rose-600/30 transition transform active:scale-95 flex items-center justify-center space-x-2 cursor-pointer select-none">
+                <button type="button" id="scooty-cruise-btn" class="w-full xs:w-auto px-7 py-3 rounded-full bg-gradient-to-r from-red-600 via-rose-600 to-red-500 text-white font-bold text-sm shadow-md transition transform active:scale-95 flex items-center justify-center space-x-2 cursor-pointer select-none">
                     <span class="text-xl">🛵</span>
                     <span id="scooty-btn-text">HOLD TO CRUISE</span>
                     <span class="text-xl">💨</span>
                 </button>
 
-                <button type="button" id="scooty-horn-btn" class="w-full xs:w-auto px-5 py-3 rounded-full glass-panel text-rose-200 hover:text-white font-semibold text-xs border border-rose-400/30 transition active:scale-95 flex items-center justify-center space-x-1.5">
+                <button type="button" id="scooty-horn-btn" class="w-full xs:w-auto px-5 py-3 rounded-full bg-white hover:bg-rose-50 text-slate-800 font-semibold text-xs border border-rose-200 transition active:scale-95 flex items-center justify-center space-x-1.5 shadow-sm">
                     <span>🔔</span>
                     <span>Ring Scooty Bell!</span>
                 </button>
@@ -128,27 +128,27 @@
 
     </div>
 
-    <!-- Ride Finished Modal -->
-    <div id="scooty-finish-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-4">
-        <div class="glass-panel p-5 sm:p-8 rounded-2xl max-w-md w-full text-center space-y-4 border border-amber-300/60 shadow-2xl max-h-[90vh] overflow-y-auto">
+    <!-- Ride Finished Modal (Red & White Theme) -->
+    <div id="scooty-finish-modal" class="fixed inset-0 z-50 bg-rose-950/70 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-4">
+        <div class="bg-white p-5 sm:p-8 rounded-3xl max-w-md w-full text-center space-y-4 border-2 border-rose-300 shadow-2xl max-h-[90vh] overflow-y-auto">
             
-            <div class="w-20 h-20 mx-auto rounded-xl overflow-hidden shadow-lg border border-rose-400">
+            <div class="w-20 h-20 mx-auto rounded-2xl overflow-hidden shadow-md border-2 border-rose-200">
                 <img src="https://media.tenor.com/jmWqHgGS0ToAAAAM/dudu-bubu.gif" alt="Forever Together" class="w-full h-full object-cover">
             </div>
 
             <div class="space-y-1">
-                <span class="text-[10px] uppercase tracking-widest font-cinzel text-amber-300 font-bold">2026 METERS COMPLETED!</span>
-                <h3 class="font-serif text-2xl font-black text-white">DESTINATION: FOREVER ❤️</h3>
-                <p class="text-xs text-rose-300 font-cinzel">Hamari Shaadi • 21 December 2026</p>
+                <span class="text-[10px] uppercase tracking-widest font-cinzel text-amber-600 font-black">2026 METERS COMPLETED!</span>
+                <h3 class="font-serif text-2xl font-black text-slate-900">DESTINATION: FOREVER ❤️</h3>
+                <p class="text-xs text-red-600 font-cinzel font-bold">Hamari Shaadi • 21 December 2026</p>
             </div>
 
-            <!-- License Card -->
-            <div class="p-3.5 rounded-xl bg-nightLove border border-amber-300/40 text-left space-y-2 text-xs">
-                <div class="flex justify-between items-center border-b border-amber-300/30 pb-1.5">
-                    <span class="font-cinzel text-amber-200 font-bold text-[11px]">LIFETIME SCOOTY PARTNER</span>
-                    <span class="text-amber-300 font-mono text-[10px]">№ FOREVER-2026</span>
+            <!-- License Card (Clean Red & White) -->
+            <div class="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-left space-y-2 text-xs shadow-inner">
+                <div class="flex justify-between items-center border-b border-rose-200 pb-1.5">
+                    <span class="font-cinzel text-red-700 font-black text-[11px]">LIFETIME SCOOTY PARTNER</span>
+                    <span class="text-amber-600 font-mono text-[10px] font-bold">№ FOREVER-2026</span>
                 </div>
-                <div class="grid grid-cols-2 gap-1.5 text-rose-200 text-[11px] pt-1">
+                <div class="grid grid-cols-2 gap-2 text-slate-800 text-[11px] pt-1">
                     <div><strong>Pilot:</strong> Vipul (Mumbai) ❤️</div>
                     <div><strong>Navigator:</strong> Toshi (Jodhpur) 💍</div>
                     <div><strong>Vehicle:</strong> Love Scooty 🛵</div>
@@ -156,7 +156,7 @@
                 </div>
             </div>
 
-            <button type="button" id="close-scooty-modal" class="w-full py-3 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-rose-600 text-white font-bold transition text-xs sm:text-sm shadow-lg">
+            <button type="button" id="close-scooty-modal" class="w-full py-3 rounded-full bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold transition text-xs sm:text-sm shadow-md">
                 Ride Together Forever 🥂
             </button>
         </div>

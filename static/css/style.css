@@ -1,18 +1,18 @@
-/* Custom Styles & Romantic Animations for Vipul's Birthday */
+/* Custom Styles & Romantic Animations for Vipul's Birthday (Red & White Theme) */
 
 /* Custom Smooth Scrollbar */
 ::-webkit-scrollbar {
     width: 6px;
 }
 ::-webkit-scrollbar-track {
-    background: #0d0b14;
+    background: #fff0f2;
 }
 ::-webkit-scrollbar-thumb {
-    background: #be123c;
+    background: #e11d48;
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #f43f5e;
+    background: #be123c;
 }
 
 /* Prevent Horizontal Scrolling and Enable Hardware Acceleration */
@@ -34,30 +34,30 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
 }
 
 /* =========================================================
-   Performance Optimized Glassmorphism Utilities
-   On mobile: solid translucent colors for 60fps smoothness!
+   Performance Optimized Glassmorphism Utilities (Red & White)
+   On mobile: solid luxury translucent white for 60fps smoothness!
    ========================================================= */
 .glass-panel {
-    background: rgba(22, 14, 32, 0.94);
-    border: 1px solid rgba(244, 63, 94, 0.22);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    background: rgba(255, 255, 255, 0.94);
+    border: 1.5px solid rgba(244, 63, 94, 0.22);
+    box-shadow: 0 8px 30px rgba(225, 29, 72, 0.07);
 }
 
 .glass-panel-gold {
-    background: rgba(28, 20, 24, 0.94);
-    border: 1px solid rgba(223, 188, 120, 0.35);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    background: rgba(255, 254, 252, 0.96);
+    border: 1.5px solid rgba(245, 158, 11, 0.35);
+    box-shadow: 0 8px 30px rgba(245, 158, 11, 0.1);
 }
 
-/* Enable backdrop blur only on desktops with high GPU capability */
+/* Enable backdrop blur on larger viewports */
 @media (min-width: 769px) {
     .glass-panel {
-        background: rgba(22, 14, 32, 0.75);
+        background: rgba(255, 255, 255, 0.88);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
     }
     .glass-panel-gold {
-        background: rgba(28, 20, 24, 0.8);
+        background: rgba(255, 254, 252, 0.92);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
     }
@@ -232,18 +232,19 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
     transform: scale(1.1) rotate(5deg);
 }
 
-/* Love Coupon Ticket Styling */
+/* Love Coupon Ticket Styling (Red & White Theme) */
 .coupon-ticket {
     position: relative;
-    background: linear-gradient(135deg, #1e1427 0%, #291830 100%);
-    border: 1px dashed rgba(244, 63, 94, 0.4);
-    border-radius: 12px;
+    background: linear-gradient(135deg, #fff5f6 0%, #ffe4e6 100%);
+    border: 1.5px dashed rgba(225, 29, 72, 0.45);
+    border-radius: 14px;
     overflow: hidden;
+    box-shadow: 0 4px 15px rgba(225, 29, 72, 0.08);
     transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
 .coupon-ticket:hover {
-    border-color: rgba(244, 63, 94, 0.8);
+    border-color: rgba(225, 29, 72, 0.85);
     transform: translateY(-3px);
 }
 
@@ -253,18 +254,18 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
     top: 50%;
     width: 16px;
     height: 16px;
-    background: #0d0b14;
+    background: #ffffff;
     border-radius: 50%;
     transform: translateY(-50%);
     z-index: 2;
 }
 .coupon-ticket::before {
     left: -8px;
-    border-right: 1px dashed rgba(244, 63, 94, 0.4);
+    border-right: 1.5px dashed rgba(225, 29, 72, 0.45);
 }
 .coupon-ticket::after {
     right: -8px;
-    border-left: 1px dashed rgba(244, 63, 94, 0.4);
+    border-left: 1.5px dashed rgba(225, 29, 72, 0.45);
 }
 
 /* Redeemed Stamp Badge */

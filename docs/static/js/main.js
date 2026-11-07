@@ -209,12 +209,12 @@ function initHeroPhotoSwitcher() {
     if (!frame || !photo) return;
 
     const gallery = [
-        { src: 'static/images/img-20260412-wa0003.jpg', tag: 'My Handsome Boy ✨' },
+        { src: 'static/images/IMG-20260412-WA0003.jpg', tag: 'My Handsome Boy ✨' },
         { src: 'static/images/cinematic_red_saree.jpg', tag: 'Mere Sukoon ❤️' },
         { src: 'static/images/bouquet_celebration.jpg', tag: 'Roses & Forever 🌹' },
         { src: 'static/images/lavender_festive.jpg', tag: 'Sweet Celebrations 🥂' },
-        { src: 'static/images/img-20260725-wa0010.jpg', tag: 'My Royal King 👑' },
-        { src: 'static/images/img-20260508-wa0014.jpg', tag: 'Our Chibi Avatars 🧸' }
+        { src: 'static/images/IMG-20260725-WA0010.jpg', tag: 'My Royal King 👑' },
+        { src: 'static/images/IMG-20260508-WA0014.jpg', tag: 'Our Chibi Avatars 🧸' }
     ];
 
     let currentIdx = 0;
@@ -783,8 +783,16 @@ function initTreeOfHearts() {
     const modalTitle = document.getElementById('modal-tree-title');
     const modalMessage = document.getElementById('modal-tree-message');
     const closeModal = document.getElementById('close-tree-modal');
+    const dismissBtn = document.getElementById('dismiss-tree-modal-btn');
 
     const treeHeartsData = (window.BIRTHDAY_CONFIG && window.BIRTHDAY_CONFIG.treeHearts) || [];
+
+    function closeTreeModal() {
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+    }
 
     document.querySelectorAll('.tree-heart-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -804,16 +812,25 @@ function initTreeOfHearts() {
             if (modal) {
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
             }
         });
     });
 
-    if (closeModal && modal) {
-        closeModal.addEventListener('click', () => {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
+    if (closeModal) closeModal.addEventListener('click', closeTreeModal);
+    if (dismissBtn) dismissBtn.addEventListener('click', closeTreeModal);
+
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeTreeModal();
         });
     }
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+            closeTreeModal();
+        }
+    });
 }
 
 /* =========================================================
@@ -951,8 +968,8 @@ function initOpenWhenLetters() {
         },
         '4': {
             icon: '🕊️🤍',
-            title: 'When We Disagree',
-            tag: 'Open When • Peace Capsule',
+            title: 'When You Are Angry / Upset',
+            tag: 'Open When • Peace & Love Capsule',
             text: `Hey... pause for just ten seconds and look at us.\n\nWhatever little silly argument or misunderstanding we are having right now across the phone does not compare to how deeply, irrevocably in love I am with you.\n\n950 km is already hard enough—let's never waste a single second being upset. It is never you against me. It is you and me against the problem. Pick up the phone and FaceTime me right now. We are forever, remember? ❤️`
         },
         '5': {
@@ -966,10 +983,18 @@ function initOpenWhenLetters() {
     const cards = document.querySelectorAll('.open-when-card');
     const modal = document.getElementById('open-when-modal');
     const closeBtn = document.getElementById('close-open-when-modal');
+    const bottomCloseBtn = document.getElementById('close-open-when-bottom-btn');
     const iconEl = document.getElementById('open-when-modal-icon');
     const titleEl = document.getElementById('open-when-modal-title');
     const tagEl = document.getElementById('open-when-modal-tag');
     const textEl = document.getElementById('open-when-modal-text');
+
+    function closeModal() {
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+    }
 
     cards.forEach(card => {
         card.addEventListener('click', () => {
@@ -987,16 +1012,25 @@ function initOpenWhenLetters() {
             if (modal) {
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
             }
         });
     });
 
-    if (closeBtn && modal) {
-        closeBtn.addEventListener('click', () => {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (bottomCloseBtn) bottomCloseBtn.addEventListener('click', closeModal);
+
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
         });
     }
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
 }
 
 /* =========================================================
@@ -1083,7 +1117,7 @@ function initCoupons() {
    17. Love Trivia Quiz
    ========================================================= */
 function initQuiz() {
-    const quizContainer = document.getElementById('quiz-dynamic-container');
+    const quizContainer = document.getElementById('quiz-dynamic-container') || document.getElementById('quiz-box');
     if (!quizContainer) return;
 
     const questions = [
@@ -1127,16 +1161,16 @@ function initQuiz() {
         const qData = questions[currentQ];
         quizContainer.innerHTML = `
             <div class="space-y-4 text-left">
-                <div class="flex items-center justify-between text-[10px] text-rose-300 font-cinzel">
+                <div class="flex items-center justify-between text-xs text-red-600 font-cinzel font-bold">
                     <span>QUESTION ${currentQ + 1} OF ${questions.length}</span>
                     <span>100% LOVE MATCH</span>
                 </div>
-                <h3 class="font-serif text-lg sm:text-xl font-bold text-white text-center">${qData.q}</h3>
-                <div class="grid grid-cols-1 gap-2.5">
+                <h3 class="font-serif text-lg sm:text-2xl font-bold text-red-700 text-center">${qData.q}</h3>
+                <div class="grid grid-cols-1 gap-3">
                     ${qData.options.map((opt, i) => `
-                        <button type="button" class="quiz-option-btn p-3.5 rounded-xl glass-panel hover:bg-rose-500/20 border border-rose-400/30 text-rose-100 text-xs sm:text-sm font-medium transition text-left flex items-center justify-between" data-index="${i}">
+                        <button type="button" class="quiz-option-btn p-3.5 rounded-xl bg-rose-50/80 hover:bg-rose-100/90 border border-red-200 text-slate-800 text-xs sm:text-sm font-semibold transition text-left flex items-center justify-between shadow-sm" data-index="${i}">
                             <span>${opt.text}</span>
-                            <span class="text-rose-400">❤️</span>
+                            <span class="text-red-500">❤️</span>
                         </button>
                     `).join('')}
                 </div>
@@ -1149,8 +1183,9 @@ function initQuiz() {
                 const opt = qData.options[optIndex];
                 triggerMiniConfetti(btn);
 
-                btn.classList.add('bg-rose-600', 'border-rose-300', 'text-white');
-                btn.innerHTML = `<span>${opt.text}</span> <span>❤️ ${opt.feedback}</span>`;
+                btn.classList.remove('bg-rose-50/80', 'text-slate-800');
+                btn.classList.add('bg-red-600', 'border-red-500', 'text-white', 'shadow-md');
+                btn.innerHTML = `<span>${opt.text}</span> <span class="text-white text-xs font-bold font-sans ml-2">✓ ${opt.feedback}</span>`;
 
                 setTimeout(() => {
                     currentQ++;
@@ -1159,7 +1194,7 @@ function initQuiz() {
                     } else {
                         renderResult();
                     }
-                }, 1000);
+                }, 1100);
             });
         });
     }
@@ -1167,19 +1202,31 @@ function initQuiz() {
     function renderResult() {
         triggerGrandConfetti();
         quizContainer.innerHTML = `
-            <div class="text-center py-4 space-y-3">
-                <div class="w-20 h-20 mx-auto rounded-xl overflow-hidden shadow-lg border border-rose-400">
+            <div class="text-center py-4 space-y-4">
+                <div class="w-24 h-24 mx-auto rounded-2xl overflow-hidden shadow-lg border-2 border-red-300">
                     <img src="https://media.tenor.com/zKhbCRTnmvYAAAAM/cosytales-couple.gif" alt="Cute Couple" class="w-full h-full object-cover">
                 </div>
-                <h3 class="text-xl sm:text-2xl font-serif text-white">Quiz Score: 100% Soulmates!</h3>
-                <p class="text-xs sm:text-sm text-rose-200 max-w-sm mx-auto">
+                <h3 class="text-2xl sm:text-3xl font-serif font-bold text-red-700">Quiz Score: 100% Soulmates!</h3>
+                <p class="text-xs sm:text-sm text-slate-600 max-w-sm mx-auto leading-relaxed">
                     Every answer is right because you and I were made for each other, Vipul.
                 </p>
-                <div class="p-2.5 bg-rose-500/20 border border-rose-400/30 rounded-xl inline-block text-[10px] uppercase tracking-widest text-amber-300 font-cinzel font-bold">
+                <div class="p-3 bg-rose-50 border border-red-200 rounded-xl inline-block text-xs uppercase tracking-widest text-red-600 font-cinzel font-black shadow-sm">
                     Official Soulmate Registry 🏆💍
+                </div>
+                <div>
+                    <button type="button" id="replay-quiz-btn" class="mt-2 px-6 py-2 rounded-full bg-gradient-to-r from-red-600 to-rose-600 text-white text-xs font-bold shadow-md hover:from-red-700 hover:to-rose-700 transition">
+                        🔄 Play Again
+                    </button>
                 </div>
             </div>
         `;
+        const replayBtn = document.getElementById('replay-quiz-btn');
+        if (replayBtn) {
+            replayBtn.addEventListener('click', () => {
+                currentQ = 0;
+                renderQuestion();
+            });
+        }
     }
 
     renderQuestion();
