@@ -1,6 +1,9 @@
 /* Interactive Features for Vipul's Birthday Surprise Website */
 
 document.addEventListener('DOMContentLoaded', () => {
+    initPasscodeScreen();
+    initCupidBow();
+    initTreeOfHearts();
     initAmbientHearts();
     initCountdown();
     initCakeCandles();
@@ -633,3 +636,317 @@ function triggerMiniConfetti(element) {
         });
     }
 }
+
+/* =========================================================
+   11. Cute Romantic Passcode Screen
+   ========================================================= */
+function initPasscodeScreen() {
+    const overlay = document.getElementById('passcode-overlay');
+    if (!overlay) return;
+
+    // Check if previously unlocked in this session
+    if (sessionStorage.getItem('vipul_birthday_unlocked') === 'true') {
+        overlay.classList.add('hidden');
+        return;
+    }
+
+    const dots = document.querySelectorAll('.pin-dot');
+    const keypadBtns = document.querySelectorAll('.keypad-btn');
+    const backspaceBtn = document.getElementById('keypad-backspace');
+    const hintBtn = document.getElementById('passcode-hint-btn');
+    const hintBubble = document.getElementById('hint-bubble');
+    const emergencyBtn = document.getElementById('emergency-unlock-btn');
+    const errorMsg = document.getElementById('pin-error-msg');
+    const pinContainer = document.getElementById('pin-dots');
+
+    const expectedPasscode = (window.BIRTHDAY_CONFIG && window.BIRTHDAY_CONFIG.passcode) || '1402';
+    let enteredPin = [];
+
+    function updateDots() {
+        dots.forEach((dot, index) => {
+            if (index < enteredPin.length) {
+                dot.classList.add('filled');
+            } else {
+                dot.classList.remove('filled', 'success');
+            }
+        });
+    }
+
+    function checkPasscode() {
+        const code = enteredPin.join('');
+        // Accept the configured passcode, default '1402', or '0000'
+        if (code === expectedPasscode || code === '1402' || code === '0000') {
+            unlockSuccess();
+        } else {
+            unlockFail();
+        }
+    }
+
+    function unlockSuccess() {
+        dots.forEach(dot => dot.classList.add('success'));
+        playSuccessChime();
+        triggerGrandConfetti();
+        sessionStorage.setItem('vipul_birthday_unlocked', 'true');
+
+        if (errorMsg) {
+            errorMsg.textContent = 'Unlocked with Love! 💖';
+            errorMsg.classList.remove('text-rose-400');
+            errorMsg.classList.add('text-green-400', 'opacity-100');
+        }
+
+        setTimeout(() => {
+            overlay.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            overlay.style.opacity = '0';
+            overlay.style.transform = 'scale(1.05)';
+            overlay.style.pointerEvents = 'none';
+            setTimeout(() => overlay.classList.add('hidden'), 700);
+        }, 500);
+    }
+
+    function unlockFail() {
+        playNote(180, 0.3, 'sawtooth');
+        if (pinContainer) {
+            pinContainer.classList.add('shake');
+            setTimeout(() => pinContainer.classList.remove('shake'), 400);
+        }
+        if (errorMsg) {
+            errorMsg.textContent = 'Oops! Try again, handsome ❤️ (Tap Hint)';
+            errorMsg.classList.add('opacity-100');
+        }
+        setTimeout(() => {
+            enteredPin = [];
+            updateDots();
+            if (errorMsg) errorMsg.classList.remove('opacity-100');
+        }, 800);
+    }
+
+    keypadBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (enteredPin.length < 4) {
+                enteredPin.push(btn.dataset.val);
+                playNote(580 + (enteredPin.length * 50), 0.08, 'sine');
+                updateDots();
+                if (enteredPin.length === 4) {
+                    setTimeout(checkPasscode, 150);
+                }
+            }
+        });
+    });
+
+    if (backspaceBtn) {
+        backspaceBtn.addEventListener('click', () => {
+            if (enteredPin.length > 0) {
+                enteredPin.pop();
+                playNote(400, 0.06, 'sine');
+                updateDots();
+            }
+        });
+    }
+
+    if (hintBtn && hintBubble) {
+        hintBtn.addEventListener('click', () => {
+            hintBubble.classList.toggle('hidden');
+            playPopSound();
+        });
+    }
+
+    if (emergencyBtn) {
+        emergencyBtn.addEventListener('click', () => {
+            enteredPin = ['1', '4', '0', '2'];
+            updateDots();
+            unlockSuccess();
+        });
+    }
+}
+
+/* =========================================================
+   12. Cupid's Bow & Arrow Shooting Heart
+   ========================================================= */
+function initCupidBow() {
+    const shootBtn = document.getElementById('shoot-arrow-btn');
+    const resetBtn = document.getElementById('reset-arrow-btn');
+    const arrow = document.getElementById('cupid-arrow');
+    const targetHeart = document.getElementById('target-heart');
+    const bullseyeMsg = document.getElementById('bullseye-msg');
+    const bowContainer = document.getElementById('cupid-bow-container');
+    const targetContainer = document.getElementById('heart-target-container');
+
+    if (!shootBtn || !arrow || !targetHeart) return;
+
+    shootBtn.addEventListener('click', () => {
+        shootBtn.disabled = true;
+
+        // 1. Pull back bow tension
+        playNote(300, 0.2, 'triangle');
+        arrow.classList.add('arrow-drawn');
+
+        setTimeout(() => {
+            // 2. Release & Flight
+            playNote(600, 0.35, 'sine');
+            arrow.classList.remove('arrow-drawn');
+
+            // Calculate distance between bow and target
+            const bowRect = bowContainer.getBoundingClientRect();
+            const targetRect = targetContainer.getBoundingClientRect();
+            const distance = targetRect.left - bowRect.left - 40;
+
+            arrow.style.transition = 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)';
+            arrow.style.transform = `translateY(-50%) translateX(${distance}px)`;
+
+            setTimeout(() => {
+                // 3. Impact!
+                targetHeart.classList.add('target-hit');
+                playSuccessChime();
+                triggerGrandConfetti();
+                triggerMiniConfetti(targetHeart);
+
+                if (bullseyeMsg) bullseyeMsg.classList.remove('hidden');
+                shootBtn.classList.add('hidden');
+                if (resetBtn) resetBtn.classList.remove('hidden');
+            }, 450);
+        }, 250);
+    });
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            arrow.style.transition = 'transform 0.3s ease';
+            arrow.style.transform = 'translateY(-50%) translateX(0px)';
+            targetHeart.classList.remove('target-hit');
+            if (bullseyeMsg) bullseyeMsg.classList.add('hidden');
+            resetBtn.classList.add('hidden');
+            shootBtn.classList.remove('hidden');
+            shootBtn.disabled = false;
+        });
+    }
+}
+
+/* =========================================================
+   13. The Romantic Tree of Hearts
+   ========================================================= */
+function initTreeOfHearts() {
+    initTreePetals();
+
+    const heartBtns = document.querySelectorAll('.tree-heart-btn');
+    const pluckBtn = document.getElementById('pluck-heart-btn');
+    const modal = document.getElementById('tree-heart-modal');
+    const closeModal = document.getElementById('close-tree-modal');
+    const dismissModal = document.getElementById('dismiss-tree-modal-btn');
+    const modalEmoji = document.getElementById('tree-modal-emoji');
+    const modalTitle = document.getElementById('tree-modal-title');
+    const modalMsg = document.getElementById('tree-modal-message');
+
+    const treeHearts = (window.BIRTHDAY_CONFIG && window.BIRTHDAY_CONFIG.treeHearts) || [
+        { title: 'Our Forever Promise', message: 'I promise to stand by you in every storm and dance with you under every rainbow.', emoji: '💍' },
+        { title: 'Your Cozy Forehead Kisses', message: 'Nothing in this entire world feels more comforting than when you kiss my forehead.', emoji: '💋' },
+        { title: 'Your Calming Voice', message: 'Even on the most chaotic days, hearing your voice instantly quiets my soul.', emoji: '🎙️' },
+        { title: 'Late Night Laughter', message: 'Our 1 AM giggles over silly jokes that nobody else on earth would understand.', emoji: '🌙' },
+        { title: 'My Safe Haven', message: 'No matter what happens outside, walking into your embrace is stepping into pure peace.', emoji: '🛡️' },
+        { title: 'Your Golden Heart', message: 'The quiet kindness and boundless love you show everyone makes me the proudest fiancée alive.', emoji: '✨' },
+        { title: 'The First Glimpse', message: 'I still remember the first time our eyes locked. My heart whispered, "Oh, there you are."', emoji: '💫' },
+        { title: 'Building Our Tomorrow', message: 'Every dream and future adventure is 1000x sweeter because I get to live them with you.', emoji: '🏡' }
+    ];
+
+    function showHeartModal(index) {
+        const h = treeHearts[index % treeHearts.length];
+        if (modalEmoji) modalEmoji.textContent = h.emoji || '💖';
+        if (modalTitle) modalTitle.textContent = h.title;
+        if (modalMsg) modalMsg.textContent = h.message;
+
+        playSuccessChime();
+        triggerGrandConfetti();
+
+        if (modal) {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+    }
+
+    heartBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const index = parseInt(btn.dataset.index) || 0;
+            showHeartModal(index);
+        });
+    });
+
+    if (pluckBtn) {
+        pluckBtn.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * treeHearts.length);
+            showHeartModal(randomIndex);
+        });
+    }
+
+    function hideModal() {
+        if (modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+    }
+
+    if (closeModal) closeModal.addEventListener('click', hideModal);
+    if (dismissModal) dismissModal.addEventListener('click', hideModal);
+}
+
+function initTreePetals() {
+    const canvas = document.getElementById('tree-petals-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = canvas.parentElement.clientWidth;
+    let height = canvas.height = canvas.parentElement.clientHeight;
+
+    window.addEventListener('resize', () => {
+        if (canvas.parentElement) {
+            width = canvas.width = canvas.parentElement.clientWidth;
+            height = canvas.height = canvas.parentElement.clientHeight;
+        }
+    });
+
+    const petals = [];
+    const colors = ['rgba(244, 63, 94, 0.45)', 'rgba(251, 113, 133, 0.4)', 'rgba(253, 164, 175, 0.35)', 'rgba(223, 188, 120, 0.35)'];
+
+    for (let i = 0; i < 22; i++) {
+        petals.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            size: Math.random() * 8 + 6,
+            speedY: Math.random() * 0.9 + 0.4,
+            speedX: (Math.random() - 0.5) * 0.6,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            angle: Math.random() * Math.PI,
+            rotSpeed: (Math.random() - 0.5) * 0.03
+        });
+    }
+
+    function drawPetal(x, y, size, color, angle) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(angle);
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, size * 0.5, size, Math.PI / 4, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.restore();
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+        petals.forEach(p => {
+            p.y += p.speedY;
+            p.x += p.speedX + Math.sin(p.y * 0.02) * 0.4;
+            p.angle += p.rotSpeed;
+
+            if (p.y > height + 20) {
+                p.y = -10;
+                p.x = Math.random() * width;
+            }
+            if (p.x < -10) p.x = width + 10;
+            if (p.x > width + 10) p.x = -10;
+
+            drawPetal(p.x, p.y, p.size, p.color, p.angle);
+        });
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+

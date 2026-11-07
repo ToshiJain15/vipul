@@ -1,0 +1,102 @@
+<!-- Cute Romantic Passcode Lock Screen -->
+<div id="passcode-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-nightLove/95 backdrop-blur-xl transition-all duration-700">
+    <!-- Ambient glowing backdrop circles -->
+    <div class="absolute -top-24 -left-24 w-96 h-96 bg-rose-600/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-sm w-full text-center space-y-6 glass-panel-gold p-6 sm:p-8 rounded-3xl border border-amber-300/40 shadow-2xl">
+        
+        <!-- Romantic Avatar Icon -->
+        <div class="relative mx-auto w-20 h-20 rounded-full bg-gradient-to-tr from-rose-600 via-rose-500 to-amber-300 p-1 shadow-lg shadow-rose-600/30 animate-float">
+            <div class="w-full h-full rounded-full bg-nightLove flex items-center justify-center text-3xl">
+                💍
+            </div>
+            <span class="absolute -bottom-1 -right-1 text-xl animate-pulse">🔒</span>
+        </div>
+
+        <!-- Title & Subtitle -->
+        <div class="space-y-1">
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-white tracking-wide">
+                For {{ fiance_name }}'s Eyes Only ❤️
+            </h2>
+            <p class="text-xs sm:text-sm text-rose-200/70 font-light">
+                Enter our secret 4-digit love passcode to unlock your birthday surprise
+            </p>
+        </div>
+
+        <!-- PIN Dots Display -->
+        <div id="pin-dots" class="flex items-center justify-center space-x-4 py-2">
+            <div class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400/60 bg-transparent transition-all duration-200"></div>
+            <div class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400/60 bg-transparent transition-all duration-200"></div>
+            <div class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400/60 bg-transparent transition-all duration-200"></div>
+            <div class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400/60 bg-transparent transition-all duration-200"></div>
+        </div>
+
+        <!-- Error / Feedback message -->
+        <p id="pin-error-msg" class="text-xs text-rose-400 font-medium h-4 transition-all opacity-0"></p>
+
+        <!-- Numeric Keypad -->
+        <div class="grid grid-cols-3 gap-3 max-w-[260px] mx-auto pt-1">
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="1">
+                <span>1</span>
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="2">
+                <span>2</span>
+                <span class="text-[9px] text-rose-300/60 -mt-1 tracking-widest">ABC</span>
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="3">
+                <span>3</span>
+                <span class="text-[9px] text-rose-300/60 -mt-1 tracking-widest">DEF</span>
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="4">
+                <span>4</span>
+                <span class="text-[9px] text-rose-300/60 -mt-1 tracking-widest">GHI</span>
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="5">
+                <span>5</span>
+                <span class="text-[9px] text-rose-300/60 -mt-1 tracking-widest">JKL</span>
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="6">
+                <span>6</span>
+                <span class="text-[9px] text-rose-300/60 -mt-1 tracking-widest">MNO</span>
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="7">
+                <span>7</span>
+                <span class="text-[9px] text-rose-300/60 -mt-1 tracking-widest">PQRS</span>
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="8">
+                <span>8</span>
+                <span class="text-[9px] text-rose-300/60 -mt-1 tracking-widest">TUV</span>
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="9">
+                <span>9</span>
+                <span class="text-[9px] text-rose-300/60 -mt-1 tracking-widest">WXYZ</span>
+            </button>
+            <!-- Clue Button -->
+            <button type="button" id="passcode-hint-btn" class="h-14 rounded-2xl text-xs font-cinzel text-amber-300 hover:text-white transition flex items-center justify-center" title="Give me a hint!">
+                💡 HINT
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex items-center justify-center" data-val="0">
+                0
+            </button>
+            <!-- Backspace Button -->
+            <button type="button" id="keypad-backspace" class="h-14 rounded-2xl text-rose-300 hover:text-rose-100 active:scale-95 transition flex items-center justify-center text-lg">
+                ⌫
+            </button>
+        </div>
+
+        <!-- Clue popup bubble -->
+        <div id="hint-bubble" class="hidden p-3 rounded-xl bg-amber-400/10 border border-amber-300/30 text-amber-200 text-xs text-center space-y-1">
+            <p class="font-semibold">💡 Clue for you, my love:</p>
+            <p>{{ passcode_hint }}</p>
+        </div>
+
+        <!-- Emergency / Instant Unlock with Love Button -->
+        <div class="pt-2">
+            <button type="button" id="emergency-unlock-btn" class="text-xs text-rose-300/80 hover:text-white underline underline-offset-4 transition font-medium">
+                Unlock with Love ❤️ (No Passcode Needed)
+            </button>
+        </div>
+
+    </div>
+</div>

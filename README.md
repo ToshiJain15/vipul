@@ -103,3 +103,4 @@ If you want the full dynamic backend with SQLite database persistence:
 ---
 
 Crafted with endless love for **Vipul** ❤️
+

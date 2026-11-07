@@ -1,9 +1,16 @@
 from django.contrib import admin
-from .models import Memory, LoveReason, Coupon, Wish, LoveLetter
+from .models import Memory, LoveReason, Coupon, Wish, LoveLetter, TreeHeart
 
 admin.site.site_header = "Happy Birthday Vipul - Surprise Manager"
 admin.site.site_title = "Vipul's Birthday Admin"
 admin.site.index_title = "Manage Birthday Surprise Content & Love Notes"
+
+@admin.register(TreeHeart)
+class TreeHeartAdmin(admin.ModelAdmin):
+    list_display = ('title', 'emoji', 'color', 'order')
+    list_editable = ('order', 'emoji', 'color')
+    ordering = ('order', 'id')
+
 
 @admin.register(Memory)
 class MemoryAdmin(admin.ModelAdmin):

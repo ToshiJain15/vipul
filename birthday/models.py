@@ -81,3 +81,19 @@ class LoveLetter(models.Model):
 
     def __str__(self):
         return f"Letter for {self.recipient} - {self.title}"
+
+
+class TreeHeart(models.Model):
+    """A glowing heart blooming on the romantic Tree of Hearts."""
+    title = models.CharField(max_length=150)
+    message = models.TextField()
+    emoji = models.CharField(max_length=10, default="🌸")
+    color = models.CharField(max_length=30, default="#fb7185")
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order', 'id']
+
+    def __str__(self):
+        return f"Tree Heart: {self.title}"
+

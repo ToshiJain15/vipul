@@ -9,3 +9,4 @@ urlpatterns = [
     path('api/wishes/add/', views.add_wish, name='add_wish'),
     path('api/coupons/redeem/<str:code>/', views.redeem_coupon, name='redeem_coupon'),
 ]
+

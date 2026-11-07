@@ -103,3 +103,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Birthday customization defaults
 FIANCE_NAME = os.environ.get('FIANCE_NAME', 'Vipul')
 BIRTHDAY_DATE = os.environ.get('BIRTHDAY_DATE', '2026-11-20')  # Default upcoming date
+SURPRISE_PASSCODE = os.environ.get('SURPRISE_PASSCODE', '1402')  # 4-digit cute passcode
+PASSCODE_HINT = os.environ.get('PASSCODE_HINT', 'Try our anniversary / special day (1402) or tap "Hint"')
+
+

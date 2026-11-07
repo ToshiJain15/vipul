@@ -76,7 +76,9 @@
                 <span class="font-cinzel tracking-wider text-sm sm:text-base font-semibold text-rose-200">VIPUL'S DAY</span>
             </a>
             
-            <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-rose-200/80">
+            <div class="hidden lg:flex items-center space-x-5 text-sm font-medium text-rose-200/80">
+                <a href="#cupid-section" class="hover:text-rose-400 transition">Cupid's Bow</a>
+                <a href="#tree-section" class="hover:text-rose-400 transition">Tree of Hearts</a>
                 <a href="#cake-section" class="hover:text-rose-400 transition">Birthday Cake</a>
                 <a href="#timeline-section" class="hover:text-rose-400 transition">Our Journey</a>
                 <a href="#reasons-section" class="hover:text-rose-400 transition">Why I Love You</a>
@@ -97,6 +99,111 @@
     <!-- Content Block -->
     <main>
         
+    <!-- Cute Secret Passcode Lock Screen -->
+    <!-- Cute Romantic Passcode Lock Screen -->
+<div id="passcode-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-nightLove/95 backdrop-blur-xl transition-all duration-700">
+    <!-- Ambient glowing backdrop circles -->
+    <div class="absolute -top-24 -left-24 w-96 h-96 bg-rose-600/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-sm w-full text-center space-y-6 glass-panel-gold p-6 sm:p-8 rounded-3xl border border-amber-300/40 shadow-2xl">
+        
+        <!-- Romantic Avatar Icon -->
+        <div class="relative mx-auto w-20 h-20 rounded-full bg-gradient-to-tr from-rose-600 via-rose-500 to-amber-300 p-1 shadow-lg shadow-rose-600/30 animate-float">
+            <div class="w-full h-full rounded-full bg-nightLove flex items-center justify-center text-3xl">
+                💍
+            </div>
+            <span class="absolute -bottom-1 -right-1 text-xl animate-pulse">🔒</span>
+        </div>
+
+        <!-- Title & Subtitle -->
+        <div class="space-y-1">
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-white tracking-wide">
+                For Vipul's Eyes Only ❤️
+            </h2>
+            <p class="text-xs sm:text-sm text-rose-200/70 font-light">
+                Enter our secret 4-digit love passcode to unlock your birthday surprise
+            </p>
+        </div>
+
+        <!-- PIN Dots Display -->
+        <div id="pin-dots" class="flex items-center justify-center space-x-4 py-2">
+            <div class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400/60 bg-transparent transition-all duration-200"></div>
+            <div class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400/60 bg-transparent transition-all duration-200"></div>
+            <div class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400/60 bg-transparent transition-all duration-200"></div>
+            <div class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400/60 bg-transparent transition-all duration-200"></div>
+        </div>
+
+        <!-- Error / Feedback message -->
+        <p id="pin-error-msg" class="text-xs text-rose-400 font-medium h-4 transition-all opacity-0"></p>
+
+        <!-- Numeric Keypad -->
+        <div class="grid grid-cols-3 gap-3 max-w-[260px] mx-auto pt-1">
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="1">
+                <span>1</span>
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="2">
+                <span>2</span>
+                <span class="text-[9px] text-rose-300/60 -mt-1 tracking-widest">ABC</span>
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="3">
+                <span>3</span>
+                <span class="text-[9px] text-rose-300/60 -mt-1 tracking-widest">DEF</span>
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="4">
+                <span>4</span>
+                <span class="text-[9px] text-rose-300/60 -mt-1 tracking-widest">GHI</span>
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="5">
+                <span>5</span>
+                <span class="text-[9px] text-rose-300/60 -mt-1 tracking-widest">JKL</span>
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="6">
+                <span>6</span>
+                <span class="text-[9px] text-rose-300/60 -mt-1 tracking-widest">MNO</span>
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="7">
+                <span>7</span>
+                <span class="text-[9px] text-rose-300/60 -mt-1 tracking-widest">PQRS</span>
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="8">
+                <span>8</span>
+                <span class="text-[9px] text-rose-300/60 -mt-1 tracking-widest">TUV</span>
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex flex-col items-center justify-center" data-val="9">
+                <span>9</span>
+                <span class="text-[9px] text-rose-300/60 -mt-1 tracking-widest">WXYZ</span>
+            </button>
+            <!-- Clue Button -->
+            <button type="button" id="passcode-hint-btn" class="h-14 rounded-2xl text-xs font-cinzel text-amber-300 hover:text-white transition flex items-center justify-center" title="Give me a hint!">
+                💡 HINT
+            </button>
+            <button type="button" class="keypad-btn h-14 rounded-2xl glass-panel hover:bg-rose-500/20 active:scale-95 text-xl font-semibold text-white border border-rose-500/20 transition flex items-center justify-center" data-val="0">
+                0
+            </button>
+            <!-- Backspace Button -->
+            <button type="button" id="keypad-backspace" class="h-14 rounded-2xl text-rose-300 hover:text-rose-100 active:scale-95 transition flex items-center justify-center text-lg">
+                ⌫
+            </button>
+        </div>
+
+        <!-- Clue popup bubble -->
+        <div id="hint-bubble" class="hidden p-3 rounded-xl bg-amber-400/10 border border-amber-300/30 text-amber-200 text-xs text-center space-y-1">
+            <p class="font-semibold">💡 Clue for you, my love:</p>
+            <p>Try our anniversary / special day (1402) or tap &quot;Hint&quot;</p>
+        </div>
+
+        <!-- Emergency / Instant Unlock with Love Button -->
+        <div class="pt-2">
+            <button type="button" id="emergency-unlock-btn" class="text-xs text-rose-300/80 hover:text-white underline underline-offset-4 transition font-medium">
+                Unlock with Love ❤️ (No Passcode Needed)
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
     <!-- Hero Section -->
     <!-- Hero Section -->
 <section id="hero" class="relative min-h-[90vh] flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden">
@@ -141,6 +248,7 @@
 </section>
 
 
+
     <!-- Live Countdown Section -->
     <!-- Countdown Section -->
 <section id="countdown-section" class="py-12 px-4 relative z-20">
@@ -180,6 +288,297 @@
             <p class="text-xs text-rose-200/60 mt-4 italic">
                 Every second brings us closer to making this birthday the most memorable one yet!
             </p>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- Cupid's Bow & Arrow Heart Shooting Section -->
+    <!-- Cupid's Bow & Arrow Heart Shooting Interactive Section -->
+<section id="cupid-section" class="py-20 px-4 relative z-20">
+    <div class="max-w-4xl mx-auto space-y-10 text-center">
+        
+        <div class="space-y-3">
+            <span class="text-xs uppercase tracking-widest font-cinzel text-amber-300 font-semibold">Cupid's Challenge</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">Strike Vipul's Heart 💘</h2>
+            <p class="text-rose-200/80 text-sm sm:text-base max-w-lg mx-auto">
+                Draw Cupid's golden bow and shoot the love arrow straight into the beating heart target!
+            </p>
+        </div>
+
+        <!-- The Archery Range Box -->
+        <div class="glass-panel-gold rounded-3xl p-6 sm:p-10 border border-amber-300/30 shadow-2xl relative overflow-hidden">
+            <!-- Background sparkles -->
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(244,63,94,0.1)_0%,transparent_75%)] pointer-events-none"></div>
+
+            <!-- Archery Track Container -->
+            <div id="archery-track" class="relative h-64 sm:h-72 w-full flex items-center justify-between px-4 sm:px-12 select-none">
+                
+                <!-- Cupid's Bow on Left -->
+                <div id="cupid-bow-container" class="relative z-20 flex flex-col items-center">
+                    <div id="cupid-bow" class="relative w-20 sm:w-24 h-48 sm:h-56 transition-transform duration-300">
+                        <!-- Curved Bow SVG -->
+                        <svg viewBox="0 0 100 200" class="w-full h-full drop-shadow-[0_0_12px_rgba(223,188,120,0.6)]">
+                            <!-- Bow Curve -->
+                            <path d="M 30 10 Q 90 100 30 190" fill="none" stroke="url(#goldGradient)" stroke-width="8" stroke-linecap="round"/>
+                            <!-- Bow String -->
+                            <path id="bow-string" d="M 30 10 L 30 100 L 30 190" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="2,2"/>
+                            <!-- Gradient Definition -->
+                            <defs>
+                                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#fef08a" />
+                                    <stop offset="50%" stop-color="#eab308" />
+                                    <stop offset="100%" stop-color="#ca8a04" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+
+                        <!-- The Arrow -->
+                        <div id="cupid-arrow" class="absolute top-1/2 left-6 -translate-y-1/2 flex items-center transition-all duration-100 z-30">
+                            <!-- Arrow Shaft -->
+                            <div class="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-amber-400 to-amber-200 rounded-full shadow-[0_0_8px_#fde047]"></div>
+                            <!-- Arrow Heart Head -->
+                            <div class="w-6 h-6 -ml-2 text-rose-500 transform rotate-45 scale-125 filter drop-shadow-[0_0_8px_#f43f5e]">
+                                💖
+                            </div>
+                            <!-- Arrow Golden Feathers -->
+                            <div class="absolute -left-3 top-1/2 -translate-y-1/2 text-xs">
+                                🪶
+                            </div>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-cinzel text-amber-300 uppercase tracking-widest mt-2">Cupid's Bow</span>
+                </div>
+
+                <!-- Dotted Flight Trajectory Line -->
+                <div class="flex-1 h-0.5 border-b-2 border-dashed border-rose-400/30 mx-4 relative hidden sm:block">
+                    <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs text-rose-300/40 font-mono tracking-widest">
+                        LOVE TRAJECTORY
+                    </span>
+                </div>
+
+                <!-- The Heart Target on Right -->
+                <div id="heart-target-container" class="relative z-20 flex flex-col items-center">
+                    <div id="target-heart" class="relative w-28 sm:w-36 h-28 sm:h-36 flex items-center justify-center transition-all duration-300 animate-pulse cursor-pointer">
+                        <!-- Concentric Target Circles -->
+                        <div class="absolute inset-0 rounded-full border-2 border-dashed border-amber-300/40 animate-spin" style="animation-duration: 20s;"></div>
+                        <div class="absolute inset-3 rounded-full border border-rose-500/40"></div>
+                        
+                        <!-- Pulsing Core Heart -->
+                        <div class="text-6xl sm:text-7xl filter drop-shadow-[0_0_20px_rgba(244,63,94,0.8)] transition transform hover:scale-110">
+                            ❤️
+                        </div>
+
+                        <!-- Target Label -->
+                        <span class="absolute -bottom-2 px-2.5 py-0.5 rounded-full bg-black/60 border border-amber-300/40 text-[10px] font-cinzel font-bold text-amber-200 uppercase tracking-widest">
+                            Vipul's Heart
+                        </span>
+                    </div>
+                    <span class="text-[11px] font-cinzel text-rose-300 uppercase tracking-widest mt-4">Target Lock</span>
+                </div>
+
+            </div>
+
+            <!-- Shoot Action Control -->
+            <div class="pt-6 border-t border-amber-400/20 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button type="button" id="shoot-arrow-btn" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-rose-600 hover:from-amber-300 hover:to-rose-500 text-white font-bold text-sm sm:text-base shadow-xl shadow-rose-600/30 transition transform hover:scale-105 active:scale-95 flex items-center space-x-2">
+                    <span class="text-lg">🏹</span>
+                    <span>Shoot Cupid's Arrow into His Heart!</span>
+                </button>
+
+                <button type="button" id="reset-arrow-btn" class="hidden px-5 py-2.5 rounded-full glass-panel hover:bg-white/10 text-xs text-rose-200 font-medium transition">
+                    🔄 Reset & Shoot Again
+                </button>
+            </div>
+
+            <!-- Bullseye Success Announcement (Initially hidden) -->
+            <div id="bullseye-msg" class="hidden mt-6 p-5 rounded-2xl bg-gradient-to-r from-rose-950/80 via-black/80 to-rose-950/80 border border-rose-400/50 text-center space-y-2 animate-float">
+                <div class="text-4xl animate-bounce">🎯💘✨</div>
+                <h3 class="font-serif text-2xl font-bold text-white">BULLSEYE! DIRECT HIT!</h3>
+                <p class="text-sm text-rose-100 max-w-md mx-auto">
+                    Cupid's love arrow pierced straight into <span class="text-amber-300 font-bold">Vipul's</span> heart! 
+                    Accuracy: 100%. Status: Forever Captured by You. ❤️
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+    <!-- The Romantic Tree of Hearts -->
+    <!-- Tree of Hearts (Romantic Love Tree) -->
+<section id="tree-section" class="py-20 px-4 relative z-20">
+    <div class="max-w-5xl mx-auto space-y-10 text-center">
+        
+        <div class="space-y-3">
+            <span class="text-xs uppercase tracking-widest font-cinzel text-rose-400 font-semibold">Eternal Love Foliage</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">The Tree of Hearts 🌳❤️</h2>
+            <p class="text-rose-200/80 text-sm sm:text-base max-w-xl mx-auto">
+                Every branch holds our deepest feelings, memories, and promises. Tap any glowing heart on the tree to blossom its secret message!
+            </p>
+        </div>
+
+        <!-- The Love Tree Container -->
+        <div class="relative glass-panel rounded-3xl p-6 sm:p-12 border border-rose-500/30 shadow-2xl overflow-hidden min-h-[520px] flex flex-col items-center justify-end">
+            <!-- Ambient Moonlight / Sunlight behind tree -->
+            <div class="absolute top-12 left-1/2 -translate-x-1/2 w-64 h-64 bg-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <!-- Falling Petals Canvas -->
+            <canvas id="tree-petals-canvas" class="absolute inset-0 pointer-events-none z-10"></canvas>
+
+            <!-- Illustrated Tree SVG with Branches -->
+            <div class="relative z-20 w-full max-w-2xl h-[380px] sm:h-[440px] flex items-end justify-center">
+                <svg viewBox="0 0 600 450" class="w-full h-full drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]">
+                    <!-- Tree Trunk and Roots -->
+                    <path d="M 300 440 
+                             C 285 360, 260 280, 275 220 
+                             C 285 180, 260 140, 230 110
+                             C 220 100, 200 80, 160 70
+                             M 275 220
+                             C 310 180, 360 140, 420 100
+                             C 440 85, 470 70, 500 65
+                             M 290 270
+                             C 330 240, 380 220, 450 200
+                             M 270 270
+                             C 220 230, 160 210, 100 180
+                             M 285 180
+                             C 295 130, 305 90, 310 40
+                             M 260 140
+                             C 275 100, 255 70, 230 40"
+                          fill="none" 
+                          stroke="url(#trunkGradient)" 
+                          stroke-width="18" 
+                          stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    
+                    <!-- Secondary Branches -->
+                    <path d="M 230 110 C 200 105, 170 120, 130 130
+                             M 360 140 C 390 120, 410 90, 440 80
+                             M 220 230 C 190 240, 170 260, 140 270
+                             M 330 240 C 370 260, 400 270, 440 290" 
+                          fill="none" 
+                          stroke="url(#trunkGradient)" 
+                          stroke-width="8" 
+                          stroke-linecap="round"/>
+
+                    <!-- Foliage Heart Clusters in Background -->
+                    <circle cx="160" cy="90" r="45" fill="rgba(244,63,94,0.18)" filter="blur(6px)"/>
+                    <circle cx="440" cy="90" r="50" fill="rgba(251,113,133,0.18)" filter="blur(6px)"/>
+                    <circle cx="300" cy="50" r="50" fill="rgba(223,188,120,0.15)" filter="blur(6px)"/>
+                    <circle cx="120" cy="200" r="40" fill="rgba(244,63,94,0.15)" filter="blur(6px)"/>
+                    <circle cx="450" cy="220" r="45" fill="rgba(251,113,133,0.15)" filter="blur(6px)"/>
+
+                    <defs>
+                        <linearGradient id="trunkGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+                            <stop offset="0%" stop-color="#3f1d24" />
+                            <stop offset="40%" stop-color="#642430" />
+                            <stop offset="70%" stop-color="#881337" />
+                            <stop offset="100%" stop-color="#be123c" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+                <!-- Interactive Hanging Hearts Absolute Grid Over Tree -->
+                <div class="absolute inset-0 z-30 pointer-events-none">
+                    
+                    <!-- Tree Heart 1 (Left high branch) -->
+                    <button type="button" class="tree-heart-btn pointer-events-auto absolute top-[14%] left-[24%] transform -translate-x-1/2 -translate-y-1/2 group" data-index="0">
+                        <div class="tree-heart-pulsar text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_#f43f5e] group-hover:scale-135 transition transform duration-300">
+                            💖
+                        </div>
+                        <span class="tree-heart-tag opacity-0 group-hover:opacity-100 transition duration-200 text-[10px] font-cinzel text-amber-200 bg-black/70 px-2 py-0.5 rounded border border-amber-300/30 whitespace-nowrap">Promise</span>
+                    </button>
+
+                    <!-- Tree Heart 2 (Top center) -->
+                    <button type="button" class="tree-heart-btn pointer-events-auto absolute top-[8%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 group" data-index="1">
+                        <div class="tree-heart-pulsar text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_#dfbc78] group-hover:scale-135 transition transform duration-300">
+                            ✨
+                        </div>
+                        <span class="tree-heart-tag opacity-0 group-hover:opacity-100 transition duration-200 text-[10px] font-cinzel text-amber-200 bg-black/70 px-2 py-0.5 rounded border border-amber-300/30 whitespace-nowrap">Kisses</span>
+                    </button>
+
+                    <!-- Tree Heart 3 (Right high branch) -->
+                    <button type="button" class="tree-heart-btn pointer-events-auto absolute top-[16%] left-[73%] transform -translate-x-1/2 -translate-y-1/2 group" data-index="2">
+                        <div class="tree-heart-pulsar text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_#fb7185] group-hover:scale-135 transition transform duration-300">
+                            🌹
+                        </div>
+                        <span class="tree-heart-tag opacity-0 group-hover:opacity-100 transition duration-200 text-[10px] font-cinzel text-amber-200 bg-black/70 px-2 py-0.5 rounded border border-amber-300/30 whitespace-nowrap">Calm</span>
+                    </button>
+
+                    <!-- Tree Heart 4 (Left mid branch) -->
+                    <button type="button" class="tree-heart-btn pointer-events-auto absolute top-[36%] left-[17%] transform -translate-x-1/2 -translate-y-1/2 group" data-index="3">
+                        <div class="tree-heart-pulsar text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_#f43f5e] group-hover:scale-135 transition transform duration-300">
+                            🌙
+                        </div>
+                        <span class="tree-heart-tag opacity-0 group-hover:opacity-100 transition duration-200 text-[10px] font-cinzel text-amber-200 bg-black/70 px-2 py-0.5 rounded border border-amber-300/30 whitespace-nowrap">Laughs</span>
+                    </button>
+
+                    <!-- Tree Heart 5 (Center mid) -->
+                    <button type="button" class="tree-heart-btn pointer-events-auto absolute top-[30%] left-[44%] transform -translate-x-1/2 -translate-y-1/2 group" data-index="4">
+                        <div class="tree-heart-pulsar text-3xl sm:text-4xl filter drop-shadow-[0_0_14px_#f43f5e] group-hover:scale-135 transition transform duration-300">
+                            ❤️
+                        </div>
+                        <span class="tree-heart-tag opacity-0 group-hover:opacity-100 transition duration-200 text-[10px] font-cinzel text-amber-200 bg-black/70 px-2 py-0.5 rounded border border-amber-300/30 whitespace-nowrap">Safe Haven</span>
+                    </button>
+
+                    <!-- Tree Heart 6 (Right mid branch) -->
+                    <button type="button" class="tree-heart-btn pointer-events-auto absolute top-[38%] left-[78%] transform -translate-x-1/2 -translate-y-1/2 group" data-index="5">
+                        <div class="tree-heart-pulsar text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_#dfbc78] group-hover:scale-135 transition transform duration-300">
+                            👑
+                        </div>
+                        <span class="tree-heart-tag opacity-0 group-hover:opacity-100 transition duration-200 text-[10px] font-cinzel text-amber-200 bg-black/70 px-2 py-0.5 rounded border border-amber-300/30 whitespace-nowrap">Kindness</span>
+                    </button>
+
+                    <!-- Tree Heart 7 (Left lower branch) -->
+                    <button type="button" class="tree-heart-btn pointer-events-auto absolute top-[56%] left-[26%] transform -translate-x-1/2 -translate-y-1/2 group" data-index="6">
+                        <div class="tree-heart-pulsar text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_#fb7185] group-hover:scale-135 transition transform duration-300">
+                            💫
+                        </div>
+                        <span class="tree-heart-tag opacity-0 group-hover:opacity-100 transition duration-200 text-[10px] font-cinzel text-amber-200 bg-black/70 px-2 py-0.5 rounded border border-amber-300/30 whitespace-nowrap">First Look</span>
+                    </button>
+
+                    <!-- Tree Heart 8 (Right lower branch) -->
+                    <button type="button" class="tree-heart-btn pointer-events-auto absolute top-[58%] left-[70%] transform -translate-x-1/2 -translate-y-1/2 group" data-index="7">
+                        <div class="tree-heart-pulsar text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_#f43f5e] group-hover:scale-135 transition transform duration-300">
+                            🏡
+                        </div>
+                        <span class="tree-heart-tag opacity-0 group-hover:opacity-100 transition duration-200 text-[10px] font-cinzel text-amber-200 bg-black/70 px-2 py-0.5 rounded border border-amber-300/30 whitespace-nowrap">Forever</span>
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- Pluck a Blossom Button -->
+            <div class="relative z-30 pt-6">
+                <button type="button" id="pluck-heart-btn" class="px-7 py-3 rounded-full bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 hover:brightness-110 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-rose-600/30 transition transform hover:scale-105 flex items-center space-x-2">
+                    <span>🌸</span>
+                    <span>Pluck a Love Blossom From The Tree</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Tree Heart Modal (Opens when heart is clicked) -->
+    <div id="tree-heart-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="glass-panel p-8 sm:p-10 rounded-3xl max-w-md w-full text-center space-y-6 border border-rose-400/50 shadow-2xl animate-float relative">
+            <button type="button" id="close-tree-modal" class="absolute top-4 right-4 text-rose-300/70 hover:text-white text-xl">
+                ✕
+            </button>
+            <div id="tree-modal-emoji" class="text-5xl animate-bounce">💖</div>
+            <div class="space-y-1">
+                <span class="text-[10px] uppercase tracking-widest text-amber-300 font-cinzel">From The Tree of Hearts</span>
+                <h3 id="tree-modal-title" class="font-serif text-2xl font-bold text-white">Our Forever Promise</h3>
+            </div>
+            <p id="tree-modal-message" class="text-rose-100 text-sm sm:text-base leading-relaxed">
+                Loading message...
+            </p>
+            <button type="button" id="dismiss-tree-modal-btn" class="w-full py-3 rounded-full bg-gradient-to-r from-rose-600 to-rose-500 text-white font-medium hover:brightness-110 transition">
+                Cherish This Memory ❤️
+            </button>
         </div>
     </div>
 </section>
@@ -281,6 +680,7 @@
         </div>
     </div>
 </section>
+
 
 
     <!-- Our Journey / Memory Lane Timeline -->
@@ -513,6 +913,7 @@
 
     </div>
 </section>
+
 
 
     <!-- Why I Love You (3D Flip Cards) -->
@@ -807,6 +1208,7 @@
 </section>
 
 
+
     <!-- Wax-Sealed Secret Love Letter -->
     <!-- The Wax-Sealed Secret Love Letter -->
 <section id="letter-section" class="py-20 px-4 relative z-20">
@@ -892,6 +1294,7 @@ Your Wifey-to-be ❤️
 
     </div>
 </section>
+
 
 
     <!-- Vipul's Birthday Love Coupon Book -->
@@ -1090,6 +1493,7 @@ Your Wifey-to-be ❤️
 </section>
 
 
+
     <!-- "How Well Do You Know Us?" Trivia Quiz -->
     <!-- Romantic Quiz Section -->
 <section id="quiz-section" class="py-20 px-4 relative z-20">
@@ -1113,6 +1517,7 @@ Your Wifey-to-be ❤️
 
     </div>
 </section>
+
 
 
     <!-- Birthday Wishes Wall & Submission Form -->
@@ -1240,6 +1645,7 @@ Your Wifey-to-be ❤️
 </section>
 
 
+
     </main>
 
     <!-- Footer -->
@@ -1260,7 +1666,67 @@ Your Wifey-to-be ❤️
         window.BIRTHDAY_CONFIG = {
             fianceName: "Vipul",
             birthdayDate: "2026\u002D11\u002D20",
-            csrfToken: "static-site-token"
+            passcode: "1402",
+            csrfToken: "static-site-token",
+            treeHearts: [
+                
+                {
+                    title: "Our Forever Promise",
+                    message: "I promise to stand by you in every storm and dance with you under every rainbow. You are my home, Vipul.",
+                    emoji: "💍",
+                    color: "#f43f5e"
+                },
+                
+                {
+                    title: "Your Cozy Forehead Kisses",
+                    message: "Nothing in this entire world feels more comforting and sacred than when you kiss my forehead before we sleep.",
+                    emoji: "💋",
+                    color: "#fb7185"
+                },
+                
+                {
+                    title: "Your Calming Voice",
+                    message: "Even on the most chaotic, stressful days, hearing your voice instantly quiets my soul.",
+                    emoji: "🎙️",
+                    color: "#dfbc78"
+                },
+                
+                {
+                    title: "Late Night Laughter",
+                    message: "Our 1 AM giggles over stupid jokes and funny reels that nobody else on earth would understand.",
+                    emoji: "🌙",
+                    color: "#f43f5e"
+                },
+                
+                {
+                    title: "My Safe Haven",
+                    message: "No matter what happens outside, walking into your embrace is stepping into pure peace.",
+                    emoji: "🛡️",
+                    color: "#fb7185"
+                },
+                
+                {
+                    title: "Your Golden Heart",
+                    message: "The quiet kindness, respect, and boundless love you show everyone around you makes me the proudest fiancée alive.",
+                    emoji: "✨",
+                    color: "#cca048"
+                },
+                
+                {
+                    title: "The First Glimpse",
+                    message: "I still remember the very first time our eyes locked. My heart whispered, \u0022Oh, there you are.\u0022",
+                    emoji: "💫",
+                    color: "#f43f5e"
+                },
+                
+                {
+                    title: "Building Our Tomorrow",
+                    message: "Every dream, trip, home plan, and future adventure is 1000x sweeter because I get to live them with you.",
+                    emoji: "🏡",
+                    color: "#fb7185"
+                }
+                
+            ]
         };
     </script>
     <script src="static/js/main.js"></script>
@@ -1269,3 +1735,4 @@ Your Wifey-to-be ❤️
     </script>
 </body>
 </html>
+

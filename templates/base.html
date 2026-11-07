@@ -76,7 +76,9 @@
                 <span class="font-cinzel tracking-wider text-sm sm:text-base font-semibold text-rose-200">VIPUL'S DAY</span>
             </a>
             
-            <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-rose-200/80">
+            <div class="hidden lg:flex items-center space-x-5 text-sm font-medium text-rose-200/80">
+                <a href="#cupid-section" class="hover:text-rose-400 transition">Cupid's Bow</a>
+                <a href="#tree-section" class="hover:text-rose-400 transition">Tree of Hearts</a>
                 <a href="#cake-section" class="hover:text-rose-400 transition">Birthday Cake</a>
                 <a href="#timeline-section" class="hover:text-rose-400 transition">Our Journey</a>
                 <a href="#reasons-section" class="hover:text-rose-400 transition">Why I Love You</a>
@@ -117,7 +119,18 @@
         window.BIRTHDAY_CONFIG = {
             fianceName: "{{ fiance_name|escapejs }}",
             birthdayDate: "{{ birthday_date|escapejs }}",
-            csrfToken: "{{ csrf_token }}"
+            passcode: "{{ surprise_passcode|default:'1402'|escapejs }}",
+            csrfToken: "{{ csrf_token }}",
+            treeHearts: [
+                {% for th in tree_hearts %}
+                {
+                    title: "{{ th.title|escapejs }}",
+                    message: "{{ th.message|escapejs }}",
+                    emoji: "{{ th.emoji|escapejs }}",
+                    color: "{{ th.color|escapejs }}"
+                }{% if not forloop.last %},{% endif %}
+                {% endfor %}
+            ]
         };
     </script>
     <script src="{% static 'js/main.js' %}"></script>
@@ -126,3 +139,4 @@
     </script>
 </body>
 </html>
+

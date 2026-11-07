@@ -17,7 +17,7 @@ django.setup()
 from django.template.loader import render_to_string
 from django.conf import settings
 from birthday.views import get_default_data
-from birthday.models import Memory, LoveReason, Coupon, Wish, LoveLetter
+from birthday.models import Memory, LoveReason, Coupon, Wish, LoveLetter, TreeHeart
 
 BASE_DIR = Path(__file__).resolve().parent
 DOCS_DIR = BASE_DIR / 'docs'
@@ -25,9 +25,7 @@ DOCS_DIR = BASE_DIR / 'docs'
 def export_static_site():
     print("🚀 Exporting Django birthday site for GitHub Pages...")
 
-    # Clean and recreate docs/ directory
-    if DOCS_DIR.exists():
-        shutil.rmtree(DOCS_DIR)
+    # Ensure docs/ and docs/static/ directories exist
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
 
     # 1. Fetch data from DB or fallback defaults
@@ -36,17 +34,21 @@ def export_static_site():
     coupons = list(Coupon.objects.all())
     wishes = list(Wish.objects.filter(is_approved=True))
     letter = LoveLetter.objects.filter(is_active=True).first()
+    tree_hearts = list(TreeHeart.objects.all())
 
     defaults = get_default_data()
 
     context = {
         'fiance_name': getattr(settings, 'FIANCE_NAME', 'Vipul'),
         'birthday_date': getattr(settings, 'BIRTHDAY_DATE', '2026-11-20'),
+        'surprise_passcode': getattr(settings, 'SURPRISE_PASSCODE', '1402'),
+        'passcode_hint': getattr(settings, 'PASSCODE_HINT', 'Try our special date (1402)'),
         'memories': memories if memories else defaults['memories'],
         'reasons': reasons if reasons else defaults['reasons'],
         'coupons': coupons if coupons else defaults['coupons'],
         'wishes': wishes if wishes else defaults['wishes'],
         'letter': letter if letter else defaults['letter'],
+        'tree_hearts': tree_hearts if tree_hearts else defaults['tree_hearts'],
         'csrf_token': 'static-site-token',
     }
 
@@ -68,7 +70,7 @@ def export_static_site():
     static_src = BASE_DIR / 'static'
     static_dest = DOCS_DIR / 'static'
     if static_src.exists():
-        shutil.copytree(static_src, static_dest)
+        shutil.copytree(static_src, static_dest, dirs_exist_ok=True)
         print(f"✓ Copied static assets to {static_dest}")
 
     # Create .nojekyll so GitHub Pages doesn't ignore files starting with underscores
@@ -84,3 +86,4 @@ def export_static_site():
 
 if __name__ == '__main__':
     export_static_site()
+

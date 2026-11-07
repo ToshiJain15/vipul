@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from birthday.models import Memory, LoveReason, Coupon, Wish, LoveLetter
+from birthday.models import Memory, LoveReason, Coupon, Wish, LoveLetter, TreeHeart
 from birthday.views import get_default_data
 
 class Command(BaseCommand):
@@ -8,6 +8,18 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         self.stdout.write("Seeding birthday surprise database...")
         defaults = get_default_data()
+
+        # Seed TreeHearts
+        if not TreeHeart.objects.exists():
+            for th in defaults['tree_hearts']:
+                TreeHeart.objects.create(
+                    title=th['title'],
+                    message=th['message'],
+                    emoji=th['emoji'],
+                    color=th['color'],
+                    order=th['order']
+                )
+            self.stdout.write(self.style.SUCCESS("✓ Seeded Tree of Hearts"))
 
         # Seed Memories
         if not Memory.objects.exists():
@@ -70,3 +82,4 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS("✓ Seeded Initial Wishes"))
 
         self.stdout.write(self.style.SUCCESS("✨ All birthday surprise data seeded successfully!"))
+

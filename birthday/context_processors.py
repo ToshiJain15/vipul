@@ -5,4 +5,7 @@ def birthday_settings(request):
     return {
         'fiance_name': getattr(settings, 'FIANCE_NAME', 'Vipul'),
         'birthday_date': getattr(settings, 'BIRTHDAY_DATE', '2026-11-20'),
+        'surprise_passcode': getattr(settings, 'SURPRISE_PASSCODE', '1402'),
+        'passcode_hint': getattr(settings, 'PASSCODE_HINT', 'Try our special date (1402)'),
     }
+

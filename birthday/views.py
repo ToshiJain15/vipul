@@ -3,7 +3,7 @@ from django.http import JsonResponse, HttpResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
-from .models import Memory, LoveReason, Coupon, Wish, LoveLetter
+from .models import Memory, LoveReason, Coupon, Wish, LoveLetter, TreeHeart
 import json
 
 def get_default_data():
@@ -101,12 +101,72 @@ Happy Birthday, my handsome fiancé. Here is to celebrating today and every tomo
         }
     ]
 
+    default_tree_hearts = [
+        {
+            'title': 'Our Forever Promise',
+            'message': 'I promise to stand by you in every storm and dance with you under every rainbow. You are my home, Vipul.',
+            'emoji': '💍',
+            'color': '#f43f5e',
+            'order': 0
+        },
+        {
+            'title': 'Your Cozy Forehead Kisses',
+            'message': 'Nothing in this entire world feels more comforting and sacred than when you kiss my forehead before we sleep.',
+            'emoji': '💋',
+            'color': '#fb7185',
+            'order': 1
+        },
+        {
+            'title': 'Your Calming Voice',
+            'message': 'Even on the most chaotic, stressful days, hearing your voice instantly quiets my soul.',
+            'emoji': '🎙️',
+            'color': '#dfbc78',
+            'order': 2
+        },
+        {
+            'title': 'Late Night Laughter',
+            'message': 'Our 1 AM giggles over stupid jokes and funny reels that nobody else on earth would understand.',
+            'emoji': '🌙',
+            'color': '#f43f5e',
+            'order': 3
+        },
+        {
+            'title': 'My Safe Haven',
+            'message': 'No matter what happens outside, walking into your embrace is stepping into pure peace.',
+            'emoji': '🛡️',
+            'color': '#fb7185',
+            'order': 4
+        },
+        {
+            'title': 'Your Golden Heart',
+            'message': 'The quiet kindness, respect, and boundless love you show everyone around you makes me the proudest fiancée alive.',
+            'emoji': '✨',
+            'color': '#cca048',
+            'order': 5
+        },
+        {
+            'title': 'The First Glimpse',
+            'message': 'I still remember the very first time our eyes locked. My heart whispered, "Oh, there you are."',
+            'emoji': '💫',
+            'color': '#f43f5e',
+            'order': 6
+        },
+        {
+            'title': 'Building Our Tomorrow',
+            'message': 'Every dream, trip, home plan, and future adventure is 1000x sweeter because I get to live them with you.',
+            'emoji': '🏡',
+            'color': '#fb7185',
+            'order': 7
+        }
+    ]
+
     return {
         'memories': default_memories,
         'reasons': default_reasons,
         'coupons': default_coupons,
         'letter': default_letter,
-        'wishes': default_wishes
+        'wishes': default_wishes,
+        'tree_hearts': default_tree_hearts,
     }
 
 def index(request):
@@ -116,6 +176,7 @@ def index(request):
     coupons = list(Coupon.objects.all())
     wishes = list(Wish.objects.filter(is_approved=True))
     letter = LoveLetter.objects.filter(is_active=True).first()
+    tree_hearts = list(TreeHeart.objects.all())
 
     defaults = get_default_data()
 
@@ -125,7 +186,8 @@ def index(request):
         'coupons': coupons if coupons else defaults['coupons'],
         'wishes': wishes if wishes else defaults['wishes'],
         'letter': letter if letter else defaults['letter'],
-        'has_database_data': bool(memories or reasons or coupons or wishes or letter),
+        'tree_hearts': tree_hearts if tree_hearts else defaults['tree_hearts'],
+        'has_database_data': bool(memories or reasons or coupons or wishes or letter or tree_hearts),
     }
     return render(request, 'birthday/index.html', context)
 
@@ -208,3 +270,4 @@ def api_wishes(request):
         'created_at': w.created_at.strftime('%b %d, %Y')
     } for w in wishes]
     return JsonResponse({'wishes': data})
+

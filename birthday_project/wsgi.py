@@ -5,3 +5,4 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'birthday_project.settings')
 
 application = get_wsgi_application()
 app = application  # Alias for serverless platforms like Vercel
+

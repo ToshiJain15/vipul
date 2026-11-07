@@ -1,0 +1,173 @@
+<!-- Tree of Hearts (Romantic Love Tree) -->
+<section id="tree-section" class="py-20 px-4 relative z-20">
+    <div class="max-w-5xl mx-auto space-y-10 text-center">
+        
+        <div class="space-y-3">
+            <span class="text-xs uppercase tracking-widest font-cinzel text-rose-400 font-semibold">Eternal Love Foliage</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">The Tree of Hearts 🌳❤️</h2>
+            <p class="text-rose-200/80 text-sm sm:text-base max-w-xl mx-auto">
+                Every branch holds our deepest feelings, memories, and promises. Tap any glowing heart on the tree to blossom its secret message!
+            </p>
+        </div>
+
+        <!-- The Love Tree Container -->
+        <div class="relative glass-panel rounded-3xl p-6 sm:p-12 border border-rose-500/30 shadow-2xl overflow-hidden min-h-[520px] flex flex-col items-center justify-end">
+            <!-- Ambient Moonlight / Sunlight behind tree -->
+            <div class="absolute top-12 left-1/2 -translate-x-1/2 w-64 h-64 bg-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <!-- Falling Petals Canvas -->
+            <canvas id="tree-petals-canvas" class="absolute inset-0 pointer-events-none z-10"></canvas>
+
+            <!-- Illustrated Tree SVG with Branches -->
+            <div class="relative z-20 w-full max-w-2xl h-[380px] sm:h-[440px] flex items-end justify-center">
+                <svg viewBox="0 0 600 450" class="w-full h-full drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]">
+                    <!-- Tree Trunk and Roots -->
+                    <path d="M 300 440 
+                             C 285 360, 260 280, 275 220 
+                             C 285 180, 260 140, 230 110
+                             C 220 100, 200 80, 160 70
+                             M 275 220
+                             C 310 180, 360 140, 420 100
+                             C 440 85, 470 70, 500 65
+                             M 290 270
+                             C 330 240, 380 220, 450 200
+                             M 270 270
+                             C 220 230, 160 210, 100 180
+                             M 285 180
+                             C 295 130, 305 90, 310 40
+                             M 260 140
+                             C 275 100, 255 70, 230 40"
+                          fill="none" 
+                          stroke="url(#trunkGradient)" 
+                          stroke-width="18" 
+                          stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    
+                    <!-- Secondary Branches -->
+                    <path d="M 230 110 C 200 105, 170 120, 130 130
+                             M 360 140 C 390 120, 410 90, 440 80
+                             M 220 230 C 190 240, 170 260, 140 270
+                             M 330 240 C 370 260, 400 270, 440 290" 
+                          fill="none" 
+                          stroke="url(#trunkGradient)" 
+                          stroke-width="8" 
+                          stroke-linecap="round"/>
+
+                    <!-- Foliage Heart Clusters in Background -->
+                    <circle cx="160" cy="90" r="45" fill="rgba(244,63,94,0.18)" filter="blur(6px)"/>
+                    <circle cx="440" cy="90" r="50" fill="rgba(251,113,133,0.18)" filter="blur(6px)"/>
+                    <circle cx="300" cy="50" r="50" fill="rgba(223,188,120,0.15)" filter="blur(6px)"/>
+                    <circle cx="120" cy="200" r="40" fill="rgba(244,63,94,0.15)" filter="blur(6px)"/>
+                    <circle cx="450" cy="220" r="45" fill="rgba(251,113,133,0.15)" filter="blur(6px)"/>
+
+                    <defs>
+                        <linearGradient id="trunkGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+                            <stop offset="0%" stop-color="#3f1d24" />
+                            <stop offset="40%" stop-color="#642430" />
+                            <stop offset="70%" stop-color="#881337" />
+                            <stop offset="100%" stop-color="#be123c" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+                <!-- Interactive Hanging Hearts Absolute Grid Over Tree -->
+                <div class="absolute inset-0 z-30 pointer-events-none">
+                    
+                    <!-- Tree Heart 1 (Left high branch) -->
+                    <button type="button" class="tree-heart-btn pointer-events-auto absolute top-[14%] left-[24%] transform -translate-x-1/2 -translate-y-1/2 group" data-index="0">
+                        <div class="tree-heart-pulsar text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_#f43f5e] group-hover:scale-135 transition transform duration-300">
+                            💖
+                        </div>
+                        <span class="tree-heart-tag opacity-0 group-hover:opacity-100 transition duration-200 text-[10px] font-cinzel text-amber-200 bg-black/70 px-2 py-0.5 rounded border border-amber-300/30 whitespace-nowrap">Promise</span>
+                    </button>
+
+                    <!-- Tree Heart 2 (Top center) -->
+                    <button type="button" class="tree-heart-btn pointer-events-auto absolute top-[8%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 group" data-index="1">
+                        <div class="tree-heart-pulsar text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_#dfbc78] group-hover:scale-135 transition transform duration-300">
+                            ✨
+                        </div>
+                        <span class="tree-heart-tag opacity-0 group-hover:opacity-100 transition duration-200 text-[10px] font-cinzel text-amber-200 bg-black/70 px-2 py-0.5 rounded border border-amber-300/30 whitespace-nowrap">Kisses</span>
+                    </button>
+
+                    <!-- Tree Heart 3 (Right high branch) -->
+                    <button type="button" class="tree-heart-btn pointer-events-auto absolute top-[16%] left-[73%] transform -translate-x-1/2 -translate-y-1/2 group" data-index="2">
+                        <div class="tree-heart-pulsar text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_#fb7185] group-hover:scale-135 transition transform duration-300">
+                            🌹
+                        </div>
+                        <span class="tree-heart-tag opacity-0 group-hover:opacity-100 transition duration-200 text-[10px] font-cinzel text-amber-200 bg-black/70 px-2 py-0.5 rounded border border-amber-300/30 whitespace-nowrap">Calm</span>
+                    </button>
+
+                    <!-- Tree Heart 4 (Left mid branch) -->
+                    <button type="button" class="tree-heart-btn pointer-events-auto absolute top-[36%] left-[17%] transform -translate-x-1/2 -translate-y-1/2 group" data-index="3">
+                        <div class="tree-heart-pulsar text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_#f43f5e] group-hover:scale-135 transition transform duration-300">
+                            🌙
+                        </div>
+                        <span class="tree-heart-tag opacity-0 group-hover:opacity-100 transition duration-200 text-[10px] font-cinzel text-amber-200 bg-black/70 px-2 py-0.5 rounded border border-amber-300/30 whitespace-nowrap">Laughs</span>
+                    </button>
+
+                    <!-- Tree Heart 5 (Center mid) -->
+                    <button type="button" class="tree-heart-btn pointer-events-auto absolute top-[30%] left-[44%] transform -translate-x-1/2 -translate-y-1/2 group" data-index="4">
+                        <div class="tree-heart-pulsar text-3xl sm:text-4xl filter drop-shadow-[0_0_14px_#f43f5e] group-hover:scale-135 transition transform duration-300">
+                            ❤️
+                        </div>
+                        <span class="tree-heart-tag opacity-0 group-hover:opacity-100 transition duration-200 text-[10px] font-cinzel text-amber-200 bg-black/70 px-2 py-0.5 rounded border border-amber-300/30 whitespace-nowrap">Safe Haven</span>
+                    </button>
+
+                    <!-- Tree Heart 6 (Right mid branch) -->
+                    <button type="button" class="tree-heart-btn pointer-events-auto absolute top-[38%] left-[78%] transform -translate-x-1/2 -translate-y-1/2 group" data-index="5">
+                        <div class="tree-heart-pulsar text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_#dfbc78] group-hover:scale-135 transition transform duration-300">
+                            👑
+                        </div>
+                        <span class="tree-heart-tag opacity-0 group-hover:opacity-100 transition duration-200 text-[10px] font-cinzel text-amber-200 bg-black/70 px-2 py-0.5 rounded border border-amber-300/30 whitespace-nowrap">Kindness</span>
+                    </button>
+
+                    <!-- Tree Heart 7 (Left lower branch) -->
+                    <button type="button" class="tree-heart-btn pointer-events-auto absolute top-[56%] left-[26%] transform -translate-x-1/2 -translate-y-1/2 group" data-index="6">
+                        <div class="tree-heart-pulsar text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_#fb7185] group-hover:scale-135 transition transform duration-300">
+                            💫
+                        </div>
+                        <span class="tree-heart-tag opacity-0 group-hover:opacity-100 transition duration-200 text-[10px] font-cinzel text-amber-200 bg-black/70 px-2 py-0.5 rounded border border-amber-300/30 whitespace-nowrap">First Look</span>
+                    </button>
+
+                    <!-- Tree Heart 8 (Right lower branch) -->
+                    <button type="button" class="tree-heart-btn pointer-events-auto absolute top-[58%] left-[70%] transform -translate-x-1/2 -translate-y-1/2 group" data-index="7">
+                        <div class="tree-heart-pulsar text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_#f43f5e] group-hover:scale-135 transition transform duration-300">
+                            🏡
+                        </div>
+                        <span class="tree-heart-tag opacity-0 group-hover:opacity-100 transition duration-200 text-[10px] font-cinzel text-amber-200 bg-black/70 px-2 py-0.5 rounded border border-amber-300/30 whitespace-nowrap">Forever</span>
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- Pluck a Blossom Button -->
+            <div class="relative z-30 pt-6">
+                <button type="button" id="pluck-heart-btn" class="px-7 py-3 rounded-full bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 hover:brightness-110 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-rose-600/30 transition transform hover:scale-105 flex items-center space-x-2">
+                    <span>🌸</span>
+                    <span>Pluck a Love Blossom From The Tree</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Tree Heart Modal (Opens when heart is clicked) -->
+    <div id="tree-heart-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="glass-panel p-8 sm:p-10 rounded-3xl max-w-md w-full text-center space-y-6 border border-rose-400/50 shadow-2xl animate-float relative">
+            <button type="button" id="close-tree-modal" class="absolute top-4 right-4 text-rose-300/70 hover:text-white text-xl">
+                ✕
+            </button>
+            <div id="tree-modal-emoji" class="text-5xl animate-bounce">💖</div>
+            <div class="space-y-1">
+                <span class="text-[10px] uppercase tracking-widest text-amber-300 font-cinzel">From The Tree of Hearts</span>
+                <h3 id="tree-modal-title" class="font-serif text-2xl font-bold text-white">Our Forever Promise</h3>
+            </div>
+            <p id="tree-modal-message" class="text-rose-100 text-sm sm:text-base leading-relaxed">
+                Loading message...
+            </p>
+            <button type="button" id="dismiss-tree-modal-btn" class="w-full py-3 rounded-full bg-gradient-to-r from-rose-600 to-rose-500 text-white font-medium hover:brightness-110 transition">
+                Cherish This Memory ❤️
+            </button>
+        </div>
+    </div>
+</section>

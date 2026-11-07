@@ -1,11 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <!-- Cute Secret Passcode Lock Screen -->
+    {% include "birthday/components/passcode.html" %}
+
     <!-- Hero Section -->
     {% include "birthday/components/hero.html" %}
 
     <!-- Live Countdown Section -->
     {% include "birthday/components/countdown.html" %}
+
+    <!-- Cupid's Bow & Arrow Heart Shooting Section -->
+    {% include "birthday/components/cupid_bow.html" %}
+
+    <!-- The Romantic Tree of Hearts -->
+    {% include "birthday/components/tree_of_hearts.html" %}
 
     <!-- Interactive Birthday Cake & Candles Section -->
     {% include "birthday/components/cake.html" %}
