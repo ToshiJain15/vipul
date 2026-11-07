@@ -156,8 +156,8 @@
             fianceName: "{{ fiance_name|escapejs }}",
             fianceeName: "{{ fiancee_name|default:'Toshi'|escapejs }}",
             weddingDate: "{{ wedding_date|default:'2026-12-21'|escapejs }}",
-            birthdayDate: "{{ birthday_date|escapejs }}",
-            passcode: "{{ surprise_passcode|default:'1402'|escapejs }}",
+            birthdayDate: "{{ birthday_date|default:'2026-11-16'|escapejs }}",
+            passcode: "{{ surprise_passcode|default:'1611'|escapejs }}",
             csrfToken: "{{ csrf_token }}",
             treeHearts: [
                 {% for th in tree_hearts %}

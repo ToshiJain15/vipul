@@ -175,7 +175,7 @@ function initCountdown() {
 
     if (!daysEl) return;
 
-    const bdayStr = (window.BIRTHDAY_CONFIG && window.BIRTHDAY_CONFIG.birthdayDate) || '2026-11-20';
+    const bdayStr = (window.BIRTHDAY_CONFIG && window.BIRTHDAY_CONFIG.birthdayDate) || '2026-11-16';
     const target = new Date(`${bdayStr}T00:00:00`);
 
     function update() {
@@ -1591,7 +1591,7 @@ function initPasscodeScreen() {
     const errorMsg = document.getElementById('pin-error-msg');
     const pinContainer = document.getElementById('pin-dots');
 
-    const expectedPasscode = (window.BIRTHDAY_CONFIG && window.BIRTHDAY_CONFIG.passcode) || '1402';
+    const expectedPasscode = (window.BIRTHDAY_CONFIG && window.BIRTHDAY_CONFIG.passcode) || '1611';
     let enteredPin = [];
 
     function updateDots() {
@@ -1606,7 +1606,7 @@ function initPasscodeScreen() {
 
     function checkPasscode() {
         const code = enteredPin.join('');
-        if (code === expectedPasscode || code === '1402' || code === '0000') {
+        if (code === expectedPasscode || code === '1611' || code === '0000') {
             unlockSuccess();
         } else {
             unlockFail();
