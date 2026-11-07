@@ -209,12 +209,12 @@ function initHeroPhotoSwitcher() {
     if (!frame || !photo) return;
 
     const gallery = [
-        { src: 'static/images/img-20260412-wa0003.jpg', tag: 'My Handsome Boy ✨' },
+        { src: 'static/images/IMG-20260412-WA0003.jpg', tag: 'My Handsome Boy ✨' },
         { src: 'static/images/cinematic_red_saree.jpg', tag: 'Mere Sukoon ❤️' },
         { src: 'static/images/bouquet_celebration.jpg', tag: 'Roses & Forever 🌹' },
         { src: 'static/images/lavender_festive.jpg', tag: 'Sweet Celebrations 🥂' },
-        { src: 'static/images/img-20260725-wa0010.jpg', tag: 'My Royal King 👑' },
-        { src: 'static/images/img-20260508-wa0014.jpg', tag: 'Our Chibi Avatars 🧸' }
+        { src: 'static/images/IMG-20260725-WA0010.jpg', tag: 'My Royal King 👑' },
+        { src: 'static/images/IMG-20260508-WA0014.jpg', tag: 'Our Chibi Avatars 🧸' }
     ];
 
     let currentIdx = 0;
