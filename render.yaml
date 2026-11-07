@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: vipul-birthday-surprise
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate && python manage.py seed_birthday_data
+    startCommand: gunicorn birthday_project.wsgi:application
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: FIANCE_NAME
+        value: "Vipul"
+      - key: BIRTHDAY_DATE
+        value: "2026-11-20"

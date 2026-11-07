@@ -1,0 +1,29 @@
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+.env
+
+# Database (optional: keep local db ignored)
+*.sqlite3
+*.sqlite3-journal
+
+# Static collected files for production (optional, whitenoise builds on cloud)
+staticfiles/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db

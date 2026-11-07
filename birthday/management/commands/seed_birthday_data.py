@@ -1,0 +1,72 @@
+from django.core.management.base import BaseCommand
+from birthday.models import Memory, LoveReason, Coupon, Wish, LoveLetter
+from birthday.views import get_default_data
+
+class Command(BaseCommand):
+    help = 'Seeds initial romantic surprise content for Vipul'
+
+    def handle(self, *args, **kwargs):
+        self.stdout.write("Seeding birthday surprise database...")
+        defaults = get_default_data()
+
+        # Seed Memories
+        if not Memory.objects.exists():
+            for i, mem in enumerate(defaults['memories']):
+                Memory.objects.create(
+                    title=mem['title'],
+                    date_label=mem['date_label'],
+                    description=mem['description'],
+                    emoji_icon=mem['emoji_icon'],
+                    image_url=mem['image_url'],
+                    order=i
+                )
+            self.stdout.write(self.style.SUCCESS("✓ Seeded Memories"))
+
+        # Seed LoveReasons
+        if not LoveReason.objects.exists():
+            for i, reason in enumerate(defaults['reasons']):
+                LoveReason.objects.create(
+                    title=reason['title'],
+                    description=reason['description'],
+                    icon=reason['icon'],
+                    order=i
+                )
+            self.stdout.write(self.style.SUCCESS("✓ Seeded Love Reasons"))
+
+        # Seed Coupons
+        if not Coupon.objects.exists():
+            for coup in defaults['coupons']:
+                Coupon.objects.create(
+                    title=coup['title'],
+                    description=coup['description'],
+                    icon=coup['icon'],
+                    code=coup['code'],
+                    is_redeemed=coup['is_redeemed']
+                )
+            self.stdout.write(self.style.SUCCESS("✓ Seeded Love Coupons"))
+
+        # Seed LoveLetter
+        if not LoveLetter.objects.exists():
+            letter = defaults['letter']
+            LoveLetter.objects.create(
+                recipient=letter['recipient'],
+                title=letter['title'],
+                letter_text=letter['letter_text'],
+                sign_off=letter['sign_off'],
+                is_active=True
+            )
+            self.stdout.write(self.style.SUCCESS("✓ Seeded Love Letter"))
+
+        # Seed Wishes
+        if not Wish.objects.exists():
+            for wish in defaults['wishes']:
+                Wish.objects.create(
+                    name=wish['name'],
+                    relationship=wish['relationship'],
+                    message=wish['message'],
+                    emoji=wish['emoji'],
+                    is_approved=True
+                )
+            self.stdout.write(self.style.SUCCESS("✓ Seeded Initial Wishes"))
+
+        self.stdout.write(self.style.SUCCESS("✨ All birthday surprise data seeded successfully!"))

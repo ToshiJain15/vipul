@@ -1,0 +1,49 @@
+<!-- Why I Love You (3D Flip Cards) -->
+<section id="reasons-section" class="py-20 px-4 relative z-20">
+    <div class="max-w-6xl mx-auto space-y-12">
+        
+        <div class="text-center space-y-3">
+            <span class="text-xs uppercase tracking-widest font-cinzel text-rose-400 font-semibold">From My Heart</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">Why I Love You, Vipul ❤️</h2>
+            <p class="text-rose-200/80 text-sm sm:text-base max-w-xl mx-auto">
+                There are a million reasons, but here are a few of the things that make you my favorite human in the entire universe. Tap or hover over any card to flip!
+            </p>
+        </div>
+
+        <!-- Flip Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for reason in reasons %}
+            <div class="flip-card h-64 sm:h-72">
+                <div class="flip-card-inner">
+                    
+                    <!-- Front of Card -->
+                    <div class="flip-card-front glass-panel p-6 flex flex-col items-center justify-center text-center space-y-4 border border-rose-500/30 shadow-xl">
+                        <div class="w-16 h-16 rounded-2xl bg-rose-500/20 border border-rose-400/30 flex items-center justify-center text-3xl">
+                            {{ reason.icon }}
+                        </div>
+                        <h3 class="font-serif text-xl sm:text-2xl font-bold text-white">
+                            {{ reason.title }}
+                        </h3>
+                        <div class="inline-flex items-center space-x-1 text-xs text-rose-400 uppercase tracking-widest font-cinzel pt-2">
+                            <span>Tap to reveal</span>
+                            <span>➜</span>
+                        </div>
+                    </div>
+
+                    <!-- Back of Card -->
+                    <div class="flip-card-back bg-gradient-to-br from-rose-950 via-rose-900 to-black p-6 flex flex-col items-center justify-center text-center space-y-3 border border-rose-400 shadow-2xl">
+                        <span class="text-2xl text-amber-300">💖</span>
+                        <h4 class="font-serif text-lg font-bold text-amber-200">{{ reason.title }}</h4>
+                        <p class="text-rose-100 text-sm leading-relaxed overflow-y-auto max-h-40">
+                            {{ reason.description }}
+                        </p>
+                        <span class="text-[11px] font-cursive text-rose-300">Always & Forever</span>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>

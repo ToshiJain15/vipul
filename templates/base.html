@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday {{ fiance_name }}! ❤️ | A Love Surprise</title>
+    
+    <!-- OpenGraph Meta Tags for Sweet Social Sharing (WhatsApp, iMessage) -->
+    <meta property="og:title" content="Happy Birthday {{ fiance_name }}! ❤️">
+    <meta property="og:description" content="A special birthday surprise crafted with all my love for my wonderful fiancé.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80">
+    <meta name="theme-color" content="#ec4899">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Dancing+Script:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        cursive: ['"Dancing Script"', 'cursive'],
+                        sans: ['"Inter"', 'sans-serif'],
+                        cinzel: ['"Cinzel"', 'serif'],
+                    },
+                    colors: {
+                        roseGold: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                        },
+                        champagne: {
+                            100: '#fbf7ee',
+                            200: '#f5ecd6',
+                            300: '#edd8ad',
+                            400: '#dfbc78',
+                            500: '#cca048',
+                        },
+                        nightLove: '#0d0b14',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="bg-nightLove text-rose-100 font-sans antialiased overflow-x-hidden selection:bg-rose-500 selection:text-white">
+
+    <!-- Ambient Floating Hearts Canvas -->
+    <canvas id="ambient-hearts-canvas" class="fixed inset-0 pointer-events-none z-10"></canvas>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-nightLove/70 border-b border-rose-500/10 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+            <a href="#hero" class="flex items-center space-x-2 text-rose-300 hover:text-white transition">
+                <span class="text-2xl animate-pulse">❤️</span>
+                <span class="font-cinzel tracking-wider text-sm sm:text-base font-semibold text-rose-200">VIPUL'S DAY</span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-rose-200/80">
+                <a href="#cake-section" class="hover:text-rose-400 transition">Birthday Cake</a>
+                <a href="#timeline-section" class="hover:text-rose-400 transition">Our Journey</a>
+                <a href="#reasons-section" class="hover:text-rose-400 transition">Why I Love You</a>
+                <a href="#letter-section" class="hover:text-rose-400 transition">Love Letter</a>
+                <a href="#coupons-section" class="hover:text-rose-400 transition">Love Coupons</a>
+                <a href="#quiz-section" class="hover:text-rose-400 transition">Love Quiz</a>
+                <a href="#wishes-section" class="hover:text-rose-400 transition">Wishes</a>
+            </div>
+
+            <!-- Music Pill Button -->
+            <button id="music-toggle-btn" class="flex items-center space-x-2 bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 px-3.5 py-1.5 rounded-full border border-rose-400/30 text-xs sm:text-sm font-medium transition backdrop-blur shadow-sm hover:shadow-rose-500/20">
+                <span id="music-icon" class="text-base animate-bounce">🎵</span>
+                <span id="music-label">Play Music</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Content Block -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-rose-500/20 bg-black/60 py-12 text-center text-rose-300/70 text-sm">
+        <div class="max-w-4xl mx-auto px-4 space-y-4">
+            <div class="text-3xl animate-pulse">💖</div>
+            <p class="font-cursive text-2xl sm:text-3xl text-rose-300">
+                "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."
+            </p>
+            <p class="text-xs uppercase tracking-widest text-rose-400/80 font-cinzel pt-2">
+                Crafted with endless love for Vipul • Happiest Birthday My Love
+            </p>
+        </div>
+    </footer>
+
+    <!-- Pass Django context to client-side JS safely -->
+    <script>
+        window.BIRTHDAY_CONFIG = {
+            fianceName: "{{ fiance_name|escapejs }}",
+            birthdayDate: "{{ birthday_date|escapejs }}",
+            csrfToken: "{{ csrf_token }}"
+        };
+    </script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
