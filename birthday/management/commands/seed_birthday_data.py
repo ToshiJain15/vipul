@@ -5,9 +5,20 @@ from birthday.views import get_default_data
 class Command(BaseCommand):
     help = 'Seeds initial romantic surprise content for Vipul'
 
-    def handle(self, *args, **kwargs):
+    def add_arguments(self, parser):
+        parser.add_argument('--reset', action='store_true', help='Reset and re-seed all tables with updated data')
+
+    def handle(self, *args, **options):
         self.stdout.write("Seeding birthday surprise database...")
         defaults = get_default_data()
+
+        if options.get('reset'):
+            Memory.objects.all().delete()
+            LoveReason.objects.all().delete()
+            Coupon.objects.all().delete()
+            LoveLetter.objects.all().delete()
+            TreeHeart.objects.all().delete()
+            self.stdout.write("Cleared existing records for re-seed.")
 
         # Seed TreeHearts
         if not TreeHeart.objects.exists():

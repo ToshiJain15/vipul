@@ -14,35 +14,35 @@ def get_default_data():
             'title': 'When Our Worlds Collided ✨',
             'description': 'From the very first moment we spoke, something just clicked. Your laugh was infectious, your eyes were so warm, and I had no idea that day would change my whole life forever.',
             'emoji_icon': '💫',
-            'image_url': 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80',
+            'image_url': 'static/images/snapchat-2078954973.jpg',
         },
         {
-            'date_label': 'Our First Real Date',
+            'date_label': 'Our Sweet Moments',
             'title': 'Hours Felt Like Seconds ☕',
-            'description': 'We sat across each other, talking until the café staff started putting up chairs. I remember walking away thinking, "I have to see him again. He is so special."',
+            'description': 'We sat across each other, talking and laughing until time stood completely still. I remember thinking, "I have to see him again. He is so special."',
             'emoji_icon': '☕',
-            'image_url': 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80',
+            'image_url': 'static/images/snapchat-1449003545.jpg',
         },
         {
             'date_label': 'Unforgettable Adventure',
-            'title': 'Getting Lost Together 🚗',
-            'description': 'That spontaneous road trip where the GPS failed, our playlist was on repeat, and we laughed until our stomachs hurt. That was the day I realized home is not a place—it is you.',
-            'emoji_icon': '🌄',
-            'image_url': 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80',
+            'title': 'Our Late Night Scooty Rides 🛵💨',
+            'description': 'Wrapping my arms tight around your waist, feeling the cool night breeze against our faces, and laughing together down quiet streets. Those scooty rides with you are my absolute favorite feeling in the entire world.',
+            'emoji_icon': '🛵',
+            'image_url': 'https://media.tenor.com/CqLTEfbYvgoAAAAM/bubu-bike-scooter.gif',
         },
         {
-            'date_label': 'The Proposal / The "Yes!" Day',
+            'date_label': 'The Proposal & "Yes!" Day',
             'title': 'The Easiest Decision of My Life 💍',
             'description': 'My hands were shaking, tears welled up in my eyes, and my heart was overflowing. Saying YES to being your partner forever was the most natural, joyful choice I have ever made.',
             'emoji_icon': '💍',
-            'image_url': 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80',
+            'image_url': 'static/images/dsc_9886.jpg',
         },
         {
-            'date_label': 'Today & Always',
-            'title': 'Celebrating You, My Future Husband ❤️',
-            'description': 'Every single day with you is a gift. I cannot wait for all the cozy mornings, funny arguments over dinner, big dreams achieved, and growing old holding your hand.',
+            'date_label': 'Our Forever • 21 Dec 2026',
+            'title': 'Counting Down to Our Big Day 🥂',
+            'description': 'Every single day with you is a gift. I cannot wait to walk down the aisle and marry you on 21 December 2026. Here is to a lifetime of late-night scooty rides and unconditional love.',
             'emoji_icon': '🥂',
-            'image_url': 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80',
+            'image_url': 'static/images/img-20260327-wa0016.jpg',
         },
     ]
 
@@ -52,7 +52,7 @@ def get_default_data():
         {'title': 'Your Silly Morning Smile', 'description': 'That half-awake, sleepy smile before coffee that never fails to melt my heart.', 'icon': '☕'},
         {'title': 'How Hard You Work', 'description': 'Your dedication, passion, and drive to build our dreams and give your best to everything.', 'icon': '🚀'},
         {'title': 'You Always Make Me Laugh', 'description': 'Even on my worst days, you know exactly what goofy thing to say or do to make me giggle.', 'icon': '😂'},
-        {'title': 'The Way You Hold My Hand', 'description': 'Subconsciously reaching for my fingers when we are walking or driving. It is my favorite feeling.', 'icon': '🤝'},
+        {'title': 'The Way You Hold My Hand', 'description': 'Subconsciously reaching for my fingers when we are walking or holding my hands at red lights on our scooty. It is my favorite feeling.', 'icon': '🤝'},
         {'title': 'You Believe in Me', 'description': 'When I doubt myself, you remind me who I am. You are my biggest cheerleader and best friend.', 'icon': '🌟'},
         {'title': 'Your Passion for Life', 'description': 'The spark in your eyes when you talk about things you love and projects you are excited about.', 'icon': '🔥'},
         {'title': 'You Love Me as I Am', 'description': 'With all my flaws, quirks, and mood swings. You love me purely and unconditionally.', 'icon': '🥰'},
@@ -64,7 +64,7 @@ def get_default_data():
         {'title': 'Movie Night Decision Maker', 'description': 'You pick the movie or show, absolutely no vetoes or complaints permitted!', 'icon': '🎬', 'code': 'MOVIE-PASS', 'is_redeemed': False},
         {'title': 'Get Out of Any Argument Free', 'description': 'Play this card during any silly debate and instantly win on the spot!', 'icon': '🕊️', 'code': 'PEACE-CARD', 'is_redeemed': False},
         {'title': 'Breakfast in Bed & Coffee', 'description': 'A lavish morning spread brought straight to bed with a hot cup of love.', 'icon': '🥞', 'code': 'BREAKFAST-BED', 'is_redeemed': False},
-        {'title': 'Spontaneous Day Adventure', 'description': 'Pack a bag! A weekend road trip or fun date wherever your heart desires.', 'icon': '🚗', 'code': 'ROAD-TRIP', 'is_redeemed': False},
+        {'title': 'Midnight Scooty Ride & Chai', 'description': 'Hop on! A late-night scooty ride through the cool breeze with my arms wrapped around your waist, ending with hot chai & ice cream!', 'icon': '🛵', 'code': 'SCOOTY-RIDE', 'is_redeemed': False},
     ]
 
     default_letter = {
@@ -74,23 +74,23 @@ def get_default_data():
 
 Happy Birthday, my love!
 
-As I sit down to write this, my mind floods with a million little memories of you—your gentle laugh, the quiet confidence in your eyes, the warmth of your embrace, and the countless ways you make my life so extraordinarily beautiful.
+As I sit down to write this, my mind floods with our sweetest memories—our late night scooty rides in the cool air, your gentle laugh, the quiet confidence in your eyes, and the countless ways you make my life so extraordinarily beautiful.
 
-You came into my life like a sunrise: slowly, warmly, and filling every corner of my heart with light. Being engaged to you, planning our life together, and knowing I get to call you my husband soon is the greatest blessing I could have ever asked for.
+You came into my life like a sunrise: slowly, warmly, and filling every corner of my heart with light. Being engaged to you, planning our life together, and knowing I get to call you my husband on 21 December 2026 is the greatest blessing I could have ever asked for.
 
 On this special birthday, I want you to know how deeply you are loved, how genuinely you are appreciated, and how proud I am of the incredible man you are. You have a heart of pure gold, an inspiring mind, and a soul that feels like coming home.
 
-May this new year of your life bring you boundless joy, roaring success, perfect health, and everything your heart dreams of. And remember: through every mountain and every valley, I will always be right beside you, cheering for you and loving you more with every beat of my heart.
+May this new year of your life bring you boundless joy, roaring success, perfect health, and everything your heart dreams of. Through every chapter of life, I will always be right beside you, holding your hand and loving you more with every beat of my heart.
 
-Happy Birthday, my handsome fiancé. Here is to celebrating today and every tomorrow together.""",
-        'sign_off': 'Forever & Always With All My Heart,\nYour Wifey-to-be ❤️'
+Happy Birthday, my handsome fiancé. Here is to celebrating today and our forever together.""",
+        'sign_off': 'Forever & Always With All My Heart,\nYour Toshi ❤️'
     }
 
     default_wishes = [
         {
-            'name': 'Your Fiancée',
-            'relationship': 'Wifey-to-be ❤️',
-            'message': 'Happy Birthday to the most amazing man in the universe! I love you more than words could ever describe. Ready to celebrate YOU today! 🥂',
+            'name': 'Toshi',
+            'relationship': 'Your Wifey-to-be ❤️',
+            'message': 'Happy Birthday to the most amazing man in the universe! I love you more than words could ever describe. Ready to marry you on December 21, 2026! 🥂🛵',
             'emoji': '💖'
         },
         {

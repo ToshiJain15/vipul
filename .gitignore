@@ -28,3 +28,6 @@ staticfiles/
 .DS_Store
 Thumbs.db
 
+# Raw camera photos backup folder
+photos/
+

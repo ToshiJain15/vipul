@@ -15,6 +15,16 @@
     background: #f43f5e;
 }
 
+/* Mobile Touch & Tap Optimizations */
+button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-card {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#scratch-canvas {
+    touch-action: none;
+}
+
 /* Glassmorphism Card Utilities */
 .glass-panel {
     background: rgba(26, 17, 36, 0.65);

@@ -378,14 +378,16 @@ function initQuiz() {
         playSuccessChime();
         triggerGrandConfetti();
         quizContainer.innerHTML = `
-            <div class="text-center py-8 space-y-4">
-                <div class="text-5xl animate-bounce">🏆💍💖</div>
+            <div class="text-center py-6 space-y-4">
+                <div class="w-28 h-28 mx-auto rounded-2xl overflow-hidden shadow-xl border-2 border-rose-400/60 animate-bounce">
+                    <img src="https://media.tenor.com/zKhbCRTnmvYAAAAM/cosytales-couple.gif" alt="Cute Couple" class="w-full h-full object-cover">
+                </div>
                 <h3 class="text-2xl sm:text-3xl font-serif text-white">Quiz Score: 100% Soulmate Match!</h3>
                 <p class="text-rose-200 max-w-md mx-auto text-sm sm:text-base">
                     Every answer is right because there is no doubt: you and I were made for each other, Vipul.
                 </p>
-                <div class="p-4 bg-rose-500/20 border border-rose-400/30 rounded-xl inline-block text-xs uppercase tracking-widest text-rose-300 font-cinzel">
-                    Official Soulmate Certificate Granted
+                <div class="p-3.5 bg-rose-500/20 border border-rose-400/30 rounded-xl inline-block text-xs uppercase tracking-widest text-amber-300 font-cinzel font-bold">
+                    Official Soulmate Certificate Granted 🏆💍
                 </div>
             </div>
         `;
