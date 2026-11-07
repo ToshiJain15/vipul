@@ -10,7 +10,7 @@
     <meta property="og:title" content="Happy Birthday {{ fiance_name }}! ❤️">
     <meta property="og:description" content="A special birthday surprise crafted with all my love for my wonderful fiancé.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:image" content="static/images/cinematic_red_saree.jpg">
     <meta name="theme-color" content="#ec4899">
 
     <!-- Fonts -->
@@ -68,65 +68,74 @@
     <!-- Ambient Floating Hearts Canvas -->
     <canvas id="ambient-hearts-canvas" class="fixed inset-0 pointer-events-none z-10"></canvas>
 
+    <!-- Touch & Cursor Sparkle Canvas -->
+    <canvas id="sparkle-trail-canvas" class="fixed inset-0 pointer-events-none z-30"></canvas>
+
     <!-- Navigation Bar -->
-    <nav class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-nightLove/70 border-b border-rose-500/10 transition-all duration-300">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+    <nav class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-nightLove/80 border-b border-rose-500/15 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
             <a href="#hero" class="flex items-center space-x-2 text-rose-300 hover:text-white transition">
                 <span class="text-2xl animate-pulse">❤️</span>
                 <span class="font-cinzel tracking-wider text-sm sm:text-base font-semibold text-rose-200">VIPUL'S DAY</span>
             </a>
             
-            <div class="hidden lg:flex items-center space-x-4 text-xs xl:text-sm font-medium text-rose-200/80">
-                <a href="#gifts-section" class="hover:text-amber-300 transition">🎁 Unwrap Gifts</a>
-                <a href="#open-when-section" class="hover:text-rose-400 transition">💌 Open When</a>
-                <a href="#cupid-section" class="hover:text-rose-400 transition">🏹 Cupid's Bow</a>
-                <a href="#tree-section" class="hover:text-rose-400 transition">🌳 Tree of Hearts</a>
-                <a href="#cake-section" class="hover:text-rose-400 transition">🎂 Birthday Cake</a>
-                <a href="#timeline-section" class="hover:text-rose-400 transition">📖 Our Journey</a>
-                <a href="#reasons-section" class="hover:text-rose-400 transition">💖 Why I Love You</a>
-                <a href="#letter-section" class="hover:text-rose-400 transition">💌 Love Letter</a>
-                <a href="#coupons-section" class="hover:text-rose-400 transition">🎟️ Coupons</a>
-                <a href="#wishes-section" class="hover:text-rose-400 transition">💬 Wishes</a>
+            <div class="hidden xl:flex items-center space-x-3 text-xs font-medium text-rose-200/80">
+                <a href="#gifts-section" class="hover:text-amber-300 transition px-2 py-1">🎁 Gifts</a>
+                <a href="#video-section" class="hover:text-amber-300 transition px-2 py-1">🎥 Video</a>
+                <a href="#scooty-ride-section" class="hover:text-amber-300 transition px-2 py-1">🛵 Scooty Ride</a>
+                <a href="#cake-section" class="hover:text-rose-400 transition px-2 py-1">🎂 Cake</a>
+                <a href="#cupid-section" class="hover:text-rose-400 transition px-2 py-1">🏹 Cupid</a>
+                <a href="#tree-section" class="hover:text-rose-400 transition px-2 py-1">🌳 Tree</a>
+                <a href="#photobooth-section" class="hover:text-rose-400 transition px-2 py-1">📸 Photos</a>
+                <a href="#dream-chapters-section" class="hover:text-rose-400 transition px-2 py-1">✈️ Dreams</a>
+                <a href="#love-meter-section" class="hover:text-rose-400 transition px-2 py-1">💘 Radar</a>
+                <a href="#letter-section" class="hover:text-rose-400 transition px-2 py-1">💌 Letter</a>
+                <a href="#coupons-section" class="hover:text-rose-400 transition px-2 py-1">🎟️ Coupons</a>
+                <a href="#wishes-section" class="hover:text-rose-400 transition px-2 py-1">💬 Wishes</a>
             </div>
 
-            <!-- Music Pill Button -->
+            <!-- Music Pill Button with Sound Toggle -->
             <button id="music-toggle-btn" class="flex items-center space-x-2 bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 px-3.5 py-1.5 rounded-full border border-rose-400/30 text-xs sm:text-sm font-medium transition backdrop-blur shadow-sm hover:shadow-rose-500/20">
                 <span id="music-icon" class="text-base animate-bounce">🎵</span>
-                <span id="music-label">Play Music</span>
+                <span id="music-label">Romantic Music</span>
             </button>
         </div>
     </nav>
 
     <!-- Content Block -->
-    <main class="pb-16 lg:pb-0">
+    <main class="pb-20 lg:pb-0">
         {% block content %}{% endblock %}
     </main>
 
     <!-- Mobile Bottom Navigation Bar (Visible only on mobile screens) -->
-    <div class="fixed bottom-3 inset-x-4 z-40 lg:hidden backdrop-blur-xl bg-nightLove/90 border border-rose-500/40 rounded-full px-4 py-2 shadow-2xl flex items-center justify-around text-xs font-medium text-rose-200 select-none">
-        <a href="#gifts-section" class="flex flex-col items-center hover:text-amber-300 transition">
+    <div class="fixed bottom-3 inset-x-2 sm:inset-x-4 z-40 xl:hidden backdrop-blur-xl bg-nightLove/95 border border-rose-500/40 rounded-full px-2 sm:px-4 py-2 shadow-2xl flex items-center justify-around text-xs font-medium text-rose-200 select-none">
+        <a href="#gifts-section" class="flex flex-col items-center hover:text-amber-300 transition px-1">
             <span class="text-base">🎁</span>
-            <span class="text-[9px] font-cinzel">Gifts</span>
+            <span class="text-[8px] sm:text-[9px] font-cinzel">Gifts</span>
         </a>
-        <a href="#cake-section" class="flex flex-col items-center hover:text-rose-400 transition">
-            <span class="text-base">🎂</span>
-            <span class="text-[9px] font-cinzel">Cake</span>
+        <a href="#video-section" class="flex flex-col items-center hover:text-rose-400 transition px-1">
+            <span class="text-base">🎥</span>
+            <span class="text-[8px] sm:text-[9px] font-cinzel">Video</span>
         </a>
-        <a href="#timeline-section" class="flex flex-col items-center hover:text-rose-400 transition">
+        <a href="#scooty-ride-section" class="flex flex-col items-center hover:text-amber-300 transition px-1">
             <span class="text-base">🛵</span>
-            <span class="text-[9px] font-cinzel">Scooty</span>
+            <span class="text-[8px] sm:text-[9px] font-cinzel">Scooty</span>
         </a>
-        <a href="#tree-section" class="flex flex-col items-center hover:text-rose-400 transition">
-            <span class="text-base">🌳</span>
-            <span class="text-[9px] font-cinzel">Tree</span>
+        <a href="#cake-section" class="flex flex-col items-center hover:text-rose-400 transition px-1">
+            <span class="text-base">🎂</span>
+            <span class="text-[8px] sm:text-[9px] font-cinzel">Cake</span>
         </a>
-        <a href="#letter-section" class="flex flex-col items-center hover:text-rose-400 transition">
+        <a href="#photobooth-section" class="flex flex-col items-center hover:text-rose-400 transition px-1">
+            <span class="text-base">📸</span>
+            <span class="text-[8px] sm:text-[9px] font-cinzel">Photos</span>
+        </a>
+        <a href="#dream-chapters-section" class="flex flex-col items-center hover:text-rose-400 transition px-1">
+            <span class="text-base">✈️</span>
+            <span class="text-[8px] sm:text-[9px] font-cinzel">Dreams</span>
+        </a>
+        <a href="#letter-section" class="flex flex-col items-center hover:text-rose-400 transition px-1">
             <span class="text-base">💌</span>
-            <span class="text-[9px] font-cinzel">Letter</span>
-        </a>
-        <a href="#wishes-section" class="flex flex-col items-center hover:text-rose-400 transition">
-            <span class="text-base">💬</span>
-            <span class="text-[9px] font-cinzel">Wishes</span>
+            <span class="text-[8px] sm:text-[9px] font-cinzel">Letter</span>
         </a>
     </div>
 
@@ -140,6 +149,9 @@
             <p class="text-xs uppercase tracking-widest text-rose-400/80 font-cinzel pt-2">
                 Crafted with endless love for Vipul • Happiest Birthday My Love
             </p>
+            <p class="text-[11px] text-slate-500 font-mono">
+                Vipul & Toshi • Forever & Always • 21 December 2026 💍
+            </p>
         </div>
     </footer>
 
@@ -147,6 +159,8 @@
     <script>
         window.BIRTHDAY_CONFIG = {
             fianceName: "{{ fiance_name|escapejs }}",
+            fianceeName: "{{ fiancee_name|default:'Toshi'|escapejs }}",
+            weddingDate: "{{ wedding_date|default:'2026-12-21'|escapejs }}",
             birthdayDate: "{{ birthday_date|escapejs }}",
             passcode: "{{ surprise_passcode|default:'1402'|escapejs }}",
             csrfToken: "{{ csrf_token }}",
@@ -168,4 +182,3 @@
     </script>
 </body>
 </html>
-

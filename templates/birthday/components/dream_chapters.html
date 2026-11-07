@@ -1,0 +1,104 @@
+<!-- Our 7 Dream Chapters & Lifetime Bucket List (Pre-Wedding Vision Moodboard) -->
+<section id="dream-chapters-section" class="py-20 px-4 relative z-20">
+    <div class="max-w-5xl mx-auto space-y-10 text-center">
+        
+        <!-- Header -->
+        <div class="space-y-3">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-rose-500/15 border border-rose-400/30 text-rose-300 text-xs font-semibold backdrop-blur">
+                <span>✈️🌸</span>
+                <span class="tracking-widest uppercase font-cinzel">Lifetime Bucket List</span>
+                <span>✨</span>
+            </div>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">
+                Our 7 Dream Chapters 🕊️💫
+            </h2>
+            <p class="text-rose-200/80 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+                Seven magical places and moments I dream of living with you as your wife. 
+                <strong class="text-amber-300">Click through the polaroids</strong> and stamp each promise into our future!
+            </p>
+        </div>
+
+        <!-- Interactive 3D Polaroid Stage -->
+        <div class="relative max-w-2xl mx-auto">
+            
+            <!-- Polaroid Card Display -->
+            <div id="dream-card-container" class="relative bg-white text-slate-900 p-5 sm:p-7 pb-10 rounded-3xl shadow-2xl border-4 border-amber-200/60 rotate-[-1deg] transition-all duration-500 hover:rotate-0">
+                
+                <!-- Washi Tape -->
+                <div class="polaroid-tape w-32 bg-amber-200/90 shadow-md rotate-[-2deg] mx-auto -top-3"></div>
+
+                <!-- Top Meta Bar -->
+                <div class="flex items-center justify-between border-b-2 border-slate-200 pb-3 mb-4">
+                    <span id="dream-chapter-num" class="font-cinzel text-xs font-black tracking-widest text-rose-600 uppercase">
+                        CHAPTER 1 OF 7
+                    </span>
+                    <span id="dream-destination-tag" class="text-xs font-cinzel tracking-wider text-slate-500 font-bold">
+                        📍 Wildflower Fairy Trail
+                    </span>
+                </div>
+
+                <!-- Dream Image Frame -->
+                <div class="relative overflow-hidden rounded-2xl bg-slate-900 aspect-[16/9] shadow-inner group">
+                    <img id="dream-card-img" src="static/images/dream_fairy_forest.jpg" alt="Dream Chapter" class="w-full h-full object-cover transition-all duration-500 transform group-hover:scale-105">
+                    
+                    <!-- Floating Location Badge -->
+                    <span id="dream-badge" class="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full font-serif backdrop-blur border border-white/20">
+                        🌲 Walking Through The Enchanted Forest
+                    </span>
+
+                    <!-- Stamped Badge (Shown when stamped) -->
+                    <div id="dream-stamp-badge" class="absolute top-4 right-4 hidden border-4 border-rose-600 text-rose-600 font-cinzel font-black text-sm px-3 py-1 rounded-lg rotate-12 bg-white/90 shadow-xl uppercase tracking-widest animate-bounce">
+                        PROMISED! 💍
+                    </div>
+                </div>
+
+                <!-- Romantic Story Caption -->
+                <div class="mt-5 space-y-2 text-center px-2">
+                    <h3 id="dream-card-title" class="font-serif text-2xl sm:text-3xl font-bold text-slate-800">
+                        The Enchanted Forest Walk
+                    </h3>
+                    <p id="dream-card-desc" class="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans max-w-lg mx-auto">
+                        Walking together down misty morning trails surrounded by fragrant wildflowers, hand in hand, listening to the birds and talking about all our big dreams.
+                    </p>
+                    <p class="font-cursive text-xl text-rose-600 pt-1">
+                        "With you, every path leads to happiness."
+                    </p>
+                </div>
+
+                <!-- Card Action Controls -->
+                <div class="mt-6 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                    <!-- Prev Button -->
+                    <button type="button" id="dream-prev-btn" class="px-4 py-2 rounded-full border border-slate-300 hover:bg-slate-100 text-xs font-bold text-slate-700 transition flex items-center space-x-1">
+                        <span>← Previous</span>
+                    </button>
+
+                    <!-- Stamp Promise Button -->
+                    <button type="button" id="dream-stamp-btn" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition transform hover:scale-105 flex items-center space-x-1.5">
+                        <span>💌</span>
+                        <span>Stamp This Dream for Our Future!</span>
+                    </button>
+
+                    <!-- Next Button -->
+                    <button type="button" id="dream-next-btn" class="px-4 py-2 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition flex items-center space-x-1">
+                        <span>Next Chapter →</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Dots Navigation -->
+            <div id="dream-dots" class="flex justify-center items-center space-x-2 mt-6">
+                <!-- Dynamically generated or static 7 dots -->
+                <button class="dream-dot w-3 h-3 rounded-full bg-amber-400 transition" data-index="0"></button>
+                <button class="dream-dot w-3 h-3 rounded-full bg-white/30 transition" data-index="1"></button>
+                <button class="dream-dot w-3 h-3 rounded-full bg-white/30 transition" data-index="2"></button>
+                <button class="dream-dot w-3 h-3 rounded-full bg-white/30 transition" data-index="3"></button>
+                <button class="dream-dot w-3 h-3 rounded-full bg-white/30 transition" data-index="4"></button>
+                <button class="dream-dot w-3 h-3 rounded-full bg-white/30 transition" data-index="5"></button>
+                <button class="dream-dot w-3 h-3 rounded-full bg-white/30 transition" data-index="6"></button>
+            </div>
+
+        </div>
+
+    </div>
+</section>

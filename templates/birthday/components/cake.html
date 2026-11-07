@@ -3,44 +3,48 @@
     <div class="max-w-4xl mx-auto text-center space-y-8">
         
         <div class="space-y-2">
-            <span class="text-xs uppercase tracking-widest font-cinzel text-rose-400 font-semibold">Make A Wish</span>
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-rose-500/15 border border-rose-400/30 text-rose-300 text-xs font-semibold backdrop-blur">
+                <span>🎂🕯️</span>
+                <span class="tracking-widest uppercase font-cinzel">Special Moment</span>
+                <span>✨</span>
+            </div>
             <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">Your Birthday Cake, Vipul 🎂</h2>
             <p class="text-rose-200/80 text-sm sm:text-base max-w-lg mx-auto">
-                Tap each candle to blow it out, or click the button below to blow them all out and make your biggest wish!
+                Tap each candle to blow it out individually, or hit the button below to blow them all out and make your biggest wish!
             </p>
         </div>
 
         <!-- The Birthday Cake -->
-        <div class="py-8 flex flex-col items-center justify-center">
+        <div class="py-8 flex flex-col items-center justify-center select-none">
             
             <!-- Candles Row -->
             <div class="flex items-end justify-center space-x-6 sm:space-x-8 mb-[-4px] z-30">
                 <!-- Candle 1 -->
-                <div class="candle">
+                <div class="candle cursor-pointer transform hover:scale-110 transition" title="Tap to blow out!">
                     <div class="candle-wick"></div>
                     <div class="flame"></div>
                     <div class="smoke"></div>
                 </div>
                 <!-- Candle 2 -->
-                <div class="candle">
+                <div class="candle cursor-pointer transform hover:scale-110 transition" title="Tap to blow out!">
                     <div class="candle-wick"></div>
                     <div class="flame"></div>
                     <div class="smoke"></div>
                 </div>
                 <!-- Center Main Candle -->
-                <div class="candle h-14 w-3.5">
+                <div class="candle h-14 w-3.5 cursor-pointer transform hover:scale-110 transition" title="Tap to blow out!">
                     <div class="candle-wick"></div>
                     <div class="flame"></div>
                     <div class="smoke"></div>
                 </div>
                 <!-- Candle 4 -->
-                <div class="candle">
+                <div class="candle cursor-pointer transform hover:scale-110 transition" title="Tap to blow out!">
                     <div class="candle-wick"></div>
                     <div class="flame"></div>
                     <div class="smoke"></div>
                 </div>
                 <!-- Candle 5 -->
-                <div class="candle">
+                <div class="candle cursor-pointer transform hover:scale-110 transition" title="Tap to blow out!">
                     <div class="candle-wick"></div>
                     <div class="flame"></div>
                     <div class="smoke"></div>
@@ -50,7 +54,7 @@
             <!-- Cake Tier 1 (Top) -->
             <div class="w-48 sm:w-60 h-16 sm:h-20 bg-gradient-to-r from-rose-400 via-rose-300 to-rose-400 rounded-t-2xl cake-tier relative flex items-center justify-center border-t-4 border-rose-200">
                 <!-- Icing Drops -->
-                <div class="absolute -bottom-2 inset-x-0 flex justify-around text-rose-200 text-lg opacity-80">
+                <div class="absolute -bottom-2 inset-x-0 flex justify-around text-rose-200 text-lg opacity-80 pointer-events-none">
                     <span>🍓</span><span>✨</span><span>🍓</span><span>✨</span><span>🍓</span>
                 </div>
                 <span class="font-cursive text-xl sm:text-2xl text-rose-900 font-bold drop-shadow">Happy Birthday</span>
@@ -68,31 +72,51 @@
             <div class="w-72 sm:w-96 h-4 bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-300 rounded-full shadow-2xl border-t border-white/50"></div>
         </div>
 
-        <!-- Action Button -->
-        <div>
-            <button id="blow-candles-btn" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-400 hover:to-rose-500 text-white font-semibold text-sm sm:text-base shadow-lg shadow-rose-600/30 transition transform hover:scale-105">
-                💨 Blow Out All Candles & Make A Wish
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-4">
+            <button type="button" id="blow-candles-btn" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-500 via-rose-500 to-rose-600 hover:from-amber-400 hover:to-rose-500 text-white font-semibold text-sm sm:text-base shadow-lg shadow-rose-600/30 transition transform hover:scale-105 active:scale-95 flex items-center space-x-2">
+                <span>💨</span>
+                <span>Blow Out All Candles & Make A Wish</span>
+            </button>
+
+            <button type="button" id="relight-candles-btn" class="hidden px-6 py-3.5 rounded-full glass-panel hover:bg-white/15 text-rose-200 hover:text-white font-medium text-xs sm:text-sm border border-rose-400/40 transition flex items-center space-x-2">
+                <span>🕯️</span>
+                <span>Relight Candles</span>
             </button>
         </div>
     </div>
 
-    <!-- Wish Granted Modal -->
-    <div id="wish-granted-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <!-- Wish Granted Modal with Interactive Wish Entry -->
+    <div id="wish-granted-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
         <div class="glass-panel p-6 sm:p-10 rounded-3xl max-w-md w-full text-center space-y-5 border border-rose-400/50 shadow-2xl animate-float">
             <div class="w-28 h-28 mx-auto rounded-2xl overflow-hidden shadow-lg border-2 border-rose-400/50">
                 <img src="https://media.tenor.com/z0L0Pp-sURIAAAAM/hbd.gif" alt="Happy Birthday" class="w-full h-full object-cover">
             </div>
+            
             <div class="space-y-1">
                 <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white">WISH GRANTED! 🌟</h3>
                 <p class="text-xs uppercase tracking-widest text-amber-300 font-cinzel">Sealed by the Universe & My Love</p>
             </div>
+            
             <p class="text-rose-100 text-xs sm:text-sm leading-relaxed">
-                May every single wish you just whispered into your heart come true this year, Vipul. You deserve all the happiness, success, and love in the world.
+                May every single dream you hold in your heart come true this year, Vipul. You deserve all the happiness, success, and love in the universe!
             </p>
-            <button id="close-wish-modal" class="w-full py-3 rounded-full bg-gradient-to-r from-rose-600 to-rose-500 text-white font-medium hover:brightness-110 transition text-sm">
+
+            <!-- Optional Secret Wish Note input -->
+            <div class="p-3 bg-black/40 rounded-xl border border-rose-400/30 text-left space-y-1">
+                <label for="fiance-wish-input" class="text-[11px] font-cinzel text-amber-200 block font-bold">Whisper your secret wish (optional):</label>
+                <div class="flex items-center space-x-2">
+                    <input type="text" id="fiance-wish-input" placeholder="Type your wish here..." class="w-full bg-nightLove/80 border border-rose-400/40 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-amber-300">
+                    <button type="button" id="save-wish-star-btn" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-white rounded-lg text-xs font-bold whitespace-nowrap">
+                        ⭐ Send
+                    </button>
+                </div>
+                <p id="wish-locked-msg" class="text-[10px] text-amber-300 italic hidden">✨ Your wish has flown into the stars and locked into my heart!</p>
+            </div>
+
+            <button type="button" id="close-wish-modal" class="w-full py-3 rounded-full bg-gradient-to-r from-rose-600 to-rose-500 text-white font-medium hover:brightness-110 transition text-sm">
                 Receive the Love ❤️
             </button>
         </div>
     </div>
 </section>
-

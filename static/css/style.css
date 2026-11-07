@@ -370,3 +370,116 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
 }
 
 
+
+/* =========================================================
+   Interactive Midnight Scooty Ride Simulator Styles
+   ========================================================= */
+@keyframes roadMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -200px 0;
+    }
+}
+
+.road-scrolling {
+    background: repeating-linear-gradient(90deg, #facc15 0px, #facc15 30px, transparent 30px, transparent 60px);
+    background-size: 60px 4px;
+    animation: roadMove 0.4s linear infinite;
+}
+
+@keyframes scootyVibrate {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-1.5px) rotate(-0.5deg); }
+    75% { transform: translateY(1px) rotate(0.5deg); }
+}
+
+.scooty-accelerating {
+    animation: scootyVibrate 0.12s linear infinite;
+}
+
+@keyframes streetlightMove {
+    0% {
+        transform: translateX(110%);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateX(-10%);
+        opacity: 0;
+    }
+}
+
+.streetlight {
+    position: absolute;
+    top: 15px;
+    font-size: 1.5rem;
+    pointer-events-none;
+}
+
+.streetlight-active .streetlight-1 {
+    animation: streetlightMove 2.2s linear infinite;
+}
+.streetlight-active .streetlight-2 {
+    animation: streetlightMove 2.2s linear infinite 0.7s;
+}
+.streetlight-active .streetlight-3 {
+    animation: streetlightMove 2.2s linear infinite 1.4s;
+}
+
+/* =========================================================
+   Biometric Love Meter & Scanner Styles
+   ========================================================= */
+@keyframes scanLaser {
+    0% {
+        top: 0%;
+        opacity: 0.9;
+    }
+    50% {
+        top: 98%;
+        opacity: 0.9;
+    }
+    100% {
+        top: 0%;
+        opacity: 0.9;
+    }
+}
+
+.scanning-active #scanner-laser-beam {
+    opacity: 1 !important;
+    animation: scanLaser 1s ease-in-out infinite;
+}
+
+/* =========================================================
+   Dream Chapters 3D Polaroid & Stamp
+   ========================================================= */
+@keyframes stampIn {
+    0% {
+        transform: scale(3) rotate(-20deg);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(0.9) rotate(14deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) rotate(12deg);
+        opacity: 1;
+    }
+}
+
+.stamped-anim {
+    display: block !important;
+    animation: stampIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Photostrip Card Transitions */
+.photostrip-card {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}

@@ -1,0 +1,124 @@
+<!-- Biometric Love Meter & Soulmate Radar Section -->
+<section id="love-meter-section" class="py-20 px-4 relative z-20">
+    <div class="max-w-4xl mx-auto space-y-10 text-center">
+        
+        <!-- Header -->
+        <div class="space-y-3">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-rose-500/15 border border-rose-400/30 text-rose-300 text-xs font-semibold backdrop-blur">
+                <span>💘📡</span>
+                <span class="tracking-widest uppercase font-cinzel">Biometric Compatibility</span>
+                <span>✨</span>
+            </div>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">
+                The Soulmate Love Radar 💖
+            </h2>
+            <p class="text-rose-200/80 text-sm sm:text-base max-w-lg mx-auto">
+                Place and hold your thumb (or mouse) on the glowing heart sensor to measure our love frequency!
+            </p>
+        </div>
+
+        <!-- The Scanner Box -->
+        <div class="glass-panel-gold rounded-3xl p-8 sm:p-12 border border-amber-300/30 shadow-2xl relative max-w-xl mx-auto select-none overflow-hidden">
+            
+            <!-- Radar Concentric Circles -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+                <div class="w-96 h-96 rounded-full border border-rose-400 animate-ping" style="animation-duration: 4s;"></div>
+                <div class="w-72 h-72 rounded-full border border-amber-300"></div>
+                <div class="w-48 h-48 rounded-full border border-rose-500"></div>
+            </div>
+
+            <!-- Heart Frequency Meter Gauge -->
+            <div class="space-y-4">
+                <div class="flex justify-between items-center text-xs font-cinzel text-amber-300 font-bold px-2">
+                    <span>LOVE LEVEL DETECTOR</span>
+                    <span id="love-meter-status">READY TO SCAN</span>
+                </div>
+
+                <!-- Digital Percentage Counter -->
+                <div class="p-4 rounded-2xl bg-black/50 border border-rose-500/30">
+                    <div id="love-meter-percent" class="font-mono text-5xl sm:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-rose-300 to-amber-200">
+                        0%
+                    </div>
+                    <p id="love-meter-quote" class="text-xs text-rose-200/80 font-cursive text-lg mt-1">
+                        "Awaiting biometric thumb scan..."
+                    </p>
+                </div>
+
+                <!-- Animated Gauge Bar -->
+                <div class="w-full h-4 rounded-full bg-slate-900 border border-slate-700 overflow-hidden relative p-0.5">
+                    <div id="love-meter-fill" class="h-full bg-gradient-to-r from-rose-600 via-rose-400 to-amber-300 rounded-full w-0 transition-all duration-100"></div>
+                </div>
+            </div>
+
+            <!-- The Biometric Scanner Button -->
+            <div class="pt-8 flex flex-col items-center justify-center">
+                <div id="thumbprint-scanner" class="relative group cursor-pointer">
+                    <!-- Glowing Pulse Rings -->
+                    <div class="absolute -inset-4 rounded-full bg-rose-500/20 blur-xl animate-pulse group-hover:bg-rose-500/40 transition"></div>
+                    
+                    <!-- Scanner Button -->
+                    <div class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-tr from-rose-900 via-rose-700 to-rose-500 border-4 border-amber-300/80 shadow-[0_0_30px_rgba(244,63,94,0.6)] flex flex-col items-center justify-center transform active:scale-95 transition">
+                        <span class="text-4xl filter drop-shadow">❤️</span>
+                        <span class="text-[9px] font-cinzel font-black tracking-widest text-amber-200 uppercase mt-1">
+                            HOLD TO SCAN
+                        </span>
+                    </div>
+
+                    <!-- Scan Beam Animation (Active while holding) -->
+                    <div id="scanner-laser-beam" class="absolute inset-x-0 h-1 bg-cyan-300 shadow-[0_0_12px_#67e8f9] top-0 opacity-0 pointer-events-none transition-opacity"></div>
+                </div>
+
+                <p class="text-[11px] text-rose-300/70 mt-4 italic">
+                    Press and hold your finger or mouse firmly on the heart button!
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 1000% Soulmates Certificate Modal -->
+    <div id="soulmate-cert-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="relative bg-white text-slate-900 p-6 sm:p-10 rounded-3xl max-w-lg w-full text-center space-y-6 border-8 border-double border-amber-400 shadow-2xl animate-float">
+            
+            <!-- Top Wax Seal -->
+            <div class="w-16 h-16 mx-auto -mt-14 rounded-full bg-rose-600 text-white flex items-center justify-center text-3xl shadow-xl border-4 border-amber-300">
+                💍
+            </div>
+
+            <!-- Certificate Header -->
+            <div class="space-y-1 border-b-2 border-slate-200 pb-4">
+                <span class="text-xs uppercase tracking-widest font-cinzel text-amber-600 font-bold block">OFFICIAL COSMIC REGISTRY</span>
+                <h3 class="font-serif text-3xl font-black text-slate-900">1000% SOULMATE CERTIFICATE</h3>
+                <p class="text-xs font-cinzel text-slate-500">Document № LOVE-1402-2026</p>
+            </div>
+
+            <!-- Certificate Body -->
+            <div class="space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed text-left bg-amber-50/60 p-4 rounded-xl border border-amber-200/80">
+                <p>This certifies that <strong>VIPUL JAIN</strong> and <strong>TOSHI JAIN</strong> possess an infinitely synchronized heart resonance.</p>
+                <div class="grid grid-cols-2 gap-2 text-xs pt-1">
+                    <div><strong>Late Night Giggles:</strong> 100% Match</div>
+                    <div><strong>Scooty Ride Snuggles:</strong> 1000% Overflow</div>
+                    <div><strong>Wedding Countdown:</strong> 21 Dec 2026</div>
+                    <div><strong>Love Expiration:</strong> NEVER ♾️</div>
+                </div>
+            </div>
+
+            <!-- Signatures -->
+            <div class="flex justify-between items-end pt-2 text-left border-t border-slate-200 px-2">
+                <div>
+                    <span class="font-cursive text-2xl text-rose-600 font-bold block">Toshi ❤️</span>
+                    <span class="text-[10px] uppercase tracking-wider font-cinzel text-slate-500">Your Fiancée & Best Friend</span>
+                </div>
+                <div class="text-right">
+                    <span class="font-cinzel text-sm text-amber-700 font-bold block">SEALED FOREVER</span>
+                    <span class="text-[10px] uppercase tracking-wider font-cinzel text-slate-500">By The Universe ✨</span>
+                </div>
+            </div>
+
+            <button type="button" id="close-soulmate-modal" class="w-full py-3.5 rounded-full bg-gradient-to-r from-rose-600 to-rose-500 text-white font-bold hover:brightness-110 transition shadow-lg text-sm">
+                Forever In Love ❤️
+            </button>
+        </div>
+    </div>
+</section>

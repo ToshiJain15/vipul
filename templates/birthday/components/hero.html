@@ -18,7 +18,7 @@
         
         <!-- Left Side: "MY BOY" Scrapbook Polaroid Photo Frame (As seen in Instagram Reel 2) -->
         <div class="lg:col-span-5 flex justify-center">
-            <div class="relative group">
+            <div class="relative group cursor-pointer" id="hero-polaroid-frame">
                 <!-- Washi Tape at Top -->
                 <div class="polaroid-tape w-28 bg-amber-200/90 shadow-md rotate-[-2deg]"></div>
 
@@ -30,17 +30,27 @@
                         MY BOY ❤️
                     </div>
 
-                    <!-- Cute Retro Blue Star Sticker (Top Left) -->
+                    <!-- Cute Retro Star Sticker (Top Left) -->
                     <div class="absolute -top-3 -left-3 text-3xl filter drop-shadow">
                         ⭐
                     </div>
 
-                    <!-- Photo Container -->
+                    <!-- Photo Container with Camera Flash overlay -->
                     <div class="w-full h-72 sm:h-80 overflow-hidden rounded-lg bg-slate-900 relative">
                         <img id="hero-fiance-photo" src="static/images/img-20260412-wa0003.jpg" alt="{{ fiance_name }}" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                        <span class="absolute bottom-3 left-3 text-white text-xs font-medium bg-black/60 px-2.5 py-1 rounded-full backdrop-blur">
+                        
+                        <!-- Camera Flash Effect Element -->
+                        <div id="hero-camera-flash" class="absolute inset-0 bg-white opacity-0 pointer-events-none transition-opacity duration-200"></div>
+
+                        <!-- Photo Caption Badge -->
+                        <span id="hero-photo-tag" class="absolute bottom-3 left-3 text-white text-xs font-medium bg-black/60 px-2.5 py-1 rounded-full backdrop-blur border border-white/20">
                             My Handsome Boy ✨
+                        </span>
+
+                        <!-- Tap hint badge -->
+                        <span class="absolute top-3 right-3 text-white text-[9px] font-cinzel font-bold bg-rose-600/90 px-2 py-0.5 rounded-full shadow animate-pulse">
+                            📸 TAP PHOTO
                         </span>
                     </div>
 
@@ -81,7 +91,7 @@
             <!-- Floating Romantic Pill Badge -->
             <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs sm:text-sm font-medium backdrop-blur">
                 <span>✨</span>
-                <span class="tracking-widest uppercase font-cinzel">Special 12:00 AM Birthday Surprise</span>
+                <span class="tracking-widest uppercase font-cinzel">Special Birthday Surprise For Vipul</span>
                 <span>✨</span>
             </div>
 
@@ -97,7 +107,7 @@
 
             <!-- Touching Subtitle -->
             <p class="text-base sm:text-lg text-rose-200/90 leading-relaxed font-light max-w-xl">
-                Here is a magical little digital scrapbook made with all my love for you, my handsome fiancé. Filled with our favorite memories, gifts to unwrap, love coupons, and secret notes!
+                Here is a magical little digital scrapbook made with all my love for you, my handsome fiancé. Filled with our favorite memories, gifts to unwrap, love coupons, and our late-night scooty rides!
             </p>
 
             <!-- CTA Action Buttons -->
@@ -106,9 +116,13 @@
                     <span>🎁</span>
                     <span>Unwrap Your Gifts</span>
                 </a>
+                <a href="#scooty-ride-section" class="px-7 py-3.5 rounded-full bg-rose-600/30 hover:bg-rose-600/50 text-white font-semibold text-sm sm:text-base border border-rose-400/50 transition transform hover:-translate-y-0.5 flex items-center space-x-2">
+                    <span>🛵</span>
+                    <span>Take Scooty Ride</span>
+                </a>
                 <a href="#cake-section" class="px-7 py-3.5 rounded-full glass-panel hover:bg-white/10 text-rose-200 hover:text-white font-semibold text-sm sm:text-base border border-rose-400/30 transition transform hover:-translate-y-0.5 flex items-center space-x-2">
                     <span>🎂</span>
-                    <span>Blow Out The Candles</span>
+                    <span>Blow Out Candles</span>
                 </a>
             </div>
         </div>

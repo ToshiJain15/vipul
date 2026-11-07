@@ -1,14 +1,23 @@
-/* Interactive Features for Vipul's Birthday Surprise Website */
+/* =========================================================
+   Interactive Features for Vipul's Birthday Surprise Website
+   ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
     initPasscodeScreen();
+    initHeroPhotoSwitcher();
     initCupidBow();
     initTreeOfHearts();
     initGiftsUnboxing();
     initOpenWhenLetters();
     initAmbientHearts();
+    initSparkleTrail();
     initCountdown();
     initCakeCandles();
+    initScootyRide();
+    initVideoSurprise();
+    initPhotoboothTabs();
+    initDreamChapters();
+    initLoveMeter();
     initLoveLetter();
     initCoupons();
     initQuiz();
@@ -88,7 +97,75 @@ function initAmbientHearts() {
 }
 
 /* =========================================================
-   2. Live Birthday Countdown Timer
+   2. Touch & Cursor Sparkle & Pastel Hearts Trail ✨💖
+   ========================================================= */
+function initSparkleTrail() {
+    const canvas = document.getElementById('sparkle-trail-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    const sparkleEmojis = ['✨', '💖', '⭐', '🌸', '💕'];
+
+    function addSparkle(x, y) {
+        for (let i = 0; i < 2; i++) {
+            particles.push({
+                x: x + (Math.random() - 0.5) * 20,
+                y: y + (Math.random() - 0.5) * 20,
+                size: Math.random() * 12 + 10,
+                char: sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)],
+                opacity: 1,
+                speedY: -(Math.random() * 1.5 + 0.5),
+                speedX: (Math.random() - 0.5) * 1.5,
+                rot: (Math.random() - 0.5) * 0.2
+            });
+        }
+    }
+
+    window.addEventListener('mousemove', (e) => {
+        if (Math.random() > 0.4) addSparkle(e.clientX, e.clientY);
+    });
+
+    window.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches[0]) {
+            addSparkle(e.touches[0].clientX, e.touches[0].clientY);
+        }
+    }, { passive: true });
+
+    function renderSparkles() {
+        ctx.clearRect(0, 0, width, height);
+        for (let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
+            p.x += p.speedX;
+            p.y += p.speedY;
+            p.opacity -= 0.02;
+
+            if (p.opacity <= 0) {
+                particles.splice(i, 1);
+                continue;
+            }
+
+            ctx.save();
+            ctx.globalAlpha = p.opacity;
+            ctx.font = `${p.size}px serif`;
+            ctx.fillText(p.char, p.x, p.y);
+            ctx.restore();
+        }
+        requestAnimationFrame(renderSparkles);
+    }
+    renderSparkles();
+}
+
+/* =========================================================
+   3. Live Birthday Countdown Timer
    ========================================================= */
 function initCountdown() {
     const daysEl = document.getElementById('count-days');
@@ -99,13 +176,8 @@ function initCountdown() {
 
     if (!daysEl) return;
 
-    // Target birthday date: either from Django config or default 14 days out
-    let targetStr = window.BIRTHDAY_CONFIG ? window.BIRTHDAY_CONFIG.birthdayDate : '2026-11-20';
-    let target = new Date(targetStr + 'T00:00:00');
-    if (isNaN(target.getTime())) {
-        target = new Date();
-        target.setDate(target.getDate() + 7);
-    }
+    const bdayStr = (window.BIRTHDAY_CONFIG && window.BIRTHDAY_CONFIG.birthdayDate) || '2026-11-20';
+    const target = new Date(`${bdayStr}T00:00:00`);
 
     function update() {
         const now = new Date();
@@ -136,13 +208,60 @@ function initCountdown() {
 }
 
 /* =========================================================
-   3. Interactive Birthday Cake & Candle Blowing
+   4. Hero Photo Switcher (Click Polaroid to switch photos)
+   ========================================================= */
+function initHeroPhotoSwitcher() {
+    const frame = document.getElementById('hero-polaroid-frame');
+    const photo = document.getElementById('hero-fiance-photo');
+    const tag = document.getElementById('hero-photo-tag');
+    const flash = document.getElementById('hero-camera-flash');
+
+    if (!frame || !photo) return;
+
+    const gallery = [
+        { src: 'static/images/img-20260412-wa0003.jpg', tag: 'My Handsome Boy ✨' },
+        { src: 'static/images/cinematic_red_saree.jpg', tag: 'Our Pure Cinema Love ❤️' },
+        { src: 'static/images/bouquet_celebration.jpg', tag: 'Roses & Smiles 🌹' },
+        { src: 'static/images/lavender_festive.jpg', tag: 'Sweet Celebrations 🥂' },
+        { src: 'static/images/img-20260725-wa0010.jpg', tag: 'My Royal King 👑' },
+        { src: 'static/images/img-20260508-wa0014.jpg', tag: 'Our Cute Chibi Avatars 🧸' }
+    ];
+
+    let currentIdx = 0;
+
+    frame.addEventListener('click', (e) => {
+        // Prevent triggering if clicked on inner link
+        if (e.target.tagName === 'A') return;
+
+        currentIdx = (currentIdx + 1) % gallery.length;
+
+        // Camera shutter sound & flash
+        playCameraShutter();
+        if (flash) {
+            flash.style.opacity = '0.9';
+            setTimeout(() => flash.style.opacity = '0', 150);
+        }
+
+        setTimeout(() => {
+            photo.src = gallery[currentIdx].src;
+            if (tag) tag.textContent = gallery[currentIdx].tag;
+            triggerMiniConfetti(photo);
+        }, 80);
+    });
+}
+
+/* =========================================================
+   5. Interactive Birthday Cake & Candles
    ========================================================= */
 function initCakeCandles() {
     const candles = document.querySelectorAll('.candle');
     const blowAllBtn = document.getElementById('blow-candles-btn');
+    const relightBtn = document.getElementById('relight-candles-btn');
     const wishModal = document.getElementById('wish-granted-modal');
     const closeWishBtn = document.getElementById('close-wish-modal');
+    const saveWishBtn = document.getElementById('save-wish-star-btn');
+    const wishInput = document.getElementById('fiance-wish-input');
+    const wishLockedMsg = document.getElementById('wish-locked-msg');
 
     let blownCount = 0;
 
@@ -152,7 +271,7 @@ function initCakeCandles() {
             if (flame && !flame.classList.contains('blown-out')) {
                 flame.classList.add('blown-out');
                 blownCount++;
-                playPopSound();
+                playBlowSound();
                 triggerMiniConfetti(candle);
 
                 if (blownCount === candles.length) {
@@ -169,19 +288,34 @@ function initCakeCandles() {
                 if (flame) flame.classList.add('blown-out');
             });
             blownCount = candles.length;
+            playBlowSound();
             onAllCandlesBlown();
+        });
+    }
+
+    if (relightBtn) {
+        relightBtn.addEventListener('click', () => {
+            candles.forEach(candle => {
+                const flame = candle.querySelector('.flame');
+                if (flame) flame.classList.remove('blown-out');
+            });
+            blownCount = 0;
+            relightBtn.classList.add('hidden');
+            playPopSound();
         });
     }
 
     function onAllCandlesBlown() {
         triggerGrandConfetti();
-        playSuccessChime();
+        playHappyBirthdayTune();
+        if (relightBtn) relightBtn.classList.remove('hidden');
+
         setTimeout(() => {
             if (wishModal) {
                 wishModal.classList.remove('hidden');
                 wishModal.classList.add('flex');
             }
-        }, 800);
+        }, 1200);
     }
 
     if (closeWishBtn && wishModal) {
@@ -190,22 +324,827 @@ function initCakeCandles() {
             wishModal.classList.remove('flex');
         });
     }
+
+    if (saveWishBtn && wishInput) {
+        saveWishBtn.addEventListener('click', () => {
+            const text = wishInput.value.trim();
+            if (!text) return;
+            playSuccessChime();
+            triggerGrandConfetti();
+            if (wishLockedMsg) wishLockedMsg.classList.remove('hidden');
+            wishInput.disabled = true;
+            saveWishBtn.disabled = true;
+            saveWishBtn.textContent = '⭐ Locked!';
+        });
+    }
 }
 
 /* =========================================================
-   4. Flip Cards Touch Support
+   6. Interactive Midnight Scooty Ride Simulator (No Cars!)
+   ========================================================= */
+function initScootyRide() {
+    const cruiseBtn = document.getElementById('scooty-cruise-btn');
+    const hornBtn = document.getElementById('scooty-horn-btn');
+    const track = document.getElementById('scooty-track');
+    const vehicle = document.getElementById('scooty-vehicle');
+    const roadLines = document.getElementById('road-lines');
+    const speedEl = document.getElementById('scooty-speed');
+    const distEl = document.getElementById('scooty-distance');
+    const snuggleEl = document.getElementById('scooty-snuggle');
+    const progressBar = document.getElementById('scooty-progress-bar');
+    const btnText = document.getElementById('scooty-btn-text');
+
+    const mBox = document.getElementById('scooty-milestone-box');
+    const mIcon = document.getElementById('milestone-icon');
+    const mTag = document.getElementById('milestone-tag');
+    const mTitle = document.getElementById('milestone-title');
+    const mDesc = document.getElementById('milestone-desc');
+
+    const finishModal = document.getElementById('scooty-finish-modal');
+    const closeFinishBtn = document.getElementById('close-scooty-modal');
+
+    if (!cruiseBtn) return;
+
+    let isCruising = false;
+    let speed = 0;
+    let distance = 0;
+    const maxDistance = 2026;
+    let cruiseInterval = null;
+    let engineOsc = null;
+
+    const milestones = [
+        {
+            dist: 400,
+            icon: '☕',
+            tag: 'Milestone 1 • 400m',
+            title: 'Midnight Cutting Chai & Bun Maska',
+            desc: 'Stopping at our favorite midnight tea stall. You always let me take the first warm sip in the cool air.',
+            snuggle: 'Warm Sip ☕'
+        },
+        {
+            dist: 800,
+            icon: '🎧',
+            tag: 'Milestone 2 • 800m',
+            title: 'One Earphone Shared in the Breeze',
+            desc: 'Listening to our favorite romantic song on repeat. Your thumb tapping gently to the beat on the handlebar.',
+            snuggle: 'Melodic 🎵'
+        },
+        {
+            dist: 1300,
+            icon: '💨',
+            tag: 'Milestone 3 • 1300m',
+            title: 'Cool Night Wind & Warm Hug',
+            desc: 'Wrapping my arms as tight as possible around your waist, resting my cheek against your back. Pure peace.',
+            snuggle: 'Tight Hug 🤗'
+        },
+        {
+            dist: 1700,
+            icon: '🌌',
+            tag: 'Milestone 4 • 1700m',
+            title: 'Secret Stargazing Spot at the Lake',
+            desc: 'We parked the scooty, sat under the open sky, and talked until our cheeks were cold and hearts were full.',
+            snuggle: 'Stargazing ✨'
+        },
+        {
+            dist: 2026,
+            icon: '💍',
+            tag: 'Milestone 5 • 2026m',
+            title: 'Destination: 21 December 2026!',
+            desc: 'Our Wedding Day! Ready for a lifetime of late-night scooty rides, road trips of the heart, and forever with you!',
+            snuggle: 'Forever & Always 💍'
+        }
+    ];
+
+    let currentMIndex = 0;
+
+    function startCruise() {
+        if (isCruising) return;
+        isCruising = true;
+        if (roadLines) roadLines.classList.add('road-scrolling');
+        if (track) track.classList.add('streetlight-active');
+        if (vehicle) vehicle.classList.add('scooty-accelerating');
+        if (btnText) btnText.textContent = 'CRUISING IN THE BREEZE...';
+
+        startEngineSound();
+
+        cruiseInterval = setInterval(() => {
+            if (speed < 42) speed += 3;
+            distance += Math.floor(speed * 0.4) + 4;
+
+            if (distance >= maxDistance) {
+                distance = maxDistance;
+                stopCruise();
+                onRideFinished();
+            }
+
+            if (speedEl) speedEl.textContent = speed;
+            if (distEl) distEl.textContent = distance;
+            if (progressBar) progressBar.style.width = `${(distance / maxDistance) * 100}%`;
+
+            // Check milestones
+            if (currentMIndex < milestones.length && distance >= milestones[currentMIndex].dist) {
+                const m = milestones[currentMIndex];
+                if (mIcon) mIcon.textContent = m.icon;
+                if (mTag) mTag.textContent = m.tag;
+                if (mTitle) mTitle.textContent = m.title;
+                if (mDesc) mDesc.textContent = m.desc;
+                if (snuggleEl) snuggleEl.textContent = m.snuggle;
+                playSuccessChime();
+                if (mBox) {
+                    mBox.classList.add('scale-105', 'border-amber-400');
+                    setTimeout(() => mBox.classList.remove('scale-105', 'border-amber-400'), 500);
+                }
+                currentMIndex++;
+            }
+        }, 100);
+    }
+
+    function stopCruise() {
+        if (!isCruising) return;
+        isCruising = false;
+        clearInterval(cruiseInterval);
+        stopEngineSound();
+
+        if (roadLines) roadLines.classList.remove('road-scrolling');
+        if (track) track.classList.remove('streetlight-active');
+        if (vehicle) vehicle.classList.remove('scooty-accelerating');
+        if (btnText) btnText.textContent = 'PRESS & HOLD TO CRUISE';
+
+        // Decelerate speed
+        const decel = setInterval(() => {
+            if (speed > 0) {
+                speed = Math.max(0, speed - 5);
+                if (speedEl) speedEl.textContent = speed;
+            } else {
+                clearInterval(decel);
+            }
+        }, 80);
+    }
+
+    function onRideFinished() {
+        triggerGrandConfetti();
+        playSuccessChime();
+        setTimeout(() => {
+            if (finishModal) {
+                finishModal.classList.remove('hidden');
+                finishModal.classList.add('flex');
+            }
+        }, 500);
+    }
+
+    // Mouse & Touch bindings
+    cruiseBtn.addEventListener('mousedown', startCruise);
+    window.addEventListener('mouseup', stopCruise);
+
+    cruiseBtn.addEventListener('touchstart', (e) => { e.preventDefault(); startCruise(); });
+    window.addEventListener('touchend', stopCruise);
+
+    // Spacebar keyboard binding
+    window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+            startCruise();
+        }
+    });
+    window.addEventListener('keyup', (e) => {
+        if (e.code === 'Space') {
+            stopCruise();
+        }
+    });
+
+    // Horn / Bell button
+    if (hornBtn) {
+        hornBtn.addEventListener('click', () => {
+            playScootyBell();
+            triggerMiniConfetti(hornBtn);
+        });
+    }
+
+    if (closeFinishBtn && finishModal) {
+        closeFinishBtn.addEventListener('click', () => {
+            finishModal.classList.add('hidden');
+            finishModal.classList.remove('flex');
+        });
+    }
+
+    function startEngineSound() {
+        if (!audioCtx) {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            audioCtx = new AudioContext();
+        }
+        try {
+            engineOsc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            engineOsc.type = 'sawtooth';
+            engineOsc.frequency.setValueAtTime(80, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
+            engineOsc.connect(gain);
+            gain.connect(audioCtx.destination);
+            engineOsc.start();
+        } catch (e) {}
+    }
+
+    function stopEngineSound() {
+        if (engineOsc) {
+            try { engineOsc.stop(); } catch (e) {}
+            engineOsc = null;
+        }
+    }
+}
+
+/* =========================================================
+   7. Dedicated Birthday Video Surprise Player
+   ========================================================= */
+function initVideoSurprise() {
+    const video = document.getElementById('birthday-fiance-video');
+    const overlay = document.getElementById('video-play-overlay');
+
+    if (!video || !overlay) return;
+
+    overlay.addEventListener('click', () => {
+        video.play();
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        triggerGrandConfetti();
+        playSuccessChime();
+    });
+
+    video.addEventListener('pause', () => {
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+    });
+
+    video.addEventListener('ended', () => {
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+        triggerGrandConfetti();
+    });
+}
+
+/* =========================================================
+   8. Photobooth Strips Switcher
+   ========================================================= */
+function initPhotoboothTabs() {
+    const btns = document.querySelectorAll('.strip-tab-btn');
+    const strips = [
+        document.getElementById('photostrip-1'),
+        document.getElementById('photostrip-2'),
+        document.getElementById('photostrip-3')
+    ];
+
+    btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetId = btn.dataset.strip;
+
+            btns.forEach(b => {
+                b.classList.remove('bg-rose-600', 'text-white', 'border-rose-400');
+                b.classList.add('glass-panel', 'text-rose-200');
+            });
+            btn.classList.add('bg-rose-600', 'text-white', 'border-rose-400');
+            btn.classList.remove('glass-panel', 'text-rose-200');
+
+            strips.forEach((strip, i) => {
+                if (strip) {
+                    if (i + 1 == targetId) {
+                        strip.classList.remove('hidden');
+                        triggerMiniConfetti(strip);
+                    } else {
+                        strip.classList.add('hidden');
+                    }
+                }
+            });
+            playPopSound();
+        });
+    });
+}
+
+/* =========================================================
+   9. Our 7 Dream Chapters & Lifetime Bucket List
+   ========================================================= */
+function initDreamChapters() {
+    const chapters = [
+        {
+            num: 'CHAPTER 1 OF 7',
+            tag: '📍 Wildflower Fairy Trail',
+            src: 'static/images/dream_fairy_forest.jpg',
+            badge: '🌲 Walking Through The Enchanted Forest',
+            title: 'The Enchanted Forest Walk',
+            desc: 'Walking together down misty morning trails surrounded by fragrant wildflowers, hand in hand, listening to the birds and talking about all our big dreams.'
+        },
+        {
+            num: 'CHAPTER 2 OF 7',
+            tag: '📍 Cherry Blossom Grove',
+            src: 'static/images/dream_cherry_blossom.jpg',
+            badge: '🌸 Cherry Blossom Spring Morning',
+            title: 'Cherry Blossom Romance',
+            desc: 'Under a canopy of soft pink petals floating in the breeze, holding each other close and taking in the sweet morning sun.'
+        },
+        {
+            num: 'CHAPTER 3 OF 7',
+            tag: '📍 Coastal Sunset Cliff',
+            src: 'static/images/dream_sunset_cliff.jpg',
+            badge: '🌅 Forehead Kisses at Golden Hour',
+            title: 'Sunset Horizon Embrace',
+            desc: 'Standing on the edge of the sea as the sun turns golden and orange, wrapping your arms around me and kissing my forehead.'
+        },
+        {
+            num: 'CHAPTER 4 OF 7',
+            tag: '📍 Tropical Island Shore',
+            src: 'static/images/dream_beach_waves.jpg',
+            badge: '🌊 Splashing in the Waves',
+            title: 'Ocean Splash & Laughter',
+            desc: 'Running barefoot into the gentle surf, holding your hands, splashing waves at each other, and laughing till our sides hurt.'
+        },
+        {
+            num: 'CHAPTER 5 OF 7',
+            tag: '📍 Emerald Willow Lake',
+            src: 'static/images/dream_lake_boat.jpg',
+            badge: '🛶 Drifting Under Weeping Willows',
+            title: 'Tranquil Lake Rowboat Date',
+            desc: 'Drifting gently on green waters in a wooden boat, with just the sound of ripples, sunlight filtering through leaves, and your smile.'
+        },
+        {
+            num: 'CHAPTER 6 OF 7',
+            tag: '📍 Historic Rose Street',
+            src: 'static/images/dream_rose_street.jpg',
+            badge: '🌹 Cobblestone Twilight Stroll',
+            title: 'Old-Town Rose Street Twilight',
+            desc: 'Strolling through old-world cobblestone alleys glowing with vintage streetlamps and cascading climbing roses.'
+        },
+        {
+            num: 'CHAPTER 7 OF 7',
+            tag: '📍 Fairy-Lit City Rooftop',
+            src: 'static/images/dream_rooftop_lights.jpg',
+            badge: '✨ Rooftop Skyline & Fairy Lights',
+            title: 'Fairy-Lit Rooftop Skyline',
+            desc: 'Surrounded by warm fairy lights and potted flowers, looking out at the city skyline together with cool evening air and eternal love.'
+        }
+    ];
+
+    let current = 0;
+    const numEl = document.getElementById('dream-chapter-num');
+    const tagEl = document.getElementById('dream-destination-tag');
+    const imgEl = document.getElementById('dream-card-img');
+    const badgeEl = document.getElementById('dream-badge');
+    const titleEl = document.getElementById('dream-card-title');
+    const descEl = document.getElementById('dream-card-desc');
+    const stampBadge = document.getElementById('dream-stamp-badge');
+    const stampBtn = document.getElementById('dream-stamp-btn');
+    const prevBtn = document.getElementById('dream-prev-btn');
+    const nextBtn = document.getElementById('dream-next-btn');
+    const dots = document.querySelectorAll('.dream-dot');
+
+    if (!imgEl) return;
+
+    function render(idx) {
+        current = idx;
+        const c = chapters[current];
+        if (numEl) numEl.textContent = c.num;
+        if (tagEl) tagEl.textContent = c.tag;
+        if (imgEl) imgEl.src = c.src;
+        if (badgeEl) badgeEl.textContent = c.badge;
+        if (titleEl) titleEl.textContent = c.title;
+        if (descEl) descEl.textContent = c.desc;
+
+        if (stampBadge) stampBadge.classList.add('hidden');
+
+        dots.forEach((dot, i) => {
+            if (i === current) {
+                dot.classList.add('bg-amber-400');
+                dot.classList.remove('bg-white/30');
+            } else {
+                dot.classList.remove('bg-amber-400');
+                dot.classList.add('bg-white/30');
+            }
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            playPopSound();
+            render((current - 1 + chapters.length) % chapters.length);
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            playPopSound();
+            render((current + 1) % chapters.length);
+        });
+    }
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            playPopSound();
+            render(i);
+        });
+    });
+
+    if (stampBtn && stampBadge) {
+        stampBtn.addEventListener('click', () => {
+            playStampSound();
+            stampBadge.classList.remove('hidden');
+            stampBadge.classList.add('stamped-anim');
+            triggerGrandConfetti();
+        });
+    }
+}
+
+/* =========================================================
+   10. Biometric Love Radar & Scanner
+   ========================================================= */
+function initLoveMeter() {
+    const scanner = document.getElementById('thumbprint-scanner');
+    const percentEl = document.getElementById('love-meter-percent');
+    const fillEl = document.getElementById('love-meter-fill');
+    const statusEl = document.getElementById('love-meter-status');
+    const quoteEl = document.getElementById('love-meter-quote');
+    const certModal = document.getElementById('soulmate-cert-modal');
+    const closeCertBtn = document.getElementById('close-soulmate-modal');
+
+    if (!scanner) return;
+
+    let scanPercent = 0;
+    let scanInterval = null;
+    let isScanning = false;
+
+    const quotes = [
+        "Analyzing heartbeats...",
+        "Scanning midnight scooty smiles...",
+        "Measuring hug intensity...",
+        "Calculating chai compatibility...",
+        "Matching soul frequencies...",
+        "OVERFLOW: Love levels off the charts! 💕"
+    ];
+
+    function startScan() {
+        if (isScanning) return;
+        isScanning = true;
+        scanner.classList.add('scanning-active');
+        if (statusEl) statusEl.textContent = 'SCANNING IN PROGRESS...';
+
+        scanInterval = setInterval(() => {
+            if (scanPercent < 1000) {
+                scanPercent += 25;
+                if (percentEl) percentEl.textContent = `${scanPercent}%`;
+                if (fillEl) fillEl.style.width = `${Math.min(100, scanPercent / 10)}%`;
+
+                const qIdx = Math.min(quotes.length - 1, Math.floor((scanPercent / 1000) * quotes.length));
+                if (quoteEl) quoteEl.textContent = `"${quotes[qIdx]}"`;
+
+                playNote(400 + scanPercent, 0.05, 'sine');
+            } else {
+                stopScan();
+                onScanComplete();
+            }
+        }, 80);
+    }
+
+    function stopScan() {
+        if (!isScanning) return;
+        isScanning = false;
+        clearInterval(scanInterval);
+        scanner.classList.remove('scanning-active');
+        if (statusEl && scanPercent < 1000) statusEl.textContent = 'PAUSED';
+    }
+
+    function onScanComplete() {
+        triggerGrandConfetti();
+        playSuccessChime();
+        if (statusEl) statusEl.textContent = '1000% INFINITE MATCH DETECTED!';
+        setTimeout(() => {
+            if (certModal) {
+                certModal.classList.remove('hidden');
+                certModal.classList.add('flex');
+            }
+        }, 500);
+    }
+
+    scanner.addEventListener('mousedown', startScan);
+    window.addEventListener('mouseup', stopScan);
+
+    scanner.addEventListener('touchstart', (e) => { e.preventDefault(); startScan(); });
+    window.addEventListener('touchend', stopScan);
+
+    if (closeCertBtn && certModal) {
+        closeCertBtn.addEventListener('click', () => {
+            certModal.classList.add('hidden');
+            certModal.classList.remove('flex');
+        });
+    }
+}
+
+/* =========================================================
+   11. Cupid Bow & Arrow Heart Archery
+   ========================================================= */
+function initCupidBow() {
+    const shootBtn = document.getElementById('shoot-arrow-btn');
+    const resetBtn = document.getElementById('reset-arrow-btn');
+    const arrow = document.getElementById('cupid-arrow');
+    const bow = document.getElementById('cupid-bow');
+    const target = document.getElementById('target-heart');
+    const message = document.getElementById('bullseye-msg');
+
+    if (!shootBtn || !arrow || !target) return;
+
+    let hasShot = false;
+
+    shootBtn.addEventListener('click', () => {
+        if (hasShot) return;
+        hasShot = true;
+
+        playBowTensionSound();
+        if (bow) bow.classList.add('scale-105');
+        arrow.classList.add('arrow-drawn');
+
+        setTimeout(() => {
+            playArrowFlySound();
+            const track = document.getElementById('archery-track');
+            const trackWidth = track ? track.clientWidth : 500;
+            const flyDist = Math.max(220, trackWidth - 140);
+
+            arrow.style.transition = 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)';
+            arrow.style.transform = `translateY(-50%) translateX(${flyDist}px)`;
+
+            setTimeout(() => {
+                target.classList.add('target-hit');
+                playSuccessChime();
+                triggerGrandConfetti();
+
+                if (message) {
+                    message.classList.remove('hidden');
+                    message.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+                if (resetBtn) resetBtn.classList.remove('hidden');
+                shootBtn.classList.add('hidden');
+            }, 450);
+        }, 300);
+    });
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            hasShot = false;
+            arrow.style.transition = 'none';
+            arrow.style.transform = 'translateY(-50%) translateX(0px)';
+            arrow.classList.remove('arrow-drawn');
+            if (bow) bow.classList.remove('scale-105');
+            target.classList.remove('target-hit');
+            if (message) message.classList.add('hidden');
+            resetBtn.classList.add('hidden');
+            shootBtn.classList.remove('hidden');
+        });
+    }
+}
+
+/* =========================================================
+   12. Tree of Hearts
+   ========================================================= */
+function initTreeOfHearts() {
+    const modal = document.getElementById('tree-modal');
+    const modalEmoji = document.getElementById('modal-tree-emoji');
+    const modalTitle = document.getElementById('modal-tree-title');
+    const modalMessage = document.getElementById('modal-tree-message');
+    const closeModal = document.getElementById('close-tree-modal');
+
+    const treeHeartsData = (window.BIRTHDAY_CONFIG && window.BIRTHDAY_CONFIG.treeHearts) || [];
+
+    document.querySelectorAll('.tree-heart-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const index = parseInt(btn.dataset.index);
+            const data = treeHeartsData[index] || {
+                emoji: '💖',
+                title: 'A Sweet Memory',
+                message: 'I love you more than all the stars in the night sky.'
+            };
+
+            if (modalEmoji) modalEmoji.textContent = data.emoji;
+            if (modalTitle) modalTitle.textContent = data.title;
+            if (modalMessage) modalMessage.textContent = data.message;
+
+            playSuccessChime();
+            triggerMiniConfetti(btn);
+
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        });
+    });
+
+    if (closeModal && modal) {
+        closeModal.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        });
+    }
+}
+
+/* =========================================================
+   13. Virtual Birthday Gifts Unboxing & 30+ Smiles Jar
+   ========================================================= */
+function initGiftsUnboxing() {
+    const giftCards = document.querySelectorAll('.gift-box-card');
+
+    giftCards.forEach(card => {
+        const unwrapBtn = card.querySelector('.unwrap-btn');
+        const wrappedState = card.querySelector('.gift-wrapped-state');
+        const unwrappedState = card.querySelector('.gift-unwrapped-state');
+
+        function unwrap() {
+            if (card.dataset.unwrapped === 'true') return;
+            card.dataset.unwrapped = 'true';
+
+            triggerGrandConfetti();
+            playSuccessChime();
+
+            if (wrappedState) wrappedState.classList.add('hidden');
+            if (unwrappedState) unwrappedState.classList.remove('hidden');
+            if (unwrapBtn) unwrapBtn.classList.add('hidden');
+
+            if (card.dataset.gift === '2') {
+                initScratchCard();
+            }
+        }
+
+        if (unwrapBtn) unwrapBtn.addEventListener('click', (e) => { e.stopPropagation(); unwrap(); });
+        card.addEventListener('click', unwrap);
+    });
+
+    initSmileJar();
+}
+
+function initSmileJar() {
+    const smileNotes = [
+        "Whenever you smile, the whole room glows. Never stop smiling, my handsome boy.",
+        "Your laugh is my absolute favorite sound in the entire universe.",
+        "I love the way you subconsciously reach for my hand at red lights on our scooty.",
+        "Marrying you on 21 December 2026 is going to be the happiest day of my entire life.",
+        "You make even a simple cup of cutting chai feel like a 5-star Michelin date.",
+        "Thank you for loving me on my best days and loving me even harder on my bad days.",
+        "You have the kindest heart, the warmest eyes, and the gentlest soul.",
+        "Every love song on the radio makes total sense now because of you.",
+        "I love how dedicated and passionate you are about your work and our dreams.",
+        "Late-night scooty rides with my arms around your waist are my happy place.",
+        "You always save the best bite of food for me.",
+        "Your sleepy half-awake smile in the morning melts all my stress away.",
+        "You are not just my fiancé, you are my best friend and favorite confidant.",
+        "I fall in love with you a little bit more every single day.",
+        "Happy Birthday to my favorite human in all the worlds and lifetimes."
+    ];
+    let currentSmileIndex = 0;
+    const smileDisplay = document.getElementById('smile-note-display');
+    const nextSmileBtn = document.getElementById('next-smile-btn');
+
+    if (nextSmileBtn && smileDisplay) {
+        nextSmileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentSmileIndex = (currentSmileIndex + 1) % smileNotes.length;
+            playPopSound();
+            triggerMiniConfetti(nextSmileBtn);
+
+            smileDisplay.style.opacity = '0';
+            setTimeout(() => {
+                smileDisplay.textContent = `"${smileNotes[currentSmileIndex]}"`;
+                smileDisplay.style.opacity = '1';
+            }, 180);
+        });
+    }
+}
+
+function initScratchCard() {
+    const canvas = document.getElementById('scratch-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    const width = canvas.width = canvas.parentElement.clientWidth;
+    const height = canvas.height = canvas.parentElement.clientHeight;
+
+    const grad = ctx.createLinearGradient(0, 0, width, height);
+    grad.addColorStop(0, '#cca048');
+    grad.addColorStop(0.3, '#fef08a');
+    grad.addColorStop(0.7, '#dfbc78');
+    grad.addColorStop(1, '#b45309');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.fillStyle = '#451a03';
+    ctx.font = 'bold 12px "Inter", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('✨ SCRATCH WITH LOVE ✨', width / 2, height / 2 + 4);
+
+    let isScratching = false;
+
+    function scratch(e) {
+        if (!isScratching) return;
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.arc(x, y, 20, 0, Math.PI * 2);
+        ctx.fill();
+
+        playNote(750, 0.04, 'triangle');
+    }
+
+    canvas.addEventListener('mousedown', () => isScratching = true);
+    window.addEventListener('mouseup', () => isScratching = false);
+    canvas.addEventListener('mousemove', scratch);
+
+    canvas.addEventListener('touchstart', (e) => { isScratching = true; scratch(e); });
+    window.addEventListener('touchend', () => isScratching = false);
+    canvas.addEventListener('touchmove', scratch);
+}
+
+/* =========================================================
+   14. "Open When..." Care Envelopes
+   ========================================================= */
+function initOpenWhenLetters() {
+    const openWhenLetters = {
+        '1': {
+            icon: '🥺💌',
+            title: 'When You Miss Me',
+            tag: 'Open When • Love Capsule',
+            text: `My Dearest Vipul,\n\nClose your eyes right now and take a slow, deep breath. Can you feel that quiet warmth in your chest? That is my heart beating right alongside yours.\n\nDistance, long work hours, or busy days mean nothing when someone means everything to you. Whenever you feel alone or miss my voice, look at our pictures, whisper my name, and remember that I am counting down every second until I am right back in your arms.\n\nNow put down this screen and text or call me: "I miss you." A giant cuddle is already waiting for you!`
+        },
+        '2': {
+            icon: '☕🌧️',
+            title: 'When You Had a Long Day',
+            tag: 'Open When • Comfort Capsule',
+            text: `Hey handsome boy,\n\nKick off your shoes, lie back, and let your shoulders drop. Take a deep breath.\n\nYou work so hard every single day. You pour your passion, energy, and heart into everything you touch, and nobody sees your dedication more clearly than I do. I am so endlessly proud of you.\n\nToday's stress is only temporary, but my love for you is permanent. When we are together tonight, your favorite snacks, soothing back rubs, and zero worries are on the menu. You did wonderful today, my love. Rest now.`
+        },
+        '3': {
+            icon: '🧸🫂',
+            title: 'When You Need a Hug',
+            tag: 'Open When • Snuggle Capsule',
+            text: `Wrap both of your arms tightly around yourself right now. Squeeze tight!\n\nThat is a giant, warm, unyielding hug from your future wife delivered straight into your soul.\n\nImagine my head tucked against your chest, listening to your heartbeat, and my fingers intertwined with yours. You are safe. You are deeply cherished. And no matter what the world throws at us, you will never have to face anything alone again.`
+        },
+        '4': {
+            icon: '🕊️🤍',
+            title: 'When We Disagree',
+            tag: 'Open When • Peace Capsule',
+            text: `Hey... pause for just ten seconds and look at us.\n\nWhatever little silly argument or misunderstanding we are having right now does not compare to how deeply, irrevocably in love I am with you.\n\nIt is never you against me. It is you and me, as a team, against the issue. I forgive you, I ask for your forgiveness, and I cannot wait to kiss that cute pout off your face.\n\nCome here right now and hug me. We are forever, remember? ❤️`
+        },
+        '5': {
+            icon: '🎂🎉',
+            title: 'At Midnight (12:00 AM)',
+            tag: 'Open When • Birthday Midnight',
+            text: `IT IS 12:00 AM! HAPPY OFFICIAL BIRTHDAY, MY HANDSOME FIANCÉ! 🎂🥂🎉\n\nOn this exact day, the most wonderful, loving, kind, and brilliant man was brought into this universe—and I am the luckiest girl alive because I get to call you mine.\n\nMay this new year of your life be filled with roaring success, peaceful mornings, crazy fun adventures, and endless laughter with me. Happy Birthday Vipul! Ready to celebrate YOU all day long! 🥳💖`
+        }
+    };
+
+    const cards = document.querySelectorAll('.open-when-card');
+    const modal = document.getElementById('open-when-modal');
+    const closeBtn = document.getElementById('close-open-when-modal');
+    const iconEl = document.getElementById('open-when-modal-icon');
+    const titleEl = document.getElementById('open-when-modal-title');
+    const tagEl = document.getElementById('open-when-modal-tag');
+    const textEl = document.getElementById('open-when-modal-text');
+
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const id = card.dataset.id;
+            const letter = openWhenLetters[id];
+            if (!letter) return;
+
+            if (iconEl) iconEl.textContent = letter.icon;
+            if (titleEl) titleEl.textContent = letter.title;
+            if (tagEl) tagEl.textContent = letter.tag;
+            if (textEl) textEl.textContent = letter.text;
+
+            playPaperOpenSound();
+            triggerMiniConfetti(card);
+
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        });
+    });
+
+    if (closeBtn && modal) {
+        closeBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        });
+    }
+}
+
+/* =========================================================
+   15. 3D Flip Cards (Reasons Why I Love You)
    ========================================================= */
 function initFlipCards() {
     const cards = document.querySelectorAll('.flip-card');
     cards.forEach(card => {
         card.addEventListener('click', () => {
             card.classList.toggle('is-flipped');
+            playPopSound();
         });
     });
 }
 
 /* =========================================================
-   5. Wax-Sealed Secret Love Letter
+   16. Wax-Sealed Secret Love Letter
    ========================================================= */
 function initLoveLetter() {
     const envelope = document.getElementById('love-envelope');
@@ -229,14 +1168,13 @@ function initLoveLetter() {
 }
 
 /* =========================================================
-   6. Love Coupon Redemption
+   17. Love Coupon Redemption
    ========================================================= */
 function initCoupons() {
     const claimBtns = document.querySelectorAll('.claim-coupon-btn');
 
     claimBtns.forEach(btn => {
         btn.addEventListener('click', async () => {
-            const card = btn.closest('.coupon-ticket');
             const code = btn.dataset.code;
 
             btn.disabled = true;
@@ -254,7 +1192,6 @@ function initCoupons() {
                 });
                 if (response.ok) redeemed = true;
             } catch (err) {
-                // Offline fallback (e.g., GitHub Pages static hosting)
                 redeemed = true;
             }
 
@@ -267,13 +1204,11 @@ function initCoupons() {
                     </div>
                     <p class="text-[11px] text-rose-300/70 mt-1">Claimed just now!</p>
                 `;
-                // Store in local storage so state stays on static builds
                 localStorage.setItem(`coupon_redeemed_${code}`, 'true');
             }
         });
     });
 
-    // Check local storage for previously redeemed coupons
     claimBtns.forEach(btn => {
         const code = btn.dataset.code;
         if (localStorage.getItem(`coupon_redeemed_${code}`) === 'true') {
@@ -281,70 +1216,62 @@ function initCoupons() {
                 <div class="stamp-redeemed">
                     REDEEMED with LOVE ❤️
                 </div>
+                <p class="text-[11px] text-rose-300/70 mt-1">Claimed with love</p>
             `;
         }
     });
 }
 
 /* =========================================================
-   7. "How Well Do You Know Us?" Romantic Quiz
+   18. Love Trivia Quiz
    ========================================================= */
 function initQuiz() {
-    const quizContainer = document.getElementById('quiz-box');
+    const quizContainer = document.getElementById('quiz-dynamic-container');
     if (!quizContainer) return;
 
     const questions = [
         {
-            q: "Who said 'I Love You' first? 💕",
+            q: "What is our absolute favorite date activity together?",
             options: [
-                { text: "Vipul (With total confidence)", correct: true, feedback: "Aww! Pure courage and undeniable romance!" },
-                { text: "Me (I couldn't hold it in anymore)", correct: true, feedback: "Haha, truth is our hearts both knew it on day one!" },
-                { text: "It was telepathic eye contact", correct: true, feedback: "100%! The sparks were speaking for us!" }
+                { text: "Late Night Scooty Rides with tight hugs 🛵💨", feedback: "BINGO! Nothing in the world beats our night scooty rides in the breeze!" },
+                { text: "Eating cutting chai and snacks ☕", feedback: "So true! Especially when stopping during our scooty rides!" },
+                { text: "Watching movies while cuddled up 🎬", feedback: "Always our coziest comfort vibe!" }
             ]
         },
         {
-            q: "What is Vipul's absolute superpower? 🦸‍♂️",
+            q: "What is the most magical upcoming date on our calendar?",
             options: [
-                { text: "Making me laugh until my cheeks hurt", correct: true, feedback: "Guaranteed medicine for any bad day!" },
-                { text: "Giving the warmest, most calming hugs in existence", correct: true, feedback: "His arms = safest place in the universe." },
-                { text: "Being the most hardworking & loving human", correct: true, feedback: "Facts! Nobody works harder with a kinder heart." }
+                { text: "21 December 2026 (Our Wedding Day!) 💍", feedback: "YES! Counting down every heartbeat until I am your wife!" },
+                { text: "Every single day with you ✨", feedback: "Awww, that is 1000% true my love!" },
+                { text: "Today! Your Special Birthday 🎂", feedback: "Happy Birthday my superstar King!" }
             ]
         },
         {
-            q: "What are we doing when we are 80 years old? 👵👴",
+            q: "Who loves the other person more?",
             options: [
-                { text: "Sitting on a porch, holding hands & laughing at old jokes", correct: true, feedback: "The exact picture of our beautiful future!" },
-                { text: "Still arguing over what to order for dinner", correct: true, feedback: "Haha! 'You pick.' 'No, you pick!' forever." },
-                { text: "Traveling the world with matching sneakers", correct: true, feedback: "Coolest grandparents ever!" }
-            ]
-        },
-        {
-            q: "How much does your fiancée love you? 📏",
-            options: [
-                { text: "To the moon and back a million times", correct: true, feedback: "And that is still an understatement!" },
-                { text: "More than pizza, coffee & chocolate combined", correct: true, feedback: "That is scientifically the highest unit of love!" },
-                { text: "Beyond what words or numbers could ever capture", correct: true, feedback: "Infinitely, unconditionally, and for all eternity. ❤️" }
+                { text: "Toshi loves Vipul to the moon and back 💖", feedback: "Without a doubt in the universe!" },
+                { text: "Vipul loves Toshi infinitely ❤️", feedback: "And I feel your warm love every single day!" },
+                { text: "It is an unbreakable 10000% Soulmate Tie! ♾️", feedback: "PERFECT ANSWER! We are soulmates forever!" }
             ]
         }
     ];
 
     let currentQ = 0;
-    let score = 0;
 
     function renderQuestion() {
         const qData = questions[currentQ];
         quizContainer.innerHTML = `
             <div class="space-y-6">
-                <div class="flex items-center justify-between text-xs font-semibold text-rose-400">
+                <div class="flex items-center justify-between text-xs text-rose-300 font-cinzel">
                     <span>QUESTION ${currentQ + 1} OF ${questions.length}</span>
-                    <span>LOVE SCORE: ${score * 100} PTS</span>
+                    <span>100% LOVE MATCH</span>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-serif text-white">${qData.q}</h3>
-                <div class="space-y-3">
+                <h3 class="font-serif text-xl sm:text-2xl font-bold text-white">${qData.q}</h3>
+                <div class="grid grid-cols-1 gap-3">
                     ${qData.options.map((opt, i) => `
-                        <button class="quiz-option-btn w-full text-left p-4 rounded-xl bg-white/5 hover:bg-rose-500/20 border border-rose-500/20 hover:border-rose-400 text-rose-100 transition duration-200 text-sm sm:text-base flex items-center justify-between" data-index="${i}">
+                        <button type="button" class="quiz-option-btn p-4 rounded-2xl glass-panel hover:bg-rose-500/20 border border-rose-400/30 text-rose-100 hover:text-white text-sm sm:text-base font-medium transition text-left flex items-center justify-between" data-index="${i}">
                             <span>${opt.text}</span>
-                            <span class="text-rose-400">➜</span>
+                            <span class="text-rose-400">❤️</span>
                         </button>
                     `).join('')}
                 </div>
@@ -355,7 +1282,6 @@ function initQuiz() {
             btn.addEventListener('click', () => {
                 const optIndex = parseInt(btn.dataset.index);
                 const opt = qData.options[optIndex];
-                score++;
                 playPopSound();
                 triggerMiniConfetti(btn);
 
@@ -397,7 +1323,7 @@ function initQuiz() {
 }
 
 /* =========================================================
-   8. Birthday Wish Form & Live Dynamic Board
+   19. Birthday Wish Form & Live Dynamic Board
    ========================================================= */
 function initWishForm() {
     const form = document.getElementById('wish-submission-form');
@@ -431,10 +1357,9 @@ function initWishForm() {
             created_at: 'Just now'
         };
 
-        let saved = false;
         try {
             const csrf = window.BIRTHDAY_CONFIG ? window.BIRTHDAY_CONFIG.csrfToken : '';
-            const res = await fetch('/api/wishes/add/', {
+            await fetch('/api/wishes/add/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -442,13 +1367,8 @@ function initWishForm() {
                 },
                 body: JSON.stringify({ name, relationship, message, emoji })
             });
-            if (res.ok) saved = true;
-        } catch (e) {
-            // Local fallback for static site
-            saved = true;
-        }
+        } catch (e) {}
 
-        // Add card to UI
         if (wishesContainer) {
             const card = document.createElement('div');
             card.className = 'glass-panel p-5 rounded-2xl border border-rose-500/30 space-y-3 transform transition hover:scale-[1.02] shadow-lg animate-float';
@@ -484,7 +1404,7 @@ function escapeHtml(text) {
 }
 
 /* =========================================================
-   9. Synthesized Web Audio Romantic Melody Player
+   20. Synthesized Web Audio Romantic Melody Player & FX
    ========================================================= */
 let audioCtx = null;
 let isPlaying = false;
@@ -516,14 +1436,13 @@ function initAudioSynthesizer() {
         } else {
             stopRomanticMelody();
             isPlaying = false;
-            if (label) label.textContent = 'Play Music';
+            if (label) label.textContent = 'Romantic Music';
             if (icon) icon.textContent = '🎵';
             btn.classList.remove('bg-rose-500/40', 'border-rose-400');
         }
     });
 }
 
-// Gentle acoustic romantic chord progression in C/Am (Dreamy love lullaby)
 const notes = [
     261.63, 329.63, 392.00, 523.25, // C chord
     220.00, 261.63, 329.63, 440.00, // Am chord
@@ -532,23 +1451,31 @@ const notes = [
 ];
 
 function playNote(freq, duration = 1.2, type = 'sine') {
-    if (!audioCtx) return;
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
+    if (!audioCtx) {
+        try {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            audioCtx = new AudioContext();
+        } catch (e) {
+            return;
+        }
+    }
+    try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
 
-    osc.type = type;
-    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
 
-    // Soft attack & long dreamy decay
-    gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.12, audioCtx.currentTime + 0.1);
-    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.12, audioCtx.currentTime + 0.1);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
 
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
 
-    osc.start();
-    osc.stop(audioCtx.currentTime + duration);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    } catch (e) {}
 }
 
 let noteIndex = 0;
@@ -556,7 +1483,6 @@ function startRomanticMelody() {
     melodyInterval = setInterval(() => {
         const freq = notes[noteIndex % notes.length];
         playNote(freq, 1.8, 'sine');
-        // Add harmonic chime on every 2nd note
         if (noteIndex % 2 === 0) {
             setTimeout(() => playNote(freq * 1.5, 1.2, 'triangle'), 250);
         }
@@ -568,58 +1494,87 @@ function stopRomanticMelody() {
     clearInterval(melodyInterval);
 }
 
-// Interactive sound effects
 function playPopSound() {
-    if (!audioCtx) {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        audioCtx = new AudioContext();
-    }
     playNote(520, 0.25, 'triangle');
 }
 
 function playPaperOpenSound() {
-    if (!audioCtx) {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        audioCtx = new AudioContext();
-    }
     playNote(330, 0.4, 'sine');
     setTimeout(() => playNote(440, 0.5, 'sine'), 100);
 }
 
 function playSuccessChime() {
-    if (!audioCtx) {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        audioCtx = new AudioContext();
-    }
-    playNote(523.25, 0.5, 'sine'); // C5
-    setTimeout(() => playNote(659.25, 0.5, 'sine'), 150); // E5
-    setTimeout(() => playNote(783.99, 0.8, 'sine'), 300); // G5
-    setTimeout(() => playNote(1046.50, 1.2, 'sine'), 450); // C6
+    playNote(523.25, 0.5, 'sine');
+    setTimeout(() => playNote(659.25, 0.5, 'sine'), 150);
+    setTimeout(() => playNote(783.99, 0.8, 'sine'), 300);
+    setTimeout(() => playNote(1046.50, 1.2, 'sine'), 450);
+}
+
+function playBowTensionSound() {
+    playNote(220, 0.3, 'sawtooth');
+}
+
+function playArrowFlySound() {
+    playNote(650, 0.2, 'sine');
+    setTimeout(() => playNote(880, 0.2, 'sine'), 100);
+}
+
+function playBlowSound() {
+    playNote(160, 0.3, 'sine');
+}
+
+function playScootyBell() {
+    playNote(1200, 0.4, 'sine');
+    setTimeout(() => playNote(1400, 0.5, 'triangle'), 100);
+}
+
+function playCameraShutter() {
+    playNote(300, 0.05, 'square');
+    setTimeout(() => playNote(600, 0.1, 'sine'), 60);
+}
+
+function playStampSound() {
+    playNote(150, 0.2, 'triangle');
+    setTimeout(() => playNote(580, 0.4, 'sine'), 80);
+}
+
+function playHappyBirthdayTune() {
+    const tune = [
+        { f: 261.63, d: 0.3 }, { f: 261.63, d: 0.3 }, { f: 293.66, d: 0.5 }, { f: 261.63, d: 0.5 },
+        { f: 349.23, d: 0.5 }, { f: 329.63, d: 0.9 },
+        { f: 261.63, d: 0.3 }, { f: 261.63, d: 0.3 }, { f: 293.66, d: 0.5 }, { f: 261.63, d: 0.5 },
+        { f: 392.00, d: 0.5 }, { f: 349.23, d: 0.9 }
+    ];
+    let time = 0;
+    tune.forEach(note => {
+        setTimeout(() => playNote(note.f, note.d, 'triangle'), time);
+        time += note.d * 1000 + 80;
+    });
 }
 
 /* =========================================================
-   10. Confetti Triggers
+   21. Confetti Triggers
    ========================================================= */
 function triggerGrandConfetti() {
     if (typeof confetti === 'function') {
         confetti({
-            particleCount: 120,
+            particleCount: 130,
             spread: 90,
             origin: { y: 0.6 },
             colors: ['#f43f5e', '#fb7185', '#dfbc78', '#fecdd3', '#ffffff']
         });
         setTimeout(() => {
             confetti({
-                particleCount: 60,
+                particleCount: 70,
                 angle: 60,
-                spread: 55,
+                spread: 60,
                 origin: { x: 0 },
                 colors: ['#f43f5e', '#dfbc78']
             });
             confetti({
-                particleCount: 60,
+                particleCount: 70,
                 angle: 120,
-                spread: 55,
+                spread: 60,
                 origin: { x: 1 },
                 colors: ['#f43f5e', '#dfbc78']
             });
@@ -642,13 +1597,12 @@ function triggerMiniConfetti(element) {
 }
 
 /* =========================================================
-   11. Cute Romantic Passcode Screen
+   22. Cute Romantic Passcode Screen
    ========================================================= */
 function initPasscodeScreen() {
     const overlay = document.getElementById('passcode-overlay');
     if (!overlay) return;
 
-    // Check if previously unlocked in this session
     if (sessionStorage.getItem('vipul_birthday_unlocked') === 'true') {
         overlay.classList.add('hidden');
         return;
@@ -678,7 +1632,6 @@ function initPasscodeScreen() {
 
     function checkPasscode() {
         const code = enteredPin.join('');
-        // Accept the configured passcode, default '1402', or '0000'
         if (code === expectedPasscode || code === '1402' || code === '0000') {
             unlockSuccess();
         } else {
@@ -756,397 +1709,7 @@ function initPasscodeScreen() {
 
     if (emergencyBtn) {
         emergencyBtn.addEventListener('click', () => {
-            enteredPin = ['1', '4', '0', '2'];
-            updateDots();
             unlockSuccess();
         });
     }
 }
-
-/* =========================================================
-   12. Cupid's Bow & Arrow Shooting Heart
-   ========================================================= */
-function initCupidBow() {
-    const shootBtn = document.getElementById('shoot-arrow-btn');
-    const resetBtn = document.getElementById('reset-arrow-btn');
-    const arrow = document.getElementById('cupid-arrow');
-    const targetHeart = document.getElementById('target-heart');
-    const bullseyeMsg = document.getElementById('bullseye-msg');
-    const bowContainer = document.getElementById('cupid-bow-container');
-    const targetContainer = document.getElementById('heart-target-container');
-
-    if (!shootBtn || !arrow || !targetHeart) return;
-
-    shootBtn.addEventListener('click', () => {
-        shootBtn.disabled = true;
-
-        // 1. Pull back bow tension
-        playNote(300, 0.2, 'triangle');
-        arrow.classList.add('arrow-drawn');
-
-        setTimeout(() => {
-            // 2. Release & Flight
-            playNote(600, 0.35, 'sine');
-            arrow.classList.remove('arrow-drawn');
-
-            // Calculate distance between bow and target
-            const bowRect = bowContainer.getBoundingClientRect();
-            const targetRect = targetContainer.getBoundingClientRect();
-            const distance = targetRect.left - bowRect.left - 40;
-
-            arrow.style.transition = 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)';
-            arrow.style.transform = `translateY(-50%) translateX(${distance}px)`;
-
-            setTimeout(() => {
-                // 3. Impact!
-                targetHeart.classList.add('target-hit');
-                playSuccessChime();
-                triggerGrandConfetti();
-                triggerMiniConfetti(targetHeart);
-
-                if (bullseyeMsg) bullseyeMsg.classList.remove('hidden');
-                shootBtn.classList.add('hidden');
-                if (resetBtn) resetBtn.classList.remove('hidden');
-            }, 450);
-        }, 250);
-    });
-
-    if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-            arrow.style.transition = 'transform 0.3s ease';
-            arrow.style.transform = 'translateY(-50%) translateX(0px)';
-            targetHeart.classList.remove('target-hit');
-            if (bullseyeMsg) bullseyeMsg.classList.add('hidden');
-            resetBtn.classList.add('hidden');
-            shootBtn.classList.remove('hidden');
-            shootBtn.disabled = false;
-        });
-    }
-}
-
-/* =========================================================
-   13. The Romantic Tree of Hearts
-   ========================================================= */
-function initTreeOfHearts() {
-    initTreePetals();
-
-    const heartBtns = document.querySelectorAll('.tree-heart-btn');
-    const pluckBtn = document.getElementById('pluck-heart-btn');
-    const modal = document.getElementById('tree-heart-modal');
-    const closeModal = document.getElementById('close-tree-modal');
-    const dismissModal = document.getElementById('dismiss-tree-modal-btn');
-    const modalEmoji = document.getElementById('tree-modal-emoji');
-    const modalTitle = document.getElementById('tree-modal-title');
-    const modalMsg = document.getElementById('tree-modal-message');
-
-    const treeHearts = (window.BIRTHDAY_CONFIG && window.BIRTHDAY_CONFIG.treeHearts) || [
-        { title: 'Our Forever Promise', message: 'I promise to stand by you in every storm and dance with you under every rainbow.', emoji: '💍' },
-        { title: 'Your Cozy Forehead Kisses', message: 'Nothing in this entire world feels more comforting than when you kiss my forehead.', emoji: '💋' },
-        { title: 'Your Calming Voice', message: 'Even on the most chaotic days, hearing your voice instantly quiets my soul.', emoji: '🎙️' },
-        { title: 'Late Night Laughter', message: 'Our 1 AM giggles over silly jokes that nobody else on earth would understand.', emoji: '🌙' },
-        { title: 'My Safe Haven', message: 'No matter what happens outside, walking into your embrace is stepping into pure peace.', emoji: '🛡️' },
-        { title: 'Your Golden Heart', message: 'The quiet kindness and boundless love you show everyone makes me the proudest fiancée alive.', emoji: '✨' },
-        { title: 'The First Glimpse', message: 'I still remember the first time our eyes locked. My heart whispered, "Oh, there you are."', emoji: '💫' },
-        { title: 'Building Our Tomorrow', message: 'Every dream and future adventure is 1000x sweeter because I get to live them with you.', emoji: '🏡' }
-    ];
-
-    function showHeartModal(index) {
-        const h = treeHearts[index % treeHearts.length];
-        if (modalEmoji) modalEmoji.textContent = h.emoji || '💖';
-        if (modalTitle) modalTitle.textContent = h.title;
-        if (modalMsg) modalMsg.textContent = h.message;
-
-        playSuccessChime();
-        triggerGrandConfetti();
-
-        if (modal) {
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-    }
-
-    heartBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const index = parseInt(btn.dataset.index) || 0;
-            showHeartModal(index);
-        });
-    });
-
-    if (pluckBtn) {
-        pluckBtn.addEventListener('click', () => {
-            const randomIndex = Math.floor(Math.random() * treeHearts.length);
-            showHeartModal(randomIndex);
-        });
-    }
-
-    function hideModal() {
-        if (modal) {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-    }
-
-    if (closeModal) closeModal.addEventListener('click', hideModal);
-    if (dismissModal) dismissModal.addEventListener('click', hideModal);
-}
-
-function initTreePetals() {
-    const canvas = document.getElementById('tree-petals-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-
-    let width = canvas.width = canvas.parentElement.clientWidth;
-    let height = canvas.height = canvas.parentElement.clientHeight;
-
-    window.addEventListener('resize', () => {
-        if (canvas.parentElement) {
-            width = canvas.width = canvas.parentElement.clientWidth;
-            height = canvas.height = canvas.parentElement.clientHeight;
-        }
-    });
-
-    const petals = [];
-    const colors = ['rgba(244, 63, 94, 0.45)', 'rgba(251, 113, 133, 0.4)', 'rgba(253, 164, 175, 0.35)', 'rgba(223, 188, 120, 0.35)'];
-
-    for (let i = 0; i < 22; i++) {
-        petals.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            size: Math.random() * 8 + 6,
-            speedY: Math.random() * 0.9 + 0.4,
-            speedX: (Math.random() - 0.5) * 0.6,
-            color: colors[Math.floor(Math.random() * colors.length)],
-            angle: Math.random() * Math.PI,
-            rotSpeed: (Math.random() - 0.5) * 0.03
-        });
-    }
-
-    function drawPetal(x, y, size, color, angle) {
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate(angle);
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.ellipse(0, 0, size * 0.5, size, Math.PI / 4, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.restore();
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, width, height);
-        petals.forEach(p => {
-            p.y += p.speedY;
-            p.x += p.speedX + Math.sin(p.y * 0.02) * 0.4;
-            p.angle += p.rotSpeed;
-
-            if (p.y > height + 20) {
-                p.y = -10;
-                p.x = Math.random() * width;
-            }
-            if (p.x < -10) p.x = width + 10;
-            if (p.x > width + 10) p.x = -10;
-
-            drawPetal(p.x, p.y, p.size, p.color, p.angle);
-        });
-        requestAnimationFrame(animate);
-    }
-    animate();
-}
-
-/* =========================================================
-   14. Virtual Gifts Unboxing & Scratch Card (Inspired by Reel 3)
-   ========================================================= */
-function initGiftsUnboxing() {
-    const giftCards = document.querySelectorAll('.gift-box-card');
-
-    giftCards.forEach(card => {
-        const unwrapBtn = card.querySelector('.unwrap-btn');
-        const wrapped = card.querySelector('.gift-wrapped-state');
-        const unwrapped = card.querySelector('.gift-unwrapped-state');
-        const giftId = card.dataset.gift;
-
-        function unwrap() {
-            if (!unwrapped.classList.contains('hidden')) return;
-
-            playPaperOpenSound();
-            playSuccessChime();
-            triggerGrandConfetti();
-            triggerMiniConfetti(card);
-
-            wrapped.classList.add('hidden');
-            unwrapped.classList.remove('hidden');
-            unwrapBtn.textContent = '✓ Unwrapped with Love';
-            unwrapBtn.classList.add('opacity-50', 'pointer-events-none');
-
-            if (giftId === '2') {
-                setTimeout(initScratchCard, 100);
-            }
-        }
-
-        if (unwrapBtn) unwrapBtn.addEventListener('click', unwrap);
-        card.addEventListener('click', (e) => {
-            if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'CANVAS') {
-                unwrap();
-            }
-        });
-    });
-
-    // Gift 3: Smile Capsule cycling notes
-    const smileNotes = [
-        "Whenever you smile, the whole room glows. Never stop smiling, my handsome boy.",
-        "You are the strongest, most hardworking man I know, and my greatest source of inspiration.",
-        "The way you hold my hand makes all the stress in the universe vanish into thin air.",
-        "I love your sleepy morning voice and your silly little jokes.",
-        "Marrying you is going to be the happiest day of my entire life.",
-        "You make even a boring trip to the grocery store feel like a romantic adventure.",
-        "Thank you for loving me on my best days and loving me even harder on my bad days.",
-        "You have the kindest heart, the warmest eyes, and the gentlest soul.",
-        "Every love song on the radio makes total sense now because of you.",
-        "Happy Birthday to my favorite human in all the worlds and lifetimes."
-    ];
-    let currentSmileIndex = 0;
-    const smileDisplay = document.getElementById('smile-note-display');
-    const nextSmileBtn = document.getElementById('next-smile-btn');
-
-    if (nextSmileBtn && smileDisplay) {
-        nextSmileBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            currentSmileIndex = (currentSmileIndex + 1) % smileNotes.length;
-            playPopSound();
-            triggerMiniConfetti(nextSmileBtn);
-
-            smileDisplay.style.opacity = '0';
-            setTimeout(() => {
-                smileDisplay.textContent = `"${smileNotes[currentSmileIndex]}"`;
-                smileDisplay.style.opacity = '1';
-            }, 180);
-        });
-    }
-}
-
-function initScratchCard() {
-    const canvas = document.getElementById('scratch-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-
-    const width = canvas.width = canvas.parentElement.clientWidth;
-    const height = canvas.height = canvas.parentElement.clientHeight;
-
-    // Draw luxury metallic gold foil
-    const grad = ctx.createLinearGradient(0, 0, width, height);
-    grad.addColorStop(0, '#cca048');
-    grad.addColorStop(0.3, '#fef08a');
-    grad.addColorStop(0.7, '#dfbc78');
-    grad.addColorStop(1, '#b45309');
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, width, height);
-
-    // Cute sparkle & text on foil
-    ctx.fillStyle = '#451a03';
-    ctx.font = 'bold 12px "Inter", sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('✨ SCRATCH WITH LOVE ✨', width / 2, height / 2 + 4);
-
-    let isScratching = false;
-
-    function scratch(e) {
-        if (!isScratching) return;
-        const rect = canvas.getBoundingClientRect();
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        const x = clientX - rect.left;
-        const y = clientY - rect.top;
-
-        ctx.globalCompositeOperation = 'destination-out';
-        ctx.beginPath();
-        ctx.arc(x, y, 20, 0, Math.PI * 2);
-        ctx.fill();
-
-        playNote(750, 0.04, 'triangle');
-    }
-
-    canvas.addEventListener('mousedown', () => isScratching = true);
-    window.addEventListener('mouseup', () => isScratching = false);
-    canvas.addEventListener('mousemove', scratch);
-
-    canvas.addEventListener('touchstart', (e) => { isScratching = true; scratch(e); });
-    window.addEventListener('touchend', () => isScratching = false);
-    canvas.addEventListener('touchmove', scratch);
-}
-
-/* =========================================================
-   15. "Open When..." Care Envelopes (Inspired by Reel 1 & 3)
-   ========================================================= */
-function initOpenWhenLetters() {
-    const openWhenLetters = {
-        '1': {
-            icon: '🥺💌',
-            title: 'When You Miss Me',
-            tag: 'Open When • Love Capsule',
-            text: `My Dearest Vipul,\n\nClose your eyes right now and take a slow, deep breath. Can you feel that quiet warmth in your chest? That is my heart beating right alongside yours.\n\nDistance, long work hours, or busy days mean nothing when someone means everything to you. Whenever you feel alone or miss my voice, look at our pictures, whisper my name, and remember that I am counting down every second until I am right back in your arms.\n\nNow put down this screen and text or call me: "I miss you." A giant cuddle is already waiting for you!`
-        },
-        '2': {
-            icon: '☕🌧️',
-            title: 'When You Had a Long Day',
-            tag: 'Open When • Comfort Capsule',
-            text: `Hey handsome boy,\n\nKick off your shoes, lie back, and let your shoulders drop. Take a deep breath.\n\nYou work so hard every single day. You pour your passion, energy, and heart into everything you touch, and nobody sees your dedication more clearly than I do. I am so endlessly proud of you.\n\nToday's stress is only temporary, but my love for you is permanent. When we are together tonight, your favorite snacks, soothing back rubs, and zero worries are on the menu. You did wonderful today, my love. Rest now.`
-        },
-        '3': {
-            icon: '🧸🫂',
-            title: 'When You Need a Hug',
-            tag: 'Open When • Snuggle Capsule',
-            text: `Wrap both of your arms tightly around yourself right now. Squeeze tight!\n\nThat is a giant, warm, unyielding hug from your future wife delivered straight into your soul.\n\nImagine my head tucked against your chest, listening to your heartbeat, and my fingers intertwined with yours. You are safe. You are deeply cherished. And no matter what the world throws at us, you will never have to face anything alone again.`
-        },
-        '4': {
-            icon: '🕊️🤍',
-            title: 'When We Disagree',
-            tag: 'Open When • Peace Capsule',
-            text: `Hey... pause for just ten seconds and look at us.\n\nWhatever little silly argument or misunderstanding we are having right now does not compare to how deeply, irrevocably in love I am with you.\n\nIt is never you against me. It is you and me, as a team, against the issue. I forgive you, I ask for your forgiveness, and I cannot wait to kiss that cute pout off your face.\n\nCome here right now and hug me. We are forever, remember? ❤️`
-        },
-        '5': {
-            icon: '🎂🎉',
-            title: 'At Midnight (12:00 AM)',
-            tag: 'Open When • Birthday Midnight',
-            text: `IT IS 12:00 AM! HAPPY OFFICIAL BIRTHDAY, MY HANDSOME FIANCÉ! 🎂🥂🎉\n\nOn this exact day, the most wonderful, loving, kind, and brilliant man was brought into this universe—and I am the luckiest girl alive because I get to call you mine.\n\nMay this new year of your life be filled with roaring success, peaceful mornings, crazy fun adventures, and endless laughter with me. Happy Birthday Vipul! Ready to celebrate YOU all day long! 🥳💖`
-        }
-    };
-
-    const cards = document.querySelectorAll('.open-when-card');
-    const modal = document.getElementById('open-when-modal');
-    const closeBtn = document.getElementById('close-open-when-modal');
-    const iconEl = document.getElementById('open-when-modal-icon');
-    const titleEl = document.getElementById('open-when-modal-title');
-    const tagEl = document.getElementById('open-when-modal-tag');
-    const textEl = document.getElementById('open-when-modal-text');
-
-    cards.forEach(card => {
-        card.addEventListener('click', () => {
-            const id = card.dataset.id;
-            const letter = openWhenLetters[id];
-            if (!letter) return;
-
-            if (iconEl) iconEl.textContent = letter.icon;
-            if (titleEl) titleEl.textContent = letter.title;
-            if (tagEl) tagEl.textContent = letter.tag;
-            if (textEl) textEl.textContent = letter.text;
-
-            playPaperOpenSound();
-            triggerMiniConfetti(card);
-
-            if (modal) {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-            }
-        });
-    });
-
-    if (closeBtn && modal) {
-        closeBtn.addEventListener('click', () => {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        });
-    }
-}
-
-
-
