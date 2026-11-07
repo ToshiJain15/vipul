@@ -6,15 +6,18 @@ An unforgettable, luxury-styled, interactive birthday surprise website crafted w
 
 ## ✨ Features Included
 
-1. 🎂 **Interactive Birthday Cake & Candles**: Tap to blow out the glowing candles one by one (or all at once) with smoke animations, cheerful sound effects, a grand confetti burst, and a "Wish Granted" modal!
-2. 📖 **The Journey of Us (Memory Lane)**: Romantic chronological milestone timeline with Polaroid-style tilted photo frames and tape badges.
-3. 💖 **Why I Love You (3D Flip Cards)**: Interactive flip cards revealing touching, humorous, and heartfelt reasons why Vipul is your favorite human.
-4. 💌 **Wax-Sealed Secret Love Letter**: A vintage envelope sealed with a custom wax stamp (`V ❤️`). Breaking the seal reveals your emotional, handwritten-style letter.
-5. 🎟️ **Vipul's Birthday Love Coupon Book**: Redeemable vouchers (e.g. 30-min Massage, Midnight Feast, Movie Pass, "Win Any Argument" Pass) that get stamped with a green `REDEEMED with LOVE ❤️` badge upon claiming!
-6. 🏆 **The "Us" Trivia Game**: Fun relationship quiz with instant reactions, score tallies, and an official "Soulmate Certificate" at the end.
-7. 💬 **Live Birthday Wishes Wall**: Friends, family, or you can post birthday blessings with stickers (🎂, 💖, ✨, 🥂, 🎉).
-8. ⏳ **Live Countdown Timer**: Real-time countdown to Vipul's big day!
-9. 🎶 **Ambient Romantic Music & Audio FX**: Integrated Web Audio player playing a dreamy romantic lullaby with audio toggle and interactive sound effects (no broken MP3 links!).
+1. 🔒 **Cute Romantic Passcode Screen**: An aesthetic luxury glass keypad greeting him at the entrance ("For Vipul's Eyes Only ❤️"). Enter the secret 4-digit code (default `1402`) or tap the hint/emergency button to unlock with confetti!
+2. 🏹 **Cupid's Bow & Arrow Shooting**: Interactive Cupid archery range! Draw the golden bow and fire Cupid's heart-tipped arrow across the screen to hit the beating target heart with sound effects and a love explosion.
+3. 🌳 **The Romantic Tree of Hearts**: A glowing love tree with swaying branches, falling blossom petals, and 8 sparkling hanging crystal hearts. Tap any heart or click "Pluck a Blossom" to reveal intimate memories and promises.
+4. 🎂 **Interactive Birthday Cake & Candles**: Tap to blow out the glowing candles one by one (or all at once) with smoke animations, cheerful sound effects, a grand confetti burst, and a "Wish Granted" modal!
+5. 📖 **The Journey of Us (Memory Lane)**: Romantic chronological milestone timeline with Polaroid-style tilted photo frames and tape badges.
+6. 💖 **Why I Love You (3D Flip Cards)**: Interactive flip cards revealing touching, humorous, and heartfelt reasons why Vipul is your favorite human.
+7. 💌 **Wax-Sealed Secret Love Letter**: A vintage envelope sealed with a custom wax stamp (`V ❤️`). Breaking the seal reveals your emotional, handwritten-style letter.
+8. 🎟️ **Vipul's Birthday Love Coupon Book**: Redeemable vouchers (e.g. 30-min Massage, Midnight Feast, Movie Pass, "Win Any Argument" Pass) that get stamped with a green `REDEEMED with LOVE ❤️` badge upon claiming!
+9. 🏆 **The "Us" Trivia Game**: Fun relationship quiz with instant reactions, score tallies, and an official "Soulmate Certificate" at the end.
+10. 💬 **Live Birthday Wishes Wall**: Friends, family, or you can post birthday blessings with stickers (🎂, 💖, ✨, 🥂, 🎉).
+11. ⏳ **Live Countdown Timer**: Real-time countdown to Vipul's big day!
+12. 🎶 **Ambient Romantic Music & Audio FX**: Integrated Web Audio player playing a dreamy romantic lullaby with audio toggle and interactive sound effects (no broken MP3 links!).
 
 ---
 
@@ -87,11 +90,13 @@ If you want the full dynamic backend with SQLite database persistence:
 
 ## 🎨 How to Personalize & Customize
 
-- **Change Date or Name**:
+- **Change Date, Name & Secret Passcode**:
   - In `birthday_project/settings.py`, modify:
     ```python
     FIANCE_NAME = 'Vipul'
     BIRTHDAY_DATE = '2026-11-20'
+    SURPRISE_PASSCODE = '1402'  # Secret 4-digit code (e.g. his birthday or anniversary)
+    PASSCODE_HINT = 'Try our special date (1402)'
     ```
 - **Replace Photos with Your Real Pictures**:
   - Save your photos in `static/images/` or link external photo URLs in `birthday/views.py` (or via Django Admin under Memories).
