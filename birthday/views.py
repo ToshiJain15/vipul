@@ -69,21 +69,23 @@ def get_default_data():
 
     default_letter = {
         'recipient': 'Vipul',
-        'title': 'To My Dearest Fiancé, My Best Friend & My Forever',
-        'letter_text': """My Dearest Vipul,
+        'title': 'To My Dearest Fiancé, Mere Sukoon & My Forever',
+        'letter_text': """Mere Vipul, Meri Jaan,
 
-Happy Birthday, my love!
+Happy Birthday, my love! 🎂❤️
 
-As I sit down to write this, my mind floods with our sweetest memories—our late night scooty rides in the cool air, your gentle laugh, the quiet confidence in your eyes, and the countless ways you make my life so extraordinarily beautiful.
+Today, on your special day, I just want to pause everything and tell you what you truly mean to me. In a world that is so loud, chaotic, and fast, you are my quiet peace—mere sukoon.
 
-You came into my life like a sunrise: slowly, warmly, and filling every corner of my heart with light. Being engaged to you, planning our life together, and knowing I get to call you my husband on 21 December 2026 is the greatest blessing I could have ever asked for.
+Jab bhi main thak jaati hoon ya pareshan hoti hoon, tumhara ek baar bolna ki "sab theek ho jayega" mere dil ko itna sukoon deta hai ki saare darr gayab ho jaate hain. The way you look at me with so much tenderness, the way your hand reaches for mine at every red light on our scooty, the way you laugh at my silly antics—every single day with you feels like the greatest blessing of my life.
 
-On this special birthday, I want you to know how deeply you are loved, how genuinely you are appreciated, and how proud I am of the incredible man you are. You have a heart of pure gold, an inspiring mind, and a soul that feels like coming home.
+I see how dedicated you are, how passionately you work for our future, and how gently you treat everyone around you. You have a heart of pure gold, Vipul, and being your fiancée is the biggest pride of my life.
 
-May this new year of your life bring you boundless joy, roaring success, perfect health, and everything your heart dreams of. Through every chapter of life, I will always be right beside you, holding your hand and loving you more with every beat of my heart.
+Hamari late-night scooty rides through the cool midnight breeze, shared cutting chai, and endless conversations are the moments I cherish most. And knowing that on 21 December 2026, I officially get to hold your hand forever as your wife makes my heart overflow with pure joy.
 
-Happy Birthday, my handsome fiancé. Here is to celebrating today and our forever together.""",
-        'sign_off': 'Forever & Always With All My Heart,\nYour Toshi ❤️'
+On this birthday, I pray that you achieve every dream your heart whispers, that your life overflows with happiness, peace, and roaring success. In every chapter of life, through every high and low, I will always be right beside you—holding you tight, cheering the loudest for you, and loving you unconditionally.
+
+Happy Birthday, my handsome boy. Tum ho, toh main hoon. ❤️""",
+        'sign_off': 'Forever & Always With All My Soul,\nYour Toshi (Your Wifey-to-be) 💍'
     }
 
     default_wishes = [
