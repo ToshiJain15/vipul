@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initCountdown();
     initCakeCandles();
     initScootyRide();
-    initVideoSurprise();
     initPhotoboothTabs();
     initDreamChapters();
     initLoveMeter();
@@ -552,31 +551,6 @@ function initScootyRide() {
     }
 }
 
-/* =========================================================
-   7. Dedicated Birthday Video Surprise Player
-   ========================================================= */
-function initVideoSurprise() {
-    const video = document.getElementById('birthday-fiance-video');
-    const overlay = document.getElementById('video-play-overlay');
-
-    if (!video || !overlay) return;
-
-    overlay.addEventListener('click', () => {
-        video.play();
-        overlay.classList.add('opacity-0', 'pointer-events-none');
-        triggerGrandConfetti();
-        playSuccessChime();
-    });
-
-    video.addEventListener('pause', () => {
-        overlay.classList.remove('opacity-0', 'pointer-events-none');
-    });
-
-    video.addEventListener('ended', () => {
-        overlay.classList.remove('opacity-0', 'pointer-events-none');
-        triggerGrandConfetti();
-    });
-}
 
 /* =========================================================
    8. Photobooth Strips Switcher
