@@ -934,32 +934,32 @@ function initOpenWhenLetters() {
         '1': {
             icon: '🥺💌',
             title: 'When You Miss Me',
-            tag: 'Open When • Love Capsule',
-            text: `Mere Vipul,\n\nClose your eyes right now and take a slow, deep breath. Can you feel that quiet warmth in your chest? That is my heart beating right alongside yours.\n\nWhenever you feel alone or miss my voice, look at our pictures, whisper my name, and remember that I am counting down every second until 21 December 2026 when we are together forever.\n\nNow send me a text: "I miss you." A big warm cuddle is waiting for you! ❤️`
+            tag: 'Open When • Love Across 950 KM',
+            text: `Mere Vipul,\n\nI know Mumbai feels far from Jodhpur right now, and 950 kilometers can feel so heavy when night falls and you just want to reach out and hold my hand.\n\nClose your eyes right now and take a slow, deep breath. Can you feel that quiet warmth in your chest? That is my heart beating right alongside yours.\n\nWhenever you feel alone or miss my voice, look at our pictures, whisper my name, and remember that every sunrise brings us one day closer to 21 December 2026 when this distance becomes permanently 0.00 km.\n\nNow send me a text: "I miss you." A big warm cuddle from Jodhpur to Mumbai is waiting for you! ❤️`
         },
         '2': {
             icon: '☕🌧️',
             title: 'When You Had a Long Day',
             tag: 'Open When • Comfort Capsule',
-            text: `Hey handsome boy,\n\nKick off your shoes, lie back, and let your shoulders drop. Take a deep breath.\n\nYou work so hard every single day. I see your dedication and passion, and I am so endlessly proud of you. Tonight, your favorite snacks, soothing head rubs, and zero worries are on me. You did wonderful today, my love. Rest now.`
+            text: `Hey handsome boy,\n\nI wish I were there in Mumbai right now to take off your shoes, hand you a warm cup of chai, and gently massage your temples until all the day's tiredness melts away.\n\nYou work so hard every single day to build the dreams we talk about on our late-night calls. I see your dedication, and I am so endlessly proud of you. Tonight, kick back, lie down, put me on speaker, and let me talk you to sleep. You did wonderful today, my love. Rest now.`
         },
         '3': {
             icon: '🧸🫂',
             title: 'When You Need a Hug',
             tag: 'Open When • Snuggle Capsule',
-            text: `Wrap both of your arms tightly around yourself right now and squeeze tight!\n\nThat is a giant, warm hug from your future wife delivered straight into your soul. Imagine my head tucked against your chest, listening to your heartbeat. You are safe, you are cherished, and I will always hold your hand.`
+            text: `Wrap both of your arms tightly around yourself right now and squeeze tight!\n\nThat is a giant, warm Jodhpur-to-Mumbai hug from your future wife delivered straight into your soul. Imagine my head tucked against your chest, listening to your heartbeat just like on our late-night scooty rides. You are safe, you are cherished, and I will always hold your hand.`
         },
         '4': {
             icon: '🕊️🤍',
             title: 'When We Disagree',
             tag: 'Open When • Peace Capsule',
-            text: `Hey... pause for just ten seconds and look at us.\n\nWhatever little silly argument or misunderstanding we are having right now does not compare to how deeply, irrevocably in love I am with you.\n\nIt is never you against me. It is you and me against the problem. Come here right now and hug me. We are forever, remember? ❤️`
+            text: `Hey... pause for just ten seconds and look at us.\n\nWhatever little silly argument or misunderstanding we are having right now across the phone does not compare to how deeply, irrevocably in love I am with you.\n\n950 km is already hard enough—let's never waste a single second being upset. It is never you against me. It is you and me against the problem. Pick up the phone and FaceTime me right now. We are forever, remember? ❤️`
         },
         '5': {
             icon: '🎂🎉',
             title: 'At Midnight (12:00 AM)',
             tag: 'Open When • Birthday Midnight',
-            text: `IT IS 12:00 AM! HAPPY OFFICIAL BIRTHDAY, MERE SUKOON! 🎂🥂🎉\n\nOn this exact day, the most wonderful, loving, and kind man was born—and I am the luckiest girl alive because you are mine.\n\nMay this year bring you all the success, happiness, and peace in the world. Ready to celebrate you today and every single day of our lives! 🥳💖`
+            text: `IT IS 12:00 AM! HAPPY OFFICIAL BIRTHDAY, MERE SUKOON! 🎂🥂🎉\n\nOn this exact day (16 November), the most wonderful, loving, and handsome man was born in this world—and I am the luckiest girl alive because you are mine.\n\nFrom Jodhpur to Mumbai, I am sending you a million virtual kisses, hugs, and all the love my heart can hold. Counting down the seconds till 21 December 2026 when I get to celebrate every birthday right beside you! 🥳💖`
         }
     };
 
@@ -1092,7 +1092,15 @@ function initQuiz() {
             options: [
                 { text: "Late Night Scooty Rides in the cool breeze 🛵💨", feedback: "BINGO! Nothing in the world beats our night scooty rides together!" },
                 { text: "Stopping for cutting chai & maska bun ☕", feedback: "So true! Especially during our late-night rides!" },
-                { text: "Listening to romantic songs together 🎵", feedback: "Our favorite vibe!" }
+                { text: "Listening to 'Tum Se Hi' together 🎵", feedback: "Our favorite romantic vibe!" }
+            ]
+        },
+        {
+            q: "What happens to the 950 km between Jodhpur & Mumbai on 21 Dec 2026?",
+            options: [
+                { text: "It permanently becomes 0.00 KM under one roof! 🏰💍🏙️", feedback: "YES! Mumbai & Jodhpur unite forever!" },
+                { text: "No more teary airport goodbyes, only goodnight kisses! 💋", feedback: "Every single night for the rest of our lives!" },
+                { text: "Both! We start our forever marriage journey together! 🥂", feedback: "PERFECT! You and me forever!" }
             ]
         },
         {
@@ -1100,7 +1108,7 @@ function initQuiz() {
             options: [
                 { text: "21 December 2026 (Our Wedding Day!) 💍", feedback: "YES! Counting down every heartbeat till I become your wife!" },
                 { text: "Every single day with you ✨", feedback: "1000% true, mere sukoon!" },
-                { text: "Today! Your Special Birthday 🎂", feedback: "Happy Birthday my superstar King!" }
+                { text: "16 November (Today! Your Birthday) 🎂", feedback: "Happy Birthday my superstar King!" }
             ]
         },
         {

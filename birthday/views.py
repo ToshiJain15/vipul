@@ -10,25 +10,25 @@ def get_default_data():
     """Default fallback data if database is empty, ensuring the surprise always looks gorgeous!"""
     default_memories = [
         {
-            'date_label': 'The First Meeting',
+            'date_label': 'The First Hello',
             'title': 'When Our Worlds Collided ✨',
-            'description': 'From the very first moment we spoke, something just clicked. Your laugh was infectious, your eyes were so warm, and I had no idea that day would change my whole life forever.',
+            'description': 'From the very first moment we spoke across cities, something just clicked. Your laugh was infectious, your eyes were so warm, and I had no idea that day would change my whole life forever.',
             'emoji_icon': '💫',
             'image_url': 'static/images/snapchat-2078954973.jpg',
         },
         {
-            'date_label': 'Our Sweet Moments',
-            'title': 'Hours Felt Like Seconds ☕',
-            'description': 'We sat across each other, talking and laughing until time stood completely still. I remember thinking, "I have to see him again. He is so special."',
-            'emoji_icon': '☕',
-            'image_url': 'static/images/snapchat-1449003545.jpg',
-        },
-        {
-            'date_label': 'Unforgettable Adventure',
-            'title': 'Our Late Night Scooty Rides 🛵💨',
-            'description': 'Wrapping my arms tight around your waist, feeling the cool night breeze against our faces, and laughing together down quiet streets. Those scooty rides with you are my absolute favorite feeling in the entire world.',
+            'date_label': 'Our Sacred Escape',
+            'title': 'Our Midnight Scooty Rides 🛵💨',
+            'description': 'Wrapping my arms tight around your waist, feeling the cool night breeze against our faces, and resting my chin on your shoulder. Stopping at red lights just so you could hold my hand, and sharing cutting chai together. Those scooty rides with you are my absolute favorite feeling in the whole world.',
             'emoji_icon': '🛵',
             'image_url': 'https://media.tenor.com/CqLTEfbYvgoAAAAM/bubu-bike-scooter.gif',
+        },
+        {
+            'date_label': 'Love Across 950 KM',
+            'title': 'Jodhpur ⟷ Mumbai: Soulmate Connection ✈️',
+            'description': 'Airport drop-offs where we held each other tight not wanting to let go, sleeping on late-night video calls with earphones plugged in, and charging our phones twice a day just to hear each other breathe. 950 km could never weaken what we have—it only proved that my soul belongs to you.',
+            'emoji_icon': '✈️',
+            'image_url': 'static/images/snapchat-1449003545.jpg',
         },
         {
             'date_label': 'The Proposal & "Yes!" Day',
@@ -38,33 +38,33 @@ def get_default_data():
             'image_url': 'static/images/dsc_9886.jpg',
         },
         {
-            'date_label': 'Our Forever • 21 Dec 2026',
-            'title': 'Counting Down to Our Big Day 🥂',
-            'description': 'Every single day with you is a gift. I cannot wait to walk down the aisle and marry you on 21 December 2026. Here is to a lifetime of late-night scooty rides and unconditional love.',
+            'date_label': 'Distance Becomes 0.00 KM • 21 Dec 2026',
+            'title': 'Counting Down to Our Wedding Day 🥂',
+            'description': 'The day Jodhpur and Mumbai unite under one roof forever! No more boarding passes, no more screen freezes on video calls, and no more teary goodbyes—just waking up next to you every single morning and riding into the sunset together on our scooty.',
             'emoji_icon': '🥂',
             'image_url': 'static/images/img-20260327-wa0016.jpg',
         },
     ]
 
     default_reasons = [
-        {'title': 'Your Gentle Heart', 'description': 'The kindness and empathy you show to everyone around you inspires me every single day.', 'icon': '💛'},
-        {'title': 'How Safe I Feel With You', 'description': 'No matter how chaotic the world gets, one hug from you makes everything quiet and peaceful.', 'icon': '🛡️'},
-        {'title': 'Your Silly Morning Smile', 'description': 'That half-awake, sleepy smile before coffee that never fails to melt my heart.', 'icon': '☕'},
-        {'title': 'How Hard You Work', 'description': 'Your dedication, passion, and drive to build our dreams and give your best to everything.', 'icon': '🚀'},
-        {'title': 'You Always Make Me Laugh', 'description': 'Even on my worst days, you know exactly what goofy thing to say or do to make me giggle.', 'icon': '😂'},
-        {'title': 'The Way You Hold My Hand', 'description': 'Subconsciously reaching for my fingers when we are walking or holding my hands at red lights on our scooty. It is my favorite feeling.', 'icon': '🤝'},
-        {'title': 'You Believe in Me', 'description': 'When I doubt myself, you remind me who I am. You are my biggest cheerleader and best friend.', 'icon': '🌟'},
-        {'title': 'Your Passion for Life', 'description': 'The spark in your eyes when you talk about things you love and projects you are excited about.', 'icon': '🔥'},
+        {'title': 'Your Gentle Heart', 'description': 'The kindness, empathy, and respect you show everyone around you inspires me every single day.', 'icon': '💛'},
+        {'title': 'How Safe I Feel With You', 'description': 'No matter how chaotic or stressful life gets, one hug from you makes everything quiet, safe, and peaceful.', 'icon': '🛡️'},
+        {'title': 'Our Late-Night Video Calls', 'description': 'Even after an exhausting, hectic day in Mumbai, you always make time to talk me to sleep from Jodhpur.', 'icon': '🌙'},
+        {'title': 'Holding Tight on Our Scooty', 'description': 'Wrapping my arms around your waist, resting my chin on your shoulder, and feeling the cool wind as you ride. Pure bliss.', 'icon': '🛵'},
+        {'title': 'How Hard You Work in Mumbai', 'description': 'Your grit, passion, and tireless drive to build our dreams and future together makes me the proudest fiancée alive.', 'icon': '🚀'},
+        {'title': 'You Always Make Me Laugh', 'description': 'Even across 950 km on FaceTime, you know exactly what goofy thing to say or face to make to turn my bad day into giggles.', 'icon': '😂'},
+        {'title': 'The Way You Hold My Hand', 'description': 'Subconsciously reaching for my fingers at red lights or whenever we walk together. My heart melts every single time.', 'icon': '🤝'},
+        {'title': 'You Believe in Me', 'description': 'When self-doubt creeps in, you remind me who I am. You are my greatest anchor, cheerleader, and best friend.', 'icon': '🌟'},
         {'title': 'You Love Me as I Am', 'description': 'With all my flaws, quirks, and mood swings. You love me purely and unconditionally.', 'icon': '🥰'},
     ]
 
     default_coupons = [
-        {'title': '30-Minute Relaxing Massage', 'description': 'Full shoulder, neck & back massage with scented oils. Valid anytime!', 'icon': '💆‍♂️', 'code': 'MASSAGE-30', 'is_redeemed': False},
-        {'title': 'Favorite Midnight Feast', 'description': 'Your favorite pizza, burgers, or dessert cooked or ordered at midnight, guilt-free!', 'icon': '🍕', 'code': 'MIDNIGHT-FEAST', 'is_redeemed': False},
+        {'title': '30-Minute Relaxing Massage', 'description': 'Full shoulder, neck & back massage with soothing oils whenever we meet. Valid anytime!', 'icon': '💆‍♂️', 'code': 'MASSAGE-30', 'is_redeemed': False},
+        {'title': 'Favorite Midnight Feast', 'description': 'Your favorite pizza, burgers, or dessert cooked or ordered at midnight, 100% guilt-free!', 'icon': '🍕', 'code': 'MIDNIGHT-FEAST', 'is_redeemed': False},
         {'title': 'Movie Night Decision Maker', 'description': 'You pick the movie or show, absolutely no vetoes or complaints permitted!', 'icon': '🎬', 'code': 'MOVIE-PASS', 'is_redeemed': False},
         {'title': 'Get Out of Any Argument Free', 'description': 'Play this card during any silly debate and instantly win on the spot!', 'icon': '🕊️', 'code': 'PEACE-CARD', 'is_redeemed': False},
-        {'title': 'Breakfast in Bed & Coffee', 'description': 'A lavish morning spread brought straight to bed with a hot cup of love.', 'icon': '🥞', 'code': 'BREAKFAST-BED', 'is_redeemed': False},
-        {'title': 'Midnight Scooty Ride & Chai', 'description': 'Hop on! A late-night scooty ride through the cool breeze with my arms wrapped around your waist, ending with hot chai & ice cream!', 'icon': '🛵', 'code': 'SCOOTY-RIDE', 'is_redeemed': False},
+        {'title': 'Endless Video Call & Bedtime Pass', 'description': 'Unlimited screen time together from Jodhpur to Mumbai with zero rush, falling asleep on call.', 'icon': '📱', 'code': 'CALL-PASS', 'is_redeemed': False},
+        {'title': 'Midnight Scooty Ride & Cutting Chai', 'description': 'Hop on! A late-night scooty ride through the cool breeze with my arms wrapped around your waist, ending with hot chai & ice cream!', 'icon': '🛵', 'code': 'SCOOTY-RIDE', 'is_redeemed': False},
     ]
 
     default_letter = {
@@ -74,25 +74,27 @@ def get_default_data():
 
 Happy Birthday, my love! 🎂❤️
 
-Today, on your special day, I just want to pause everything and tell you what you truly mean to me. In a world that is so loud, chaotic, and fast, you are my quiet peace—mere sukoon.
+Sitting here in Jodhpur tonight, looking at the clock ticking towards 12:00 AM, my heart is right there with you in Mumbai. 950 kilometers can separate our cities, but they have never been able to put an inch of distance between our souls.
 
-Jab bhi main thak jaati hoon ya pareshan hoti hoon, tumhara ek baar bolna ki "sab theek ho jayega" mere dil ko itna sukoon deta hai ki saare darr gayab ho jaate hain. The way you look at me with so much tenderness, the way your hand reaches for mine at every red light on our scooty, the way you laugh at my silly antics—every single day with you feels like the greatest blessing of my life.
+In a world that is so loud, chaotic, and fast, you are my quiet peace—mere sukoon.
 
-I see how dedicated you are, how passionately you work for our future, and how gently you treat everyone around you. You have a heart of pure gold, Vipul, and being your fiancée is the biggest pride of my life.
+Jab bhi main thak jaati hoon ya din mushkil hota hai, tumhara phone par ek baar kehna ki "sab theek ho jayega, main hoon na" mere dil ko itna sukoon deta hai ki saare darr aur thakan gayab ho jaate hain. Falling asleep to the sound of your voice on late-night video calls, charging phones twice a day, waiting eagerly for the next flight or train, and counting the minutes until we can run into each other's arms at the arrivals gate... this distance has only proved how completely and fiercely I belong to you.
 
-Hamari late-night scooty rides through the cool midnight breeze, shared cutting chai, and endless conversations are the moments I cherish most. And knowing that on 21 December 2026, I officially get to hold your hand forever as your wife makes my heart overflow with pure joy.
+And when we are together—wrapping my arms tight around your waist on our late-night scooty rides, feeling the cool midnight breeze against our faces, sharing that first hot sip of cutting chai, and your fingers reaching for mine at every red light... those are the moments I hold closest to my heart.
 
-On this birthday, I pray that you achieve every dream your heart whispers, that your life overflows with happiness, peace, and roaring success. In every chapter of life, through every high and low, I will always be right beside you—holding you tight, cheering the loudest for you, and loving you unconditionally.
+I see how hard you work every single day in Mumbai, building the foundation of our tomorrow with so much grit and dedication. You have a heart of pure gold, Vipul, and being your fiancée is the greatest pride of my life.
+
+On 21 December 2026, this 950 km countdown reaches 0.00 km forever. No more boarding passes, no more screen freezes on video calls, and no more teary airport goodbyes. Just you and me, waking up next to each other every single morning, forever.
 
 Happy Birthday, my handsome boy. Tum ho, toh main hoon. ❤️""",
-        'sign_off': 'Forever & Always With All My Soul,\nYour Toshi (Your Wifey-to-be) 💍'
+        'sign_off': 'Forever & Always With All My Soul,\nYour Toshi (From Jodhpur to Mumbai with all my love) 💍🏰✈️🏙️'
     }
 
     default_wishes = [
         {
             'name': 'Toshi',
             'relationship': 'Your Wifey-to-be ❤️',
-            'message': 'Happy Birthday to the most amazing man in the universe! I love you more than words could ever describe. Ready to marry you on December 21, 2026! 🥂🛵',
+            'message': 'Happy Birthday to the most amazing man in the universe! Counting down every heartbeat in Jodhpur until I become your wife in Mumbai on December 21, 2026! 🥂🛵💍',
             'emoji': '💖'
         },
         {
@@ -106,29 +108,29 @@ Happy Birthday, my handsome boy. Tum ho, toh main hoon. ❤️""",
     default_tree_hearts = [
         {
             'title': 'Our Forever Promise',
-            'message': 'I promise to stand by you in every storm and dance with you under every rainbow. You are my home, Vipul.',
+            'message': 'I promise to stand by you in every storm and celebrate with you under every rainbow. You are my home, Vipul.',
             'emoji': '💍',
             'color': '#f43f5e',
             'order': 0
         },
         {
-            'title': 'Your Cozy Forehead Kisses',
-            'message': 'Nothing in this entire world feels more comforting and sacred than when you kiss my forehead before we sleep.',
-            'emoji': '💋',
+            'title': 'Jodhpur to Mumbai With Love',
+            'message': '950 kilometers mean nothing when you mean the entire universe to me. Distance is just a number; our love is forever.',
+            'emoji': '✈️',
             'color': '#fb7185',
             'order': 1
         },
         {
             'title': 'Your Calming Voice',
-            'message': 'Even on the most chaotic, stressful days, hearing your voice instantly quiets my soul.',
+            'message': 'Even on the most chaotic, stressful days, hearing your voice on the phone instantly quiets my soul.',
             'emoji': '🎙️',
             'color': '#dfbc78',
             'order': 2
         },
         {
-            'title': 'Late Night Laughter',
-            'message': 'Our 1 AM giggles over stupid jokes and funny reels that nobody else on earth would understand.',
-            'emoji': '🌙',
+            'title': 'Late Night Scooty Breeze',
+            'message': 'Wrapping my arms around your waist, resting my chin on your shoulder, and riding down quiet streets. Pure bliss.',
+            'emoji': '🛵',
             'color': '#f43f5e',
             'order': 3
         },
@@ -147,9 +149,9 @@ Happy Birthday, my handsome boy. Tum ho, toh main hoon. ❤️""",
             'order': 5
         },
         {
-            'title': 'The First Glimpse',
-            'message': 'I still remember the very first time our eyes locked. My heart whispered, "Oh, there you are."',
-            'emoji': '💫',
+            'title': '0.00 KM on 21 Dec 2026',
+            'message': 'The most awaited day of our lives! When distance becomes permanently 0 km and we begin our forever as husband and wife.',
+            'emoji': '🥂',
             'color': '#f43f5e',
             'order': 6
         },
