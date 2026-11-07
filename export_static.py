@@ -62,11 +62,14 @@ def export_static_site():
     html_content = html_content.replace('src="/static/', 'src="static/')
     html_content = html_content.replace('action="/api/wishes/add/"', 'action="#wishes"')
 
-    # Write docs/index.html
+    # Write docs/index.html and root index.html (so Pages works whether /docs or /root is chosen)
     index_file = DOCS_DIR / 'index.html'
+    root_index_file = BASE_DIR / 'index.html'
     with open(index_file, 'w', encoding='utf-8') as f:
         f.write(html_content)
-    print(f"✓ Generated {index_file}")
+    with open(root_index_file, 'w', encoding='utf-8') as f:
+        f.write(html_content)
+    print(f"✓ Generated {index_file} and {root_index_file}")
 
     # 3. Copy static files into docs/static/
     static_src = BASE_DIR / 'static'
