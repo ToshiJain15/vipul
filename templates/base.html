@@ -11,7 +11,7 @@
     <meta property="og:description" content="A romantic birthday surprise from Toshi with all my love. Happy Birthday, Mere Sukoon!">
     <meta property="og:type" content="website">
     <meta property="og:image" content="static/images/cinematic_red_saree.jpg">
-    <meta name="theme-color" content="#ec4899">
+    <meta name="theme-color" content="#1a0c24">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +34,7 @@
                         cinzel: ['"Cinzel"', 'serif'],
                     },
                     colors: {
-                        nightLove: '#0d0b14',
+                        nightLove: '#0d0714',
                     }
                 }
             }
@@ -47,7 +47,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body class="bg-gradient-to-b from-[#fff5f6] via-[#ffffff] to-[#fff0f2] text-slate-800 font-sans antialiased overflow-x-hidden selection:bg-rose-500 selection:text-white">
+<body class="bg-gradient-to-b from-[#0d0714] via-[#1a0c24] to-[#0a0510] text-white font-sans antialiased overflow-x-hidden selection:bg-rose-500 selection:text-white min-h-screen">
 
     <!-- Lightweight Ambient Floating Hearts Canvas (Optimized for 60fps on mobile) -->
     <canvas id="ambient-hearts-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
@@ -58,41 +58,41 @@
         Your browser does not support audio playback.
     </audio>
 
-    <!-- Navigation Bar with Romantic Bollywood Music Player (Red & White Theme) -->
-    <nav class="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-rose-200 py-2.5 px-3 sm:px-6 shadow-sm">
+    <!-- Navigation Header -->
+    <nav class="fixed top-0 inset-x-0 z-40 bg-[#0d0714]/85 backdrop-blur-md border-b border-rose-900/40 px-3 sm:px-6 py-2.5 transition duration-300">
         <div class="max-w-6xl mx-auto flex items-center justify-between">
             
-            <!-- Brand / Couple Monogram -->
-            <a href="#hero" class="flex items-center space-x-1.5 text-red-600 hover:text-red-700 transition">
+            <!-- Brand Logo -->
+            <a href="#hero" class="flex items-center space-x-1.5 text-rose-400 hover:text-amber-300 transition">
                 <span class="text-xl animate-pulse">❤️</span>
-                <span class="font-cinzel tracking-wider text-xs sm:text-sm font-black text-red-700">VIPUL'S DAY</span>
+                <span class="font-cinzel tracking-wider text-xs sm:text-sm font-bold text-amber-200">VIPUL'S DAY</span>
             </a>
             
             <!-- Desktop Quick Links -->
-            <div class="hidden lg:flex items-center space-x-4 text-xs font-semibold text-slate-700">
-                <a href="#gifts-section" class="hover:text-red-600 transition">🎁 Gifts</a>
-                <a href="#scooty-ride-section" class="hover:text-red-600 transition">🛵 Scooty Ride</a>
-                <a href="#cake-section" class="hover:text-red-600 transition">🎂 Cake</a>
-                <a href="#photobooth-section" class="hover:text-red-600 transition">📸 Photos</a>
-                <a href="#dream-chapters-section" class="hover:text-red-600 transition">✈️ Dreams</a>
-                <a href="#love-meter-section" class="hover:text-red-600 transition">💘 Love Radar</a>
-                <a href="#letter-section" class="hover:text-red-600 transition">💌 Letter</a>
-                <a href="#wishes-section" class="hover:text-red-600 transition">💬 Wishes</a>
+            <div class="hidden lg:flex items-center space-x-4 text-xs font-semibold text-rose-200/80">
+                <a href="#gifts-section" class="hover:text-amber-300 transition">🎁 Gifts</a>
+                <a href="#scooty-ride-section" class="hover:text-amber-300 transition">🛵 Scooty Ride</a>
+                <a href="#cake-section" class="hover:text-amber-300 transition">🎂 Cake</a>
+                <a href="#photobooth-section" class="hover:text-amber-300 transition">📸 Photos</a>
+                <a href="#dream-chapters-section" class="hover:text-amber-300 transition">✈️ Dreams</a>
+                <a href="#love-meter-section" class="hover:text-amber-300 transition">💘 Love Radar</a>
+                <a href="#letter-section" class="hover:text-amber-300 transition">💌 Letter</a>
+                <a href="#wishes-section" class="hover:text-amber-300 transition">💬 Wishes</a>
             </div>
 
-            <!-- Floating Bollywood Music Player Button (Red & White Style) -->
-            <button id="music-toggle-btn" class="flex items-center space-x-2 bg-rose-50 hover:bg-rose-100/90 border border-rose-300 px-3 py-1.5 rounded-full shadow-sm transition transform active:scale-95 group">
+            <!-- Floating Bollywood Music Player Button -->
+            <button id="music-toggle-btn" class="flex items-center space-x-2 bg-rose-950/60 hover:bg-rose-900/80 border border-amber-400/40 px-3 py-1.5 rounded-full shadow-lg transition transform active:scale-95 group">
                 <!-- Mini Spinning Vinyl Disc -->
                 <div id="music-vinyl-icon" class="w-6 h-6 rounded-full bg-slate-900 border border-amber-300 flex items-center justify-center relative overflow-hidden record-spinning record-paused shadow">
-                    <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                    <div class="w-2 h-2 rounded-full bg-rose-500"></div>
                 </div>
 
                 <!-- Track Info & Visualizer -->
                 <div class="text-left flex flex-col justify-center">
-                    <span id="music-track-title" class="text-[10px] sm:text-xs font-bold text-red-700 block truncate max-w-[110px] sm:max-w-[140px]">
-                        🎵 Tum Se Hi
+                    <span id="music-track-title" class="text-[10px] sm:text-xs font-bold text-amber-200 block truncate max-w-[110px] sm:max-w-[140px]">
+                        🎶 Tum Se Hi
                     </span>
-                    <span id="music-status-text" class="text-[8px] text-rose-500 block font-cursive -mt-0.5">
+                    <span id="music-status-text" class="text-[8px] text-rose-300/80 block font-cursive -mt-0.5">
                         Tap to Play Song
                     </span>
                 </div>
@@ -114,43 +114,43 @@
         {% block content %}{% endblock %}
     </main>
 
-    <!-- Sleek Mobile Bottom Navigation Bar (5 essential tabs, Red & White Theme) -->
-    <div class="fixed bottom-2.5 inset-x-3 z-40 lg:hidden bg-white/95 backdrop-blur-md border border-rose-200 rounded-2xl px-2 py-1.5 shadow-xl flex items-center justify-around text-xs font-medium text-slate-700 select-none">
-        <a href="#gifts-section" class="flex flex-col items-center hover:text-red-600 transition py-0.5 px-2">
+    <!-- Sleek Mobile Bottom Navigation Bar (5 essential tabs) -->
+    <div class="fixed bottom-2.5 inset-x-3 z-40 lg:hidden bg-[#0d0714]/92 backdrop-blur-md border border-rose-900/50 rounded-2xl px-2 py-1.5 shadow-2xl flex items-center justify-around text-xs font-medium text-rose-200 select-none">
+        <a href="#gifts-section" class="flex flex-col items-center hover:text-amber-300 transition py-0.5 px-2">
             <span class="text-base">🎁</span>
             <span class="text-[8px] font-cinzel font-bold">Gifts</span>
         </a>
-        <a href="#scooty-ride-section" class="flex flex-col items-center hover:text-red-600 transition py-0.5 px-2">
+        <a href="#scooty-ride-section" class="flex flex-col items-center hover:text-amber-300 transition py-0.5 px-2">
             <span class="text-base">🛵</span>
             <span class="text-[8px] font-cinzel font-bold">Scooty</span>
         </a>
-        <a href="#cake-section" class="flex flex-col items-center hover:text-red-600 transition py-0.5 px-2">
+        <a href="#cake-section" class="flex flex-col items-center hover:text-amber-300 transition py-0.5 px-2">
             <span class="text-base">🎂</span>
             <span class="text-[8px] font-cinzel font-bold">Cake</span>
         </a>
-        <a href="#photobooth-section" class="flex flex-col items-center hover:text-red-600 transition py-0.5 px-2">
+        <a href="#photobooth-section" class="flex flex-col items-center hover:text-amber-300 transition py-0.5 px-2">
             <span class="text-base">📸</span>
             <span class="text-[8px] font-cinzel font-bold">Photos</span>
         </a>
-        <a href="#letter-section" class="flex flex-col items-center hover:text-red-600 transition py-0.5 px-2">
+        <a href="#letter-section" class="flex flex-col items-center hover:text-amber-300 transition py-0.5 px-2">
             <span class="text-base">💌</span>
             <span class="text-[8px] font-cinzel font-bold">Letter</span>
         </a>
     </div>
 
     <!-- Cuddle / Hug Floating Toast Notification -->
-    <div id="cuddle-toast" class="fixed top-16 left-1/2 -translate-x-1/2 z-50 hidden bg-gradient-to-r from-red-600 via-rose-600 to-red-500 text-white text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-full shadow-2xl border border-white/60 animate-bounce text-center whitespace-nowrap">
+    <div id="cuddle-toast" class="fixed top-16 left-1/2 -translate-x-1/2 z-50 hidden bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 text-white text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-full shadow-2xl border border-white/60 animate-bounce text-center whitespace-nowrap">
         💋 Cuddle & kiss delivered straight to Toshi! She is blushing! 🥰
     </div>
 
     <!-- Footer -->
-    <footer class="border-t border-rose-200 bg-white/80 py-10 text-center text-slate-600 text-xs sm:text-sm relative z-10">
+    <footer class="border-t border-rose-900/40 bg-[#0a0510] py-10 text-center text-rose-200/80 text-xs sm:text-sm relative z-10">
         <div class="max-w-4xl mx-auto px-4 space-y-3">
             <div class="text-2xl animate-pulse">💖</div>
-            <p class="font-cursive text-xl sm:text-2xl text-rose-700 font-bold">
+            <p class="font-cursive text-xl sm:text-2xl text-amber-200 font-bold">
                 "In all the world, there is no heart for me like yours. Mere Sukoon, Vipul."
             </p>
-            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-red-600 font-cinzel font-black">
+            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-rose-400 font-cinzel font-black">
                 Vipul & Toshi • Forever & Always • 21 December 2026 💍
             </p>
         </div>
@@ -177,6 +177,8 @@
             ]
         };
     </script>
+
+    <!-- Main JavaScript Bundle -->
     <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

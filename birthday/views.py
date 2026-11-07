@@ -12,7 +12,7 @@ def get_default_data():
         {
             'date_label': 'The First Hello',
             'title': 'When Our Worlds Collided ✨',
-            'description': 'From the very first moment we spoke across cities, something just clicked. Your laugh was infectious, your eyes were so warm, and I had no idea that day would change my whole life forever.',
+            'description': 'From the very first moment we spoke, something just clicked. Your laugh was infectious, your eyes were so warm, and I had no idea that day would change my whole life forever.',
             'emoji_icon': '💫',
             'image_url': 'static/images/Snapchat-2078954973.jpg',
         },
@@ -24,9 +24,9 @@ def get_default_data():
             'image_url': 'static/images/couple_scooty_ride.gif',
         },
         {
-            'date_label': 'Love Across 950 KM',
-            'title': 'Jodhpur ⟷ Mumbai: Soulmate Connection ✈️',
-            'description': 'Airport drop-offs where we held each other tight not wanting to let go, sleeping on late-night video calls with earphones plugged in, and charging our phones twice a day just to hear each other breathe. 950 km could never weaken what we have—it only proved that my soul belongs to you.',
+            'date_label': 'Boundless Love',
+            'title': 'Two Souls, One Heartbeat ✨',
+            'description': 'Airport hugs where we held each other tight not wanting to let go, falling asleep on late-night calls with earphones plugged in, and counting every breath together. No amount of distance could ever weaken what we have—it only proved that my soul was crafted for yours.',
             'emoji_icon': '✈️',
             'image_url': 'static/images/Snapchat-1449003545.jpg',
         },
@@ -38,9 +38,9 @@ def get_default_data():
             'image_url': 'static/images/DSC_9886.JPG',
         },
         {
-            'date_label': 'Distance Becomes 0.00 KM • 21 Dec 2026',
+            'date_label': 'Our Forever Begins • 21 Dec 2026',
             'title': 'Counting Down to Our Wedding Day 🥂',
-            'description': 'The day Jodhpur and Mumbai unite under one roof forever! No more boarding passes, no more screen freezes on video calls, and no more teary goodbyes—just waking up next to you every single morning and riding into the sunset together on our scooty.',
+            'description': 'The day our forever begins under one roof! No more boarding passes, no more screen freezes on video calls, and no more teary goodbyes—just waking up next to you every single morning and riding into the sunset together on our scooty.',
             'emoji_icon': '🥂',
             'image_url': 'static/images/IMG-20260327-WA0016.jpg',
         },
@@ -49,10 +49,10 @@ def get_default_data():
     default_reasons = [
         {'title': 'Your Gentle Heart', 'description': 'The kindness, empathy, and respect you show everyone around you inspires me every single day.', 'icon': '💛'},
         {'title': 'How Safe I Feel With You', 'description': 'No matter how chaotic or stressful life gets, one hug from you makes everything quiet, safe, and peaceful.', 'icon': '🛡️'},
-        {'title': 'Our Late-Night Video Calls', 'description': 'Even after an exhausting, hectic day in Mumbai, you always make time to talk me to sleep from Jodhpur.', 'icon': '🌙'},
+        {'title': 'Our Late-Night Calls', 'description': 'Even after exhausting, hectic days, you always make time to talk me to sleep with your warm voice.', 'icon': '🌙'},
         {'title': 'Holding Tight on Our Scooty', 'description': 'Wrapping my arms around your waist, resting my chin on your shoulder, and feeling the cool wind as you ride. Pure bliss.', 'icon': '🛵'},
-        {'title': 'How Hard You Work in Mumbai', 'description': 'Your grit, passion, and tireless drive to build our dreams and future together makes me the proudest fiancée alive.', 'icon': '🚀'},
-        {'title': 'You Always Make Me Laugh', 'description': 'Even across 950 km on FaceTime, you know exactly what goofy thing to say or face to make to turn my bad day into giggles.', 'icon': '😂'},
+        {'title': 'How Hard You Work', 'description': 'Your grit, passion, and tireless drive to build our dreams and future together makes me the proudest fiancée alive.', 'icon': '🚀'},
+        {'title': 'You Always Make Me Laugh', 'description': 'Even across miles on FaceTime, you know exactly what goofy thing to say or face to make to turn my bad day into giggles.', 'icon': '😂'},
         {'title': 'The Way You Hold My Hand', 'description': 'Subconsciously reaching for my fingers at red lights or whenever we walk together. My heart melts every single time.', 'icon': '🤝'},
         {'title': 'You Believe in Me', 'description': 'When self-doubt creeps in, you remind me who I am. You are my greatest anchor, cheerleader, and best friend.', 'icon': '🌟'},
         {'title': 'You Love Me as I Am', 'description': 'With all my flaws, quirks, and mood swings. You love me purely and unconditionally.', 'icon': '🥰'},
@@ -63,7 +63,7 @@ def get_default_data():
         {'title': 'Favorite Midnight Feast', 'description': 'Your favorite pizza, burgers, or dessert cooked or ordered at midnight, 100% guilt-free!', 'icon': '🍕', 'code': 'MIDNIGHT-FEAST', 'is_redeemed': False},
         {'title': 'Movie Night Decision Maker', 'description': 'You pick the movie or show, absolutely no vetoes or complaints permitted!', 'icon': '🎬', 'code': 'MOVIE-PASS', 'is_redeemed': False},
         {'title': 'Get Out of Any Argument Free', 'description': 'Play this card during any silly debate and instantly win on the spot!', 'icon': '🕊️', 'code': 'PEACE-CARD', 'is_redeemed': False},
-        {'title': 'Endless Video Call & Bedtime Pass', 'description': 'Unlimited screen time together from Jodhpur to Mumbai with zero rush, falling asleep on call.', 'icon': '📱', 'code': 'CALL-PASS', 'is_redeemed': False},
+        {'title': 'Endless Video Call & Bedtime Pass', 'description': 'Unlimited screen time together with zero rush, talking about everything and falling asleep on call together.', 'icon': '📱', 'code': 'CALL-PASS', 'is_redeemed': False},
         {'title': 'Midnight Scooty Ride & Cutting Chai', 'description': 'Hop on! A late-night scooty ride through the cool breeze with my arms wrapped around your waist, ending with hot chai & ice cream!', 'icon': '🛵', 'code': 'SCOOTY-RIDE', 'is_redeemed': False},
     ]
 
@@ -74,27 +74,27 @@ def get_default_data():
 
 Happy Birthday, my love! 🎂❤️
 
-Sitting here in Jodhpur tonight, looking at the clock ticking towards 12:00 AM, my heart is right there with you in Mumbai. 950 kilometers can separate our cities, but they have never been able to put an inch of distance between our souls.
+Looking into your eyes, my whole world goes still. No amount of miles or busy days could ever put a single breath of distance between our souls.
 
 In a world that is so loud, chaotic, and fast, you are my quiet peace—mere sukoon.
 
-Jab bhi main thak jaati hoon ya din mushkil hota hai, tumhara phone par ek baar kehna ki "sab theek ho jayega, main hoon na" mere dil ko itna sukoon deta hai ki saare darr aur thakan gayab ho jaate hain. Falling asleep to the sound of your voice on late-night video calls, charging phones twice a day, waiting eagerly for the next flight or train, and counting the minutes until we can run into each other's arms at the arrivals gate... this distance has only proved how completely and fiercely I belong to you.
+Jab bhi main thak jaati hoon ya din mushkil hota hai, tumhara phone par ek baar kehna ki "sab theek ho jayega, main hoon na" mere dil ko itna sukoon deta hai ki saare darr aur thakan gayab ho jaate hain. Falling asleep to the sound of your voice on late-night calls, counting the hours until we can run into each other's arms, and feeling your warmth... every single moment has proved how completely and fiercely I belong to you.
 
 And when we are together—wrapping my arms tight around your waist on our late-night scooty rides, feeling the cool midnight breeze against our faces, sharing that first hot sip of cutting chai, and your fingers reaching for mine at every red light... those are the moments I hold closest to my heart.
 
-I see how hard you work every single day in Mumbai, building the foundation of our tomorrow with so much grit and dedication. You have a heart of pure gold, Vipul, and being your fiancée is the greatest pride of my life.
+I see how hard you work every single day, building the foundation of our tomorrow with so much grit and dedication. You have a heart of pure gold, Vipul, and being your fiancée is the greatest pride of my life.
 
-On 21 December 2026, this 950 km countdown reaches 0.00 km forever. No more boarding passes, no more screen freezes on video calls, and no more teary airport goodbyes. Just you and me, waking up next to each other every single morning, forever.
+On 21 December 2026, we begin our forever as husband and wife under one roof. No more teary airport goodbyes, no more counting days. Just you and me, waking up next to each other every single morning for the rest of our lives.
 
 Happy Birthday, my handsome boy. Tum ho, toh main hoon. ❤️""",
-        'sign_off': 'Forever & Always With All My Soul,\nYour Toshi (From Jodhpur to Mumbai with all my love) 💍🏰✈️🏙️'
+        'sign_off': 'Forever & Always With All My Soul,\nYour Toshi (Your Wifey-To-Be) 💍✨❤️'
     }
 
     default_wishes = [
         {
             'name': 'Toshi',
             'relationship': 'Your Wifey-to-be ❤️',
-            'message': 'Happy Birthday to the most amazing man in the universe! Counting down every heartbeat in Jodhpur until I become your wife in Mumbai on December 21, 2026! 🥂🛵💍',
+            'message': 'Happy Birthday to the most amazing man in the universe! Counting down every heartbeat until I become your wife on December 21, 2026! 🥂🛵💍',
             'emoji': '💖'
         },
         {
@@ -114,8 +114,8 @@ Happy Birthday, my handsome boy. Tum ho, toh main hoon. ❤️""",
             'order': 0
         },
         {
-            'title': 'Jodhpur to Mumbai With Love',
-            'message': '950 kilometers mean nothing when you mean the entire universe to me. Distance is just a number; our love is forever.',
+            'title': 'Distance Means Nothing',
+            'message': 'Distance means so little when you mean the entire universe to me. Miles are just numbers; our love is infinite and forever.',
             'emoji': '✈️',
             'color': '#fb7185',
             'order': 1
@@ -149,8 +149,8 @@ Happy Birthday, my handsome boy. Tum ho, toh main hoon. ❤️""",
             'order': 5
         },
         {
-            'title': '0.00 KM on 21 Dec 2026',
-            'message': 'The most awaited day of our lives! When distance becomes permanently 0 km and we begin our forever as husband and wife.',
+            'title': 'Forever on 21 Dec 2026',
+            'message': 'The most awaited day of our lives! When we begin our forever together under one roof as husband and wife.',
             'emoji': '🥂',
             'color': '#f43f5e',
             'order': 6
@@ -274,4 +274,3 @@ def api_wishes(request):
         'created_at': w.created_at.strftime('%b %d, %Y')
     } for w in wishes]
     return JsonResponse({'wishes': data})
-

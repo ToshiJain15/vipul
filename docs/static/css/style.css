@@ -1,18 +1,18 @@
-/* Custom Styles & Romantic Animations for Vipul's Birthday (Red & White Theme) */
+/* Custom Styles & Romantic Animations for Vipul's Birthday (Romantic Midnight Wine & Rose Gold) */
 
 /* Custom Smooth Scrollbar */
 ::-webkit-scrollbar {
     width: 6px;
 }
 ::-webkit-scrollbar-track {
-    background: #fff0f2;
+    background: #0d0714;
 }
 ::-webkit-scrollbar-thumb {
     background: #e11d48;
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #be123c;
+    background: #dfbc78;
 }
 
 /* Prevent Horizontal Scrolling and Enable Hardware Acceleration */
@@ -34,32 +34,31 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
 }
 
 /* =========================================================
-   Performance Optimized Glassmorphism Utilities (Red & White)
-   On mobile: solid luxury translucent white for 60fps smoothness!
+   Glassmorphism Utilities (Midnight Wine & Rose Gold)
    ========================================================= */
 .glass-panel {
-    background: rgba(255, 255, 255, 0.94);
-    border: 1.5px solid rgba(244, 63, 94, 0.22);
-    box-shadow: 0 8px 30px rgba(225, 29, 72, 0.07);
+    background: rgba(22, 11, 30, 0.78);
+    border: 1.5px solid rgba(244, 63, 94, 0.3);
+    box-shadow: 0 12px 35px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(244, 63, 94, 0.12);
 }
 
 .glass-panel-gold {
-    background: rgba(255, 254, 252, 0.96);
-    border: 1.5px solid rgba(245, 158, 11, 0.35);
-    box-shadow: 0 8px 30px rgba(245, 158, 11, 0.1);
+    background: rgba(26, 13, 34, 0.85);
+    border: 1.5px solid rgba(223, 188, 120, 0.45);
+    box-shadow: 0 12px 35px -5px rgba(0, 0, 0, 0.6), 0 0 18px rgba(223, 188, 120, 0.15);
 }
 
 /* Enable backdrop blur on larger viewports */
 @media (min-width: 769px) {
     .glass-panel {
-        background: rgba(255, 255, 255, 0.88);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        background: rgba(20, 9, 28, 0.72);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
     }
     .glass-panel-gold {
-        background: rgba(255, 254, 252, 0.92);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        background: rgba(24, 11, 32, 0.78);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
     }
 }
 
@@ -76,7 +75,7 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
 
 .cake-tier {
     transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.3);
 }
 
 /* Candle & Flame Animation */
@@ -87,7 +86,7 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
     background: linear-gradient(to bottom, #fff1f2, #fb7185);
     border-radius: 6px 6px 2px 2px;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     transition: transform 0.2s;
 }
 .candle:hover {
@@ -112,7 +111,7 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
     height: 22px;
     background: linear-gradient(to bottom, #fff, #fde047, #f97316);
     border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
-    box-shadow: 0 0 12px #f97316, 0 0 24px #fde047;
+    box-shadow: 0 0 16px #f97316, 0 0 32px #fde047, 0 0 50px rgba(249, 115, 22, 0.6);
     animation: flicker 1.2s infinite ease-in-out alternate;
     transform-origin: 50% 90%;
     transition: opacity 0.4s, transform 0.4s;
@@ -131,7 +130,7 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
 }
 
 .candle:hover .flame {
-    filter: brightness(1.2);
+    filter: brightness(1.3);
 }
 
 /* Smoke rising from blown candles */
@@ -141,7 +140,7 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
     left: 50%;
     width: 8px;
     height: 18px;
-    background: radial-gradient(circle, rgba(200,200,200,0.6) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(220,220,220,0.7) 0%, transparent 70%);
     border-radius: 50%;
     opacity: 0;
     pointer-events: none;
@@ -190,13 +189,13 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
 
 /* Polaroid Photos Styling */
 .polaroid {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(223, 188, 120, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     will-change: transform;
 }
 .polaroid:hover {
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 16px 36px rgba(244, 63, 94, 0.25);
+    box-shadow: 0 22px 50px rgba(223, 188, 120, 0.35);
 }
 
 .polaroid-tape {
@@ -206,20 +205,20 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
     transform: translateX(-50%) rotate(-2deg);
     width: 100px;
     height: 24px;
-    background: rgba(254, 240, 138, 0.85);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    border-left: 2px dashed rgba(217, 119, 6, 0.4);
-    border-right: 2px dashed rgba(217, 119, 6, 0.4);
+    background: rgba(254, 240, 138, 0.9);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    border-left: 2px dashed rgba(217, 119, 6, 0.5);
+    border-right: 2px dashed rgba(217, 119, 6, 0.5);
     z-index: 10;
 }
 
 /* Wax Sealed Envelope Styles */
 .wax-seal {
-    width: 58px;
-    height: 58px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, #f43f5e, #881337);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5), inset 0 2px 4px rgba(255,255,255,0.4);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.6), inset 0 2px 4px rgba(255,255,255,0.4), 0 0 20px rgba(244,63,94,0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -229,43 +228,44 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
 }
 
 .wax-seal:hover {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.12) rotate(6deg);
 }
 
-/* Love Coupon Ticket Styling (Red & White Theme) */
+/* Love Coupon Ticket Styling (Midnight Wine Theme) */
 .coupon-ticket {
     position: relative;
-    background: linear-gradient(135deg, #fff5f6 0%, #ffe4e6 100%);
-    border: 1.5px dashed rgba(225, 29, 72, 0.45);
-    border-radius: 14px;
+    background: linear-gradient(135deg, #200e2b 0%, #170921 100%);
+    border: 1.5px dashed rgba(223, 188, 120, 0.5);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(225, 29, 72, 0.08);
-    transition: transform 0.25s ease, border-color 0.25s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(223, 188, 120, 0.1);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .coupon-ticket:hover {
-    border-color: rgba(225, 29, 72, 0.85);
-    transform: translateY(-3px);
+    border-color: rgba(223, 188, 120, 0.9);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(223, 188, 120, 0.25);
 }
 
 .coupon-ticket::before, .coupon-ticket::after {
     content: '';
     position: absolute;
     top: 50%;
-    width: 16px;
-    height: 16px;
-    background: #ffffff;
+    width: 18px;
+    height: 18px;
+    background: #0d0714;
     border-radius: 50%;
     transform: translateY(-50%);
     z-index: 2;
 }
 .coupon-ticket::before {
-    left: -8px;
-    border-right: 1.5px dashed rgba(225, 29, 72, 0.45);
+    left: -9px;
+    border-right: 1.5px dashed rgba(223, 188, 120, 0.5);
 }
 .coupon-ticket::after {
-    right: -8px;
-    border-left: 1.5px dashed rgba(225, 29, 72, 0.45);
+    right: -9px;
+    border-left: 1.5px dashed rgba(223, 188, 120, 0.5);
 }
 
 /* Redeemed Stamp Badge */
@@ -280,13 +280,13 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
     letter-spacing: 0.1em;
     border-radius: 6px;
     transform: rotate(-8deg);
-    background: rgba(34, 197, 94, 0.1);
+    background: rgba(34, 197, 94, 0.15);
 }
 
 /* Floating Animations */
 @keyframes floatGentle {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-6px); }
+    50% { transform: translateY(-7px); }
 }
 
 .animate-float {
@@ -311,7 +311,7 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
 .pin-dot.filled {
     background: linear-gradient(135deg, #f43f5e, #fb7185) !important;
     border-color: #fda4af !important;
-    box-shadow: 0 0 10px rgba(244, 63, 94, 0.8);
+    box-shadow: 0 0 14px rgba(244, 63, 94, 0.95);
     transform: scale(1.15);
 }
 
@@ -334,7 +334,7 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
 /* Tree of Hearts */
 @keyframes treeHeartPulse {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.15); }
+    50% { transform: scale(1.18); }
 }
 
 .tree-heart-pulsar {
@@ -345,7 +345,7 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
 }
 
 .tree-heart-btn:hover .tree-heart-pulsar {
-    transform: scale(1.3) !important;
+    transform: scale(1.35) !important;
 }
 
 /* Cupid Bow */
@@ -388,8 +388,8 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
 
 @keyframes streetlightMove {
     0% { transform: translateX(110%); opacity: 0; }
-    10% { opacity: 0.8; }
-    90% { opacity: 0.8; }
+    10% { opacity: 0.85; }
+    90% { opacity: 0.85; }
     100% { transform: translateX(-10%); opacity: 0; }
 }
 
@@ -459,7 +459,7 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
 .sound-bar {
     display: inline-block;
     width: 3px;
-    background: #fb7185;
+    background: #dfbc78;
     border-radius: 2px;
     margin: 0 1px;
 }

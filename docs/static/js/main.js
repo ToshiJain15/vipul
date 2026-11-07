@@ -951,32 +951,32 @@ function initOpenWhenLetters() {
         '1': {
             icon: '🥺💌',
             title: 'When You Miss Me',
-            tag: 'Open When • Love Across 950 KM',
-            text: `Mere Vipul,\n\nI know Mumbai feels far from Jodhpur right now, and 950 kilometers can feel so heavy when night falls and you just want to reach out and hold my hand.\n\nClose your eyes right now and take a slow, deep breath. Can you feel that quiet warmth in your chest? That is my heart beating right alongside yours.\n\nWhenever you feel alone or miss my voice, look at our pictures, whisper my name, and remember that every sunrise brings us one day closer to 21 December 2026 when this distance becomes permanently 0.00 km.\n\nNow send me a text: "I miss you." A big warm cuddle from Jodhpur to Mumbai is waiting for you! ❤️`
+            tag: 'Open When • Heart to Heart',
+            text: `Mere Vipul,\n\nWhenever you feel alone and wish I were right beside you, close your eyes right now and take a slow, deep breath. Can you feel that quiet warmth in your chest? That is my heart beating right alongside yours.\n\nNo distance or busy days could ever separate our souls. Whenever you miss my voice, look at our pictures, whisper my name, and remember that every heartbeat brings us closer to our forever on 21 December 2026.\n\nNow send me a text: "I miss you." A big warm hug from your fiancée is waiting for you! ❤️`
         },
         '2': {
             icon: '☕🌧️',
             title: 'When You Had a Long Day',
             tag: 'Open When • Comfort Capsule',
-            text: `Hey handsome boy,\n\nI wish I were there in Mumbai right now to take off your shoes, hand you a warm cup of chai, and gently massage your temples until all the day's tiredness melts away.\n\nYou work so hard every single day to build the dreams we talk about on our late-night calls. I see your dedication, and I am so endlessly proud of you. Tonight, kick back, lie down, put me on speaker, and let me talk you to sleep. You did wonderful today, my love. Rest now.`
+            text: `Hey handsome boy,\n\nI wish I were right there beside you right now to take off your shoes, hand you a warm cup of chai, and gently massage your temples until all the day's tiredness melts away.\n\nYou work so hard every single day to build the dreams we talk about on our late-night calls. I see your dedication, and I am so endlessly proud of you. Tonight, kick back, lie down, put me on speaker, and let me talk you to sleep. You did wonderful today, my love. Rest now.`
         },
         '3': {
             icon: '🧸🫂',
             title: 'When You Need a Hug',
             tag: 'Open When • Snuggle Capsule',
-            text: `Wrap both of your arms tightly around yourself right now and squeeze tight!\n\nThat is a giant, warm Jodhpur-to-Mumbai hug from your future wife delivered straight into your soul. Imagine my head tucked against your chest, listening to your heartbeat just like on our late-night scooty rides. You are safe, you are cherished, and I will always hold your hand.`
+            text: `Wrap both of your arms tightly around yourself right now and squeeze tight!\n\nThat is a giant, warm hug from your future wife delivered straight into your soul. Imagine my head tucked against your chest, listening to your heartbeat just like on our late-night scooty rides. You are safe, you are cherished, and I will always hold your hand.`
         },
         '4': {
             icon: '🕊️🤍',
             title: 'When You Are Angry / Upset',
             tag: 'Open When • Peace & Love Capsule',
-            text: `Hey... pause for just ten seconds and look at us.\n\nWhatever little silly argument or misunderstanding we are having right now across the phone does not compare to how deeply, irrevocably in love I am with you.\n\n950 km is already hard enough—let's never waste a single second being upset. It is never you against me. It is you and me against the problem. Pick up the phone and FaceTime me right now. We are forever, remember? ❤️`
+            text: `Hey... pause for just ten seconds and look at us.\n\nWhatever little silly argument or misunderstanding we are having right now does not compare to how deeply, irrevocably in love I am with you.\n\nLife is too precious and our love is too pure to waste a single second being upset. It is never you against me. It is you and me against the problem. Call me or FaceTime me right now. We are forever, remember? ❤️`
         },
         '5': {
-            icon: '🎂🎉',
-            title: 'At Midnight (12:00 AM)',
-            tag: 'Open When • Birthday Midnight',
-            text: `IT IS 12:00 AM! HAPPY OFFICIAL BIRTHDAY, MERE SUKOON! 🎂🥂🎉\n\nOn this exact day (16 November), the most wonderful, loving, and handsome man was born in this world—and I am the luckiest girl alive because you are mine.\n\nFrom Jodhpur to Mumbai, I am sending you a million virtual kisses, hugs, and all the love my heart can hold. Counting down the seconds till 21 December 2026 when I get to celebrate every birthday right beside you! 🥳💖`
+            icon: '🌙✨',
+            title: "When You Can't Sleep",
+            tag: 'Open When • Midnight Lullaby',
+            text: `Hey my love...\n\nCan't sleep? Mind running in circles with a million thoughts?\n\nClose your eyes and breathe slowly with me. Imagine my head resting gently against your chest, listening to your steady heartbeat. You are surrounded by so much love, warmth, and peace.\n\nThink about our favorite midnight scooty ride—the cool gentle wind on our skin, my arms wrapped tight around your waist, and not a care in the entire world.\n\nYou are my safe place, Vipul, and I am yours. Let all the worries of today float away into the night. I am sending you the softest forehead kiss and holding you tight in my thoughts.\n\nNow close your eyes, handsome boy, and drift away into sweet dreams. Tum ho, toh main hoon. ❤️`
         }
     };
 
@@ -1130,11 +1130,11 @@ function initQuiz() {
             ]
         },
         {
-            q: "What happens to the 950 km between Jodhpur & Mumbai on 21 Dec 2026?",
+            q: "What makes 21 December 2026 our most magical date ever?",
             options: [
-                { text: "It permanently becomes 0.00 KM under one roof! 🏰💍🏙️", feedback: "YES! Mumbai & Jodhpur unite forever!" },
-                { text: "No more teary airport goodbyes, only goodnight kisses! 💋", feedback: "Every single night for the rest of our lives!" },
-                { text: "Both! We start our forever marriage journey together! 🥂", feedback: "PERFECT! You and me forever!" }
+                { text: "The day we unite as husband and wife forever! 💍✨", feedback: "YES! Waking up beside you every single morning!" },
+                { text: "No more goodbyes, only endless kisses! 💋", feedback: "Every single day for the rest of our lives!" },
+                { text: "Both! We start our beautiful forever journey together! 🥂", feedback: "PERFECT! You and me forever!" }
             ]
         },
         {
@@ -1161,16 +1161,16 @@ function initQuiz() {
         const qData = questions[currentQ];
         quizContainer.innerHTML = `
             <div class="space-y-4 text-left">
-                <div class="flex items-center justify-between text-xs text-red-600 font-cinzel font-bold">
+                <div class="flex items-center justify-between text-xs text-amber-300 font-cinzel font-bold">
                     <span>QUESTION ${currentQ + 1} OF ${questions.length}</span>
                     <span>100% LOVE MATCH</span>
                 </div>
-                <h3 class="font-serif text-lg sm:text-2xl font-bold text-red-700 text-center">${qData.q}</h3>
+                <h3 class="font-serif text-lg sm:text-2xl font-bold text-white text-center">${qData.q}</h3>
                 <div class="grid grid-cols-1 gap-3">
                     ${qData.options.map((opt, i) => `
-                        <button type="button" class="quiz-option-btn p-3.5 rounded-xl bg-rose-50/80 hover:bg-rose-100/90 border border-red-200 text-slate-800 text-xs sm:text-sm font-semibold transition text-left flex items-center justify-between shadow-sm" data-index="${i}">
+                        <button type="button" class="quiz-option-btn p-3.5 rounded-xl glass-panel hover:bg-rose-500/20 border border-rose-400/30 text-rose-100 text-xs sm:text-sm font-medium transition text-left flex items-center justify-between shadow-sm" data-index="${i}">
                             <span>${opt.text}</span>
-                            <span class="text-red-500">❤️</span>
+                            <span class="text-rose-400">❤️</span>
                         </button>
                     `).join('')}
                 </div>
@@ -1183,9 +1183,8 @@ function initQuiz() {
                 const opt = qData.options[optIndex];
                 triggerMiniConfetti(btn);
 
-                btn.classList.remove('bg-rose-50/80', 'text-slate-800');
-                btn.classList.add('bg-red-600', 'border-red-500', 'text-white', 'shadow-md');
-                btn.innerHTML = `<span>${opt.text}</span> <span class="text-white text-xs font-bold font-sans ml-2">✓ ${opt.feedback}</span>`;
+                btn.classList.add('bg-rose-600', 'border-amber-300', 'text-white', 'shadow-lg');
+                btn.innerHTML = `<span>${opt.text}</span> <span class="text-amber-200 text-xs font-bold font-sans ml-2">✓ ${opt.feedback}</span>`;
 
                 setTimeout(() => {
                     currentQ++;
@@ -1203,18 +1202,18 @@ function initQuiz() {
         triggerGrandConfetti();
         quizContainer.innerHTML = `
             <div class="text-center py-4 space-y-4">
-                <div class="w-24 h-24 mx-auto rounded-2xl overflow-hidden shadow-lg border-2 border-red-300">
+                <div class="w-24 h-24 mx-auto rounded-2xl overflow-hidden shadow-lg border-2 border-rose-400">
                     <img src="https://media.tenor.com/zKhbCRTnmvYAAAAM/cosytales-couple.gif" alt="Cute Couple" class="w-full h-full object-cover">
                 </div>
-                <h3 class="text-2xl sm:text-3xl font-serif font-bold text-red-700">Quiz Score: 100% Soulmates!</h3>
-                <p class="text-xs sm:text-sm text-slate-600 max-w-sm mx-auto leading-relaxed">
+                <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white">Quiz Score: 100% Soulmates!</h3>
+                <p class="text-xs sm:text-sm text-rose-200 max-w-sm mx-auto leading-relaxed">
                     Every answer is right because you and I were made for each other, Vipul.
                 </p>
-                <div class="p-3 bg-rose-50 border border-red-200 rounded-xl inline-block text-xs uppercase tracking-widest text-red-600 font-cinzel font-black shadow-sm">
+                <div class="p-3 bg-rose-500/20 border border-amber-300/40 rounded-xl inline-block text-xs uppercase tracking-widest text-amber-300 font-cinzel font-black shadow-sm">
                     Official Soulmate Registry 🏆💍
                 </div>
                 <div>
-                    <button type="button" id="replay-quiz-btn" class="mt-2 px-6 py-2 rounded-full bg-gradient-to-r from-red-600 to-rose-600 text-white text-xs font-bold shadow-md hover:from-red-700 hover:to-rose-700 transition">
+                    <button type="button" id="replay-quiz-btn" class="mt-2 px-6 py-2 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-rose-600 text-white text-xs font-bold shadow-md hover:brightness-110 transition">
                         🔄 Play Again
                     </button>
                 </div>
