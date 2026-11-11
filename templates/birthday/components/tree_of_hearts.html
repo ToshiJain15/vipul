@@ -14,145 +14,122 @@
             </p>
         </div>
 
-        <!-- The Interactive Tree Canvas/SVG Container -->
-        <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-rose-500/30 shadow-2xl relative overflow-hidden select-none">
+        <!-- The Interactive Realistic Tree Container -->
+        <div class="relative w-full max-w-4xl mx-auto rounded-3xl overflow-hidden border-2 border-rose-500/40 shadow-[0_0_50px_rgba(244,63,94,0.3)] select-none bg-slate-950">
             
-            <!-- Soft Ambient Backlight -->
-            <div class="absolute inset-0 bg-gradient-to-t from-rose-950/40 via-transparent to-amber-950/20 pointer-events-none"></div>
+            <!-- Realistic Romantic Tree Image Background -->
+            <div class="relative w-full aspect-[16/11] min-h-[460px] sm:min-h-[580px] overflow-hidden">
+                <img src="static/images/realistic_tree_of_hearts.jpg" alt="Our Romantic Tree of Hearts" class="w-full h-full object-cover object-center filter brightness-[1.03] contrast-[1.02]">
 
-            <div class="relative w-full max-w-2xl mx-auto aspect-[4/3] flex items-center justify-center">
+                <!-- Soft Vignette & Atmospheric Glow -->
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/30 pointer-events-none"></div>
+
+                <!-- 8 Swaying Crystal Heart Lanterns Hanging from Branches -->
                 
-                <!-- Beautiful Blossoming Tree SVG -->
-                <svg viewBox="0 0 800 600" class="w-full h-full filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)]">
-                    <defs>
-                        <!-- Trunk Gradient (Rich Deep Rosewood) -->
-                        <linearGradient id="trunkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#4a1525" />
-                            <stop offset="50%" stop-color="#300d17" />
-                            <stop offset="100%" stop-color="#1a050d" />
-                        </linearGradient>
+                <!-- Lantern 1: Top Center Highest Branch (Our Forever) -->
+                <div class="absolute top-[12%] left-[50%] -translate-x-1/2 flex flex-col items-center z-20">
+                    <div class="w-[1.5px] h-10 sm:h-14 bg-gradient-to-b from-amber-400 to-amber-200/50"></div>
+                    <div class="w-4 h-2 bg-gradient-to-r from-amber-300 via-amber-100 to-amber-400 rounded-t-full -mt-0.5 shadow-sm"></div>
+                    <button type="button" class="tree-heart-btn lantern-sway relative p-2 sm:p-2.5 rounded-2xl bg-gradient-to-b from-rose-500/30 to-rose-950/70 backdrop-blur-md border border-amber-300/60 shadow-[0_0_18px_rgba(244,63,94,0.8)] hover:scale-125 hover:shadow-[0_0_30px_rgba(251,191,36,0.95)] transition duration-300 group cursor-pointer" data-index="0" title="Our Forever">
+                        <span class="block text-2xl sm:text-3xl filter drop-shadow">❤️</span>
+                        <span class="opacity-0 group-hover:opacity-100 transition duration-200 absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] font-cinzel font-bold text-amber-200 bg-black/90 px-2.5 py-1 rounded-full whitespace-nowrap border border-amber-300/50 shadow-lg pointer-events-none">
+                            Our Forever
+                        </span>
+                    </button>
+                </div>
 
-                        <!-- Foliage Soft Blush Gradient -->
-                        <radialGradient id="foliageGrad1" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stop-color="#fda4af" stop-opacity="0.35" />
-                            <stop offset="60%" stop-color="#f43f5e" stop-opacity="0.2" />
-                            <stop offset="100%" stop-color="#e11d48" stop-opacity="0" />
-                        </radialGradient>
-                        <radialGradient id="foliageGrad2" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stop-color="#fbcfe8" stop-opacity="0.4" />
-                            <stop offset="60%" stop-color="#fb7185" stop-opacity="0.22" />
-                            <stop offset="100%" stop-color="#be123c" stop-opacity="0" />
-                        </radialGradient>
-                    </defs>
+                <!-- Lantern 2: Upper Left Branch (Distance Means Nothing) -->
+                <div class="absolute top-[16%] left-[34%] flex flex-col items-center z-20">
+                    <div class="w-[1.5px] h-12 sm:h-16 bg-gradient-to-b from-amber-400 to-amber-200/50"></div>
+                    <div class="w-4 h-2 bg-gradient-to-r from-amber-300 via-amber-100 to-amber-400 rounded-t-full -mt-0.5 shadow-sm"></div>
+                    <button type="button" class="tree-heart-btn lantern-sway-alt relative p-2 sm:p-2.5 rounded-2xl bg-gradient-to-b from-rose-500/30 to-rose-950/70 backdrop-blur-md border border-amber-300/60 shadow-[0_0_18px_rgba(251,113,133,0.8)] hover:scale-125 hover:shadow-[0_0_30px_rgba(251,191,36,0.95)] transition duration-300 group cursor-pointer" data-index="1" title="Distance Means Nothing">
+                        <span class="block text-2xl sm:text-3xl filter drop-shadow">💖</span>
+                        <span class="opacity-0 group-hover:opacity-100 transition duration-200 absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] font-cinzel font-bold text-amber-200 bg-black/90 px-2.5 py-1 rounded-full whitespace-nowrap border border-amber-300/50 shadow-lg pointer-events-none">
+                            Distance Means Nothing
+                        </span>
+                    </button>
+                </div>
 
-                    <!-- Soft Blossoming Foliage Clouds -->
-                    <circle cx="400" cy="220" r="170" fill="url(#foliageGrad1)" />
-                    <circle cx="280" cy="250" r="130" fill="url(#foliageGrad2)" />
-                    <circle cx="520" cy="250" r="130" fill="url(#foliageGrad2)" />
-                    <circle cx="340" cy="150" r="110" fill="url(#foliageGrad1)" />
-                    <circle cx="460" cy="150" r="110" fill="url(#foliageGrad2)" />
+                <!-- Lantern 3: Upper Right Branch (Your Voice) -->
+                <div class="absolute top-[16%] right-[34%] flex flex-col items-center z-20">
+                    <div class="w-[1.5px] h-12 sm:h-16 bg-gradient-to-b from-amber-400 to-amber-200/50"></div>
+                    <div class="w-4 h-2 bg-gradient-to-r from-amber-300 via-amber-100 to-amber-400 rounded-t-full -mt-0.5 shadow-sm"></div>
+                    <button type="button" class="tree-heart-btn lantern-sway relative p-2 sm:p-2.5 rounded-2xl bg-gradient-to-b from-amber-500/30 to-rose-950/70 backdrop-blur-md border border-amber-300/60 shadow-[0_0_18px_rgba(223,188,120,0.8)] hover:scale-125 hover:shadow-[0_0_30px_rgba(251,191,36,0.95)] transition duration-300 group cursor-pointer" data-index="2" title="Your Voice">
+                        <span class="block text-2xl sm:text-3xl filter drop-shadow">💛</span>
+                        <span class="opacity-0 group-hover:opacity-100 transition duration-200 absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] font-cinzel font-bold text-amber-200 bg-black/90 px-2.5 py-1 rounded-full whitespace-nowrap border border-amber-300/50 shadow-lg pointer-events-none">
+                            Your Voice
+                        </span>
+                    </button>
+                </div>
 
-                    <!-- Tree Roots & Ground Mound -->
-                    <ellipse cx="400" cy="565" rx="220" ry="25" fill="#200a12" opacity="0.6" />
-                    <ellipse cx="400" cy="560" rx="160" ry="16" fill="#380e1a" opacity="0.8" />
+                <!-- Lantern 4: Far Left Cascading Tendril (Scooty Breeze) -->
+                <div class="absolute top-[28%] left-[17%] flex flex-col items-center z-20">
+                    <div class="w-[1.5px] h-14 sm:h-20 bg-gradient-to-b from-amber-400 to-amber-200/50"></div>
+                    <div class="w-4 h-2 bg-gradient-to-r from-amber-300 via-amber-100 to-amber-400 rounded-t-full -mt-0.5 shadow-sm"></div>
+                    <button type="button" class="tree-heart-btn lantern-sway-alt relative p-2 sm:p-2.5 rounded-2xl bg-gradient-to-b from-rose-500/30 to-rose-950/70 backdrop-blur-md border border-amber-300/60 shadow-[0_0_18px_rgba(244,63,94,0.8)] hover:scale-125 hover:shadow-[0_0_30px_rgba(251,191,36,0.95)] transition duration-300 group cursor-pointer" data-index="3" title="Scooty Breeze">
+                        <span class="block text-2xl sm:text-3xl filter drop-shadow">🛵</span>
+                        <span class="opacity-0 group-hover:opacity-100 transition duration-200 absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] font-cinzel font-bold text-amber-200 bg-black/90 px-2.5 py-1 rounded-full whitespace-nowrap border border-amber-300/50 shadow-lg pointer-events-none">
+                            Scooty Breeze
+                        </span>
+                    </button>
+                </div>
 
-                    <!-- Sculpted Tree Trunk & Branches -->
-                    <path d="M 370 560 
-                             C 375 460, 350 400, 340 330
-                             C 325 280, 270 260, 220 250
-                             C 240 265, 290 290, 335 345
-                             C 345 365, 355 450, 360 560 Z" 
-                          fill="url(#trunkGrad)" />
+                <!-- Lantern 5: Far Right Cascading Tendril (Safe Haven) -->
+                <div class="absolute top-[28%] right-[17%] flex flex-col items-center z-20">
+                    <div class="w-[1.5px] h-14 sm:h-20 bg-gradient-to-b from-amber-400 to-amber-200/50"></div>
+                    <div class="w-4 h-2 bg-gradient-to-r from-amber-300 via-amber-100 to-amber-400 rounded-t-full -mt-0.5 shadow-sm"></div>
+                    <button type="button" class="tree-heart-btn lantern-sway relative p-2 sm:p-2.5 rounded-2xl bg-gradient-to-b from-rose-500/30 to-rose-950/70 backdrop-blur-md border border-amber-300/60 shadow-[0_0_18px_rgba(251,113,133,0.8)] hover:scale-125 hover:shadow-[0_0_30px_rgba(251,191,36,0.95)] transition duration-300 group cursor-pointer" data-index="4" title="Safe Haven">
+                        <span class="block text-2xl sm:text-3xl filter drop-shadow">🛡️</span>
+                        <span class="opacity-0 group-hover:opacity-100 transition duration-200 absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] font-cinzel font-bold text-amber-200 bg-black/90 px-2.5 py-1 rounded-full whitespace-nowrap border border-amber-300/50 shadow-lg pointer-events-none">
+                            Safe Haven
+                        </span>
+                    </button>
+                </div>
 
-                    <path d="M 430 560 
-                             C 425 460, 450 400, 460 330
-                             C 475 280, 530 260, 580 250
-                             C 560 265, 510 290, 465 345
-                             C 455 365, 445 450, 440 560 Z" 
-                          fill="url(#trunkGrad)" />
+                <!-- Lantern 6: Mid Center Bough (Golden Heart) -->
+                <div class="absolute top-[34%] left-[49%] -translate-x-1/2 flex flex-col items-center z-20">
+                    <div class="w-[1.5px] h-12 sm:h-16 bg-gradient-to-b from-amber-400 to-amber-200/50"></div>
+                    <div class="w-4 h-2 bg-gradient-to-r from-amber-300 via-amber-100 to-amber-400 rounded-t-full -mt-0.5 shadow-sm"></div>
+                    <button type="button" class="tree-heart-btn lantern-sway relative p-2.5 sm:p-3 rounded-2xl bg-gradient-to-b from-amber-500/35 to-rose-950/75 backdrop-blur-md border border-amber-300/80 shadow-[0_0_22px_rgba(223,188,120,0.95)] hover:scale-125 hover:shadow-[0_0_35px_rgba(251,191,36,1)] transition duration-300 group cursor-pointer" data-index="5" title="Golden Heart">
+                        <span class="block text-2xl sm:text-3xl filter drop-shadow">✨</span>
+                        <span class="opacity-0 group-hover:opacity-100 transition duration-200 absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] font-cinzel font-bold text-amber-200 bg-black/90 px-2.5 py-1 rounded-full whitespace-nowrap border border-amber-300/50 shadow-lg pointer-events-none">
+                            Golden Heart
+                        </span>
+                    </button>
+                </div>
 
-                    <!-- Central Stem and Canopy Branches -->
-                    <path d="M 380 430 
-                             C 385 360, 390 300, 400 230
-                             C 370 190, 330 170, 290 160
-                             C 325 180, 360 210, 390 250
-                             C 395 210, 400 170, 400 110
-                             C 405 170, 410 210, 415 250
-                             C 445 210, 480 180, 515 160
-                             C 475 170, 435 190, 405 230
-                             C 415 300, 420 360, 425 430 Z" 
-                          fill="url(#trunkGrad)" />
+                <!-- Lantern 7: Lower Left Bough (21 Dec 2026) -->
+                <div class="absolute top-[44%] left-[29%] flex flex-col items-center z-20">
+                    <div class="w-[1.5px] h-10 sm:h-14 bg-gradient-to-b from-amber-400 to-amber-200/50"></div>
+                    <div class="w-4 h-2 bg-gradient-to-r from-amber-300 via-amber-100 to-amber-400 rounded-t-full -mt-0.5 shadow-sm"></div>
+                    <button type="button" class="tree-heart-btn lantern-sway-alt relative p-2 sm:p-2.5 rounded-2xl bg-gradient-to-b from-rose-500/30 to-rose-950/70 backdrop-blur-md border border-amber-300/60 shadow-[0_0_18px_rgba(244,63,94,0.8)] hover:scale-125 hover:shadow-[0_0_30px_rgba(251,191,36,0.95)] transition duration-300 group cursor-pointer" data-index="6" title="21 Dec 2026">
+                        <span class="block text-2xl sm:text-3xl filter drop-shadow">💍</span>
+                        <span class="opacity-0 group-hover:opacity-100 transition duration-200 absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] font-cinzel font-bold text-amber-200 bg-black/90 px-2.5 py-1 rounded-full whitespace-nowrap border border-amber-300/50 shadow-lg pointer-events-none">
+                            21 Dec 2026
+                        </span>
+                    </button>
+                </div>
 
-                    <!-- Elegant Branch Swirls -->
-                    <path d="M 345 345 C 310 320, 260 320, 210 330 C 240 340, 280 345, 335 360 Z" fill="url(#trunkGrad)" />
-                    <path d="M 460 345 C 495 320, 545 320, 595 330 C 565 340, 525 345, 470 360 Z" fill="url(#trunkGrad)" />
-
-                    <!-- Carved Heart with "V + T" Initials on Trunk -->
-                    <g transform="translate(400, 465)">
-                        <path d="M 0 10 
-                                 C -16 -12, -32 5, 0 32 
-                                 C 32 5, 16 -12, 0 10 Z" 
-                              fill="#6b1d2e" stroke="#cca048" stroke-width="2" />
-                        <text x="0" y="18" font-family="'Cinzel', serif" font-size="12" font-weight="bold" fill="#fde047" text-anchor="middle">
-                            V + T
-                        </text>
-                    </g>
-                </svg>
-
-                <!-- 8 Interactive Glowing Heart Jewels Positioned Across Blossoms -->
-                <!-- Heart 1: Top Center -->
-                <button type="button" class="tree-heart-btn absolute top-[14%] left-[48%] -translate-x-1/2 group" data-index="0" title="Tap to open!">
-                    <span class="tree-heart-pulsar block text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_rgba(244,63,94,0.9)]">❤️</span>
-                    <span class="opacity-0 group-hover:opacity-100 transition absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] font-cinzel font-bold text-amber-200 bg-black/80 px-2 py-0.5 rounded whitespace-nowrap border border-amber-300/40">Our Forever</span>
-                </button>
-
-                <!-- Heart 2: Top Left Branch -->
-                <button type="button" class="tree-heart-btn absolute top-[22%] left-[32%] group" data-index="1" title="Tap to open!">
-                    <span class="tree-heart-pulsar block text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_rgba(251,113,133,0.9)]" style="animation-delay: 0.4s;">💖</span>
-                    <span class="opacity-0 group-hover:opacity-100 transition absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] font-cinzel font-bold text-amber-200 bg-black/80 px-2 py-0.5 rounded whitespace-nowrap border border-amber-300/40">Distance Means Nothing</span>
-                </button>
-
-                <!-- Heart 3: Top Right Branch -->
-                <button type="button" class="tree-heart-btn absolute top-[22%] right-[32%] group" data-index="2" title="Tap to open!">
-                    <span class="tree-heart-pulsar block text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_rgba(223,188,120,0.9)]" style="animation-delay: 0.8s;">💛</span>
-                    <span class="opacity-0 group-hover:opacity-100 transition absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] font-cinzel font-bold text-amber-200 bg-black/80 px-2 py-0.5 rounded whitespace-nowrap border border-amber-300/40">Your Voice</span>
-                </button>
-
-                <!-- Heart 4: Far Left Blossom -->
-                <button type="button" class="tree-heart-btn absolute top-[36%] left-[20%] group" data-index="3" title="Tap to open!">
-                    <span class="tree-heart-pulsar block text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_rgba(244,63,94,0.9)]" style="animation-delay: 1.2s;">🛵</span>
-                    <span class="opacity-0 group-hover:opacity-100 transition absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] font-cinzel font-bold text-amber-200 bg-black/80 px-2 py-0.5 rounded whitespace-nowrap border border-amber-300/40">Scooty Breeze</span>
-                </button>
-
-                <!-- Heart 5: Far Right Blossom -->
-                <button type="button" class="tree-heart-btn absolute top-[36%] right-[20%] group" data-index="4" title="Tap to open!">
-                    <span class="tree-heart-pulsar block text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_rgba(251,113,133,0.9)]" style="animation-delay: 1.6s;">🛡️</span>
-                    <span class="opacity-0 group-hover:opacity-100 transition absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] font-cinzel font-bold text-amber-200 bg-black/80 px-2 py-0.5 rounded whitespace-nowrap border border-amber-300/40">Safe Haven</span>
-                </button>
-
-                <!-- Heart 6: Center Cluster -->
-                <button type="button" class="tree-heart-btn absolute top-[38%] left-[47%] -translate-x-1/2 group" data-index="5" title="Tap to open!">
-                    <span class="tree-heart-pulsar block text-4xl sm:text-5xl filter drop-shadow-[0_0_16px_rgba(223,188,120,0.95)]" style="animation-delay: 2s;">✨</span>
-                    <span class="opacity-0 group-hover:opacity-100 transition absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] font-cinzel font-bold text-amber-200 bg-black/80 px-2 py-0.5 rounded whitespace-nowrap border border-amber-300/40">Golden Heart</span>
-                </button>
-
-                <!-- Heart 7: Lower Left -->
-                <button type="button" class="tree-heart-btn absolute top-[48%] left-[30%] group" data-index="6" title="Tap to open!">
-                    <span class="tree-heart-pulsar block text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_rgba(244,63,94,0.9)]" style="animation-delay: 2.4s;">💍</span>
-                    <span class="opacity-0 group-hover:opacity-100 transition absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] font-cinzel font-bold text-amber-200 bg-black/80 px-2 py-0.5 rounded whitespace-nowrap border border-amber-300/40">21 Dec 2026</span>
-                </button>
-
-                <!-- Heart 8: Lower Right -->
-                <button type="button" class="tree-heart-btn absolute top-[48%] right-[30%] group" data-index="7" title="Tap to open!">
-                    <span class="tree-heart-pulsar block text-3xl sm:text-4xl filter drop-shadow-[0_0_12px_rgba(251,113,133,0.9)]" style="animation-delay: 2.8s;">🏡</span>
-                    <span class="opacity-0 group-hover:opacity-100 transition absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] font-cinzel font-bold text-amber-200 bg-black/80 px-2 py-0.5 rounded whitespace-nowrap border border-amber-300/40">Our Tomorrow</span>
-                </button>
+                <!-- Lantern 8: Lower Right Bough (Our Tomorrow) -->
+                <div class="absolute top-[44%] right-[29%] flex flex-col items-center z-20">
+                    <div class="w-[1.5px] h-10 sm:h-14 bg-gradient-to-b from-amber-400 to-amber-200/50"></div>
+                    <div class="w-4 h-2 bg-gradient-to-r from-amber-300 via-amber-100 to-amber-400 rounded-t-full -mt-0.5 shadow-sm"></div>
+                    <button type="button" class="tree-heart-btn lantern-sway relative p-2 sm:p-2.5 rounded-2xl bg-gradient-to-b from-rose-500/30 to-rose-950/70 backdrop-blur-md border border-amber-300/60 shadow-[0_0_18px_rgba(251,113,133,0.8)] hover:scale-125 hover:shadow-[0_0_30px_rgba(251,191,36,0.95)] transition duration-300 group cursor-pointer" data-index="7" title="Our Tomorrow">
+                        <span class="block text-2xl sm:text-3xl filter drop-shadow">🏡</span>
+                        <span class="opacity-0 group-hover:opacity-100 transition duration-200 absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] font-cinzel font-bold text-amber-200 bg-black/90 px-2.5 py-1 rounded-full whitespace-nowrap border border-amber-300/50 shadow-lg pointer-events-none">
+                            Our Tomorrow
+                        </span>
+                    </button>
+                </div>
 
             </div>
 
-            <p class="text-xs text-rose-300/70 mt-4 italic font-medium">
-                Tap on any heart leaf or symbol in the tree to read its promise!
-            </p>
+            <!-- Bottom Prompt Pill -->
+            <div class="p-3 bg-slate-950/90 border-t border-rose-500/20 text-center">
+                <p class="text-xs text-rose-300/80 italic font-medium">
+                    ✨ Tap any swaying crystal heart lantern in our tree to read its promise! ✨
+                </p>
+            </div>
         </div>
 
     </div>

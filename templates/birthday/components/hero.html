@@ -5,36 +5,28 @@
 
     <div class="relative z-10 max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
-        <!-- Left Side: "MY BOY" Scrapbook Polaroid Photo Frame -->
-        <div class="lg:col-span-5 flex justify-center">
+        <!-- Left Side: "MY BOY" Romantic Keepsake Photo Frame -->
+        <div class="lg:col-span-5 flex flex-col items-center">
             <div class="relative w-full max-w-[285px] xs:max-w-[315px] sm:max-w-xs cursor-pointer select-none group" id="hero-polaroid-frame" title="Tap to switch photos!">
                 
-                <!-- Washi Tape at Top -->
-                <div class="polaroid-tape w-28 bg-amber-200/90 shadow-md rotate-[-2deg]"></div>
-
-                <!-- Scrapbook Frame -->
-                <div class="polaroid rounded-2xl bg-white p-4 pb-6 shadow-2xl rotate-[-2deg] group-hover:rotate-0 transition duration-300 relative border-2 border-amber-300/40">
+                <!-- Keepsake Photo Frame -->
+                <div class="polaroid rounded-2xl bg-white p-4 pb-6 shadow-2xl rotate-[-1deg] group-hover:rotate-0 transition duration-300 relative border-2 border-amber-300/60">
                     
-                    <!-- "MY BOY" Sticker Tag -->
-                    <div class="absolute -top-3.5 -right-2.5 bg-gradient-to-r from-rose-500 to-rose-600 text-white font-cinzel text-xs font-black tracking-widest px-3 py-1 rounded-full shadow-lg border-2 border-white rotate-6">
+                    <!-- "MY BOY" Tag -->
+                    <div class="absolute -top-3.5 -right-2.5 bg-gradient-to-r from-rose-500 to-rose-600 text-white font-cinzel text-xs font-black tracking-widest px-3.5 py-1 rounded-full shadow-lg border-2 border-white rotate-6">
                         MY BOY ❤️
-                    </div>
-
-                    <!-- Cute Retro Star Sticker -->
-                    <div class="absolute -top-3 -left-2 text-2xl filter drop-shadow">
-                        ⭐
                     </div>
 
                     <!-- Photo Container with Camera Flash overlay -->
                     <div class="w-full h-64 xs:h-72 sm:h-80 overflow-hidden rounded-xl bg-slate-900 relative shadow-inner">
-                        <img id="hero-fiance-photo" src="static/images/IMG-20260412-WA0003.jpg" alt="{{ fiance_name }}" class="w-full h-full object-cover">
+                        <img id="hero-fiance-photo" src="static/images/IMG-20260412-WA0003.jpg" alt="{{ fiance_name }}" class="w-full h-full object-cover object-[50%_25%]">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
                         
                         <!-- Camera Flash Effect Element -->
                         <div id="hero-camera-flash" class="absolute inset-0 bg-white opacity-0 pointer-events-none transition-opacity duration-150"></div>
 
                         <!-- Photo Caption Badge -->
-                        <span id="hero-photo-tag" class="absolute bottom-2.5 left-2.5 text-white text-xs font-semibold bg-black/70 px-3 py-1 rounded-full border border-white/20 backdrop-blur-sm">
+                        <span id="hero-photo-tag" class="absolute bottom-2.5 left-2.5 text-white text-xs font-semibold bg-black/75 px-3 py-1 rounded-full border border-white/20 backdrop-blur-sm shadow-md">
                             My Handsome Boy ✨
                         </span>
 
@@ -45,7 +37,7 @@
                     </div>
 
                     <!-- Scrapbook Bottom Caption -->
-                    <div class="text-center mt-3.5 space-y-0.5">
+                    <div class="text-center mt-3.5 space-y-1">
                         <p class="font-cursive text-2xl text-slate-900 font-bold">
                             Vipul & Toshi ❤️
                         </p>
@@ -53,21 +45,17 @@
                             Forever & Always • 21 Dec 2026 💍
                         </p>
                     </div>
-
-                    <!-- Floating Doodles -->
-                    <div class="absolute -bottom-2.5 -right-2 text-2xl filter drop-shadow">📷</div>
-                    <div class="absolute -bottom-2.5 -left-2 text-2xl filter drop-shadow">🥳</div>
                 </div>
 
-                <!-- Scooty Love Sticker (Floating below frame) -->
-                <div class="absolute -bottom-4 -left-2 xs:-left-4 bg-slate-900/95 border border-rose-400/50 p-2 pr-3.5 rounded-2xl shadow-xl flex items-center space-x-2 backdrop-blur-sm">
-                    <img src="static/images/couple_scooty_ride.gif" alt="Scooty Ride" class="w-11 h-11 rounded-lg object-contain">
-                    <div class="text-left">
-                        <span class="text-[11px] font-bold text-white block">Only Scooty Rides 🛵</span>
-                        <span class="text-[10px] text-amber-300 font-cursive font-bold">Holding tight forever</span>
-                    </div>
-                </div>
+            </div>
 
+            <!-- Scooty Love Pill (Cleanly placed below the photo, no overlapping text!) -->
+            <div class="mt-4 bg-slate-900/95 border border-rose-400/50 p-2.5 px-4 rounded-2xl shadow-xl flex items-center space-x-3 backdrop-blur-sm max-w-[280px]">
+                <img src="static/images/couple_scooty_ride.gif" alt="Scooty Ride" class="w-10 h-10 rounded-lg object-contain">
+                <div class="text-left">
+                    <span class="text-xs font-bold text-white block">Only Scooty Rides 🛵</span>
+                    <span class="text-[10px] text-amber-300 font-cursive font-bold">Holding tight forever</span>
+                </div>
             </div>
         </div>
 
@@ -121,6 +109,22 @@
                     <span>🎂</span>
                     <span>Blow Candles</span>
                 </a>
+            </div>
+
+            <!-- Couple Story Mini Badges (Connecting & Romantic) -->
+            <div class="grid grid-cols-3 gap-2 sm:gap-3 max-w-lg mx-auto lg:mx-0 pt-2 text-center">
+                <div class="glass-panel p-2.5 rounded-2xl border border-rose-500/25 shadow-sm">
+                    <span class="text-[9px] uppercase tracking-wider font-cinzel text-amber-300 font-bold block">💍 Wedding Day</span>
+                    <span class="text-xs sm:text-sm font-bold text-white block mt-0.5">21 Dec 2026</span>
+                </div>
+                <div class="glass-panel p-2.5 rounded-2xl border border-rose-500/25 shadow-sm">
+                    <span class="text-[9px] uppercase tracking-wider font-cinzel text-amber-300 font-bold block">🛵 Fav Date</span>
+                    <span class="text-xs sm:text-sm font-bold text-rose-300 block mt-0.5">Night Scooty</span>
+                </div>
+                <div class="glass-panel p-2.5 rounded-2xl border border-rose-500/25 shadow-sm">
+                    <span class="text-[9px] uppercase tracking-wider font-cinzel text-amber-300 font-bold block">👑 My Sukoon</span>
+                    <span class="text-xs sm:text-sm font-bold text-amber-200 block mt-0.5">Always Vipul</span>
+                </div>
             </div>
 
         </div>

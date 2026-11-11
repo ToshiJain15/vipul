@@ -1,4 +1,4 @@
-<!-- Cupid's Bow & Arrow Heart Archery Section (Midnight Wine & Rose Gold Theme) -->
+<!-- Cupid's Bow & Arrow Heart Archery Section -->
 <section id="cupid-section" class="py-14 sm:py-20 px-3 sm:px-6 relative z-10 content-lazy-render">
     <div class="max-w-4xl mx-auto space-y-6 sm:space-y-8 text-center">
         
@@ -6,7 +6,7 @@
             <span class="text-[10px] uppercase tracking-widest font-cinzel text-amber-300 font-semibold">Cupid's Mission</span>
             <h2 class="font-serif text-2xl xs:text-3xl sm:text-4xl font-bold text-white">Strike {{ fiance_name }}'s Heart 💘</h2>
             <p class="text-rose-200/80 text-xs sm:text-sm max-w-md mx-auto">
-                Draw Cupid's golden bow and shoot the love arrow straight into his heart!
+                Draw Cupid's golden bow, pull the bowstring back, and shoot the love arrow straight into his heart!
             </p>
         </div>
 
@@ -14,75 +14,126 @@
         <div class="glass-panel-gold rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-amber-300/30 shadow-2xl relative overflow-hidden select-none">
             
             <!-- Archery Track Container -->
-            <div id="archery-track" class="relative h-48 sm:h-64 w-full flex items-center justify-between px-2 sm:px-8 select-none">
+            <div id="archery-track" class="relative h-56 sm:h-64 w-full flex items-center justify-between px-3 sm:px-10 select-none overflow-visible">
                 
                 <!-- Cupid's Bow on Left -->
                 <div id="cupid-bow-container" class="relative z-20 flex flex-col items-center">
-                    <div id="cupid-bow" class="relative w-14 sm:w-20 h-36 sm:h-48 transition-transform duration-200">
-                        <svg viewBox="0 0 100 200" class="w-full h-full drop-shadow-[0_0_8px_rgba(223,188,120,0.6)]">
-                            <path d="M 30 10 Q 90 100 30 190" fill="none" stroke="url(#goldGradient)" stroke-width="7" stroke-linecap="round"/>
-                            <path id="bow-string" d="M 30 10 L 30 100 L 30 190" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="2,2"/>
+                    <div id="cupid-bow" class="relative w-16 sm:w-24 h-44 sm:h-52 transition-transform duration-200 origin-center">
+                        <svg viewBox="0 0 100 200" class="w-full h-full drop-shadow-[0_0_12px_rgba(223,188,120,0.6)] overflow-visible">
                             <defs>
-                                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <linearGradient id="bowGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" stop-color="#fef08a" />
-                                    <stop offset="50%" stop-color="#eab308" />
-                                    <stop offset="100%" stop-color="#ca8a04" />
+                                    <stop offset="40%" stop-color="#eab308" />
+                                    <stop offset="70%" stop-color="#ca8a04" />
+                                    <stop offset="100%" stop-color="#a16207" />
                                 </linearGradient>
                             </defs>
-                        </svg>
 
-                        <!-- The Arrow -->
-                        <div id="cupid-arrow" class="absolute top-1/2 left-3 sm:left-5 -translate-y-1/2 flex items-center transition-all duration-100 z-30 pointer-events-none">
-                            <div class="w-16 sm:w-28 h-1 bg-gradient-to-r from-amber-400 to-amber-200 rounded-full shadow-[0_0_6px_#fde047]"></div>
-                            <div class="w-5 h-5 -ml-1 text-rose-500 transform rotate-45 scale-110">💖</div>
-                        </div>
+                            <!-- Upper Bow Limb with Elegant Curve -->
+                            <path d="M 28 15 C 65 35, 80 65, 75 100" fill="none" stroke="url(#bowGoldGrad)" stroke-width="8" stroke-linecap="round" />
+                            <!-- Lower Bow Limb with Elegant Curve -->
+                            <path d="M 75 100 C 80 135, 65 165, 28 185" fill="none" stroke="url(#bowGoldGrad)" stroke-width="8" stroke-linecap="round" />
+                            
+                            <!-- Golden Bow Handle Grip -->
+                            <rect x="70" y="88" width="9" height="24" rx="4" fill="#fbbf24" stroke="#78350f" stroke-width="1.5" />
+                            <!-- Handle Ruby Gem -->
+                            <circle cx="74.5" cy="100" r="3.5" fill="#f43f5e" />
+
+                            <!-- Bow Tips -->
+                            <circle cx="28" cy="15" r="4.5" fill="#fde047" stroke="#78350f" stroke-width="1" />
+                            <circle cx="28" cy="185" r="4.5" fill="#fde047" stroke="#78350f" stroke-width="1" />
+
+                            <!-- Dynamic Bow String (Bends dynamically via JS!) -->
+                            <path id="bow-string" d="M 28 15 Q 28 100 28 185" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.95" />
+                        </svg>
                     </div>
-                    <span class="text-[9px] font-cinzel text-amber-300 uppercase tracking-widest mt-1">Cupid</span>
+                    <span class="text-[9px] font-cinzel text-amber-300 uppercase tracking-widest mt-1.5 font-bold">Cupid's Bow</span>
                 </div>
 
-                <!-- Trajectory Line -->
-                <div class="flex-1 h-0.5 border-b border-dashed border-rose-400/25 mx-2 sm:mx-4 relative hidden sm:block">
-                    <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10px] text-rose-300/40 font-mono tracking-widest">
-                        LOVE BEAM
+                <!-- Full Solid Cupid Arrow (Positioned directly in the track, pointing at the heart!) -->
+                <div id="cupid-arrow" class="absolute top-1/2 left-8 sm:left-14 -translate-y-1/2 z-30 pointer-events-none origin-left transition-transform">
+                    <svg viewBox="0 0 160 40" class="w-36 sm:w-48 h-10 overflow-visible filter drop-shadow-[0_0_10px_rgba(244,63,94,0.7)]">
+                        <!-- Feather Fletching Tail (Red & Gold) -->
+                        <path d="M 6 20 L 22 7 L 30 20 L 22 33 Z" fill="#e11d48" stroke="#fde047" stroke-width="1.5" />
+                        <path d="M 18 20 L 32 9 L 38 20 L 32 31 Z" fill="#fbbf24" stroke="#d97706" stroke-width="1" />
+                        
+                        <!-- Heavy Golden Arrow Shaft (Solid, thick & 100% visible) -->
+                        <line x1="20" y1="20" x2="135" y2="20" stroke="#facc15" stroke-width="5" stroke-linecap="round" />
+                        <!-- Golden Shaft Highlight -->
+                        <line x1="25" y1="19" x2="130" y2="19" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
+                        
+                        <!-- Red Velvet Bindings -->
+                        <rect x="52" y="16" width="4" height="8" rx="1" fill="#be123c" />
+                        <rect x="88" y="16" width="4" height="8" rx="1" fill="#be123c" />
+                        <rect x="122" y="16" width="4" height="8" rx="1" fill="#be123c" />
+                        
+                        <!-- Glowing Ruby Heart Arrowhead -->
+                        <g transform="translate(142, 20) rotate(90)">
+                            <path d="M 0 -8 C -7 -17, -18 -5, 0 14 C 18 -5, 7 -17, 0 -8 Z" fill="#e11d48" stroke="#fef08a" stroke-width="2" />
+                            <circle cx="0" cy="2" r="2.5" fill="#ffffff" opacity="0.9" />
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- Trajectory Flight Trail & Sparkles -->
+                <div id="trajectory-line" class="flex-1 h-0.5 border-b border-dashed border-rose-400/30 mx-2 sm:mx-6 relative">
+                    <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[9px] text-rose-300/40 font-mono tracking-widest uppercase hidden sm:inline">
+                        ✨ LOVE TRAJECTORY ✨
                     </span>
+                    <!-- Dynamic Sparkle Burst Container -->
+                    <div id="arrow-particle-container" class="absolute inset-0 pointer-events-none overflow-visible"></div>
                 </div>
 
                 <!-- Heart Target on Right -->
                 <div id="heart-target-container" class="relative z-20 flex flex-col items-center">
-                    <div id="target-heart" class="relative w-20 sm:w-28 h-20 sm:h-28 flex items-center justify-center transition-all duration-300 cursor-pointer">
-                        <div class="absolute inset-0 rounded-full border border-dashed border-amber-300/40 animate-spin" style="animation-duration: 25s;"></div>
-                        <div class="text-4xl sm:text-5xl filter drop-shadow-[0_0_15px_rgba(244,63,94,0.7)]">
+                    <div id="target-heart" class="relative w-24 sm:w-32 h-24 sm:h-32 flex items-center justify-center transition-all duration-300 cursor-pointer">
+                        
+                        <!-- Shockwave Ring Effect (Expands on Impact) -->
+                        <div id="target-shockwave" class="absolute inset-0 rounded-full border-2 border-rose-400 opacity-0 pointer-events-none"></div>
+
+                        <!-- Outer Glowing Rings -->
+                        <div class="absolute inset-0 rounded-full border-2 border-dashed border-amber-300/40 animate-spin" style="animation-duration: 20s;"></div>
+                        <div class="absolute inset-2 rounded-full border border-rose-400/30"></div>
+
+                        <!-- Target Heart Graphic -->
+                        <div id="heart-core" class="text-5xl sm:text-6xl filter drop-shadow-[0_0_22px_rgba(244,63,94,0.85)] transition-transform duration-200">
                             ❤️
                         </div>
-                        <span class="absolute -bottom-1 px-2 py-0.5 rounded-full bg-black/70 border border-amber-300/30 text-[8px] sm:text-[9px] font-cinzel font-bold text-amber-200 whitespace-nowrap">
+
+                        <!-- Target Label Badge -->
+                        <span class="absolute -bottom-1 px-2.5 py-0.5 rounded-full bg-black/80 border border-amber-300/40 text-[8px] sm:text-[9px] font-cinzel font-bold text-amber-200 whitespace-nowrap shadow-md">
                             {{ fiance_name }}'s Heart
                         </span>
                     </div>
-                    <span class="text-[9px] font-cinzel text-rose-300 uppercase tracking-widest mt-2">Target Lock</span>
+                    <span class="text-[9px] font-cinzel text-rose-300 uppercase tracking-widest mt-2 font-bold">Target Locked</span>
                 </div>
 
             </div>
 
             <!-- Shoot Control -->
-            <div class="pt-4 border-t border-amber-400/20 flex flex-col sm:flex-row items-center justify-center gap-3">
-                <button type="button" id="shoot-arrow-btn" class="w-full sm:w-auto px-7 py-3 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-rose-600 text-white font-bold text-xs sm:text-sm shadow-xl shadow-rose-600/30 transition transform active:scale-95 flex items-center justify-center space-x-1.5">
-                    <span>🏹</span>
+            <div class="pt-5 border-t border-amber-400/20 flex flex-col sm:flex-row items-center justify-center gap-3">
+                <button type="button" id="shoot-arrow-btn" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-rose-600 hover:from-amber-300 hover:to-rose-500 text-white font-bold text-xs sm:text-sm shadow-xl shadow-rose-600/35 transition transform active:scale-95 flex items-center justify-center space-x-2">
+                    <span class="text-base">🏹</span>
                     <span>Shoot Cupid's Arrow into His Heart!</span>
                 </button>
 
-                <button type="button" id="reset-arrow-btn" class="hidden px-5 py-2.5 rounded-full glass-panel text-xs text-rose-200 font-medium transition">
-                    🔄 Shoot Again
+                <button type="button" id="reset-arrow-btn" class="hidden px-6 py-3 rounded-full glass-panel hover:bg-white/15 text-xs text-rose-200 hover:text-white font-semibold transition flex items-center space-x-1.5 border border-rose-400/40">
+                    <span>🔄</span>
+                    <span>Shoot Another Arrow</span>
                 </button>
             </div>
 
-            <!-- Hit Announcement -->
-            <div id="bullseye-msg" class="hidden mt-4 p-4 rounded-xl bg-slate-900/90 border border-rose-400/40 text-center space-y-2">
-                <div class="w-16 h-16 mx-auto rounded-xl overflow-hidden border border-rose-400">
+            <!-- Hit Announcement (Revealed with flair on impact) -->
+            <div id="bullseye-msg" class="hidden mt-5 p-5 rounded-2xl bg-gradient-to-r from-rose-950/90 via-slate-900/95 to-amber-950/90 border border-rose-400/50 text-center space-y-3 shadow-2xl animate-float">
+                <div class="w-20 h-20 mx-auto rounded-2xl overflow-hidden border-2 border-amber-300/60 shadow-lg">
                     <img src="https://media.tenor.com/9tO-go2PlNwAAAAM/bubu-dudu-love.gif" alt="Target Hit" class="w-full h-full object-cover">
                 </div>
-                <h4 class="font-serif text-lg font-bold text-white">DIRECT HIT! 🎯❤️</h4>
-                <p class="text-xs text-rose-100 max-w-sm mx-auto">
-                    {{ fiance_name }}'s heart is 100% captured by Toshi forever and ever!
+                <div class="space-y-1">
+                    <span class="text-[10px] font-cinzel text-amber-300 font-bold uppercase tracking-widest">✨ 100% BULLSEYE HIT! ✨</span>
+                    <h4 class="font-serif text-xl sm:text-2xl font-black text-white">Captured Forever & Always! 🎯❤️</h4>
+                </div>
+                <p class="text-xs sm:text-sm text-rose-100 max-w-sm mx-auto leading-relaxed">
+                    Cupid's arrow hit {{ fiance_name }}'s heart dead center! He belongs to Toshi forever, and there is no escape! 🥰💍
                 </p>
             </div>
 

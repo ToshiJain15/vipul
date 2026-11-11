@@ -211,10 +211,12 @@ function initHeroPhotoSwitcher() {
     const gallery = [
         { src: 'static/images/IMG-20260412-WA0003.jpg', tag: 'My Handsome Boy ✨' },
         { src: 'static/images/cinematic_red_saree.jpg', tag: 'Mere Sukoon ❤️' },
+        { src: 'static/images/DSC_9886.JPG', tag: 'The Easiest Yes 💍' },
         { src: 'static/images/bouquet_celebration.jpg', tag: 'Roses & Forever 🌹' },
         { src: 'static/images/lavender_festive.jpg', tag: 'Sweet Celebrations 🥂' },
+        { src: 'static/images/Snapchat-1449003545.jpg', tag: 'My Favorite Person 💕' },
         { src: 'static/images/IMG-20260725-WA0010.jpg', tag: 'My Royal King 👑' },
-        { src: 'static/images/IMG-20260508-WA0014.jpg', tag: 'Our Chibi Avatars 🧸' }
+        { src: 'static/images/couple_scooty_ride.gif', tag: 'Holding Tight on Scooty 🛵' }
     ];
 
     let currentIdx = 0;
@@ -723,7 +725,10 @@ function initCupidBow() {
     const resetBtn = document.getElementById('reset-arrow-btn');
     const arrow = document.getElementById('cupid-arrow');
     const bow = document.getElementById('cupid-bow');
+    const bowString = document.getElementById('bow-string');
     const target = document.getElementById('target-heart');
+    const shockwave = document.getElementById('target-shockwave');
+    const particleContainer = document.getElementById('arrow-particle-container');
     const message = document.getElementById('bullseye-msg');
 
     if (!shootBtn || !arrow || !target) return;
@@ -734,20 +739,87 @@ function initCupidBow() {
         if (hasShot) return;
         hasShot = true;
 
-        if (bow) bow.classList.add('scale-105');
-        arrow.classList.add('arrow-drawn');
+        // Measure initial unshifted positions for pixel-perfect bullseye
+        const arrowRect = arrow.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+        const targetCenterX = targetRect.left + (targetRect.width / 2);
+        const arrowTipX = arrowRect.left + arrowRect.width;
+        // Arrowhead embeds firmly into the heart center
+        const flyDist = Math.max(140, Math.round(targetCenterX - arrowTipX + 30));
 
+        // Phase 1: Draw the Bow with Tension & Bend String
+        if (bow) bow.style.transform = 'scale(0.95, 1.05)';
+        if (bowString) bowString.setAttribute('d', 'M 28 15 Q 0 100 28 185');
+        arrow.style.transition = 'transform 0.25s ease-out';
+        arrow.style.transform = 'translateY(-50%) translateX(-25px)';
+
+        // Phase 2: Snap string forward & release high-speed arrow
         setTimeout(() => {
-            const track = document.getElementById('archery-track');
-            const trackWidth = track ? track.clientWidth : 340;
-            // Precise target distance on mobile and desktop
-            const flyDist = Math.max(140, trackWidth - 110);
+            // String snaps forward briefly, then relaxes
+            if (bowString) bowString.setAttribute('d', 'M 28 15 Q 38 100 28 185');
+            if (bow) bow.style.transform = 'none';
 
-            arrow.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
+            arrow.style.setProperty('--target-x', `${flyDist}px`);
+            arrow.style.transition = 'transform 0.35s cubic-bezier(0.12, 0.82, 0.35, 1)';
             arrow.style.transform = `translateY(-50%) translateX(${flyDist}px)`;
 
+            // Spawn sparkly love trajectory particles along arrow flight path
+            if (particleContainer) {
+                const sparkles = ['✨', '💖', '⭐', '💫', '💕'];
+                for (let i = 0; i < 7; i++) {
+                    setTimeout(() => {
+                        const p = document.createElement('div');
+                        p.className = 'cupid-particle';
+                        p.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+                        const pct = 10 + (i * 13);
+                        p.style.left = `${pct}%`;
+                        p.style.top = `${45 + (Math.random() * 20 - 10)}%`;
+                        p.style.setProperty('--tx', `${(Math.random() - 0.5) * 25}px`);
+                        p.style.setProperty('--ty', `${-15 - Math.random() * 20}px`);
+                        particleContainer.appendChild(p);
+                        setTimeout(() => p.remove(), 800);
+                    }, i * 40);
+                }
+            }
+
+            // Phase 3: Impact Hit, Shockwave, and Confetti
             setTimeout(() => {
-                target.classList.add('target-hit');
+                // String returns to resting equilibrium
+                if (bowString) bowString.setAttribute('d', 'M 28 15 Q 28 100 28 185');
+
+                // Target elastic impact bounce
+                target.classList.remove('target-elastic-hit');
+                void target.offsetWidth;
+                target.classList.add('target-elastic-hit');
+
+                // Shockwave ring explosion
+                if (shockwave) {
+                    shockwave.classList.remove('shockwave-expand');
+                    void shockwave.offsetWidth;
+                    shockwave.classList.add('shockwave-expand');
+                }
+
+                // Arrow stuck wobble
+                arrow.classList.add('arrow-stuck-wobble');
+
+                // Burst mini hearts from impact point
+                if (particleContainer) {
+                    for (let h = 0; h < 10; h++) {
+                        const mini = document.createElement('div');
+                        mini.className = 'cupid-particle';
+                        mini.textContent = ['❤️', '💖', '💘', '💕'][h % 4];
+                        mini.style.left = '92%';
+                        mini.style.top = '48%';
+                        const angle = (h / 10) * Math.PI * 2;
+                        const dist = 35 + Math.random() * 35;
+                        mini.style.setProperty('--tx', `${Math.cos(angle) * dist}px`);
+                        mini.style.setProperty('--ty', `${Math.sin(angle) * dist}px`);
+                        particleContainer.appendChild(mini);
+                        setTimeout(() => mini.remove(), 800);
+                    }
+                }
+
+                // Confetti & reveal victory message
                 triggerGrandConfetti();
 
                 if (message) {
@@ -755,18 +827,24 @@ function initCupidBow() {
                 }
                 if (resetBtn) resetBtn.classList.remove('hidden');
                 shootBtn.classList.add('hidden');
-            }, 400);
-        }, 200);
+            }, 360);
+        }, 240);
     });
 
     if (resetBtn) {
         resetBtn.addEventListener('click', () => {
             hasShot = false;
+            arrow.classList.remove('arrow-stuck-wobble');
             arrow.style.transition = 'none';
             arrow.style.transform = 'translateY(-50%) translateX(0px)';
-            arrow.classList.remove('arrow-drawn');
-            if (bow) bow.classList.remove('scale-105');
-            target.classList.remove('target-hit');
+            
+            if (bow) bow.style.transform = 'none';
+            if (bowString) bowString.setAttribute('d', 'M 28 15 Q 28 100 28 185');
+            
+            target.classList.remove('target-elastic-hit');
+            if (shockwave) shockwave.classList.remove('shockwave-expand');
+            if (particleContainer) particleContainer.innerHTML = '';
+            
             if (message) message.classList.add('hidden');
             resetBtn.classList.add('hidden');
             shootBtn.classList.remove('hidden');
@@ -783,7 +861,7 @@ function initTreeOfHearts() {
     const modalTitle = document.getElementById('modal-tree-title');
     const modalMessage = document.getElementById('modal-tree-message');
     const closeModal = document.getElementById('close-tree-modal');
-    const dismissBtn = document.getElementById('dismiss-tree-modal-btn');
+    const dismissBtn = document.getElementById('dismiss-tree-modal-btn') || document.getElementById('close-tree-modal-btn');
 
     const treeHeartsData = (window.BIRTHDAY_CONFIG && window.BIRTHDAY_CONFIG.treeHearts) || [];
 
@@ -864,6 +942,38 @@ function initGiftsUnboxing() {
     });
 
     initSmileJar();
+    initMixtapeTracks();
+}
+
+function initMixtapeTracks() {
+    const tracks = {
+        '1': { title: '"Tum Se Hi"', lyrics: 'Jab We Met • "Aadha aasmaan... ab yeh tera hua"' },
+        '2': { title: '"Kesariya"', lyrics: 'Brahmastra • "Kesariya tera ishq hai piya"' },
+        '3': { title: '"Raataan Lambiyan"', lyrics: 'Shershaah • "Kaate kate na re raataan lambiyan"' }
+    };
+    const titleEl = document.getElementById('mixtape-song-title');
+    const lyricsEl = document.getElementById('mixtape-song-lyrics');
+    const buttons = document.querySelectorAll('.mixtape-track-btn');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const songId = btn.dataset.song;
+            const data = tracks[songId];
+            if (!data) return;
+
+            buttons.forEach(b => {
+                b.classList.remove('bg-rose-500/40', 'border', 'border-rose-300');
+                b.classList.add('bg-white/10');
+            });
+            btn.classList.remove('bg-white/10');
+            btn.classList.add('bg-rose-500/40', 'border', 'border-rose-300');
+
+            if (titleEl) titleEl.textContent = data.title;
+            if (lyricsEl) lyricsEl.textContent = data.lyrics;
+            triggerMiniConfetti(btn);
+        });
+    });
 }
 
 function initSmileJar() {
@@ -952,30 +1062,50 @@ function initOpenWhenLetters() {
             icon: '🥺💌',
             title: 'When You Miss Me',
             tag: 'Open When • Heart to Heart',
+            gif: 'https://media.tenor.com/9tO-go2PlNwAAAAM/bubu-dudu-love.gif',
+            photo: 'static/images/cinematic_red_saree.jpg',
+            photoCaption: 'Always by your side ❤️',
+            btnText: 'Send Warm Hug Back to Toshi! 💕',
             text: `Mere Vipul,\n\nWhenever you feel alone and wish I were right beside you, close your eyes right now and take a slow, deep breath. Can you feel that quiet warmth in your chest? That is my heart beating right alongside yours.\n\nNo distance or busy days could ever separate our souls. Whenever you miss my voice, look at our pictures, whisper my name, and remember that every heartbeat brings us closer to our forever on 21 December 2026.\n\nNow send me a text: "I miss you." A big warm hug from your fiancée is waiting for you! ❤️`
         },
         '2': {
             icon: '☕🌧️',
             title: 'When You Had a Long Day',
             tag: 'Open When • Comfort Capsule',
+            gif: 'https://media.tenor.com/3Yml0nL4aBwAAAAM/cosytales-love.gif',
+            photo: 'static/images/IMG-20260412-WA0003.jpg',
+            photoCaption: 'My handsome, hardworking boy ✨',
+            btnText: 'Send "I Need Your Voice" to Toshi 📞',
             text: `Hey handsome boy,\n\nI wish I were right there beside you right now to take off your shoes, hand you a warm cup of chai, and gently massage your temples until all the day's tiredness melts away.\n\nYou work so hard every single day to build the dreams we talk about on our late-night calls. I see your dedication, and I am so endlessly proud of you. Tonight, kick back, lie down, put me on speaker, and let me talk you to sleep. You did wonderful today, my love. Rest now.`
         },
         '3': {
             icon: '🧸🫂',
             title: 'When You Need a Hug',
             tag: 'Open When • Snuggle Capsule',
+            gif: 'https://media.tenor.com/jmWqHgGS0ToAAAAM/dudu-bubu.gif',
+            photo: 'static/images/Snapchat-1449003545.jpg',
+            photoCaption: 'Forever wrapped in your arms 🧸',
+            btnText: 'Send Giant Bear Hug to Toshi 🫂',
             text: `Wrap both of your arms tightly around yourself right now and squeeze tight!\n\nThat is a giant, warm hug from your future wife delivered straight into your soul. Imagine my head tucked against your chest, listening to your heartbeat just like on our late-night scooty rides. You are safe, you are cherished, and I will always hold your hand.`
         },
         '4': {
             icon: '🕊️🤍',
             title: 'When You Are Angry / Upset',
             tag: 'Open When • Peace & Love Capsule',
+            gif: 'https://media.tenor.com/9tO-go2PlNwAAAAM/bubu-dudu-love.gif',
+            photo: 'static/images/bouquet_celebration.jpg',
+            photoCaption: 'You + Me against everything 🌹',
+            btnText: 'Send Sweet White Flag & Peace 🕊️',
             text: `Hey... pause for just ten seconds and look at us.\n\nWhatever little silly argument or misunderstanding we are having right now does not compare to how deeply, irrevocably in love I am with you.\n\nLife is too precious and our love is too pure to waste a single second being upset. It is never you against me. It is you and me against the problem. Call me or FaceTime me right now. We are forever, remember? ❤️`
         },
         '5': {
             icon: '🌙✨',
             title: "When You Can't Sleep",
             tag: 'Open When • Midnight Lullaby',
+            gif: 'https://media.tenor.com/jmWqHgGS0ToAAAAM/dudu-bubu.gif',
+            photo: 'static/images/lavender_festive.jpg',
+            photoCaption: 'Sweet dreams, mere sukoon 🌙',
+            btnText: 'Send Goodnight Kiss to Toshi 💋',
             text: `Hey my love...\n\nCan't sleep? Mind running in circles with a million thoughts?\n\nClose your eyes and breathe slowly with me. Imagine my head resting gently against your chest, listening to your steady heartbeat. You are surrounded by so much love, warmth, and peace.\n\nThink about our favorite midnight scooty ride—the cool gentle wind on our skin, my arms wrapped tight around your waist, and not a care in the entire world.\n\nYou are my safe place, Vipul, and I am yours. Let all the worries of today float away into the night. I am sending you the softest forehead kiss and holding you tight in my thoughts.\n\nNow close your eyes, handsome boy, and drift away into sweet dreams. Tum ho, toh main hoon. ❤️`
         }
     };
@@ -988,6 +1118,11 @@ function initOpenWhenLetters() {
     const titleEl = document.getElementById('open-when-modal-title');
     const tagEl = document.getElementById('open-when-modal-tag');
     const textEl = document.getElementById('open-when-modal-text');
+    const gifEl = document.getElementById('open-when-modal-gif');
+    const photoEl = document.getElementById('open-when-modal-photo');
+    const photoCaptionEl = document.getElementById('open-when-modal-photo-caption');
+    const sendLoveBtn = document.getElementById('send-envelope-love-btn');
+    const loveBtnText = document.getElementById('envelope-love-btn-text');
 
     function closeModal() {
         if (!modal) return;
@@ -1006,6 +1141,10 @@ function initOpenWhenLetters() {
             if (titleEl) titleEl.textContent = letter.title;
             if (tagEl) tagEl.textContent = letter.tag;
             if (textEl) textEl.textContent = letter.text;
+            if (gifEl) gifEl.src = letter.gif;
+            if (photoEl) photoEl.src = letter.photo;
+            if (photoCaptionEl) photoCaptionEl.textContent = letter.photoCaption;
+            if (loveBtnText) loveBtnText.textContent = letter.btnText;
 
             triggerMiniConfetti(card);
 
@@ -1016,6 +1155,19 @@ function initOpenWhenLetters() {
             }
         });
     });
+
+    if (sendLoveBtn) {
+        sendLoveBtn.addEventListener('click', () => {
+            triggerGrandConfetti();
+            const originalText = loveBtnText ? loveBtnText.textContent : 'Sent!';
+            if (loveBtnText) loveBtnText.textContent = 'Received with Infinite Love! 🥰❤️';
+            sendLoveBtn.classList.add('brightness-125');
+            setTimeout(() => {
+                if (loveBtnText) loveBtnText.textContent = originalText;
+                sendLoveBtn.classList.remove('brightness-125');
+            }, 3000);
+        });
+    }
 
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     if (bottomCloseBtn) bottomCloseBtn.addEventListener('click', closeModal);
@@ -1054,6 +1206,7 @@ function initLoveLetter() {
     const letterPaper = document.getElementById('unfolded-letter');
     const cuddleBtn = document.getElementById('send-cuddle-btn');
     const toast = document.getElementById('cuddle-toast');
+    const voicePlayBtn = document.getElementById('voice-note-play-btn');
 
     if (!waxSeal || !letterPaper) return;
 
@@ -1069,9 +1222,43 @@ function initLoveLetter() {
         }, 400);
     });
 
+    if (voicePlayBtn) {
+        voicePlayBtn.addEventListener('click', () => {
+            triggerMiniConfetti(voicePlayBtn);
+            voicePlayBtn.innerHTML = '⏸';
+            voicePlayBtn.classList.add('bg-amber-500', 'animate-pulse');
+            setTimeout(() => {
+                voicePlayBtn.innerHTML = '▶';
+                voicePlayBtn.classList.remove('bg-amber-500', 'animate-pulse');
+            }, 3000);
+        });
+    }
+
     if (cuddleBtn && toast) {
         cuddleBtn.addEventListener('click', () => {
             triggerGrandConfetti();
+            
+            // Spawn fountain of floating kisses across the screen
+            const kisses = ['💋', '💖', '🥰', '😘', '💕'];
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const kiss = document.createElement('div');
+                    kiss.className = 'fixed pointer-events-none z-50 text-2xl sm:text-3xl select-none';
+                    kiss.textContent = kisses[Math.floor(Math.random() * kisses.length)];
+                    kiss.style.left = `${30 + Math.random() * 40}%`;
+                    kiss.style.bottom = '15%';
+                    kiss.style.transition = 'all 1.8s cubic-bezier(0.2, 0.8, 0.4, 1)';
+                    document.body.appendChild(kiss);
+
+                    requestAnimationFrame(() => {
+                        kiss.style.transform = `translate(${(Math.random() - 0.5) * 200}px, -${300 + Math.random() * 300}px) scale(${1.2 + Math.random() * 0.5})`;
+                        kiss.style.opacity = '0';
+                    });
+
+                    setTimeout(() => kiss.remove(), 1900);
+                }, i * 70);
+            }
+
             toast.classList.remove('hidden');
             setTimeout(() => {
                 toast.classList.add('hidden');

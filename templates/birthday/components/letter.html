@@ -3,7 +3,7 @@
     <div class="max-w-4xl mx-auto space-y-10 text-center">
         
         <div class="space-y-3">
-            <span class="text-xs uppercase tracking-widest font-cinzel text-rose-400 font-semibold">Secret Message</span>
+            <span class="text-xs uppercase tracking-widest font-cinzel text-amber-300 font-semibold">Secret Message</span>
             <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">A Letter For You 💌</h2>
             <p class="text-rose-200/80 text-sm sm:text-base max-w-lg mx-auto">
                 Some feelings are too deep for ordinary words. Break the wax seal to read what is in my heart.
@@ -11,51 +11,91 @@
         </div>
 
         <!-- The Wax Sealed Envelope Card -->
-        <div id="love-envelope" class="relative max-w-lg mx-auto p-10 sm:p-14 rounded-3xl bg-gradient-to-br from-[#231726] to-[#120a16] border-2 border-rose-500/30 shadow-2xl overflow-hidden transition-all duration-500">
+        <div id="love-envelope" class="relative max-w-lg mx-auto p-10 sm:p-14 rounded-3xl bg-gradient-to-br from-[#231726] to-[#120a16] border-2 border-rose-500/40 shadow-2xl overflow-hidden transition-all duration-500 hover:border-amber-300/60 group">
             <!-- Envelope triangular flap aesthetics -->
-            <div class="absolute inset-x-0 top-0 h-32 bg-rose-500/10 [clip-path:polygon(0_0,100%_0,50%_100%)] pointer-events-none"></div>
+            <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-rose-500/20 to-transparent [clip-path:polygon(0_0,100%_0,50%_100%)] pointer-events-none"></div>
 
             <div class="relative z-10 flex flex-col items-center space-y-6">
-                <!-- Wax Seal Button -->
-                <button id="wax-seal-btn" class="wax-seal group" title="Click to break the seal!">
-                    <span class="font-cinzel text-white font-black text-xl tracking-tighter drop-shadow">V ❤️</span>
-                </button>
+                <!-- Wax Seal Button with Pulsing Halo -->
+                <div class="relative">
+                    <div class="absolute -inset-2 rounded-full bg-rose-500/30 blur-md animate-pulse"></div>
+                    <button id="wax-seal-btn" class="wax-seal group relative" title="Click to break the seal!">
+                        <span class="font-cinzel text-white font-black text-xl tracking-tighter drop-shadow">V ❤️ T</span>
+                    </button>
+                </div>
 
                 <div class="space-y-1">
-                    <p class="font-cinzel text-xs tracking-widest uppercase text-amber-300 font-semibold">
-                        Strictly Confidential
+                    <p class="font-cinzel text-xs tracking-widest uppercase text-amber-300 font-bold border-b border-amber-300/30 pb-1 inline-block">
+                        Strictly Confidential • For Vipul Only
                     </p>
                     <p class="font-serif text-lg text-white font-medium">
-                        To My Fiancé, Vipul
+                        To My Beloved Fiancé, Mere Sukoon
                     </p>
                 </div>
 
-                <p class="text-xs text-rose-300/70 italic animate-pulse">
+                <p class="text-xs text-rose-300/80 italic animate-pulse">
                     Tap the wax seal to open with love ✨
                 </p>
             </div>
         </div>
 
         <!-- Unfolded Letter (Revealed upon breaking seal) -->
-        <div id="unfolded-letter" class="hidden text-left max-w-2xl mx-auto bg-[#fffdfa] text-slate-800 p-8 sm:p-12 rounded-3xl shadow-2xl border-4 border-amber-200/80 relative transition-all duration-700 animate-float">
+        <div id="unfolded-letter" class="hidden text-left max-w-2xl mx-auto bg-[#fffdfa] text-slate-800 p-6 sm:p-12 rounded-3xl shadow-2xl border-4 border-amber-200/80 relative transition-all duration-700 animate-float">
+            
             <!-- Vintage stamps & decorations -->
-            <div class="absolute top-6 right-6 flex items-center space-x-2">
-                <div class="border-2 border-rose-400 text-rose-500 text-[10px] uppercase tracking-widest font-bold px-2 py-1 rounded">
-                    SPECIAL DELIVERY • WITH ALL MY HEART 💌✨
+            <div class="flex flex-wrap items-center justify-between border-b border-rose-200 pb-4 mb-6 gap-3">
+                <div class="space-y-0.5">
+                    <span class="text-[10px] uppercase tracking-widest text-rose-700 font-cinzel font-bold block">SPECIAL AIRMAIL DELIVERY</span>
+                    <span class="font-mono text-xs text-slate-500">SEALED ON 16 NOV • DESTINATION: 21 DEC 2026 💍</span>
                 </div>
-                <span class="text-2xl">💌</span>
+                
+                <div class="flex items-center space-x-2">
+                    <div class="border-2 border-dashed border-rose-500 text-rose-600 text-[10px] uppercase tracking-widest font-bold px-2 py-1 rounded bg-rose-50">
+                        OFFICIAL LOVE LETTER ❤️
+                    </div>
+                    <span class="text-2xl">💌</span>
+                </div>
+            </div>
+
+            <!-- Couple Portrait & Voice Note Widget -->
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center bg-rose-50/70 p-4 rounded-2xl border border-rose-200 mb-6">
+                <!-- Mini Couple Photo -->
+                <div class="sm:col-span-4 flex justify-center">
+                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-xl overflow-hidden shadow-md border-2 border-amber-300/80 rotate-[-2deg]">
+                        <img src="static/images/cinematic_red_saree.jpg" alt="Vipul & Toshi" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <!-- Voice Note Simulation -->
+                <div class="sm:col-span-8 space-y-2 text-left">
+                    <span class="text-[10px] font-cinzel uppercase tracking-wider text-rose-700 font-bold block">
+                        🎙️ Toshi's Voice Note from the Heart
+                    </span>
+                    <p class="text-xs text-slate-700 font-cursive text-base leading-snug">
+                        "Tum mere sukoon ho Vipul... Happy Birthday, my love! I cannot wait to wake up beside you every morning."
+                    </p>
+                    <div class="flex items-center space-x-2 pt-1">
+                        <button type="button" id="voice-note-play-btn" class="w-8 h-8 rounded-full bg-rose-600 text-white flex items-center justify-center text-xs shadow hover:bg-rose-700 transition active:scale-95" title="Play Voice Message">
+                            ▶
+                        </button>
+                        <div class="flex-1 h-2 rounded-full bg-rose-200 overflow-hidden relative">
+                            <div class="h-full bg-gradient-to-r from-rose-500 to-amber-500 w-3/4 rounded-full"></div>
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-500">0:48 / 0:48</span>
+                    </div>
+                </div>
             </div>
 
             <!-- Letter Title -->
-            <div class="border-b border-rose-200/80 pb-4 mb-6">
-                <span class="text-xs uppercase tracking-widest text-rose-700 font-cinzel font-semibold">To My Dearest Fiancé</span>
+            <div class="border-b border-rose-200/80 pb-3 mb-6">
+                <span class="text-xs uppercase tracking-widest text-rose-700 font-cinzel font-bold">To My Dearest Fiancé</span>
                 <h3 class="font-serif text-2xl sm:text-3xl font-bold text-slate-900 mt-1">
                     {{ letter.title|default:"To The Love Of My Life, Vipul" }}
                 </h3>
             </div>
 
             <!-- Letter Body -->
-            <div class="font-serif text-base sm:text-lg leading-relaxed text-slate-700 space-y-4 whitespace-pre-line">
+            <div class="font-serif text-base sm:text-lg leading-relaxed text-slate-800 space-y-4 whitespace-pre-line">
                 {{ letter.letter_text }}
             </div>
 
