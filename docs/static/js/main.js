@@ -26,67 +26,403 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* =========================================================
-   1. Real Bollywood Romantic Audio Player ("Tum Se Hi")
+   1. Real Bollywood Romantic 11-Song Jukebox & Player
    ========================================================= */
-function initBollywoodAudioPlayer() {
-    const audio = document.getElementById('bg-audio');
-    const toggleBtn = document.getElementById('music-toggle-btn');
-    const vinylIcon = document.getElementById('music-vinyl-icon');
-    const statusText = document.getElementById('music-status-text');
-    const trackTitle = document.getElementById('music-track-title');
-    const soundBars = document.getElementById('sound-bars-container');
-
-    if (!audio || !toggleBtn) return;
-
-    let isPlaying = false;
-
-    function playMusic() {
-        audio.play().then(() => {
-            isPlaying = true;
-            if (vinylIcon) vinylIcon.classList.remove('record-paused');
-            if (soundBars) {
-                soundBars.classList.remove('hidden');
-                soundBars.classList.add('flex');
-            }
-            if (statusText) statusText.textContent = 'Playing for Vipul ❤️';
-            if (trackTitle) trackTitle.textContent = '🎶 Tum Se Hi';
-            toggleBtn.classList.add('border-rose-400');
-        }).catch(() => {
-            // Browser autoplay policy might require user gesture
-        });
+const ROMANTIC_SONGS = [
+    {
+        id: 1,
+        title: "Tere Hawaale",
+        movie: "Laal Singh Chaddha",
+        singers: "Arijit Singh & Shilpa Rao",
+        quote: '"Meri saari khushiyan tere hawaale, mera saara gham tere hawaale... tu mera sukoon hai, Vipul."',
+        dedication: "Dedicated to the man who holds my whole heart in his hands. Every happiness I have is yours, Vipul. ❤️",
+        notes: [
+            { f: 392.00, d: 0.4 }, { f: 440.00, d: 0.4 }, { f: 493.88, d: 0.6 },
+            { f: 440.00, d: 0.4 }, { f: 392.00, d: 0.4 }, { f: 329.63, d: 0.8 },
+            { f: 392.00, d: 0.4 }, { f: 440.00, d: 0.4 }, { f: 523.25, d: 0.6 },
+            { f: 493.88, d: 0.4 }, { f: 440.00, d: 0.8 }
+        ]
+    },
+    {
+        id: 2,
+        title: "Jab Koi Baat Bigad Jaye",
+        movie: "Jurm",
+        singers: "Kumar Sanu & Sadhana Sargam",
+        quote: '"Jab koi baat bigad jaye, jab koi mushkil pad jaye... tum dena saath mera, o humnawaa."',
+        dedication: "Our forever promise: no matter how storms blow or days get tough, we will always stand together hand-in-hand. 🤝",
+        notes: [
+            { f: 261.63, d: 0.5 }, { f: 329.63, d: 0.5 }, { f: 392.00, d: 0.6 },
+            { f: 440.00, d: 0.5 }, { f: 392.00, d: 0.8 },
+            { f: 349.23, d: 0.5 }, { f: 329.63, d: 0.5 }, { f: 293.66, d: 0.8 }
+        ]
+    },
+    {
+        id: 3,
+        title: "Kesariya",
+        movie: "Brahmāstra",
+        singers: "Arijit Singh",
+        quote: '"Kesariya tera ishq hai piya... rang jaaun jo main haath lagaun, din beete saare teri fikr mein."',
+        dedication: "Your love brings the brightest, warmest colors into my life. Happy Birthday, my Kesariya! 🧡",
+        notes: [
+            { f: 329.63, d: 0.4 }, { f: 392.00, d: 0.4 }, { f: 440.00, d: 0.5 },
+            { f: 493.88, d: 0.7 }, { f: 440.00, d: 0.4 }, { f: 392.00, d: 0.4 },
+            { f: 440.00, d: 0.6 }, { f: 329.63, d: 0.8 }
+        ]
+    },
+    {
+        id: 4,
+        title: "Neele Neele Ambar Par",
+        movie: "Kalaakaar",
+        singers: "Kishore Kumar",
+        quote: '"Neele neele ambar par chaand jab aaye, pyaar barsaye humko tarsaye... aisa koi saathi ho."',
+        dedication: "Like gentle moonlight in the midnight sky, you bring endless peace and magic into my world. 🌙",
+        notes: [
+            { f: 293.66, d: 0.4 }, { f: 329.63, d: 0.4 }, { f: 349.23, d: 0.5 },
+            { f: 392.00, d: 0.6 }, { f: 440.00, d: 0.5 }, { f: 392.00, d: 0.5 },
+            { f: 349.23, d: 0.4 }, { f: 329.63, d: 0.8 }
+        ]
+    },
+    {
+        id: 5,
+        title: "Tujh Mein Rab Dikhta Hai",
+        movie: "Rab Ne Bana Di Jodi",
+        singers: "Roop Kumar Rathod",
+        quote: '"Tujh mein rab dikhta hai, yaara main kya karoon... sajde sar jhukta hai, yaara main kya karoon."',
+        dedication: "In your eyes, I see pure warmth, honesty, and unconditional love. Loving you is my deepest prayer. ✨",
+        notes: [
+            { f: 349.23, d: 0.5 }, { f: 392.00, d: 0.4 }, { f: 440.00, d: 0.6 },
+            { f: 523.25, d: 0.7 }, { f: 493.88, d: 0.5 }, { f: 440.00, d: 0.8 }
+        ]
+    },
+    {
+        id: 6,
+        title: "Raabta",
+        movie: "Agent Vinod",
+        singers: "Arijit Singh & Hamsika Iyer",
+        quote: '"Kehte hain khuda ne iss jahan mein sabhi ke liye kisi na kisi ko hai banaya... kuch toh hai tujhse raabta."',
+        dedication: "Our souls were woven together before we even met. You are my destined connection, my forever raabta. 💕",
+        notes: [
+            { f: 392.00, d: 0.4 }, { f: 329.63, d: 0.4 }, { f: 392.00, d: 0.5 },
+            { f: 440.00, d: 0.6 }, { f: 392.00, d: 0.5 }, { f: 329.63, d: 0.8 }
+        ]
+    },
+    {
+        id: 7,
+        title: "Titli",
+        movie: "Chennai Express",
+        singers: "Chinmayi Sripada & Gopi Sunder",
+        quote: '"Bann ke titli dil uda uda uda hai, kahin doooor... chal chalte hain tere sang sang."',
+        dedication: "Every time you hold my hand or look at me with that smile, butterflies flutter in my stomach just like day one. 🦋",
+        notes: [
+            { f: 440.00, d: 0.35 }, { f: 493.88, d: 0.35 }, { f: 523.25, d: 0.5 },
+            { f: 587.33, d: 0.6 }, { f: 523.25, d: 0.4 }, { f: 440.00, d: 0.8 }
+        ]
+    },
+    {
+        id: 8,
+        title: "Bahara",
+        movie: "I Hate Luv Storys",
+        singers: "Shreya Ghoshal & Sona Mohapatra",
+        quote: '"Bahaara bahaara, hua dil pehli baar ve... bahaara bahaara, ki chain to gawaan ve."',
+        dedication: "My heart found its blooming spring season the day you walked into my life, mere jaan! 🌸",
+        notes: [
+            { f: 329.63, d: 0.4 }, { f: 369.99, d: 0.4 }, { f: 440.00, d: 0.6 },
+            { f: 493.88, d: 0.5 }, { f: 440.00, d: 0.4 }, { f: 329.63, d: 0.8 }
+        ]
+    },
+    {
+        id: 9,
+        title: "Soch Na Sake",
+        movie: "Airlift",
+        singers: "Arijit Singh & Tulsi Kumar",
+        quote: '"Tere liye duniya chhod di hai, tujhpe hi saans aake ruke... main tujhko kitna chahta hoon, ye soch na sake."',
+        dedication: "Distance only proved how every single breath belongs to you. You are my safe harbor, Vipul. ✈️❤️",
+        notes: [
+            { f: 293.66, d: 0.45 }, { f: 329.63, d: 0.45 }, { f: 392.00, d: 0.6 },
+            { f: 369.99, d: 0.45 }, { f: 329.63, d: 0.8 }
+        ]
+    },
+    {
+        id: 10,
+        title: "Tere Sang Yaara",
+        movie: "Rustom",
+        singers: "Atif Aslam",
+        quote: '"Tere sang yaara, khush rang bahara... tu raat deewani, main zard sitaara."',
+        dedication: "Walking through this lifetime with you is the sweetest dream come true. You and me against the world. ✨",
+        notes: [
+            { f: 392.00, d: 0.4 }, { f: 440.00, d: 0.4 }, { f: 493.88, d: 0.6 },
+            { f: 587.33, d: 0.7 }, { f: 523.25, d: 0.4 }, { f: 493.88, d: 0.8 }
+        ]
+    },
+    {
+        id: 11,
+        title: "Raataan Lambiyan",
+        movie: "Shershaah",
+        singers: "Jubin Nautiyal & Asees Kaur",
+        quote: '"Kaate kate na re raataan lambiyan lambiyan re... saware sang yaara ve, kiven kattiyaan ve."',
+        dedication: "Counting down every night until 21 December 2026 when our forever begins under one roof! 💍",
+        notes: [
+            { f: 329.63, d: 0.4 }, { f: 392.00, d: 0.4 }, { f: 440.00, d: 0.6 },
+            { f: 493.88, d: 0.5 }, { f: 440.00, d: 0.4 }, { f: 329.63, d: 0.8 }
+        ]
     }
+];
 
-    function pauseMusic() {
-        audio.pause();
-        isPlaying = false;
-        if (vinylIcon) vinylIcon.classList.add('record-paused');
-        if (soundBars) {
+let globalAudioCtx = null;
+let currentSongIndex = 0;
+let isAudioPlaying = false;
+let synthTimer = null;
+
+function getAudioContext() {
+    if (!globalAudioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+            globalAudioCtx = new AudioContextClass();
+        }
+    }
+    if (globalAudioCtx && globalAudioCtx.state === 'suspended') {
+        globalAudioCtx.resume();
+    }
+    return globalAudioCtx;
+}
+
+function playNote(freq, duration, delay) {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    try {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        
+        osc.type = 'triangle';
+        const startTime = ctx.currentTime + delay;
+        osc.frequency.setValueAtTime(freq, startTime);
+        
+        gain.gain.setValueAtTime(0.001, startTime);
+        gain.gain.linearRampToValueAtTime(0.16, startTime + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+        
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        
+        osc.start(startTime);
+        osc.stop(startTime + duration);
+    } catch (e) {
+        // Fallback gracefully
+    }
+}
+
+function playSongMelody(song) {
+    stopSongMelody();
+    if (!isAudioPlaying) return;
+    
+    const notes = song.notes || [];
+    let cumulativeDelay = 0;
+    notes.forEach(n => {
+        playNote(n.f, n.d * 1.4, cumulativeDelay);
+        cumulativeDelay += n.d;
+    });
+    
+    const loopDuration = Math.max(3500, (cumulativeDelay + 1.8) * 1000);
+    synthTimer = setTimeout(() => {
+        if (isAudioPlaying) {
+            playSongMelody(song);
+        }
+    }, loopDuration);
+}
+
+function stopSongMelody() {
+    if (synthTimer) {
+        clearTimeout(synthTimer);
+        synthTimer = null;
+    }
+}
+
+function updateAllPlayerUIs() {
+    const song = ROMANTIC_SONGS[currentSongIndex];
+    if (!song) return;
+
+    // Top Navbar Player
+    const trackTitle = document.getElementById('music-track-title');
+    const statusText = document.getElementById('music-status-text');
+    const vinylIcon = document.getElementById('music-vinyl-icon');
+    const soundBars = document.getElementById('sound-bars-container');
+    const toggleBtn = document.getElementById('music-toggle-btn');
+
+    if (trackTitle) trackTitle.textContent = `🎶 ${song.title}`;
+    if (statusText) statusText.textContent = isAudioPlaying ? `${song.singers} • Playing` : 'Tap to Play Music';
+
+    if (vinylIcon) {
+        if (isAudioPlaying) vinylIcon.classList.remove('record-paused');
+        else vinylIcon.classList.add('record-paused');
+    }
+    if (soundBars) {
+        if (isAudioPlaying) {
+            soundBars.classList.remove('hidden');
+            soundBars.classList.add('flex');
+        } else {
             soundBars.classList.add('hidden');
             soundBars.classList.remove('flex');
         }
-        if (statusText) statusText.textContent = 'Tap to Play Song';
-        toggleBtn.classList.remove('border-rose-400');
+    }
+    if (toggleBtn) {
+        if (isAudioPlaying) toggleBtn.classList.add('border-amber-300');
+        else toggleBtn.classList.remove('border-amber-300');
     }
 
-    toggleBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (isPlaying) {
-            pauseMusic();
+    // Gift 1 Cassette Player Elements
+    const mixtapeTitle = document.getElementById('mixtape-song-title');
+    const mixtapeMeta = document.getElementById('mixtape-song-meta');
+    const mixtapeLyrics = document.getElementById('mixtape-song-lyrics');
+    const mixtapeDedication = document.getElementById('mixtape-dedication-text');
+    const mixtapeSide = document.getElementById('mixtape-side-indicator');
+    const spoolLeft = document.getElementById('cassette-spool-left');
+    const spoolRight = document.getElementById('cassette-spool-right');
+    const playIcon = document.getElementById('mixtape-play-icon');
+    const playText = document.getElementById('mixtape-play-text');
+
+    if (mixtapeTitle) mixtapeTitle.textContent = `"${song.title}"`;
+    if (mixtapeMeta) mixtapeMeta.textContent = `${song.movie} • ${song.singers}`;
+    if (mixtapeLyrics) mixtapeLyrics.textContent = song.quote;
+    if (mixtapeDedication) mixtapeDedication.textContent = song.dedication;
+    if (mixtapeSide) mixtapeSide.textContent = currentSongIndex < 6 ? 'SIDE A • TRACKS 1-6' : 'SIDE B • TRACKS 7-11';
+
+    if (spoolLeft) {
+        if (isAudioPlaying) spoolLeft.classList.remove('record-paused');
+        else spoolLeft.classList.add('record-paused');
+    }
+    if (spoolRight) {
+        if (isAudioPlaying) spoolRight.classList.remove('record-paused');
+        else spoolRight.classList.add('record-paused');
+    }
+    if (playIcon) playIcon.textContent = isAudioPlaying ? '⏸️' : '▶️';
+    if (playText) playText.textContent = isAudioPlaying ? 'Pause Melody' : 'Play Melody';
+
+    // Highlight active pill in Gift 1
+    const buttons = document.querySelectorAll('.mixtape-track-btn');
+    buttons.forEach((btn, idx) => {
+        if (idx === currentSongIndex) {
+            btn.classList.remove('bg-white/10', 'text-rose-200');
+            btn.classList.add('bg-rose-500/40', 'border', 'border-amber-300/80', 'text-amber-200');
         } else {
-            playMusic();
+            btn.classList.remove('bg-rose-500/40', 'border', 'border-amber-300/80', 'text-amber-200');
+            btn.classList.add('bg-white/10', 'text-rose-200');
         }
     });
 
-    // Auto-start on first user interaction anywhere if not playing
-    function onFirstInteraction() {
-        if (!isPlaying) {
-            playMusic();
+    // Modal elements
+    const modalNowPlaying = document.getElementById('modal-now-playing-text');
+    const modalPlayPause = document.getElementById('modal-play-pause-btn');
+    if (modalNowPlaying) modalNowPlaying.textContent = `Now Playing: ${song.title} (${song.movie})`;
+    if (modalPlayPause) modalPlayPause.textContent = isAudioPlaying ? 'Pause' : 'Play';
+
+    // Update active row in playlist modal
+    const playlistRows = document.querySelectorAll('.playlist-song-row');
+    playlistRows.forEach((row, idx) => {
+        if (idx === currentSongIndex) {
+            row.classList.add('border-amber-300/80', 'bg-rose-500/25');
+        } else {
+            row.classList.remove('border-amber-300/80', 'bg-rose-500/25');
         }
+    });
+}
+
+function selectAndPlaySong(index) {
+    currentSongIndex = (index + ROMANTIC_SONGS.length) % ROMANTIC_SONGS.length;
+    isAudioPlaying = true;
+    updateAllPlayerUIs();
+    playSongMelody(ROMANTIC_SONGS[currentSongIndex]);
+}
+
+function toggleAudioPlayback() {
+    isAudioPlaying = !isAudioPlaying;
+    updateAllPlayerUIs();
+    if (isAudioPlaying) {
+        playSongMelody(ROMANTIC_SONGS[currentSongIndex]);
+    } else {
+        stopSongMelody();
+    }
+}
+
+function initBollywoodAudioPlayer() {
+    const toggleBtn = document.getElementById('music-toggle-btn');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleAudioPlayback();
+        });
+    }
+
+    // Auto-start audio context on first user interaction anywhere
+    function onFirstInteraction() {
+        getAudioContext();
         window.removeEventListener('click', onFirstInteraction);
         window.removeEventListener('touchstart', onFirstInteraction);
     }
     window.addEventListener('click', onFirstInteraction, { once: true });
     window.addEventListener('touchstart', onFirstInteraction, { once: true });
+
+    initPlaylistModal();
+    updateAllPlayerUIs();
+}
+
+function initPlaylistModal() {
+    const modal = document.getElementById('playlist-modal');
+    const openBtn = document.getElementById('open-playlist-modal-btn');
+    const closeBtn = document.getElementById('close-playlist-modal-btn');
+    const playPauseBtn = document.getElementById('modal-play-pause-btn');
+    const container = document.getElementById('playlist-items-container');
+
+    if (!modal) return;
+
+    if (openBtn) {
+        openBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        });
+    }
+
+    if (playPauseBtn) {
+        playPauseBtn.addEventListener('click', () => {
+            toggleAudioPlayback();
+        });
+    }
+
+    // Populate the 11 tracks into the modal
+    if (container) {
+        container.innerHTML = '';
+        ROMANTIC_SONGS.forEach((song, idx) => {
+            const row = document.createElement('div');
+            row.className = `playlist-song-row p-2.5 rounded-2xl glass-panel border border-rose-500/20 hover:border-amber-300/60 transition cursor-pointer flex items-center justify-between gap-3 ${idx === currentSongIndex ? 'border-amber-300/80 bg-rose-500/25' : ''}`;
+            row.innerHTML = `
+                <div class="flex items-center space-x-3 min-w-0">
+                    <span class="w-6 h-6 rounded-full bg-rose-500/20 text-amber-200 text-xs font-bold flex items-center justify-center flex-shrink-0">
+                        ${song.id}
+                    </span>
+                    <div class="min-w-0">
+                        <h4 class="font-serif text-xs sm:text-sm font-bold text-white truncate">${song.title}</h4>
+                        <p class="text-[10px] text-rose-200/80 truncate">${song.movie} • ${song.singers}</p>
+                        <p class="text-[9px] text-amber-300/90 italic truncate">${song.quote}</p>
+                    </div>
+                </div>
+                <button type="button" class="w-8 h-8 rounded-full bg-amber-400/20 hover:bg-amber-400/40 text-amber-200 flex items-center justify-center text-xs flex-shrink-0 transition">
+                    ▶️
+                </button>
+            `;
+            row.addEventListener('click', () => {
+                selectAndPlaySong(idx);
+                triggerGrandConfetti();
+            });
+            container.appendChild(row);
+        });
+    }
 }
 
 /* =========================================================
@@ -109,16 +445,18 @@ function initAmbientHearts() {
     }, { passive: true });
 
     const hearts = [];
-    const colors = ['rgba(244, 63, 94, 0.35)', 'rgba(251, 113, 133, 0.3)', 'rgba(223, 188, 120, 0.3)'];
+    const colors = ['rgba(255, 117, 140, 0.35)', 'rgba(251, 113, 133, 0.3)', 'rgba(247, 214, 146, 0.3)', 'rgba(253, 164, 175, 0.32)'];
 
     for (let i = 0; i < maxHearts; i++) {
         hearts.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            size: Math.random() * 8 + 8,
-            speedY: Math.random() * 0.4 + 0.2,
+            size: Math.random() * 8 + 10,
+            speedY: Math.random() * 0.45 + 0.25,
             speedX: (Math.random() - 0.5) * 0.3,
-            color: colors[Math.floor(Math.random() * colors.length)]
+            color: colors[Math.floor(Math.random() * colors.length)],
+            swayAngle: Math.random() * Math.PI * 2,
+            swaySpeed: Math.random() * 0.02 + 0.01
         });
     }
 
@@ -127,26 +465,35 @@ function initAmbientHearts() {
         isVisible = !document.hidden;
     });
 
+    function drawRomanticHeart(c, x, y, size) {
+        c.beginPath();
+        const topH = size * 0.3;
+        c.moveTo(x, y + topH);
+        c.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + topH);
+        c.bezierCurveTo(x - size / 2, y + (size + topH) / 2, x, y + (size + topH) / 2, x, y + size);
+        c.bezierCurveTo(x, y + (size + topH) / 2, x + size / 2, y + (size + topH) / 2, x + size / 2, y + topH);
+        c.bezierCurveTo(x + size / 2, y, x, y, x, y + topH);
+        c.closePath();
+        c.fill();
+    }
+
     function animate() {
         if (isVisible) {
             ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = '#f43f5e';
 
             for (let i = 0; i < hearts.length; i++) {
                 const h = hearts[i];
                 h.y -= h.speedY;
-                h.x += h.speedX;
+                h.swayAngle += h.swaySpeed;
+                h.x += Math.sin(h.swayAngle) * 0.4 + h.speedX;
 
-                if (h.y < -20) {
-                    h.y = height + 20;
+                if (h.y < -30) {
+                    h.y = height + 30;
                     h.x = Math.random() * width;
                 }
 
-                // Simple lightweight circular glow heart representation
                 ctx.fillStyle = h.color;
-                ctx.beginPath();
-                ctx.arc(h.x, h.y, h.size * 0.5, 0, Math.PI * 2);
-                ctx.fill();
+                drawRomanticHeart(ctx, h.x, h.y, h.size);
             }
         }
         requestAnimationFrame(animate);
@@ -215,7 +562,7 @@ function initHeroPhotoSwitcher() {
         { src: 'static/images/bouquet_celebration.jpg', tag: 'Roses & Forever 🌹' },
         { src: 'static/images/lavender_festive.jpg', tag: 'Sweet Celebrations 🥂' },
         { src: 'static/images/Snapchat-1449003545.jpg', tag: 'My Favorite Person 💕' },
-        { src: 'static/images/IMG-20260725-WA0010.jpg', tag: 'My Royal King 👑' },
+        { src: 'static/images/IMG-20260725-WA0010_face.jpg', tag: 'My Royal King 👑' },
         { src: 'static/images/couple_scooty_ride.gif', tag: 'Holding Tight on Scooty 🛵' }
     ];
 
@@ -366,7 +713,7 @@ function initScootyRide() {
             icon: '🎧',
             tag: 'Milestone 2 • 800m',
             title: 'Ek Earphone Tumhara, Ek Mera',
-            desc: 'Thandi hawa mein "Tum Se Hi" baj raha hai, and your fingers gently tapping the handlebar.',
+            desc: 'Thandi hawa mein "Tere Hawaale" aur "Kesariya" baj raha hai, and your fingers gently tapping the handlebar.',
             snuggle: 'Melodic 🎵'
         },
         {
@@ -946,31 +1293,39 @@ function initGiftsUnboxing() {
 }
 
 function initMixtapeTracks() {
-    const tracks = {
-        '1': { title: '"Tum Se Hi"', lyrics: 'Jab We Met • "Aadha aasmaan... ab yeh tera hua"' },
-        '2': { title: '"Kesariya"', lyrics: 'Brahmastra • "Kesariya tera ishq hai piya"' },
-        '3': { title: '"Raataan Lambiyan"', lyrics: 'Shershaah • "Kaate kate na re raataan lambiyan"' }
-    };
-    const titleEl = document.getElementById('mixtape-song-title');
-    const lyricsEl = document.getElementById('mixtape-song-lyrics');
+    const playBtn = document.getElementById('mixtape-play-btn');
+    const prevBtn = document.getElementById('mixtape-prev-btn');
+    const nextBtn = document.getElementById('mixtape-next-btn');
     const buttons = document.querySelectorAll('.mixtape-track-btn');
 
-    buttons.forEach(btn => {
+    if (playBtn) {
+        playBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleAudioPlayback();
+            triggerMiniConfetti(playBtn);
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            selectAndPlaySong(currentSongIndex - 1);
+            triggerMiniConfetti(prevBtn);
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            selectAndPlaySong(currentSongIndex + 1);
+            triggerMiniConfetti(nextBtn);
+        });
+    }
+
+    buttons.forEach((btn, index) => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const songId = btn.dataset.song;
-            const data = tracks[songId];
-            if (!data) return;
-
-            buttons.forEach(b => {
-                b.classList.remove('bg-rose-500/40', 'border', 'border-rose-300');
-                b.classList.add('bg-white/10');
-            });
-            btn.classList.remove('bg-white/10');
-            btn.classList.add('bg-rose-500/40', 'border', 'border-rose-300');
-
-            if (titleEl) titleEl.textContent = data.title;
-            if (lyricsEl) lyricsEl.textContent = data.lyrics;
+            selectAndPlaySong(index);
             triggerMiniConfetti(btn);
         });
     });
@@ -1313,7 +1668,7 @@ function initQuiz() {
             options: [
                 { text: "Late Night Scooty Rides in the cool breeze 🛵💨", feedback: "BINGO! Nothing in the world beats our night scooty rides together!" },
                 { text: "Stopping for cutting chai & maska bun ☕", feedback: "So true! Especially during our late-night rides!" },
-                { text: "Listening to 'Tum Se Hi' together 🎵", feedback: "Our favorite romantic vibe!" }
+                { text: "Listening to 'Tere Hawaale' & 'Kesariya' together 🎵", feedback: "Our favorite romantic vibe!" }
             ]
         },
         {

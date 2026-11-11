@@ -5,14 +5,14 @@
     width: 6px;
 }
 ::-webkit-scrollbar-track {
-    background: #0d0714;
+    background: #1e0722;
 }
 ::-webkit-scrollbar-thumb {
-    background: #e11d48;
+    background: #f43f5e;
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #dfbc78;
+    background: #f5cd79;
 }
 
 /* Prevent Horizontal Scrolling and Enable Hardware Acceleration */
@@ -34,32 +34,108 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
 }
 
 /* =========================================================
-   Glassmorphism Utilities (Midnight Wine & Rose Gold)
+   Glassmorphism Utilities (Dreamy Velvet & Champagne Rose)
    ========================================================= */
 .glass-panel {
-    background: rgba(22, 11, 30, 0.78);
-    border: 1.5px solid rgba(244, 63, 94, 0.3);
-    box-shadow: 0 12px 35px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(244, 63, 94, 0.12);
+    background: linear-gradient(135deg, rgba(74, 23, 76, 0.72) 0%, rgba(46, 14, 48, 0.85) 100%);
+    border: 1.5px solid rgba(251, 182, 206, 0.32);
+    box-shadow: 0 16px 45px -8px rgba(0, 0, 0, 0.5), 0 0 25px rgba(244, 63, 94, 0.2);
 }
 
 .glass-panel-gold {
-    background: rgba(26, 13, 34, 0.85);
-    border: 1.5px solid rgba(223, 188, 120, 0.45);
-    box-shadow: 0 12px 35px -5px rgba(0, 0, 0, 0.6), 0 0 18px rgba(223, 188, 120, 0.15);
+    background: linear-gradient(135deg, rgba(84, 28, 86, 0.78) 0%, rgba(54, 16, 56, 0.88) 100%);
+    border: 1.5px solid rgba(254, 240, 138, 0.55);
+    box-shadow: 0 18px 48px -8px rgba(0, 0, 0, 0.55), 0 0 35px rgba(245, 197, 107, 0.25);
 }
 
 /* Enable backdrop blur on larger viewports */
 @media (min-width: 769px) {
     .glass-panel {
-        background: rgba(20, 9, 28, 0.72);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        background: linear-gradient(135deg, rgba(74, 23, 76, 0.65) 0%, rgba(46, 14, 48, 0.78) 100%);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
     }
     .glass-panel-gold {
-        background: rgba(24, 11, 32, 0.78);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        background: linear-gradient(135deg, rgba(84, 28, 86, 0.7) 0%, rgba(54, 16, 56, 0.82) 100%);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
     }
+}
+
+/* Custom Scrollbar for compact lists */
+.custom-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+    background: rgba(245, 197, 107, 0.6);
+    border-radius: 4px;
+}
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(244, 63, 94, 0.9);
+}
+
+/* =========================================================
+   Dreamy & Cute Gift Unboxing Box Styles
+   ========================================================= */
+.dreamy-gift-card {
+    background: linear-gradient(160deg, rgba(98, 30, 88, 0.75) 0%, rgba(68, 18, 62, 0.86) 50%, rgba(44, 10, 40, 0.94) 100%);
+    border: 2px solid rgba(255, 192, 203, 0.55);
+    border-radius: 32px;
+    box-shadow: 0 24px 60px -10px rgba(244, 63, 94, 0.35), 0 0 40px rgba(255, 105, 180, 0.25), inset 0 1px 3px rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.dreamy-gift-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(254, 240, 138, 0.85);
+    box-shadow: 0 30px 65px -10px rgba(244, 63, 94, 0.45), 0 0 50px rgba(254, 240, 138, 0.4), inset 0 1px 3px rgba(255, 255, 255, 0.55);
+}
+
+.dreamy-gift-card-gold {
+    background: linear-gradient(160deg, rgba(105, 36, 82, 0.8) 0%, rgba(76, 22, 64, 0.88) 50%, rgba(50, 12, 44, 0.95) 100%);
+    border: 2px solid rgba(254, 240, 138, 0.75);
+    box-shadow: 0 24px 60px -10px rgba(245, 197, 107, 0.35), 0 0 45px rgba(245, 197, 107, 0.3), inset 0 1px 3px rgba(255, 255, 255, 0.45);
+}
+
+/* Cute Gentle Bobbing Float Animation */
+@keyframes cuteBob {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(1.2deg);
+    }
+}
+
+.cute-float {
+    animation: cuteBob 3.5s ease-in-out infinite;
+}
+
+/* Cute Untie Ribbon Button */
+.cute-ribbon-btn {
+    background: linear-gradient(135deg, #f43f5e 0%, #fb7185 45%, #ff758c 100%) !important;
+    border: 2px solid rgba(254, 240, 138, 0.85) !important;
+    box-shadow: 0 8px 25px rgba(244, 63, 94, 0.5), 0 0 15px rgba(254, 240, 138, 0.35) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.06em !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35) !important;
+}
+
+.cute-ribbon-btn:hover {
+    background: linear-gradient(135deg, #fb7185 0%, #f43f5e 45%, #e11d48 100%) !important;
+    transform: scale(1.08) !important;
+    box-shadow: 0 12px 30px rgba(244, 63, 94, 0.7), 0 0 25px rgba(254, 240, 138, 0.6) !important;
+    border-color: #ffffff !important;
 }
 
 /* Off-screen Content Visibility Optimization */
@@ -413,50 +489,70 @@ button, a, .tree-heart-btn, .candle, .claim-coupon-btn, .open-when-card, .flip-c
 }
 
 /* =========================================================
-   Interactive Scooty Simulator (60fps optimized)
+   Interactive Scooty Simulator (Romantic 60fps Highway)
    ========================================================= */
 @keyframes roadMove {
     0% { background-position: 0 0; }
-    100% { background-position: -120px 0; }
+    100% { background-position: -60px 0; }
+}
+
+#road-lines {
+    background: repeating-linear-gradient(90deg, rgba(254, 240, 138, 0.7) 0px, rgba(254, 240, 138, 0.7) 22px, transparent 22px, transparent 44px);
+    background-size: 44px 3px;
+    box-shadow: 0 0 8px rgba(254, 240, 138, 0.4);
 }
 
 .road-scrolling {
-    background: repeating-linear-gradient(90deg, #facc15 0px, #facc15 25px, transparent 25px, transparent 50px);
-    background-size: 50px 3px;
-    animation: roadMove 0.4s linear infinite;
+    animation: roadMove 0.35s linear infinite !important;
 }
 
 @keyframes scootyVibrate {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-1.5px); }
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-2px) rotate(0.4deg); }
 }
 
 .scooty-accelerating {
-    animation: scootyVibrate 0.12s linear infinite;
+    animation: scootyVibrate 0.14s ease-in-out infinite;
 }
 
 @keyframes streetlightMove {
     0% { transform: translateX(110%); opacity: 0; }
-    10% { opacity: 0.85; }
-    90% { opacity: 0.85; }
-    100% { transform: translateX(-10%); opacity: 0; }
+    15% { opacity: 0.95; }
+    85% { opacity: 0.95; }
+    100% { transform: translateX(-15%); opacity: 0; }
 }
 
 .streetlight {
     position: absolute;
-    top: 10px;
-    font-size: 1.25rem;
-    pointer-events-none;
+    top: 6px;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.streetlight-orb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fffbeb 20%, #fde047 60%, rgba(245, 158, 11, 0.5) 100%);
+    box-shadow: 0 0 16px rgba(254, 240, 138, 0.95), 0 0 32px rgba(251, 146, 60, 0.6);
+}
+
+.streetlight-pole {
+    width: 2px;
+    height: 48px;
+    background: linear-gradient(to bottom, rgba(217, 119, 6, 0.8), rgba(120, 53, 15, 0.15));
 }
 
 .streetlight-active .streetlight-1 {
-    animation: streetlightMove 2s linear infinite;
+    animation: streetlightMove 2.2s linear infinite;
 }
 .streetlight-active .streetlight-2 {
-    animation: streetlightMove 2s linear infinite 0.65s;
+    animation: streetlightMove 2.2s linear infinite 0.73s;
 }
 .streetlight-active .streetlight-3 {
-    animation: streetlightMove 2s linear infinite 1.3s;
+    animation: streetlightMove 2.2s linear infinite 1.46s;
 }
 
 /* =========================================================

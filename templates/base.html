@@ -11,7 +11,7 @@
     <meta property="og:description" content="A romantic birthday surprise from Toshi with all my love. Happy Birthday, Mere Sukoon!">
     <meta property="og:type" content="website">
     <meta property="og:image" content="static/images/cinematic_red_saree.jpg">
-    <meta name="theme-color" content="#1a0c24">
+    <meta name="theme-color" content="#2e0e33">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,63 +47,78 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body class="bg-gradient-to-b from-[#0d0714] via-[#1a0c24] to-[#0a0510] text-white font-sans antialiased overflow-x-hidden selection:bg-rose-500 selection:text-white min-h-screen">
+<body class="bg-gradient-to-b from-[#2e0e33] via-[#481648] via-[#541b50] via-[#3d1241] to-[#240827] text-white font-sans antialiased overflow-x-hidden selection:bg-pink-500 selection:text-white min-h-screen relative">
+
+    <!-- Dreamy Romantic Ambient Background Glow Layers -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <!-- Top Radiant Rose Sunburst -->
+        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[650px] bg-gradient-to-b from-rose-500/28 via-pink-400/20 to-transparent rounded-full blur-[130px]"></div>
+        <!-- Right Candlelight Gold Warmth -->
+        <div class="absolute top-1/4 -right-32 w-[650px] h-[650px] bg-gradient-to-bl from-amber-400/25 via-rose-300/15 to-transparent rounded-full blur-[140px]"></div>
+        <!-- Left Dreamy Lilac & Peach Glow -->
+        <div class="absolute top-2/3 -left-32 w-[700px] h-[700px] bg-gradient-to-tr from-pink-600/25 via-purple-500/20 to-transparent rounded-full blur-[140px]"></div>
+        <!-- Bottom Floating Starlight Amethyst -->
+        <div class="absolute -bottom-32 left-1/3 w-[650px] h-[650px] bg-rose-500/22 rounded-full blur-[140px]"></div>
+    </div>
 
     <!-- Lightweight Ambient Floating Hearts Canvas (Optimized for 60fps on mobile) -->
     <canvas id="ambient-hearts-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
-    <!-- Real Romantic Bollywood Audio Track ("Tum Se Hi" - Jab We Met) -->
-    <audio id="bg-audio" preload="auto" loop>
-        <source src="static/audio/tum_se_hi.mp3" type="audio/mpeg">
-        Your browser does not support audio playback.
-    </audio>
-
     <!-- Navigation Header -->
-    <nav class="fixed top-0 inset-x-0 z-40 bg-[#0d0714]/85 backdrop-blur-md border-b border-rose-900/40 px-3 sm:px-6 py-2.5 transition duration-300">
-        <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <nav class="fixed top-0 inset-x-0 z-40 bg-[#2e0e33]/90 backdrop-blur-xl border-b border-rose-300/40 px-3 sm:px-6 py-2.5 transition duration-300 shadow-[0_4px_30px_rgba(244,63,94,0.2)]">
+        <div class="max-w-6xl mx-auto flex items-center justify-between gap-2">
             
             <!-- Brand Logo -->
-            <a href="#hero" class="flex items-center space-x-1.5 text-rose-400 hover:text-amber-300 transition">
+            <a href="#hero" class="flex items-center space-x-1.5 text-rose-300 hover:text-amber-300 transition flex-shrink-0">
                 <span class="text-xl animate-pulse">❤️</span>
-                <span class="font-cinzel tracking-wider text-xs sm:text-sm font-bold text-amber-200">VIPUL'S DAY</span>
+                <span class="font-cinzel tracking-wider text-xs sm:text-sm font-black text-amber-200">VIPUL'S DAY</span>
             </a>
             
             <!-- Desktop Quick Links -->
-            <div class="hidden lg:flex items-center space-x-4 text-xs font-semibold text-rose-200/80">
+            <div class="hidden lg:flex items-center space-x-4 text-xs font-semibold text-rose-200/90">
                 <a href="#gifts-section" class="hover:text-amber-300 transition">🎁 Gifts</a>
-                <a href="#scooty-ride-section" class="hover:text-amber-300 transition">🛵 Scooty Ride</a>
+                <a href="#scooty-ride-section" class="hover:text-amber-300 transition">🛵 Scooty</a>
                 <a href="#cake-section" class="hover:text-amber-300 transition">🎂 Cake</a>
                 <a href="#photobooth-section" class="hover:text-amber-300 transition">📸 Photos</a>
+                <a href="#tree-section" class="hover:text-amber-300 transition">🌳 Tree of Love</a>
                 <a href="#dream-chapters-section" class="hover:text-amber-300 transition">✈️ Dreams</a>
-                <a href="#love-meter-section" class="hover:text-amber-300 transition">💘 Love Radar</a>
                 <a href="#letter-section" class="hover:text-amber-300 transition">💌 Letter</a>
             </div>
 
-            <!-- Floating Bollywood Music Player Button -->
-            <button id="music-toggle-btn" class="flex items-center space-x-2 bg-rose-950/60 hover:bg-rose-900/80 border border-amber-400/40 px-3 py-1.5 rounded-full shadow-lg transition transform active:scale-95 group">
-                <!-- Mini Spinning Vinyl Disc -->
-                <div id="music-vinyl-icon" class="w-6 h-6 rounded-full bg-slate-900 border border-amber-300 flex items-center justify-center relative overflow-hidden record-spinning record-paused shadow">
-                    <div class="w-2 h-2 rounded-full bg-rose-500"></div>
-                </div>
+            <!-- Bollywood Music Player Controls -->
+            <div class="flex items-center space-x-2">
+                <!-- Main Audio Toggle Button -->
+                <button id="music-toggle-btn" class="flex items-center space-x-2 bg-gradient-to-r from-rose-950/80 to-purple-950/80 hover:from-rose-900/90 hover:to-purple-900/90 border border-amber-300/50 px-2.5 sm:px-3 py-1.5 rounded-full shadow-lg shadow-rose-900/30 transition transform active:scale-95 group">
+                    <!-- Mini Spinning Vinyl Disc -->
+                    <div id="music-vinyl-icon" class="w-6 h-6 rounded-full bg-slate-900 border border-amber-300 flex items-center justify-center relative overflow-hidden record-spinning record-paused shadow flex-shrink-0">
+                        <div class="w-2 h-2 rounded-full bg-rose-500"></div>
+                    </div>
 
-                <!-- Track Info & Visualizer -->
-                <div class="text-left flex flex-col justify-center">
-                    <span id="music-track-title" class="text-[10px] sm:text-xs font-bold text-amber-200 block truncate max-w-[110px] sm:max-w-[140px]">
-                        🎶 Tum Se Hi
-                    </span>
-                    <span id="music-status-text" class="text-[8px] text-rose-300/80 block font-cursive -mt-0.5">
-                        Tap to Play Song
-                    </span>
-                </div>
+                    <!-- Track Info & Visualizer -->
+                    <div class="text-left flex flex-col justify-center">
+                        <span id="music-track-title" class="text-[10px] sm:text-xs font-bold text-amber-200 block truncate max-w-[100px] xs:max-w-[130px] sm:max-w-[160px]">
+                            🎶 Tere Hawaale
+                        </span>
+                        <span id="music-status-text" class="text-[8px] text-rose-300/80 block font-cursive -mt-0.5">
+                            Tap to Play Music
+                        </span>
+                    </div>
 
-                <!-- Animated Sound Wave Bars -->
-                <div id="sound-bars-container" class="hidden items-end h-3 ml-1">
-                    <span class="sound-bar sound-bar-1"></span>
-                    <span class="sound-bar sound-bar-2"></span>
-                    <span class="sound-bar sound-bar-3"></span>
-                    <span class="sound-bar sound-bar-4"></span>
-                </div>
-            </button>
+                    <!-- Animated Sound Wave Bars -->
+                    <div id="sound-bars-container" class="hidden items-end h-3 ml-1">
+                        <span class="sound-bar sound-bar-1"></span>
+                        <span class="sound-bar sound-bar-2"></span>
+                        <span class="sound-bar sound-bar-3"></span>
+                        <span class="sound-bar sound-bar-4"></span>
+                    </div>
+                </button>
+
+                <!-- Full Playlist Dropdown Button -->
+                <button id="open-playlist-modal-btn" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-full bg-amber-500/15 hover:bg-amber-500/25 border border-amber-300/40 text-amber-200 text-[10px] sm:text-xs font-bold transition shadow" title="View all 11 songs!">
+                    <span>🎵</span>
+                    <span class="hidden sm:inline">11 Songs</span>
+                </button>
+            </div>
 
         </div>
     </nav>
@@ -114,7 +129,7 @@
     </main>
 
     <!-- Sleek Mobile Bottom Navigation Bar (5 essential tabs) -->
-    <div class="fixed bottom-2.5 inset-x-3 z-40 lg:hidden bg-[#0d0714]/92 backdrop-blur-md border border-rose-900/50 rounded-2xl px-2 py-1.5 shadow-2xl flex items-center justify-around text-xs font-medium text-rose-200 select-none">
+    <div class="fixed bottom-2.5 inset-x-3 z-40 lg:hidden bg-[#2e0e33]/95 backdrop-blur-xl border border-rose-400/40 rounded-2xl px-2 py-1.5 shadow-2xl flex items-center justify-around text-xs font-medium text-rose-200 select-none">
         <a href="#gifts-section" class="flex flex-col items-center hover:text-amber-300 transition py-0.5 px-2">
             <span class="text-base">🎁</span>
             <span class="text-[8px] font-cinzel font-bold">Gifts</span>
@@ -137,13 +152,48 @@
         </a>
     </div>
 
+    <!-- 11 Romantic Songs Playlist Modal / Drawer -->
+    <div id="playlist-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
+        <div class="glass-panel-gold max-w-lg w-full max-h-[88vh] rounded-3xl border-2 border-amber-300/50 shadow-2xl flex flex-col overflow-hidden relative animate-float">
+            <!-- Modal Header -->
+            <div class="p-4 sm:p-5 border-b border-rose-400/30 flex items-center justify-between bg-gradient-to-r from-rose-950/80 to-purple-950/80">
+                <div class="flex items-center space-x-2.5">
+                    <span class="text-2xl animate-spin" style="animation-duration: 8s;">🎶</span>
+                    <div>
+                        <h3 class="font-serif text-lg sm:text-xl font-bold text-white">Our 11 Love Anthems ❤️</h3>
+                        <p class="text-[10px] text-amber-300 font-cinzel">Dedicated to my fiancé, Vipul</p>
+                    </div>
+                </div>
+                <button type="button" id="close-playlist-modal-btn" class="w-8 h-8 rounded-full bg-rose-500/20 hover:bg-rose-500/40 text-rose-200 flex items-center justify-center text-sm font-bold transition">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Song List Scroll Container -->
+            <div class="p-3 sm:p-4 overflow-y-auto space-y-2 flex-1 custom-scroll" id="playlist-items-container">
+                <!-- Populated dynamically via JS -->
+            </div>
+
+            <!-- Modal Footer with Now Playing Bar -->
+            <div class="p-3 bg-black/60 border-t border-rose-400/30 flex items-center justify-between text-xs">
+                <div class="flex items-center space-x-2 truncate">
+                    <span class="text-amber-300 text-sm">▶️</span>
+                    <span id="modal-now-playing-text" class="text-rose-100 font-medium truncate">Select a song above to play!</span>
+                </div>
+                <button type="button" id="modal-play-pause-btn" class="px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-400 to-rose-500 text-white font-bold text-[11px] shadow hover:brightness-110 transition flex-shrink-0">
+                    Play
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Cuddle / Hug Floating Toast Notification -->
     <div id="cuddle-toast" class="fixed top-16 left-1/2 -translate-x-1/2 z-50 hidden bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 text-white text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-full shadow-2xl border border-white/60 animate-bounce text-center whitespace-nowrap">
         💋 Cuddle & kiss delivered straight to Toshi! She is blushing! 🥰
     </div>
 
     <!-- Footer -->
-    <footer class="border-t border-rose-900/40 bg-[#0a0510] py-10 text-center text-rose-200/80 text-xs sm:text-sm relative z-10">
+    <footer class="border-t border-rose-400/30 bg-gradient-to-t from-[#1b061d] to-[#2b0c2e] py-10 text-center text-rose-200/80 text-xs sm:text-sm relative z-10">
         <div class="max-w-4xl mx-auto px-4 space-y-3">
             <div class="text-2xl animate-pulse">💖</div>
             <p class="font-cursive text-xl sm:text-2xl text-amber-200 font-bold">

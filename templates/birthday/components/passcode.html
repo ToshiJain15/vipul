@@ -1,14 +1,18 @@
 <!-- Romantic Passcode Lock Screen (Midnight Wine & Rose Gold Theme) -->
-<div id="passcode-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0d0714]/90 backdrop-blur-md transition-all duration-700">
+<div id="passcode-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#200724]/90 backdrop-blur-xl transition-all duration-700">
     <!-- Ambient glowing backdrop circles -->
     <div class="absolute -top-24 -left-24 w-96 h-96 bg-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none">
+    </div>
 
-    <div class="relative z-10 max-w-sm w-full text-center space-y-5 glass-panel-gold p-6 sm:p-8 rounded-3xl border border-amber-300/40 shadow-2xl">
-        
+    <div
+        class="relative z-10 max-w-sm w-full text-center space-y-5 glass-panel-gold p-6 sm:p-8 rounded-3xl border border-amber-300/40 shadow-2xl">
+
         <!-- Romantic Avatar Icon / Cute Couple GIF -->
-        <div class="relative mx-auto w-24 h-24 rounded-full bg-gradient-to-tr from-rose-500 via-amber-400 to-rose-600 p-1 shadow-lg shadow-rose-500/25 animate-float overflow-hidden">
-            <img src="https://media.tenor.com/jmWqHgGS0ToAAAAM/dudu-bubu.gif" alt="Cute Couple" class="w-full h-full object-cover rounded-full bg-slate-900">
+        <div
+            class="relative mx-auto w-24 h-24 rounded-full bg-gradient-to-tr from-rose-500 via-amber-400 to-rose-600 p-1 shadow-lg shadow-rose-500/25 animate-float overflow-hidden">
+            <img src="https://media.tenor.com/jmWqHgGS0ToAAAAM/dudu-bubu.gif" alt="Cute Couple"
+                class="w-full h-full object-cover rounded-full bg-slate-900">
             <span class="absolute -bottom-1 -right-1 text-xl animate-pulse">🔒</span>
         </div>
 
@@ -24,10 +28,18 @@
 
         <!-- PIN Dots Display -->
         <div id="pin-dots" class="flex items-center justify-center space-x-4 py-2">
-            <div class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400 bg-transparent transition-all duration-200"></div>
-            <div class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400 bg-transparent transition-all duration-200"></div>
-            <div class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400 bg-transparent transition-all duration-200"></div>
-            <div class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400 bg-transparent transition-all duration-200"></div>
+            <div
+                class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400 bg-transparent transition-all duration-200">
+            </div>
+            <div
+                class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400 bg-transparent transition-all duration-200">
+            </div>
+            <div
+                class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400 bg-transparent transition-all duration-200">
+            </div>
+            <div
+                class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400 bg-transparent transition-all duration-200">
+            </div>
         </div>
 
         <!-- Error / Feedback message -->
@@ -35,63 +47,88 @@
 
         <!-- Numeric Keypad -->
         <div class="grid grid-cols-3 gap-3 max-w-[260px] mx-auto pt-1">
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="1">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="1">
                 <span>1</span>
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="2">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="2">
                 <span>2</span>
                 <span class="text-[9px] text-amber-300/80 -mt-1 tracking-widest font-semibold">ABC</span>
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="3">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="3">
                 <span>3</span>
                 <span class="text-[9px] text-amber-300/80 -mt-1 tracking-widest font-semibold">DEF</span>
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="4">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="4">
                 <span>4</span>
                 <span class="text-[9px] text-amber-300/80 -mt-1 tracking-widest font-semibold">GHI</span>
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="5">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="5">
                 <span>5</span>
                 <span class="text-[9px] text-amber-300/80 -mt-1 tracking-widest font-semibold">JKL</span>
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="6">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="6">
                 <span>6</span>
                 <span class="text-[9px] text-amber-300/80 -mt-1 tracking-widest font-semibold">MNO</span>
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="7">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="7">
                 <span>7</span>
                 <span class="text-[9px] text-amber-300/80 -mt-1 tracking-widest font-semibold">PQRS</span>
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="8">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="8">
                 <span>8</span>
                 <span class="text-[9px] text-amber-300/80 -mt-1 tracking-widest font-semibold">TUV</span>
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="9">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="9">
                 <span>9</span>
                 <span class="text-[9px] text-amber-300/80 -mt-1 tracking-widest font-semibold">WXYZ</span>
             </button>
             <!-- Clue Button -->
-            <button type="button" id="passcode-hint-btn" class="h-13 sm:h-14 rounded-2xl text-xs font-cinzel font-bold text-amber-300 hover:text-amber-200 bg-amber-500/15 hover:bg-amber-500/25 border border-amber-300/40 transition flex items-center justify-center shadow-sm" title="Give me a hint!">
+            <button type="button" id="passcode-hint-btn"
+                class="h-13 sm:h-14 rounded-2xl text-xs font-cinzel font-bold text-amber-300 hover:text-amber-200 bg-amber-500/15 hover:bg-amber-500/25 border border-amber-300/40 transition flex items-center justify-center shadow-sm"
+                title="Give me a hint!">
                 💡 HINT
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="0">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="0">
                 0
             </button>
             <!-- Backspace Button -->
-            <button type="button" id="keypad-backspace" class="h-13 sm:h-14 rounded-2xl text-rose-300 hover:text-white bg-white/10 hover:bg-white/20 border border-rose-400/25 active:scale-95 transition flex items-center justify-center text-lg shadow-sm">
+            <button type="button" id="keypad-backspace"
+                class="h-13 sm:h-14 rounded-2xl text-rose-300 hover:text-white bg-white/10 hover:bg-white/20 border border-rose-400/25 active:scale-95 transition flex items-center justify-center text-lg shadow-sm">
                 ⌫
             </button>
         </div>
 
         <!-- Clue popup bubble -->
-        <div id="hint-bubble" class="hidden p-3 rounded-xl bg-amber-500/20 border border-amber-300/40 text-amber-200 text-xs text-center space-y-1">
+        <div id="hint-bubble"
+            class="hidden p-3 rounded-xl bg-amber-500/20 border border-amber-300/40 text-amber-200 text-xs text-center space-y-1">
             <p class="font-bold">💡 Clue for you, my love:</p>
             <p>{{ passcode_hint }}</p>
         </div>
 
         <!-- Emergency / Instant Unlock with Love Button -->
         <div class="pt-1">
-            <button type="button" id="emergency-unlock-btn" class="text-xs text-rose-300/80 hover:text-amber-200 underline underline-offset-4 transition font-medium">
+            <button type="button" id="emergency-unlock-btn"
+                class="text-xs text-rose-300/80 hover:text-amber-200 underline underline-offset-4 transition font-medium">
                 Unlock with Love ❤️ (No Passcode Needed)
             </button>
         </div>
