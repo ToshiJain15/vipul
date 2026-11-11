@@ -34,6 +34,7 @@ const ROMANTIC_SONGS = [
         title: "Tere Hawaale",
         movie: "Laal Singh Chaddha",
         singers: "Arijit Singh & Shilpa Rao",
+        audioSrc: "static/audio/tere_hawaale.m4a",
         quote: '"Meri saari khushiyan tere hawaale, mera saara gham tere hawaale... tu mera sukoon hai, Vipul."',
         dedication: "Dedicated to the man who holds my whole heart in his hands. Every happiness I have is yours, Vipul. ❤️",
         notes: [
@@ -48,6 +49,7 @@ const ROMANTIC_SONGS = [
         title: "Jab Koi Baat Bigad Jaye",
         movie: "Jurm",
         singers: "Kumar Sanu & Sadhana Sargam",
+        audioSrc: "static/audio/jab_koi_baat.m4a",
         quote: '"Jab koi baat bigad jaye, jab koi mushkil pad jaye... tum dena saath mera, o humnawaa."',
         dedication: "Our forever promise: no matter how storms blow or days get tough, we will always stand together hand-in-hand. 🤝",
         notes: [
@@ -61,6 +63,7 @@ const ROMANTIC_SONGS = [
         title: "Kesariya",
         movie: "Brahmāstra",
         singers: "Arijit Singh",
+        audioSrc: "static/audio/kesariya.m4a",
         quote: '"Kesariya tera ishq hai piya... rang jaaun jo main haath lagaun, din beete saare teri fikr mein."',
         dedication: "Your love brings the brightest, warmest colors into my life. Happy Birthday, my Kesariya! 🧡",
         notes: [
@@ -74,6 +77,7 @@ const ROMANTIC_SONGS = [
         title: "Neele Neele Ambar Par",
         movie: "Kalaakaar",
         singers: "Kishore Kumar",
+        audioSrc: "static/audio/neele_neele_ambar.m4a",
         quote: '"Neele neele ambar par chaand jab aaye, pyaar barsaye humko tarsaye... aisa koi saathi ho."',
         dedication: "Like gentle moonlight in the midnight sky, you bring endless peace and magic into my world. 🌙",
         notes: [
@@ -87,6 +91,7 @@ const ROMANTIC_SONGS = [
         title: "Tujh Mein Rab Dikhta Hai",
         movie: "Rab Ne Bana Di Jodi",
         singers: "Roop Kumar Rathod",
+        audioSrc: "static/audio/tujh_mein_rab.m4a",
         quote: '"Tujh mein rab dikhta hai, yaara main kya karoon... sajde sar jhukta hai, yaara main kya karoon."',
         dedication: "In your eyes, I see pure warmth, honesty, and unconditional love. Loving you is my deepest prayer. ✨",
         notes: [
@@ -99,6 +104,7 @@ const ROMANTIC_SONGS = [
         title: "Raabta",
         movie: "Agent Vinod",
         singers: "Arijit Singh & Hamsika Iyer",
+        audioSrc: "static/audio/raabta.m4a",
         quote: '"Kehte hain khuda ne iss jahan mein sabhi ke liye kisi na kisi ko hai banaya... kuch toh hai tujhse raabta."',
         dedication: "Our souls were woven together before we even met. You are my destined connection, my forever raabta. 💕",
         notes: [
@@ -111,6 +117,7 @@ const ROMANTIC_SONGS = [
         title: "Titli",
         movie: "Chennai Express",
         singers: "Chinmayi Sripada & Gopi Sunder",
+        audioSrc: "static/audio/titli.m4a",
         quote: '"Bann ke titli dil uda uda uda hai, kahin doooor... chal chalte hain tere sang sang."',
         dedication: "Every time you hold my hand or look at me with that smile, butterflies flutter in my stomach just like day one. 🦋",
         notes: [
@@ -123,6 +130,7 @@ const ROMANTIC_SONGS = [
         title: "Bahara",
         movie: "I Hate Luv Storys",
         singers: "Shreya Ghoshal & Sona Mohapatra",
+        audioSrc: "static/audio/bahara.m4a",
         quote: '"Bahaara bahaara, hua dil pehli baar ve... bahaara bahaara, ki chain to gawaan ve."',
         dedication: "My heart found its blooming spring season the day you walked into my life, mere jaan! 🌸",
         notes: [
@@ -135,6 +143,7 @@ const ROMANTIC_SONGS = [
         title: "Soch Na Sake",
         movie: "Airlift",
         singers: "Arijit Singh & Tulsi Kumar",
+        audioSrc: "static/audio/soch_na_sake.m4a",
         quote: '"Tere liye duniya chhod di hai, tujhpe hi saans aake ruke... main tujhko kitna chahta hoon, ye soch na sake."',
         dedication: "Distance only proved how every single breath belongs to you. You are my safe harbor, Vipul. ✈️❤️",
         notes: [
@@ -147,6 +156,7 @@ const ROMANTIC_SONGS = [
         title: "Tere Sang Yaara",
         movie: "Rustom",
         singers: "Atif Aslam",
+        audioSrc: "static/audio/tere_sang_yaara.m4a",
         quote: '"Tere sang yaara, khush rang bahara... tu raat deewani, main zard sitaara."',
         dedication: "Walking through this lifetime with you is the sweetest dream come true. You and me against the world. ✨",
         notes: [
@@ -159,6 +169,7 @@ const ROMANTIC_SONGS = [
         title: "Raataan Lambiyan",
         movie: "Shershaah",
         singers: "Jubin Nautiyal & Asees Kaur",
+        audioSrc: "static/audio/raataan_lambiyan.m4a",
         quote: '"Kaate kate na re raataan lambiyan lambiyan re... saware sang yaara ve, kiven kattiyaan ve."',
         dedication: "Counting down every night until 21 December 2026 when our forever begins under one roof! 💍",
         notes: [
@@ -172,6 +183,33 @@ let globalAudioCtx = null;
 let currentSongIndex = 0;
 let isAudioPlaying = false;
 let synthTimer = null;
+
+// HTML5 Audio Player for Original Studio Tracks
+const studioAudio = new Audio();
+studioAudio.preload = 'auto';
+
+// Setup Studio Audio Event Handlers
+studioAudio.addEventListener('ended', () => {
+    // Auto-advance to next song
+    selectAndPlaySong((currentSongIndex + 1) % ROMANTIC_SONGS.length);
+});
+
+studioAudio.addEventListener('play', () => {
+    isAudioPlaying = true;
+    updateAllPlayerUIs();
+});
+
+studioAudio.addEventListener('pause', () => {
+    isAudioPlaying = false;
+    updateAllPlayerUIs();
+});
+
+studioAudio.addEventListener('error', (e) => {
+    console.warn("Studio track playback error, using chime melody fallback:", e);
+    if (isAudioPlaying) {
+        playSongMelody(ROMANTIC_SONGS[currentSongIndex]);
+    }
+});
 
 function getAudioContext() {
     if (!globalAudioCtx) {
@@ -237,6 +275,41 @@ function stopSongMelody() {
     }
 }
 
+function playCurrentTrack() {
+    const song = ROMANTIC_SONGS[currentSongIndex];
+    if (!song) return;
+
+    stopSongMelody();
+
+    if (song.audioSrc) {
+        if (!studioAudio.src.endsWith(song.audioSrc)) {
+            studioAudio.src = song.audioSrc;
+        }
+        const promise = studioAudio.play();
+        if (promise !== undefined) {
+            promise.then(() => {
+                isAudioPlaying = true;
+                updateAllPlayerUIs();
+            }).catch(err => {
+                console.log("Audio autoplay restriction handled:", err);
+                // Try fallback melody
+                playSongMelody(song);
+            });
+        }
+    } else {
+        playSongMelody(song);
+    }
+}
+
+function pauseCurrentTrack() {
+    isAudioPlaying = false;
+    try {
+        studioAudio.pause();
+    } catch (e) {}
+    stopSongMelody();
+    updateAllPlayerUIs();
+}
+
 function updateAllPlayerUIs() {
     const song = ROMANTIC_SONGS[currentSongIndex];
     if (!song) return;
@@ -295,7 +368,7 @@ function updateAllPlayerUIs() {
         else spoolRight.classList.add('record-paused');
     }
     if (playIcon) playIcon.textContent = isAudioPlaying ? '⏸️' : '▶️';
-    if (playText) playText.textContent = isAudioPlaying ? 'Pause Melody' : 'Play Melody';
+    if (playText) playText.textContent = isAudioPlaying ? 'Pause Song' : 'Play Song';
 
     // Highlight active pill in Gift 1
     const buttons = document.querySelectorAll('.mixtape-track-btn');
@@ -330,16 +403,16 @@ function selectAndPlaySong(index) {
     currentSongIndex = (index + ROMANTIC_SONGS.length) % ROMANTIC_SONGS.length;
     isAudioPlaying = true;
     updateAllPlayerUIs();
-    playSongMelody(ROMANTIC_SONGS[currentSongIndex]);
+    playCurrentTrack();
 }
 
 function toggleAudioPlayback() {
-    isAudioPlaying = !isAudioPlaying;
-    updateAllPlayerUIs();
     if (isAudioPlaying) {
-        playSongMelody(ROMANTIC_SONGS[currentSongIndex]);
+        pauseCurrentTrack();
     } else {
-        stopSongMelody();
+        isAudioPlaying = true;
+        updateAllPlayerUIs();
+        playCurrentTrack();
     }
 }
 
@@ -1403,9 +1476,14 @@ function initScratchCard() {
     window.addEventListener('mouseup', () => isScratching = false);
     canvas.addEventListener('mousemove', scratch);
 
-    canvas.addEventListener('touchstart', (e) => { isScratching = true; scratch(e); }, { passive: true });
+    canvas.addEventListener('touchstart', (e) => {
+        isScratching = true;
+        scratch(e);
+    }, { passive: true });
     window.addEventListener('touchend', () => isScratching = false);
-    canvas.addEventListener('touchmove', scratch, { passive: true });
+    canvas.addEventListener('touchmove', (e) => {
+        scratch(e);
+    }, { passive: true });
 }
 
 /* =========================================================
@@ -1548,6 +1626,9 @@ function initFlipCards() {
     cards.forEach(card => {
         card.addEventListener('click', () => {
             card.classList.toggle('is-flipped');
+            if (card.classList.contains('is-flipped')) {
+                triggerMiniConfetti(card);
+            }
         });
     });
 }

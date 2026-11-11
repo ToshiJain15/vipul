@@ -131,13 +131,17 @@
 <div id="passcode-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#200724]/90 backdrop-blur-xl transition-all duration-700">
     <!-- Ambient glowing backdrop circles -->
     <div class="absolute -top-24 -left-24 w-96 h-96 bg-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none">
+    </div>
 
-    <div class="relative z-10 max-w-sm w-full text-center space-y-5 glass-panel-gold p-6 sm:p-8 rounded-3xl border border-amber-300/40 shadow-2xl">
-        
+    <div
+        class="relative z-10 max-w-sm w-full text-center space-y-5 glass-panel-gold p-6 sm:p-8 rounded-3xl border border-amber-300/40 shadow-2xl">
+
         <!-- Romantic Avatar Icon / Cute Couple GIF -->
-        <div class="relative mx-auto w-24 h-24 rounded-full bg-gradient-to-tr from-rose-500 via-amber-400 to-rose-600 p-1 shadow-lg shadow-rose-500/25 animate-float overflow-hidden">
-            <img src="https://media.tenor.com/jmWqHgGS0ToAAAAM/dudu-bubu.gif" alt="Cute Couple" class="w-full h-full object-cover rounded-full bg-slate-900">
+        <div
+            class="relative mx-auto w-24 h-24 rounded-full bg-gradient-to-tr from-rose-500 via-amber-400 to-rose-600 p-1 shadow-lg shadow-rose-500/25 animate-float overflow-hidden">
+            <img src="https://media.tenor.com/jmWqHgGS0ToAAAAM/dudu-bubu.gif" alt="Cute Couple"
+                class="w-full h-full object-cover rounded-full bg-slate-900">
             <span class="absolute -bottom-1 -right-1 text-xl animate-pulse">🔒</span>
         </div>
 
@@ -153,10 +157,18 @@
 
         <!-- PIN Dots Display -->
         <div id="pin-dots" class="flex items-center justify-center space-x-4 py-2">
-            <div class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400 bg-transparent transition-all duration-200"></div>
-            <div class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400 bg-transparent transition-all duration-200"></div>
-            <div class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400 bg-transparent transition-all duration-200"></div>
-            <div class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400 bg-transparent transition-all duration-200"></div>
+            <div
+                class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400 bg-transparent transition-all duration-200">
+            </div>
+            <div
+                class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400 bg-transparent transition-all duration-200">
+            </div>
+            <div
+                class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400 bg-transparent transition-all duration-200">
+            </div>
+            <div
+                class="pin-dot w-4 h-4 rounded-full border-2 border-rose-400 bg-transparent transition-all duration-200">
+            </div>
         </div>
 
         <!-- Error / Feedback message -->
@@ -164,63 +176,88 @@
 
         <!-- Numeric Keypad -->
         <div class="grid grid-cols-3 gap-3 max-w-[260px] mx-auto pt-1">
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="1">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="1">
                 <span>1</span>
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="2">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="2">
                 <span>2</span>
                 <span class="text-[9px] text-amber-300/80 -mt-1 tracking-widest font-semibold">ABC</span>
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="3">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="3">
                 <span>3</span>
                 <span class="text-[9px] text-amber-300/80 -mt-1 tracking-widest font-semibold">DEF</span>
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="4">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="4">
                 <span>4</span>
                 <span class="text-[9px] text-amber-300/80 -mt-1 tracking-widest font-semibold">GHI</span>
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="5">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="5">
                 <span>5</span>
                 <span class="text-[9px] text-amber-300/80 -mt-1 tracking-widest font-semibold">JKL</span>
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="6">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="6">
                 <span>6</span>
                 <span class="text-[9px] text-amber-300/80 -mt-1 tracking-widest font-semibold">MNO</span>
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="7">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="7">
                 <span>7</span>
                 <span class="text-[9px] text-amber-300/80 -mt-1 tracking-widest font-semibold">PQRS</span>
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="8">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="8">
                 <span>8</span>
                 <span class="text-[9px] text-amber-300/80 -mt-1 tracking-widest font-semibold">TUV</span>
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="9">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="9">
                 <span>9</span>
                 <span class="text-[9px] text-amber-300/80 -mt-1 tracking-widest font-semibold">WXYZ</span>
             </button>
             <!-- Clue Button -->
-            <button type="button" id="passcode-hint-btn" class="h-13 sm:h-14 rounded-2xl text-xs font-cinzel font-bold text-amber-300 hover:text-amber-200 bg-amber-500/15 hover:bg-amber-500/25 border border-amber-300/40 transition flex items-center justify-center shadow-sm" title="Give me a hint!">
+            <button type="button" id="passcode-hint-btn"
+                class="h-13 sm:h-14 rounded-2xl text-xs font-cinzel font-bold text-amber-300 hover:text-amber-200 bg-amber-500/15 hover:bg-amber-500/25 border border-amber-300/40 transition flex items-center justify-center shadow-sm"
+                title="Give me a hint!">
                 💡 HINT
             </button>
-            <button type="button" class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm" data-val="0">
+            <button type="button"
+                class="keypad-btn h-13 sm:h-14 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-xl font-bold text-white border border-rose-400/25 transition flex flex-col items-center justify-center shadow-sm"
+                data-val="0">
                 0
             </button>
             <!-- Backspace Button -->
-            <button type="button" id="keypad-backspace" class="h-13 sm:h-14 rounded-2xl text-rose-300 hover:text-white bg-white/10 hover:bg-white/20 border border-rose-400/25 active:scale-95 transition flex items-center justify-center text-lg shadow-sm">
+            <button type="button" id="keypad-backspace"
+                class="h-13 sm:h-14 rounded-2xl text-rose-300 hover:text-white bg-white/10 hover:bg-white/20 border border-rose-400/25 active:scale-95 transition flex items-center justify-center text-lg shadow-sm">
                 ⌫
             </button>
         </div>
 
         <!-- Clue popup bubble -->
-        <div id="hint-bubble" class="hidden p-3 rounded-xl bg-amber-500/20 border border-amber-300/40 text-amber-200 text-xs text-center space-y-1">
+        <div id="hint-bubble"
+            class="hidden p-3 rounded-xl bg-amber-500/20 border border-amber-300/40 text-amber-200 text-xs text-center space-y-1">
             <p class="font-bold">💡 Clue for you, my love:</p>
             <p>Try your birthdate (DDMM) 🎂❤️</p>
         </div>
 
         <!-- Emergency / Instant Unlock with Love Button -->
         <div class="pt-1">
-            <button type="button" id="emergency-unlock-btn" class="text-xs text-rose-300/80 hover:text-amber-200 underline underline-offset-4 transition font-medium">
+            <button type="button" id="emergency-unlock-btn"
+                class="text-xs text-rose-300/80 hover:text-amber-200 underline underline-offset-4 transition font-medium">
                 Unlock with Love ❤️ (No Passcode Needed)
             </button>
         </div>
@@ -2077,7 +2114,7 @@
 
     <!-- 14. Why I Love You (3D Flip Cards) -->
     <!-- Why I Love You (Midnight Wine & Rose Gold Theme) -->
-<section id="reasons-section" class="py-20 px-4 relative z-20">
+<section id="reasons-section" class="py-20 sm:py-28 px-3 sm:px-6 relative z-10 overflow-visible mb-8 sm:mb-12">
     <div class="max-w-6xl mx-auto space-y-12">
         
         <div class="text-center space-y-3">
@@ -2092,10 +2129,10 @@
             </p>
         </div>
 
-        <!-- Flip Cards Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Flip Cards Grid (1 col on mobile, 2 cols on tablet, 3 cols on desktop) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
             
-            <div class="flip-card h-72 sm:h-80 cursor-pointer select-none group" data-card="1">
+            <div class="flip-card min-h-[340px] sm:min-h-[360px] h-[340px] sm:h-[360px] cursor-pointer select-none group w-full " data-card="1">
                 <div class="flip-card-inner">
                     
                     <!-- Front of Card: Luxury Rose Gold Foil Keepsake -->
@@ -2137,8 +2174,8 @@
                             <span>REASON #1</span>
                         </div>
 
-                        <!-- Core Message -->
-                        <div class="my-auto space-y-2 overflow-y-auto max-h-44 px-1 pr-1.5">
+                        <!-- Core Message with Smooth Custom Scrolling -->
+                        <div class="my-auto space-y-2 overflow-y-auto max-h-48 px-1 pr-1.5 custom-scroll">
                             <h4 class="font-serif text-lg font-bold text-amber-200">Your Gentle Heart</h4>
                             <p class="text-rose-100/95 text-xs sm:text-sm leading-relaxed font-sans">
                                 The kindness, empathy, and respect you show everyone around you inspires me every single day.
@@ -2155,7 +2192,7 @@
                 </div>
             </div>
             
-            <div class="flip-card h-72 sm:h-80 cursor-pointer select-none group" data-card="2">
+            <div class="flip-card min-h-[340px] sm:min-h-[360px] h-[340px] sm:h-[360px] cursor-pointer select-none group w-full " data-card="2">
                 <div class="flip-card-inner">
                     
                     <!-- Front of Card: Luxury Rose Gold Foil Keepsake -->
@@ -2197,8 +2234,8 @@
                             <span>REASON #2</span>
                         </div>
 
-                        <!-- Core Message -->
-                        <div class="my-auto space-y-2 overflow-y-auto max-h-44 px-1 pr-1.5">
+                        <!-- Core Message with Smooth Custom Scrolling -->
+                        <div class="my-auto space-y-2 overflow-y-auto max-h-48 px-1 pr-1.5 custom-scroll">
                             <h4 class="font-serif text-lg font-bold text-amber-200">How Safe I Feel With You</h4>
                             <p class="text-rose-100/95 text-xs sm:text-sm leading-relaxed font-sans">
                                 No matter how chaotic or stressful life gets, one hug from you makes everything quiet, safe, and peaceful.
@@ -2215,7 +2252,7 @@
                 </div>
             </div>
             
-            <div class="flip-card h-72 sm:h-80 cursor-pointer select-none group" data-card="3">
+            <div class="flip-card min-h-[340px] sm:min-h-[360px] h-[340px] sm:h-[360px] cursor-pointer select-none group w-full " data-card="3">
                 <div class="flip-card-inner">
                     
                     <!-- Front of Card: Luxury Rose Gold Foil Keepsake -->
@@ -2257,8 +2294,8 @@
                             <span>REASON #3</span>
                         </div>
 
-                        <!-- Core Message -->
-                        <div class="my-auto space-y-2 overflow-y-auto max-h-44 px-1 pr-1.5">
+                        <!-- Core Message with Smooth Custom Scrolling -->
+                        <div class="my-auto space-y-2 overflow-y-auto max-h-48 px-1 pr-1.5 custom-scroll">
                             <h4 class="font-serif text-lg font-bold text-amber-200">Our Late-Night Calls</h4>
                             <p class="text-rose-100/95 text-xs sm:text-sm leading-relaxed font-sans">
                                 Even after exhausting, hectic days, you always make time to talk me to sleep with your warm voice.
@@ -2275,7 +2312,7 @@
                 </div>
             </div>
             
-            <div class="flip-card h-72 sm:h-80 cursor-pointer select-none group" data-card="4">
+            <div class="flip-card min-h-[340px] sm:min-h-[360px] h-[340px] sm:h-[360px] cursor-pointer select-none group w-full " data-card="4">
                 <div class="flip-card-inner">
                     
                     <!-- Front of Card: Luxury Rose Gold Foil Keepsake -->
@@ -2317,8 +2354,8 @@
                             <span>REASON #4</span>
                         </div>
 
-                        <!-- Core Message -->
-                        <div class="my-auto space-y-2 overflow-y-auto max-h-44 px-1 pr-1.5">
+                        <!-- Core Message with Smooth Custom Scrolling -->
+                        <div class="my-auto space-y-2 overflow-y-auto max-h-48 px-1 pr-1.5 custom-scroll">
                             <h4 class="font-serif text-lg font-bold text-amber-200">Holding Tight on Our Scooty</h4>
                             <p class="text-rose-100/95 text-xs sm:text-sm leading-relaxed font-sans">
                                 Wrapping my arms around your waist, resting my chin on your shoulder, and feeling the cool wind as you ride. Pure bliss.
@@ -2335,7 +2372,7 @@
                 </div>
             </div>
             
-            <div class="flip-card h-72 sm:h-80 cursor-pointer select-none group" data-card="5">
+            <div class="flip-card min-h-[340px] sm:min-h-[360px] h-[340px] sm:h-[360px] cursor-pointer select-none group w-full " data-card="5">
                 <div class="flip-card-inner">
                     
                     <!-- Front of Card: Luxury Rose Gold Foil Keepsake -->
@@ -2377,8 +2414,8 @@
                             <span>REASON #5</span>
                         </div>
 
-                        <!-- Core Message -->
-                        <div class="my-auto space-y-2 overflow-y-auto max-h-44 px-1 pr-1.5">
+                        <!-- Core Message with Smooth Custom Scrolling -->
+                        <div class="my-auto space-y-2 overflow-y-auto max-h-48 px-1 pr-1.5 custom-scroll">
                             <h4 class="font-serif text-lg font-bold text-amber-200">How Hard You Work</h4>
                             <p class="text-rose-100/95 text-xs sm:text-sm leading-relaxed font-sans">
                                 Your grit, passion, and tireless drive to build our dreams and future together makes me the proudest fiancée alive.
@@ -2395,7 +2432,7 @@
                 </div>
             </div>
             
-            <div class="flip-card h-72 sm:h-80 cursor-pointer select-none group" data-card="6">
+            <div class="flip-card min-h-[340px] sm:min-h-[360px] h-[340px] sm:h-[360px] cursor-pointer select-none group w-full " data-card="6">
                 <div class="flip-card-inner">
                     
                     <!-- Front of Card: Luxury Rose Gold Foil Keepsake -->
@@ -2437,8 +2474,8 @@
                             <span>REASON #6</span>
                         </div>
 
-                        <!-- Core Message -->
-                        <div class="my-auto space-y-2 overflow-y-auto max-h-44 px-1 pr-1.5">
+                        <!-- Core Message with Smooth Custom Scrolling -->
+                        <div class="my-auto space-y-2 overflow-y-auto max-h-48 px-1 pr-1.5 custom-scroll">
                             <h4 class="font-serif text-lg font-bold text-amber-200">You Always Make Me Laugh</h4>
                             <p class="text-rose-100/95 text-xs sm:text-sm leading-relaxed font-sans">
                                 Even across 950 km on FaceTime, you know exactly what goofy thing to say or face to make to turn my bad day into giggles.
@@ -2455,7 +2492,7 @@
                 </div>
             </div>
             
-            <div class="flip-card h-72 sm:h-80 cursor-pointer select-none group" data-card="7">
+            <div class="flip-card min-h-[340px] sm:min-h-[360px] h-[340px] sm:h-[360px] cursor-pointer select-none group w-full " data-card="7">
                 <div class="flip-card-inner">
                     
                     <!-- Front of Card: Luxury Rose Gold Foil Keepsake -->
@@ -2497,8 +2534,8 @@
                             <span>REASON #7</span>
                         </div>
 
-                        <!-- Core Message -->
-                        <div class="my-auto space-y-2 overflow-y-auto max-h-44 px-1 pr-1.5">
+                        <!-- Core Message with Smooth Custom Scrolling -->
+                        <div class="my-auto space-y-2 overflow-y-auto max-h-48 px-1 pr-1.5 custom-scroll">
                             <h4 class="font-serif text-lg font-bold text-amber-200">The Way You Hold My Hand</h4>
                             <p class="text-rose-100/95 text-xs sm:text-sm leading-relaxed font-sans">
                                 Subconsciously reaching for my fingers at red lights or whenever we walk together. My heart melts every single time.
@@ -2515,7 +2552,7 @@
                 </div>
             </div>
             
-            <div class="flip-card h-72 sm:h-80 cursor-pointer select-none group" data-card="8">
+            <div class="flip-card min-h-[340px] sm:min-h-[360px] h-[340px] sm:h-[360px] cursor-pointer select-none group w-full " data-card="8">
                 <div class="flip-card-inner">
                     
                     <!-- Front of Card: Luxury Rose Gold Foil Keepsake -->
@@ -2557,8 +2594,8 @@
                             <span>REASON #8</span>
                         </div>
 
-                        <!-- Core Message -->
-                        <div class="my-auto space-y-2 overflow-y-auto max-h-44 px-1 pr-1.5">
+                        <!-- Core Message with Smooth Custom Scrolling -->
+                        <div class="my-auto space-y-2 overflow-y-auto max-h-48 px-1 pr-1.5 custom-scroll">
                             <h4 class="font-serif text-lg font-bold text-amber-200">You Believe in Me</h4>
                             <p class="text-rose-100/95 text-xs sm:text-sm leading-relaxed font-sans">
                                 When self-doubt creeps in, you remind me who I am. You are my greatest anchor, cheerleader, and best friend.
@@ -2575,7 +2612,7 @@
                 </div>
             </div>
             
-            <div class="flip-card h-72 sm:h-80 cursor-pointer select-none group" data-card="9">
+            <div class="flip-card min-h-[340px] sm:min-h-[360px] h-[340px] sm:h-[360px] cursor-pointer select-none group w-full md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:max-w-none" data-card="9">
                 <div class="flip-card-inner">
                     
                     <!-- Front of Card: Luxury Rose Gold Foil Keepsake -->
@@ -2617,8 +2654,8 @@
                             <span>REASON #9</span>
                         </div>
 
-                        <!-- Core Message -->
-                        <div class="my-auto space-y-2 overflow-y-auto max-h-44 px-1 pr-1.5">
+                        <!-- Core Message with Smooth Custom Scrolling -->
+                        <div class="my-auto space-y-2 overflow-y-auto max-h-48 px-1 pr-1.5 custom-scroll">
                             <h4 class="font-serif text-lg font-bold text-amber-200">You Love Me as I Am</h4>
                             <p class="text-rose-100/95 text-xs sm:text-sm leading-relaxed font-sans">
                                 With all my flaws, quirks, and mood swings. You love me purely and unconditionally.
@@ -2642,12 +2679,13 @@
 
     <!-- 15. Soulmate Biometric Radar & Love Gauge -->
     <!-- Biometric Love Meter & Soulmate Radar Section (Midnight Wine & Rose Gold Theme) -->
-<section id="love-meter-section" class="py-20 px-4 relative z-20">
+<section id="love-meter-section" class="py-20 sm:py-28 px-3 sm:px-6 relative z-10 clear-both pt-8 sm:pt-14">
     <div class="max-w-4xl mx-auto space-y-10 text-center">
-        
+
         <!-- Header -->
         <div class="space-y-3">
-            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-rose-500/20 border border-rose-400/30 text-rose-300 text-xs font-semibold backdrop-blur">
+            <div
+                class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-rose-500/20 border border-rose-400/30 text-rose-300 text-xs font-semibold backdrop-blur">
                 <span>💘📡</span>
                 <span class="tracking-widest uppercase font-cinzel">Biometric Compatibility</span>
                 <span>✨</span>
@@ -2661,11 +2699,13 @@
         </div>
 
         <!-- The Scanner Box -->
-        <div class="glass-panel-gold rounded-3xl p-8 sm:p-12 border border-amber-300/30 shadow-2xl relative max-w-xl mx-auto select-none overflow-hidden">
-            
+        <div
+            class="glass-panel-gold rounded-3xl p-8 sm:p-12 border border-amber-300/30 shadow-2xl relative max-w-xl mx-auto select-none overflow-hidden">
+
             <!-- Radar Concentric Circles -->
             <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
-                <div class="w-96 h-96 rounded-full border border-rose-400 animate-ping" style="animation-duration: 4s;"></div>
+                <div class="w-96 h-96 rounded-full border border-rose-400 animate-ping" style="animation-duration: 4s;">
+                </div>
                 <div class="w-72 h-72 rounded-full border border-amber-300"></div>
                 <div class="w-48 h-48 rounded-full border border-rose-500"></div>
             </div>
@@ -2697,10 +2737,13 @@
             <div class="pt-8 flex flex-col items-center justify-center">
                 <div id="thumbprint-scanner" class="relative group cursor-pointer">
                     <!-- Glowing Pulse Rings -->
-                    <div class="absolute -inset-4 rounded-full bg-rose-500/20 blur-xl animate-pulse group-hover:bg-rose-500/40 transition"></div>
-                    
+                    <div
+                        class="absolute -inset-4 rounded-full bg-rose-500/20 blur-xl animate-pulse group-hover:bg-rose-500/40 transition">
+                    </div>
+
                     <!-- Scanner Button -->
-                    <div class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-tr from-rose-900 via-rose-700 to-rose-500 border-4 border-amber-300/80 shadow-[0_0_30px_rgba(244,63,94,0.6)] flex flex-col items-center justify-center transform active:scale-95 transition">
+                    <div
+                        class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-tr from-rose-900 via-rose-700 to-rose-500 border-4 border-amber-300/80 shadow-[0_0_30px_rgba(244,63,94,0.6)] flex flex-col items-center justify-center transform active:scale-95 transition">
                         <span class="text-4xl filter drop-shadow">❤️</span>
                         <span class="text-[9px] font-cinzel font-black tracking-widest text-amber-200 uppercase mt-1">
                             HOLD TO SCAN
@@ -2708,7 +2751,9 @@
                     </div>
 
                     <!-- Scan Beam Animation (Active while holding) -->
-                    <div id="scanner-laser-beam" class="absolute inset-x-0 h-1 bg-cyan-300 shadow-[0_0_12px_#67e8f9] top-0 opacity-0 pointer-events-none transition-opacity"></div>
+                    <div id="scanner-laser-beam"
+                        class="absolute inset-x-0 h-1 bg-cyan-300 shadow-[0_0_12px_#67e8f9] top-0 opacity-0 pointer-events-none transition-opacity">
+                    </div>
                 </div>
 
                 <p class="text-[11px] text-rose-300/70 mt-4 italic">
@@ -2721,24 +2766,30 @@
     </div>
 
     <!-- 1000% Soulmates Certificate Modal -->
-    <div id="soulmate-cert-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
-        <div class="relative bg-white text-slate-900 p-6 sm:p-10 rounded-3xl max-w-lg w-full text-center space-y-6 border-8 border-double border-amber-400 shadow-2xl animate-float">
-            
+    <div id="soulmate-cert-modal"
+        class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+        <div
+            class="relative bg-white text-slate-900 p-6 sm:p-10 rounded-3xl max-w-lg w-full text-center space-y-6 border-8 border-double border-amber-400 shadow-2xl animate-float">
+
             <!-- Top Wax Seal -->
-            <div class="w-16 h-16 mx-auto -mt-14 rounded-full bg-rose-600 text-white flex items-center justify-center text-3xl shadow-xl border-4 border-amber-300">
+            <div
+                class="w-16 h-16 mx-auto -mt-14 rounded-full bg-rose-600 text-white flex items-center justify-center text-3xl shadow-xl border-4 border-amber-300">
                 💍
             </div>
 
             <!-- Certificate Header -->
             <div class="space-y-1 border-b-2 border-slate-200 pb-4">
-                <span class="text-xs uppercase tracking-widest font-cinzel text-amber-600 font-bold block">OFFICIAL COSMIC REGISTRY</span>
+                <span class="text-xs uppercase tracking-widest font-cinzel text-amber-600 font-bold block">OFFICIAL
+                    COSMIC REGISTRY</span>
                 <h3 class="font-serif text-3xl font-black text-slate-900">1000% SOULMATE CERTIFICATE</h3>
                 <p class="text-xs font-cinzel text-slate-500">Document № LOVE-1611-2026</p>
             </div>
 
             <!-- Certificate Body -->
-            <div class="space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed text-left bg-amber-50/60 p-4 rounded-xl border border-amber-200/80">
-                <p>This certifies that <strong>VIPUL</strong> and <strong>TOSHI</strong> possess an infinitely synchronized heart resonance that unites their souls forever and ever.</p>
+            <div
+                class="space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed text-left bg-amber-50/60 p-4 rounded-xl border border-amber-200/80">
+                <p>This certifies that <strong>VIPUL</strong> and <strong>TOSHI</strong> possess an infinitely
+                    synchronized heart resonance that unites their souls forever and ever.</p>
                 <div class="grid grid-cols-2 gap-2 text-xs pt-1">
                     <div><strong>Late Night Giggles:</strong> 100% Match</div>
                     <div><strong>Scooty Ride Snuggles:</strong> 1000% Overflow</div>
@@ -2751,15 +2802,18 @@
             <div class="flex justify-between items-end pt-2 text-left border-t border-slate-200 px-2">
                 <div>
                     <span class="font-cursive text-2xl text-rose-600 font-bold block">Toshi ❤️</span>
-                    <span class="text-[10px] uppercase tracking-wider font-cinzel text-slate-500">Your Fiancée & Best Friend</span>
+                    <span class="text-[10px] uppercase tracking-wider font-cinzel text-slate-500">Your Fiancée & Best
+                        Friend</span>
                 </div>
                 <div class="text-right">
                     <span class="font-cinzel text-sm text-amber-700 font-bold block">SEALED FOREVER</span>
-                    <span class="text-[10px] uppercase tracking-wider font-cinzel text-slate-500">By The Universe ✨</span>
+                    <span class="text-[10px] uppercase tracking-wider font-cinzel text-slate-500">By The Universe
+                        ✨</span>
                 </div>
             </div>
 
-            <button type="button" id="close-soulmate-modal" class="w-full py-3.5 rounded-full bg-gradient-to-r from-rose-600 to-rose-500 text-white font-bold hover:brightness-110 transition shadow-lg text-sm">
+            <button type="button" id="close-soulmate-modal"
+                class="w-full py-3.5 rounded-full bg-gradient-to-r from-rose-600 to-rose-500 text-white font-bold hover:brightness-110 transition shadow-lg text-sm">
                 Forever In Love ❤️
             </button>
         </div>
