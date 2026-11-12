@@ -11,7 +11,7 @@
         </div>
 
         <!-- Timeline Container -->
-        <div class="relative border-l-2 border-rose-500/30 ml-4 sm:ml-32 space-y-12 py-4">
+        <div class="relative border-l-2 border-rose-500/30 ml-4 sm:ml-40 space-y-12 py-4">
             {% for memory in memories %}
             <div class="relative pl-6 sm:pl-10 group">
                 <!-- Timeline Dot Indicator -->
@@ -19,8 +19,8 @@
                     <span>{{ memory.emoji_icon }}</span>
                 </div>
 
-                <!-- Date Label (Left on desktop) -->
-                <div class="sm:absolute sm:-left-32 sm:top-2 sm:w-24 sm:text-right font-cinzel text-xs uppercase tracking-wider text-amber-300/90 font-semibold mb-1 sm:mb-0">
+                <!-- Date Label (Left on desktop, above on mobile) -->
+                <div class="sm:absolute sm:-left-40 sm:top-2 sm:w-32 sm:text-right font-cinzel text-xs uppercase tracking-wider text-amber-300 font-bold mb-2 sm:mb-0">
                     {{ memory.date_label }}
                 </div>
 
