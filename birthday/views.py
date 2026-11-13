@@ -14,7 +14,7 @@ def get_default_data():
             'title': 'Introduced by Masi • Our Arranged Match ✨',
             'description': 'Who knew that a recommendation from my Masi would bring the love of my life to me! What started as a traditional arranged marriage introduction turned into the sweetest blessing the moment we got to know each other.',
             'emoji_icon': '💌',
-            'image_url': 'static/images/Snapchat-2078954973.jpg',
+            'image_url': 'static/images/IMG-20260725-WA0010_face.jpg',
         },
         {
             'date_label': 'Dec 2025 – Jan 2026',
@@ -28,14 +28,14 @@ def get_default_data():
             'title': 'Officially Rokafied! We Said Yes 💍✨',
             'description': 'In January, our families came together and we got officially Rokafied! With radiant smiles, heartfelt blessings, and complete certainty in our hearts, we became promised to each other. Saying yes to you was the easiest, happiest decision of my life.',
             'emoji_icon': '💍',
-            'image_url': 'static/images/DSC_9886.JPG',
+            'image_url': 'static/images/lavender_festive.jpg',
         },
         {
             'date_label': 'February 2026',
             'title': 'Meeting in Person at Nana-Nani\'s 50th Anniversary 🌸🥂',
             'description': 'In February, we finally met in person at my Nana-Nani\'s 50th Golden Wedding Anniversary celebration! Seeing you in person with that warm, handsome smile made my heart flutter. That first real meeting in the midst of family celebrations will forever be special.',
             'emoji_icon': '💐',
-            'image_url': 'static/images/lavender_festive.jpg',
+            'image_url': 'static/images/DSC_9886.JPG',
         },
         {
             'date_label': 'September 2026 & Cherished Moments',
@@ -71,7 +71,7 @@ def get_default_data():
         {'title': 'Movie Night Decision Maker', 'description': 'You pick the movie or show, absolutely no vetoes or complaints permitted!', 'icon': '🎬', 'code': 'MOVIE-PASS', 'is_redeemed': False},
         {'title': 'Get Out of Any Argument Free', 'description': 'Play this card during any silly debate and instantly win on the spot!', 'icon': '🕊️', 'code': 'PEACE-CARD', 'is_redeemed': False},
         {'title': 'Endless Video Call & Bedtime Pass', 'description': 'Unlimited screen time together with zero rush, talking about everything and falling asleep on call together.', 'icon': '📱', 'code': 'CALL-PASS', 'is_redeemed': False},
-        {'title': 'Midnight Scooty Ride & Cutting Chai', 'description': 'Hop on! A late-night scooty ride through the cool breeze with my arms wrapped around your waist, ending with hot chai & ice cream!', 'icon': '🛵', 'code': 'SCOOTY-RIDE', 'is_redeemed': False},
+        {'title': 'Romantic Scooty Ride & Sweet Dessert', 'description': 'Hop on! A sweet scooty ride through the cool breeze with my arms wrapped around your waist, ending with delicious ice cream!', 'icon': '🛵', 'code': 'SCOOTY-RIDE', 'is_redeemed': False},
     ]
 
     default_letter = {
@@ -87,7 +87,7 @@ In a world that is so loud, chaotic, and fast, you are my quiet peace—mere suk
 
 Jab bhi main thak jaati hoon ya din mushkil hota hai, tumhara phone par ek baar kehna ki "sab theek ho jayega, main hoon na" mere dil ko itna sukoon deta hai ki saare darr aur thakan gayab ho jaate hain. Falling asleep to the sound of your voice on late-night calls, counting the hours until we can run into each other's arms, and feeling your warmth... every single moment has proved how completely and fiercely I belong to you.
 
-And when we are together—wrapping my arms tight around your waist on our late-night scooty rides, feeling the cool midnight breeze against our faces, sharing that first hot sip of cutting chai, and your fingers reaching for mine at every red light... those are the moments I hold closest to my heart.
+And when we are together—wrapping my arms tight around your waist on our scooty rides, feeling the cool breeze against our faces, and your fingers reaching for mine at every red light... those are the moments I hold closest to my heart.
 
 I see how hard you work every single day, building the foundation of our tomorrow with so much grit and dedication. You have a heart of pure gold, Vipul, and being your fiancée is the greatest pride of my life.
 
@@ -135,7 +135,7 @@ Happy Birthday, my handsome boy. Tum ho, toh main hoon. ❤️""",
             'order': 2
         },
         {
-            'title': 'Late Night Scooty Breeze',
+            'title': 'Sweet Scooty Breeze',
             'message': 'Wrapping my arms around your waist, resting my chin on your shoulder, and riding down quiet streets. Pure bliss.',
             'emoji': '🛵',
             'color': '#f43f5e',

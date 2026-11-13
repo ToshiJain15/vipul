@@ -741,7 +741,7 @@ function initCakeCandles() {
 }
 
 /* =========================================================
-   6. Midnight Scooty Ride Simulator (Optimized for Mobile)
+   6. Romantic Scooty Ride Simulator (Optimized for Mobile)
    ========================================================= */
 function initScootyRide() {
     const cruiseBtn = document.getElementById('scooty-cruise-btn');
@@ -775,11 +775,11 @@ function initScootyRide() {
     const milestones = [
         {
             dist: 400,
-            icon: '☕',
+            icon: '🍨',
             tag: 'Milestone 1 • 400m',
-            title: 'Midnight Cutting Chai & Bun Maska',
-            desc: 'Thandi hawa mein garam chai... aur tum hamesha pehla sip mujhe dete ho.',
-            snuggle: 'Chai Sip ☕'
+            title: 'Sweet Ice Cream & Gentle Breeze',
+            desc: 'Thandi hawa mein scooty ride... aur tumhara haath mere haathon mein.',
+            snuggle: 'Sweet Scoop 🍨'
         },
         {
             dist: 800,
@@ -896,10 +896,51 @@ function initScootyRide() {
 }
 
 /* =========================================================
-   7. Photobooth Strips Switcher
+   7. Heart-Shaped Photo Collage & Lightbox Viewer
    ========================================================= */
+function openPurePhotoModal(imgSrc) {
+    const modal = document.getElementById('pure-photo-modal');
+    const modalImg = document.getElementById('pure-modal-img');
+    if (!modal || !modalImg) return;
+
+    modalImg.src = imgSrc;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+}
+
+function closePurePhotoModal(e) {
+    const modal = document.getElementById('pure-photo-modal');
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+}
+
+window.openPurePhotoModal = openPurePhotoModal;
+window.closePurePhotoModal = closePurePhotoModal;
+
+function openPhotoModal(imgSrc, title, caption) {
+    openPurePhotoModal(imgSrc);
+}
+
+function closePhotoModal(e) {
+    closePurePhotoModal(e);
+}
+
+window.openPhotoModal = openPhotoModal;
+window.closePhotoModal = closePhotoModal;
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closePurePhotoModal();
+    }
+});
+
 function initPhotoboothTabs() {
+    // Photobooth tabs retained safely for backwards compatibility if needed
     const btns = document.querySelectorAll('.strip-tab-btn');
+    if (!btns || btns.length === 0) return;
     const strips = [
         document.getElementById('photostrip-1'),
         document.getElementById('photostrip-2'),
@@ -1076,9 +1117,9 @@ function initLoveMeter() {
     let isScanning = false;
 
     const quotes = [
-        "Scanning midnight scooty smiles...",
+        "Scanning sweet scooty smiles...",
         "Measuring hug warmth...",
-        "Analyzing chai compatibility...",
+        "Analyzing soulmate compatibility...",
         "Matching heart frequencies...",
         "OVERFLOW: 1000% Eternal Soulmates! 💕"
     ];
@@ -1408,9 +1449,9 @@ function initSmileJar() {
     const smileNotes = [
         "Whenever you smile, the whole room glows. Never stop smiling, my handsome boy.",
         "Your laugh is my absolute favorite sound in the entire universe.",
-        "Hamari late night scooty rides thandi hawa mein... mera sabse favourite feeling hai.",
+        "Hamari scooty rides thandi hawa mein... mera sabse favourite feeling hai.",
         "Marrying you on 21 December 2026 is going to be the happiest day of my entire life.",
-        "You always make sure I take the first warm sip of cutting chai.",
+        "The way your hand holds mine tightly at every turn.",
         "Thank you for being my peace, my best friend, and my home.",
         "You have the kindest heart, the warmest eyes, and the gentlest soul.",
         "Every romantic Bollywood song reminds me of you, Vipul.",
@@ -1509,7 +1550,7 @@ function initOpenWhenLetters() {
             photo: 'static/images/IMG-20260412-WA0003.jpg',
             photoCaption: 'My handsome, hardworking boy ✨',
             btnText: 'Send "I Need Your Voice" to Toshi 📞',
-            text: `Hey handsome boy,\n\nI wish I were right there beside you right now to take off your shoes, hand you a warm cup of chai, and gently massage your temples until all the day's tiredness melts away.\n\nYou work so hard every single day to build the dreams we talk about on our late-night calls. I see your dedication, and I am so endlessly proud of you. Tonight, kick back, lie down, put me on speaker, and let me talk you to sleep. You did wonderful today, my love. Rest now.`
+            text: `Hey handsome boy,\n\nI wish I were right there beside you right now to take off your shoes, hand you a warm, relaxing drink, and gently massage your temples until all the day's tiredness melts away.\n\nYou work so hard every single day to build the dreams we talk about on our late-night calls. I see your dedication, and I am so endlessly proud of you. Tonight, kick back, lie down, put me on speaker, and let me talk you to sleep. You did wonderful today, my love. Rest now.`
         },
         '3': {
             icon: '🧸🫂',
@@ -1519,7 +1560,7 @@ function initOpenWhenLetters() {
             photo: 'static/images/Snapchat-1449003545.jpg',
             photoCaption: 'Forever wrapped in your arms 🧸',
             btnText: 'Send Giant Bear Hug to Toshi 🫂',
-            text: `Wrap both of your arms tightly around yourself right now and squeeze tight!\n\nThat is a giant, warm hug from your future wife delivered straight into your soul. Imagine my head tucked against your chest, listening to your heartbeat just like on our late-night scooty rides. You are safe, you are cherished, and I will always hold your hand.`
+            text: `Wrap both of your arms tightly around yourself right now and squeeze tight!\n\nThat is a giant, warm hug from your future wife delivered straight into your soul. Imagine my head tucked against your chest, listening to your heartbeat just like on our scooty rides. You are safe, you are cherished, and I will always hold your hand.`
         },
         '4': {
             icon: '🕊️🤍',
@@ -1539,7 +1580,7 @@ function initOpenWhenLetters() {
             photo: 'static/images/lavender_festive.jpg',
             photoCaption: 'Sweet dreams, mere sukoon 🌙',
             btnText: 'Send Goodnight Kiss to Toshi 💋',
-            text: `Hey my love...\n\nCan't sleep? Mind running in circles with a million thoughts?\n\nClose your eyes and breathe slowly with me. Imagine my head resting gently against your chest, listening to your steady heartbeat. You are surrounded by so much love, warmth, and peace.\n\nThink about our favorite midnight scooty ride—the cool gentle wind on our skin, my arms wrapped tight around your waist, and not a care in the entire world.\n\nYou are my safe place, Vipul, and I am yours. Let all the worries of today float away into the night. I am sending you the softest forehead kiss and holding you tight in my thoughts.\n\nNow close your eyes, handsome boy, and drift away into sweet dreams. Tum ho, toh main hoon. ❤️`
+            text: `Hey my love...\n\nCan't sleep? Mind running in circles with a million thoughts?\n\nClose your eyes and breathe slowly with me. Imagine my head resting gently against your chest, listening to your steady heartbeat. You are surrounded by so much love, warmth, and peace.\n\nThink about our favorite scooty ride—the cool gentle wind on our skin, my arms wrapped tight around your waist, and not a care in the entire world.\n\nYou are my safe place, Vipul, and I am yours. Let all the worries of today float away into the night. I am sending you the softest forehead kiss and holding you tight in my thoughts.\n\nNow close your eyes, handsome boy, and drift away into sweet dreams. Tum ho, toh main hoon. ❤️`
         }
     };
 
@@ -1747,8 +1788,8 @@ function initQuiz() {
         {
             q: "What is our absolute favorite date activity together?",
             options: [
-                { text: "Late Night Scooty Rides in the cool breeze 🛵💨", feedback: "BINGO! Nothing in the world beats our night scooty rides together!" },
-                { text: "Stopping for cutting chai & maska bun ☕", feedback: "So true! Especially during our late-night rides!" },
+                { text: "Scooty Rides in the cool breeze 🛵💨", feedback: "BINGO! Nothing in the world beats our scooty rides together!" },
+                { text: "Stopping for sweet ice cream & dessert 🍨", feedback: "So true! The sweetest treat together!" },
                 { text: "Listening to 'Tere Hawaale' & 'Kesariya' together 🎵", feedback: "Our favorite romantic vibe!" }
             ]
         },

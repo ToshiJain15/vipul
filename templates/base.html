@@ -77,7 +77,7 @@
                 <a href="#gifts-section" class="hover:text-amber-300 transition">🎁 Gifts</a>
                 <a href="#scooty-ride-section" class="hover:text-amber-300 transition">🛵 Scooty</a>
                 <a href="#cake-section" class="hover:text-amber-300 transition">🎂 Cake</a>
-                <a href="#photobooth-section" class="hover:text-amber-300 transition">📸 Photos</a>
+                <a href="#collage-section" class="hover:text-amber-300 transition">📸 Collage</a>
                 <a href="#tree-section" class="hover:text-amber-300 transition">🌳 Tree of Love</a>
                 <a href="#dream-chapters-section" class="hover:text-amber-300 transition">✈️ Dreams</a>
                 <a href="#letter-section" class="hover:text-amber-300 transition">💌 Letter</a>
@@ -151,7 +151,7 @@
     </div>
 
     <!-- 11 Romantic Songs Playlist Modal / Drawer -->
-    <div id="playlist-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
+    <div id="playlist-modal" class="fixed inset-0 z-[9999] bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
         <div class="glass-panel-gold max-w-lg w-full max-h-[88vh] rounded-3xl border-2 border-amber-300/50 shadow-2xl flex flex-col overflow-hidden relative animate-float">
             <!-- Modal Header -->
             <div class="p-4 sm:p-5 border-b border-rose-400/30 flex items-center justify-between bg-gradient-to-r from-rose-950/80 to-purple-950/80">
@@ -182,6 +182,113 @@
                     Play
                 </button>
             </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Open When Modal (Global Root Level - Zero Stacking Context Collision) -->
+    <div id="open-when-modal" class="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4 overflow-y-auto">
+        <div class="glass-panel-gold rounded-3xl max-w-xl w-full text-center p-5 sm:p-7 border-2 border-rose-400/50 shadow-2xl relative my-auto max-h-[92vh] flex flex-col justify-between overflow-hidden">
+            
+            <!-- Large Close Button at top-right -->
+            <button type="button" id="close-open-when-modal" class="absolute top-3.5 right-3.5 w-10 h-10 rounded-full bg-rose-500/20 hover:bg-rose-500/40 text-rose-200 text-lg font-bold flex items-center justify-center transition active:scale-95 shadow-sm z-30" aria-label="Close letter">
+                ✕
+            </button>
+
+            <!-- Scrollable Content Container -->
+            <div class="overflow-y-auto pr-1 space-y-4 max-h-[72vh]">
+                
+                <!-- Romantic Header Badge & Title -->
+                <div class="space-y-1 pt-1">
+                    <span id="open-when-modal-tag" class="text-[10px] uppercase tracking-widest text-amber-300 font-cinzel font-bold border border-amber-300/30 px-3 py-0.5 rounded-full inline-block">
+                        Open When • Heart to Heart
+                    </span>
+                    <h3 id="open-when-modal-title" class="font-serif text-2xl sm:text-3xl font-bold text-white">
+                        When You Miss Me
+                    </h3>
+                </div>
+
+                <!-- Media Showcase: Couple GIF + Polaroid Photo Side-by-Side -->
+                <div class="grid grid-cols-2 gap-3 max-w-md mx-auto items-center">
+                    <!-- Cute Animated GIF -->
+                    <div class="rounded-2xl overflow-hidden border border-rose-400/40 shadow-lg bg-slate-900 aspect-square flex items-center justify-center">
+                        <img id="open-when-modal-gif" src="https://media.tenor.com/9tO-go2PlNwAAAAM/bubu-dudu-love.gif" alt="Couple Emotion" class="w-full h-full object-cover">
+                    </div>
+
+                    <!-- Romantic Couple Polaroid -->
+                    <div class="polaroid bg-white p-2.5 pb-4 rounded-xl shadow-xl rotate-2 transform hover:rotate-0 transition duration-300 border border-amber-200">
+                        <div class="w-full aspect-square overflow-hidden rounded-lg bg-slate-900">
+                            <img id="open-when-modal-photo" src="static/images/cinematic_red_saree.jpg" alt="Vipul & Toshi" class="w-full h-full object-cover">
+                        </div>
+                        <p id="open-when-modal-photo-caption" class="font-cursive text-slate-800 text-center text-xs mt-1.5 font-bold truncate">
+                            Always by your side ❤️
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Letter Parchment Box -->
+                <div class="bg-[#120816]/90 p-4 sm:p-5 rounded-2xl border border-rose-400/30 text-left shadow-inner relative">
+                    <div class="text-[10px] font-mono text-amber-300/70 border-b border-rose-400/20 pb-1.5 mb-2.5 flex justify-between">
+                        <span>FROM: TOSHI (YOUR WIFEY-TO-BE)</span>
+                        <span>TO: VIPUL ❤️</span>
+                    </div>
+                    <p id="open-when-modal-text" class="text-rose-100 text-xs sm:text-sm leading-relaxed whitespace-pre-line font-sans">
+                        Loading note...
+                    </p>
+                </div>
+
+                <p class="font-cursive text-xl text-rose-300 font-bold">
+                    Holding you tight in my heart, forever & always ❤️
+                </p>
+            </div>
+
+            <!-- Action Buttons Footer -->
+            <div class="pt-3 border-t border-rose-500/20 flex flex-col sm:flex-row items-center justify-between gap-2.5 mt-2">
+                <button type="button" id="send-envelope-love-btn" class="w-full sm:w-auto px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-rose-600 text-white font-bold text-xs shadow-md transition transform active:scale-95 flex items-center justify-center space-x-1.5">
+                    <span>💖</span>
+                    <span id="envelope-love-btn-text">Send Warm Hug Back to Toshi!</span>
+                </button>
+
+                <button type="button" id="close-open-when-bottom-btn" class="w-full sm:w-auto px-5 py-2.5 rounded-full glass-panel hover:bg-white/15 text-rose-200 text-xs font-semibold border border-rose-400/30 transition">
+                    Fold & Put Back in Envelope ✉️
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Wish Granted Modal (Global Root Level) -->
+    <div id="wish-granted-modal" class="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="glass-panel p-6 sm:p-10 rounded-3xl max-w-md w-full text-center space-y-5 border border-rose-400/50 shadow-2xl animate-float">
+            <div class="w-28 h-28 mx-auto rounded-2xl overflow-hidden shadow-lg border-2 border-rose-400/50">
+                <img src="https://media.tenor.com/z0L0Pp-sURIAAAAM/hbd.gif" alt="Happy Birthday" class="w-full h-full object-cover">
+            </div>
+
+            <div class="space-y-1">
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white">WISH GRANTED! 🌟</h3>
+                <p class="text-xs uppercase tracking-widest text-amber-300 font-cinzel">Sealed by the Universe & My Love</p>
+            </div>
+
+            <p class="text-rose-100 text-xs sm:text-sm leading-relaxed">
+                May every single dream you hold in your heart come true this year, Vipul. You deserve all the happiness,
+                success, and love in the universe!
+            </p>
+
+            <button type="button" id="close-wish-modal" class="w-full py-3 rounded-full bg-gradient-to-r from-rose-600 to-rose-500 text-white font-medium hover:brightness-110 transition text-sm">
+                Receive the Love ❤️
+            </button>
+        </div>
+    </div>
+
+    <!-- Full-Screen Interactive Lightbox (Global Root Level) -->
+    <div id="pure-photo-modal" class="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6" onclick="closePurePhotoModal(event)">
+        <div class="relative max-w-4xl max-h-[92vh] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+            <!-- Close Button -->
+            <button type="button" onclick="closePurePhotoModal()" class="absolute -top-12 right-0 sm:-right-4 w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center text-lg font-bold transition shadow-lg backdrop-blur-md border border-white/40">
+                ✕
+            </button>
+
+            <!-- Pure Image Display (No text, no caption) -->
+            <img id="pure-modal-img" src="" alt="Photo Memory" class="max-h-[85vh] max-w-full w-auto h-auto object-contain rounded-2xl shadow-2xl border-2 border-amber-300/50">
         </div>
     </div>
 
